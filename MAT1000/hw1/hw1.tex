@@ -1,0 +1,75 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+
+\fancyhf{}
+\lhead{MAT1000 hw1}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+
+
+
+\begin{document}
+    \begin{pb} \textbf{(Folland 1.2.1)}
+        \textbf{(a)} Let \(n \in [2,\infty]\), then \begin{align*}
+            \bigcap_1^n E_i = E_1 \cap \bigcap_2^n E_i = E_1 \setminus \bigcup_2^n E_i^c = E_1 \setminus \bigcup_2^n (E_1 \cap E_i^c) = E_1 \setminus \bigcup_2^n (E_1 \setminus E_i)
+        \end{align*}
+        By assumption each of the \(E_i\) and \(E_1 \setminus E_i\) are in \(\mathcal{R}\). \qed
+
+        \textbf{(b)} Let \(E \in \mathcal{R}\), then \(E^c = X \setminus E \in \mathcal{R}\). \qed
+
+        \textbf{(c)} Denote the (alleged) sigma algebra in the question as \(\mathcal{A}\). Closure under compliments is immediate from the definition. Now let \(\set{E_i}_1^\infty \subset \mathcal{A}\), then
+        \begin{align*}
+            \bigcup_1^\infty E_i = \bigcup_{E_i \in \mathcal{R}} E_i \bigcup_{E_i^c \in \mathcal{R}} E_i 
+        \end{align*}
+        By definition we have the first union is in \(\mathcal{R}\), the second union is equal to \(\left(\bigcap_{E_i^c \in \mathcal{R}}E_i^c\right)^c\), and hence by part (a) it has compliment in \(\mathcal{R}\). This reduces the problem to pairwise unions \(E \cup F\) for \(E \in R\) and \(F^c \in R\). In this case \((E \cup F)^c = E^c \cap F^c = F^c \setminus E \in \mathcal{R}\). \qed
+
+        \textbf{(d)} Once again refer to the (alleged) sigma algebra as \(\mathcal{A}\). Suppose \(\set{E_i}_1^\infty \subset \mathcal{A}\), then
+        \begin{align*}
+            E_1^c \cap F = F \setminus E_1 = F \setminus F \cap E_1 \in \mathcal{R} \tand F \cap \bigcup_1^\infty E_i = \bigcup_1^\infty F \cap E_i \in \mathcal{R}
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb} \textbf{(Folland 1.2.2)}
+        Folland has already showed \(\mathcal{M}(\mathcal{E}_j) \subset \mathcal{B}_\mathbb{R}\) for all \(j\), and that the open and closed intervals both generate \(\mathcal{B}_\mathbb{R}\). It will suffice to show that for an arbitrary open interval \((a,b)\), we have \((a,b) \in \mathcal{M}(\mathcal{E}_j)\) for \(j > 2\) since this suffices to show \(\mathcal{B}_\mathbb{R} \subset \mathcal{M}(E_1) \subset \mathcal{M}(E_j)\). Note that by closure under compliments we have \(\mathcal{E}_5 = \mathcal{E}_8 \tand \mathcal{E}_6 = \mathcal{E}_7\), so we may use sets of both forms in these cases. Below we show that \((a,b) \in \mathcal{M}(\mathcal{E}_3),\mathcal{M}(\mathcal{E}_4),\mathcal{M}(\mathcal{E}_5) = \mathcal{M}(\mathcal{E}_8) \tand \mathcal{M}(\mathcal{E}_6) = \mathcal{M}(\mathcal{E}_7)\) respectively
+
+        \begin{align*}
+            (a,b) = \bigcup_1^\infty (a,b - 1/n] = \bigcup_1^\infty [a + 1/n,b) = (a,\infty) \cap \bigcup_1^\infty (-\infty, b - 1/n] = (-\infty,a) \cap\bigcup_1^\infty[b+1/n,\infty)
+        \end{align*}
+        \qed
+    \end{pb}
+    \begin{pb} \textbf{(Folland 1.2.3)}
+        \textbf{(a)} Assume not, then let \(N\) be the size of the largest collection of disjoint sets in \(\mathcal{A}\). Now let \(E_1,\hdots,E_N\) be disjoint, we know that \(\set{\bigcup_S E_i \mid S \subset \mathcal{P}(\set{1,\hdots,N})}\) is finite, hence since \(\mathcal{A}\) is infinite, there is some set \(F \in \mathcal{A}\) such that \(\emptyset \subsetneq F\cap E_i \subsetneq E_i\) for some \(i\), we may assume without loss of generality \(i = 1\). It follows that \(F\cap E_1,F^c\cap E_1,E_2,\hdots,E_N\) are all disjoint, but this contradicts \(N\) being the size of the largest collection of disjoint sets in \(\mathcal{A}\). \qed
+
+        \textbf{(b)} Let \(\set{E_i}_1^\infty\) be an infinite sequence of non-empty disjoint sets in \(\mathcal{A}\). Then we have
+        \begin{align*}
+            F: \set{0,1}^{\aleph_0} &\to \mathcal{A} \\
+            b &\mapsto \bigcup_{\set{n \mid b_n = 1}} E_i
+        \end{align*}
+        Then \(F\) is injective since if \(S_1,S_2 \subset \mathbb{Z}_{>0}\) we have \(\bigcup_{S_1}E_i \subset \bigcup_{S_2}E_i\) implies that \(S_1 \subset S_2\) by the disjointness of the \(E_i\). This shows that \(\mathfrak{c} = \# \set{0,1}^{\aleph_0} \leq \# \mathcal{A}\). \qed
+    \end{pb}
+    \begin{pb} \textbf{(Folland 1.2.4)}
+        Define \(F_n = \bigcup_1^n E_i\), then \(F_1 \subset F_2 \subset \cdots\) and each \(F_i \in \mathcal{A}\). It is immediate that \(\bigcup_1^\infty E_i = \bigcup_1^\infty F_i \in \mathcal{A}\). \qed
+    \end{pb}
+    \begin{pb} \textbf{(Folland 1.2.5)}
+        Let \(\mathcal{P}_\sigma(\mathcal{E}) = \set{\mathcal{F} \in \mathcal{P}(\mathcal{E}) \mid \mathcal{F} \text{ is countable}}\). Then let \(\set{E_i}_1^\infty \subset \bigcup_{\mathcal{P}_\sigma(\mathcal{E})} \mathcal{M}(\mathcal{F})\), so for some \(\set{\mathcal{F}_i} \subset \mathcal{P}_\sigma(\mathcal{E})\) we have \(E_i \in \mathcal{M}(\mathcal{F}_i)\), hence \(E_1^c \in \mathcal{M}(\mathcal{F}_1)\), and \(\bigcup_1^\infty E_i \in \bigcup_1^\infty \mathcal{M}(\mathcal{F}_i) \subset \mathcal{M}(\bigcup_1^\infty \mathcal{F}_i)\), since each \(\mathcal{F}_i\) is countable we get that \(\bigcup_1^\infty \mathcal{F}_i \in \mathcal{P}_\sigma(\mathcal{E})\). Each set in \(\mathcal{E}\) is countable, so \(\mathcal{E} \subset \bigcup_{\mathcal{P}_\sigma(\mathcal{E})}\mathcal{M}(\mathcal{F})\), since the latter is a sigma algebra containing \(\mathcal{E}\), we get that \(\mathcal{M}(\mathcal{E}) \subset \bigcup_{\mathcal{P}_\sigma(\mathcal{E})}\mathcal{M}(\mathcal{F})\). Conversely each \(\mathcal{M}(\mathcal{F}) \subset \mathcal{M}(\mathcal{E})\), so that \(\bigcup_{\mathcal{P}_\sigma(\mathcal{E})}\mathcal{M}(\mathcal{F}) \subset \mathcal{M}(\mathcal{E})\). \qed
+    \end{pb}
+    \begin{pb}\textbf{(Classify the sigma algebras on the naturals)} The sigma algebras are in bijection to partitions of the naturals, or equivalently equivalence relations on the naturals. For any partition of the naturals \(\bigsqcup_1^\infty E_i = \mathbb{N}\) we can form the sigma algebra \(\mathcal{M}(\set{E_i}_1^\infty)\). Conversely, let \(\mathcal{A}\) be a sigma algebra, we can define the equivalence relation \(x \sim y\) when for any \(E \in \mathcal{A}\), \(x \in E \implies y \in E\). Reflexivity and transitivity are obvious. To see symmetry we prove the contrapositive, assume \(E \in \mathcal{A}\) with \(y \in E\) but \(x \not \in E\), then \(E^c \in \mathcal{A}\) and \(x \in E^c\) but \(y \not \in E^c\). Now let \(\set{E_i}_1^\infty\) be the partition corresponding to this equivalence relation. To se that \(\mathcal{M}(\set{E_i}_1^\infty) = \mathcal{A}\), we first consider \(x \in \mathbb{N}\) and \(S = \set{E \in \mathcal{A} \mid x \in E}\) with the partial ordering giving by set inclusion, if \(E_1 \supset E_2 \supset \cdots\) is a chain in \(S\), then \(x \in \bigcap_1^\infty E_i \in \mathcal{A}\) is a lower bound, hence by Zorn's lemma there is a smallest set \(E_x \in \mathcal{A}\) with \(x \in E_x\). Let \(i\) such that \(x \in E_i\), then \(E_i = \bigcap_{\set{E \in \mathcal{A}\mid x \in E}}E = E_x\), since the \(E_i\) are disjoint and every element of \(\mathbb{N}\) is in some \(E_i\) we have that each \(E_i\) is the smallest set in \(\mathcal{A}\) containing some natural number, hence \(\mathcal{M}(\set{E_i}_1^\infty) \subset A\). To see that we have equality it will suffice to show that there is no non-empty set in \(\mathcal{A}\) that is contained in any of the \(E_i\) (this reduction follows immediately from the trick in problem 3(a)), but this is immediate since if there were some nonempty \(E \in \mathcal{A}\) with \(E \subsetneq E_i\), then there is some \(x \in E\), but \(E_i\) is the smallest set in \(\mathcal{A}\) containing \(x\) which is an immediate contradiction, hence \(\mathcal{A} \subset \mathcal{M}(\set{E_i}_1^\infty)\). \qed
+        
+    \end{pb}
+\end{document}
