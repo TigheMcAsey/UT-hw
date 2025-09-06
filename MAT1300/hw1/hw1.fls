@@ -180,6 +180,14 @@ INPUT C:\Users\Tighe\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-s
 INPUT C:\Users\Tighe\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Users\Tighe\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Users\Tighe\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
+INPUT .\Nondiffeomorphic.png
+INPUT .\Nondiffeomorphic.png
+INPUT .\Nondiffeomorphic.png
+INPUT .\Nondiffeomorphic.png
+OUTPUT hw1.pdf
+INPUT .\Nondiffeomorphic.png
+INPUT .\Nondiffeomorphic.png
+INPUT .\Nondiffeomorphic.png
 INPUT C:\Users\Tighe\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
 INPUT C:\Users\Tighe\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
 INPUT C:\Users\Tighe\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\umsa.fd
@@ -194,7 +202,6 @@ INPUT C:\Users\Tighe\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\umsb.fd
 INPUT C:\Users\Tighe\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\Tighe\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
 INPUT C:\Users\Tighe\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm5.tfm
-OUTPUT hw1.pdf
 INPUT C:\Users\Tighe\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
 INPUT C:\Users\Tighe\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx7.tfm
 INPUT C:\Users\Tighe\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx5.tfm

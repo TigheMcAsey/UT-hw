@@ -4,6 +4,7 @@
 \usepackage{fancyhdr}
 \usepackage{enumerate} % For custom lists
 \usepackage{tikz-cd}
+\usepackage{graphicx}
 
 \fancyhf{}
 \lhead{MAT1300 hw1}
@@ -26,9 +27,10 @@
 
 \begin{document}
     \begin{pb}
-        \begin{align*}
-            S^2, \quad S^2 \sqcup S^2, \quad S^2 \sqcup S^2 \sqcup S^2
-        \end{align*} \qed
+        \begin{figure}[h]
+            \includegraphics[width=0.90\linewidth]{Nondiffeomorphic.png}
+        \end{figure}
+        \qed
     \end{pb}
     \begin{pb}
         \textbf{(i)} Suppose they are compatible, then the transition map between charts \((\mathbb{R},\mathbb{R},1) \tand (\mathbb{R},\mathbb{R},g)\) is smooth, explicitly the transition map is given by \(g^{-1}\circ1 = g^{-1}\). This is a contradiction since \(g^{-1} = (x \mapsto \sqrt[3]{x})\) is not smooth at zero, since \(\lim_{x \to 0}\abs{\frac{\sqrt[3]{x} - 0}{x - 0}} = \lim_{x\to0}\abs{x^{-2/3}} = \infty\), so the function is not even differentiable at zero, this is a contradiction since transition functions are smooth.
