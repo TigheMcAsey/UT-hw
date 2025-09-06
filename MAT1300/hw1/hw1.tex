@@ -81,7 +81,7 @@
         This is smooth since \(\norm{\mathbf{x}} = \sqrt{1 + \sum_1^n x_i^2}\) is smooth, and since \(\frac{1}{x}\) is smooth away from zero (with the former being atleast 1) their composition is smooth, the fact that products of smooth functions are smooth finishes the proof that the map is smooth in each coordinate.
 
         \begin{align*}
-            \phi_j^{-1}([x]_1 \mapsto [x]_2)\varphi_k(x_1,\hdots,x_n) &= \phi_j^{-1}([x]_2 \mapsto [x]_1)\left[x_1:\cdots:x_{k-1}:\sqrt{1-\sum_1^n x_i^2}:x_k:\cdots:x_n\right] \\
+            \phi_j^{-1}([x]_1 \mapsto [x]_2)\varphi_k(x_1,\hdots,x_n) &= \phi_j^{-1}([x]_1 \mapsto [x]_2)\left[x_1:\cdots:x_{k-1}:\sqrt{1-\sum_1^n x_i^2}:x_k:\cdots:x_n\right] \\
             &= \phi_j^{-1}\left[x_1:\cdots:x_{k-1}:\sqrt{1-\sum_1^n x_i^2}:x_k:\cdots:x_n\right] \\
             &= \phi_j^{-1}\left[x_1x_j^{-1}:\cdots:x_{k-1}x_j^{-1}:x_j^{-1}\sqrt{1-\sum_1^n x_i^2}:x_kx_j^{-1}:\cdots:x_nx_j^{-1}\right] \\
             &= \left(x_1x_j^{-1},\hdots,x_{j-1}x_j^{-1},x_{j+1}x_j^{-1},\hdots,x_{k-1}x_j^{-1},x_j^{-1}\sqrt{1 - \sum_1^n x_i^2},x_kx_j^{-1},\hdots,x_nx_j^{-1}\right)
