@@ -71,17 +71,18 @@
         
         to check that it induces a diffeomorphism we simply compute the transition maps and denote the transition maps in the class example as \(\varphi_j\) to avoid confusion. (assume \(j < k\))
         \begin{align*}
-            \varphi_j^{-1}\phi_k(x_1,\hdots,x_n) = \varphi_j^{-1}[x_1:\cdots:x_{k-1}:1:x_k:\cdots:x_n] = \varphi_j^{-1}[x_1:\cdots:x_{k-1}:1:x_k:\cdots:x_n]
+            \varphi_j^{-1}([x]_2 \mapsto [x]_1)\phi_k(x_1,\hdots,x_n) = \varphi_j^{-1}([x]_2 \mapsto [x]_1)[x_1:\cdots:x_{k-1}:1:x_k:\cdots:x_n]
         \end{align*}
         Now denoting \(\mathbf{x} = (x_1,\hdots,x_{k-1},1,x_k,\hdots,x_n)\), its immediate that \(\norm{\mathbf{x}} > 0\)
         \begin{align*}
-            \varphi_j^{-1}[x_1:\cdots:x_{k-1}:1:x_k:\cdots:x_n] &= \varphi_j^{-1}\left[\frac{x_1}{\norm{x}}:\cdots:\frac{x_{k-1}}{\norm{x}}:\frac{1}{\norm{x}}:\frac{x_k}{\norm{x}}:\cdots:\frac{x_n}{\norm{x}}\right] \\
+            \varphi_j^{-1}([x]_2 \mapsto [x]_1)[x_1:\cdots:x_{k-1}:1:x_k:\cdots:x_n] &= \varphi_j^{-1}\left[\frac{x_1}{\norm{x}}:\cdots:\frac{x_{k-1}}{\norm{x}}:\frac{1}{\norm{x}}:\frac{x_k}{\norm{x}}:\cdots:\frac{x_n}{\norm{x}}\right] \\
             &= \text{sgn}(x_j)\left(\frac{x_1}{\norm{x}},\hdots,\widehat{\frac{x_j}{\norm{x}}},\hdots,\frac{x_{k-1}}{\norm{x}},\frac{1}{\norm{x}},\frac{x_k}{\norm{x}},\cdots,\frac{x_n}{\norm{x}}\right)
         \end{align*}
         This is smooth since \(\norm{\mathbf{x}} = \sqrt{1 + \sum_1^n x_i^2}\) is smooth, and since \(\frac{1}{x}\) is smooth away from zero (with the former being atleast 1) their composition is smooth, the fact that products of smooth functions are smooth finishes the proof that the map is smooth in each coordinate.
 
         \begin{align*}
-            \phi_j^{-1}\varphi_k(x_1,\hdots,x_n) &= \phi_j^{-1}\left[x_1:\cdots:x_{k-1}:\sqrt{1-\sum_1^n x_i^2}:x_k:\cdots:x_n\right] \\
+            \phi_j^{-1}([x]_1 \mapsto [x]_2)\varphi_k(x_1,\hdots,x_n) &= \phi_j^{-1}([x]_2 \mapsto [x]_1)\left[x_1:\cdots:x_{k-1}:\sqrt{1-\sum_1^n x_i^2}:x_k:\cdots:x_n\right] \\
+            &= \phi_j^{-1}\left[x_1:\cdots:x_{k-1}:\sqrt{1-\sum_1^n x_i^2}:x_k:\cdots:x_n\right] \\
             &= \phi_j^{-1}\left[x_1x_j^{-1}:\cdots:x_{k-1}x_j^{-1}:x_j^{-1}\sqrt{1-\sum_1^n x_i^2}:x_kx_j^{-1}:\cdots:x_nx_j^{-1}\right] \\
             &= \left(x_1x_j^{-1},\hdots,x_{j-1}x_j^{-1},x_{j+1}x_j^{-1},\hdots,x_{k-1}x_j^{-1},x_j^{-1}\sqrt{1 - \sum_1^n x_i^2},x_kx_j^{-1},\hdots,x_nx_j^{-1}\right)
         \end{align*}
