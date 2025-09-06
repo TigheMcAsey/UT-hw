@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1756951681.76421 "c:/Users/Tighe/Homework/MAT1000/hw1/hw1.tex" "hw1.pdf" "hw1" 1756951682.49758 0
+["pdflatex"] 1757187728.07535 "c:/Users/Tighe/projects/UT-hw/MAT1000/hw1/hw1.tex" "hw1.pdf" "hw1" 1757187728.60836 0
   "C:/Users/Tighe/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1729493139 83612 69670e67469cfaca8927b121b745dcf0 ""
   "C:/Users/Tighe/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1712006200 24236005 6d56eca885e541cfa5825b8ee25492da ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -47,9 +47,9 @@
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty" 1665067579 2671 7e67d78d9b88c845599a85b2d41f2e39 ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-pdftex.def" 1710412547 29918 d08e4795c0778dfb000e82d9225c6ce2 ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/tex/latex/tools/enumerate.sty" 1700599895 3468 0ef513f22d965f96b06adb5cff671cd7 ""
-  "c:/Users/Tighe/Homework/MAT1000/hw1/hw1.tex" 1756950191 8329 c7c8cd0d7820bab60c9ebd5981ab0168 ""
-  "hw1.aux" 1756951682 32 044b7f8fc9779af7531264e0c5c84b6d "pdflatex"
-  "hw1.tex" 1756950191 8329 c7c8cd0d7820bab60c9ebd5981ab0168 ""
+  "c:/Users/Tighe/projects/UT-hw/MAT1000/hw1/hw1.tex" 1757187727 8412 c92f59c7e3c43a2817011c0f16c6f5e3 ""
+  "hw1.aux" 1757187728 32 044b7f8fc9779af7531264e0c5c84b6d "pdflatex"
+  "hw1.tex" 1757187727 8412 c92f59c7e3c43a2817011c0f16c6f5e3 ""
   (generated)
   "hw1.aux"
   "hw1.log"

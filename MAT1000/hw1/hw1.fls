@@ -1,6 +1,6 @@
-PWD c:\Users\Tighe\Homework\MAT1000\hw1
+PWD c:\Users\Tighe\projects\UT-hw\MAT1000\hw1
 INPUT C:\Users\Tighe\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\Tighe\Homework\MAT1000\hw1\hw1.tex
+INPUT c:\Users\Tighe\projects\UT-hw\MAT1000\hw1\hw1.tex
 OUTPUT hw1.log
 INPUT C:\Users\Tighe\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
 INPUT C:\Users\Tighe\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls

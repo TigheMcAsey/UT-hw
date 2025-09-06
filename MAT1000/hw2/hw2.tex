@@ -85,7 +85,37 @@
             C \geq \mu(A\bigcup_1^\infty F_n) = \mu(\bigcup_1^\infty F_n) + \mu(A) > \mu(\bigcup_1^\infty F_n) = C
         \end{align*} \qed
     \end{pb}
-    \begin{pb}
-        \(\mu_0 \geq 0\) and \(\mu_0(\emptyset) = 0\) are obvious, 
+    \begin{pb}\textbf{(Folland 1.3.15)}
+        \textbf{(a)} \(\mu_0 \geq 0\) and \(\mu_0(\emptyset) = 0\) are obvious, Now let \(\set{E_i}_1^\infty \subset \mathcal{M}\) be disjoint sets, if \(\mu_0(E_j) = \infty\) for some \(j\), then \(\mu_0(E_j) \leq \mu_0(\bigcup_1^\infty E_i)\) (since every finite measure subset of the former is also a finite measure subset of the latter) and we are done. So assuming each \(\mu_0(E_j) < \infty\)l, let \(\epsilon > 0\), then we can choose for each \(E_j\) some \(\mu\)-measurable \(F_j \subset E_j\) such that \(\mu_0(E_j) \geq \mu(F_j) \geq \mu_0(E_j) - \epsilon2^{-j}\), so that
+        \begin{align*}
+            \mu_0(\bigcup_1^\infty E_i) \geq \limsup \mu(\bigcup_1^n F_j) \geq \sum_1^\infty \mu_0(E_i) - \epsilon2^{-i} = -\epsilon + \sum_1^\infty \mu_0(E_i)
+        \end{align*}
+        since \(\epsilon\) was arbitrary this concludes the inequality. To see the converse inequality, let \(F \subset \bigcup_1^\infty E_i\) such that \(\mu(F_n) < \infty\), then \(\sum_1^\infty \mu(E_i \cap F) \leq \sum_1^\infty \mu_0(E_i)\), taking a sequence \((F_n)_1^\infty\), such that \(\lim_{n\to\infty}\mu(F_n) = \mu_0(\bigcup_1^\infty E_i) \tand F_n \subset \bigcup_1^\infty E_i\) we conclude that
+        \begin{align*}
+            \mu_0(\bigcup_1^\infty E_i) = \lim_{n\to\infty}\mu(F_n) = \lim_{n\to\infty}\sum_1^\infty \mu(F_n \cap E_i) \leq \sum_1^\infty \mu_0(E_i)
+        \end{align*} so that \(\mu_0\) is a measure. To check that \(\mu_0\) is semifinite, let \(E \in \mathcal{M}\) with \(\mu_0(E) = \infty\), then by definition there is some \(F \subset E\) with \(\mu(F) > 0\), it follows that \(\mu_0(F) = \mu(F) > 0\). \qed
+
+        \textbf{(b)} Suppose \(\mu\) is semifinite, then it is clear for a set \(E\) of finite measure we have \(\mu(E) = \mu_0(E)\) by monotonicity. If \(E\) has infinite measure, then by (Folland 1.3.14) we have \[\mu_0(F) := \sup\set{\mu(F) \mid F \subset E \tand \mu(F) < \infty} = \infty = \mu(F)\]
+        \qed
+
+        \textbf{(c)} Define \(\nu\) as follows,
+        \begin{align*}
+            \nu(E) := \begin{cases}
+                0 & E \text{ is \(\mu\)-semi-finite}\\
+                \infty & \text{else}
+            \end{cases}
+        \end{align*}
+        Once again positivity and \(\nu(\emptyset) = 0\) are obvious, to check countable additivity let \(\set{E_i}_1^\infty \subset \mathcal{M}\) be disjoint. If \(\nu(\bigcup_1^\infty E_i) = 0\), then \(\bigcup_1^\infty E_i\) is \(\mu\)-semi-finite, hence so is every \(E_i\), so that \(\sum_1^\infty \nu(E_i) = \sum_1^\infty 0\). If \(\nu(\bigcup_1^\infty E_i) = \infty\), then atleast one \(E_i\) is not semifinite because otherwise for any \(F \subset \bigcup_1^\infty E_i\) with \(\mu(F) = \infty \tand \mu_0(F) = 0\) we have \(\infty = \mu(F) = \sum_1^\infty \mu(F \cap E_i)\) and \(0 = \mu_0(F) = \sum_1^\infty \mu_0(F \cap E_i)\), so that for some \(E_i\) we have \(\mu(F \cap E_i) = \infty\), but \(E_i\) is semifinite by assumption, so that \(\mu_0(F\cap E_i) \neq 0\) a contradiction, this shows that atleast one \(E_j\) is not semifinite, so that \(\sum_1^\infty \nu(E_i) \geq \nu(E_j) = \infty = \nu(\bigcup_1^\infty E_i)\). This suffices to show that \(\nu\) is a measure, to see that \(\mu = \mu_0 + \nu\), let \(E \in \mathcal{M}\), if \(E\) is semifinite then either it is finite and \(\mu(E) = \mu(E_0)\) by monotonicity, or it has infinite measure in which case we are done by (Folland 1.3.14). If \(E\) is not semifinite, then \(\infty = \mu(E) = \nu(E) \leq \nu(E) + \mu_0(E)\) and we are done. \qed
+    \end{pb}
+    \begin{pb} \textbf{(Folland 1.3.16)}
+        \textbf{(a)} We can write \(X = \bigcup_1^\infty A_i\) with \(\mu(A_i) < \infty\) by the sigma finite hypothesis, hence if \(E\) is locally measurable , we have \(E = E \cap \bigcup_1^\infty A_i = \bigcup_1^\infty (E \cap A_i) \in \mathcal{M}\) by closure under countable unions. \qed
+
+        \textbf{(b)} Let \(E \in \tilde{\mathcal{M}}\), then for any \(A\) with \(\mu(A) < \infty\) we have \(E^c \cap A = E \cup A^c = (E \cap A) \cup A^c \in \mathcal{M}\). If \(\set{E_i}_1^\infty \subset \mathcal{M}\), then \(A \cap\bigcup_1^\infty E_i = \bigcup_1^\infty (A \cap E_i) \in \mathcal{M}\). \qed
+
+        \textbf{(c)} positivity and \(\tilde{\mu}(\emptyset) = 0\) are clear. Now let \(\set{E_i}_1^\infty \subset \tilde{\mathcal{M}}\) be disjoint, if \(\bigcup_1^\infty E_i \not \in \mathcal{M}\), then atleast one \(E_j \not \in \mathcal{M}\), in which case \(\sum_1^\infty \tilde{\mu}(E_i) \geq \tilde{\mu}(E_j) = \infty = \tilde{\mu}(\bigcup_1^\infty E_i)\). If \(\bigcup_1^\infty E_i \in \mathcal{M}\), and \(\mu(\bigcup_1^\infty E_i) = \infty\), then \(\bigcup_1^\infty \tilde{\mu}(E_i)\) is infinity in either the case all \(E_i \in \mathcal{M}\) or the case some \(E_i \not \in \mathcal{M}\). Finally, if \(\bigcup_1^\infty E_i \in \mathcal{M}\), and \(\mu(\bigcup_1^\infty E_i) < \infty\), then \(E_i = E_i \cap\left(\bigcup_1^\infty E_i \right) \in \mathcal{M}\), so that \[\tilde{\mu}(\bigcup_1^\infty E_i) = \mu(\bigcup_1^\infty E_i) = \sum_1^\infty \mu(E_i) = \sum_1^\infty \tilde{\mu}(E_i)\] \qed
+
+        \textbf{(d)} Suppose \(F \subset N\) where \(N\) is a \(\tilde{\mu}\)-null set, then \(\tilde{\mu}(N) = 0 \neq \infty \implies N \in \mathcal{M}\) and \(\mu(N) = \tilde{\mu}(N) = 0\), it follows by completion of \(\mu\) that \(F \in \mathcal{M} \subset \tilde{\mathcal{M}}\). \qed
+
+        \textbf{(e)} It is clear that \(\underline{\mu}(\emptyset) = 0 \tand \underline{\mu} \geq 0\). Now let \(\set{E_i}_1^\infty \subset \mathcal{M}\) be disjoint, If some \(\underline{\mu}(E_j) = \infty\), then so does \(\underline{\mu}(\bigcup_1^\infty E_j)\), since the former is a subset of the latter. If this is not the case, then take \(F_i \in \mathcal{M}\) such that \(\underline{\mu}(E_i)\)
     \end{pb}
 \end{document}
