@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1757144224.94816 "c:/Users/Tighe/projects/UT-hw/MAT1300/hw1/hw1.tex" "hw1.pdf" "hw1" 1757144225.96483 0
+["pdflatex"] 1757144403.61754 "c:/Users/Tighe/projects/UT-hw/MAT1300/hw1/hw1.tex" "hw1.pdf" "hw1" 1757144404.54962 0
   "C:/Users/Tighe/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1729493139 83612 69670e67469cfaca8927b121b745dcf0 ""
   "C:/Users/Tighe/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1712006200 24236005 6d56eca885e541cfa5825b8ee25492da ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -124,9 +124,9 @@
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/tex/latex/tools/enumerate.sty" 1700599895 3468 0ef513f22d965f96b06adb5cff671cd7 ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "Nondiffeomorphic.png" 1757143703 18897 25f9ebc1a62743e14837e7bddb70134d ""
-  "c:/Users/Tighe/projects/UT-hw/MAT1300/hw1/hw1.tex" 1757144224 8589 bd2a1f2c3bfbdea888d8550c530b13ee ""
-  "hw1.aux" 1757144225 32 044b7f8fc9779af7531264e0c5c84b6d "pdflatex"
-  "hw1.tex" 1757144224 8589 bd2a1f2c3bfbdea888d8550c530b13ee ""
+  "c:/Users/Tighe/projects/UT-hw/MAT1300/hw1/hw1.tex" 1757144402 8592 5afe92799b8142030b4b66bb5a311d7c ""
+  "hw1.aux" 1757144404 32 044b7f8fc9779af7531264e0c5c84b6d "pdflatex"
+  "hw1.tex" 1757144402 8592 5afe92799b8142030b4b66bb5a311d7c ""
   (generated)
   "hw1.aux"
   "hw1.log"
