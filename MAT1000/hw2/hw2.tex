@@ -90,7 +90,7 @@
         \begin{align*}
             \mu_0(\bigcup_1^\infty E_i) \geq \limsup \mu(\bigcup_1^n F_j) \geq \sum_1^\infty \mu_0(E_i) - \epsilon2^{-i} = -\epsilon + \sum_1^\infty \mu_0(E_i)
         \end{align*}
-        since \(\epsilon\) was arbitrary this concludes the inequality. To see the converse inequality, let \(F \subset \bigcup_1^\infty E_i\) such that \(\mu(F_n) < \infty\), then \(\sum_1^\infty \mu(E_i \cap F) \leq \sum_1^\infty \mu_0(E_i)\), taking a sequence \((F_n)_1^\infty\), such that \(\lim_{n\to\infty}\mu(F_n) = \mu_0(\bigcup_1^\infty E_i) \tand F_n \subset \bigcup_1^\infty E_i\) we conclude that
+        since \(\epsilon\) was arbitrary this concludes the inequality. To see the converse inequality, let \(F \subset \bigcup_1^\infty E_i\) such that \(\mu(F) < \infty\), then \(\sum_1^\infty \mu(E_i \cap F) \leq \sum_1^\infty \mu_0(E_i)\), taking a sequence \((F_n)_1^\infty\), such that \(\lim_{n\to\infty}\mu(F_n) = \mu_0(\bigcup_1^\infty E_i) \tand F_n \subset \bigcup_1^\infty E_i\) we conclude that
         \begin{align*}
             \mu_0(\bigcup_1^\infty E_i) = \lim_{n\to\infty}\mu(F_n) = \lim_{n\to\infty}\sum_1^\infty \mu(F_n \cap E_i) \leq \sum_1^\infty \mu_0(E_i)
         \end{align*} so that \(\mu_0\) is a measure. To check that \(\mu_0\) is semifinite, let \(E \in \mathcal{M}\) with \(\mu_0(E) = \infty\), then by definition there is some \(F \subset E\) with \(\mu(F) > 0\), it follows that \(\mu_0(F) = \mu(F) > 0\). \qed
@@ -116,6 +116,23 @@
 
         \textbf{(d)} Suppose \(F \subset N\) where \(N\) is a \(\tilde{\mu}\)-null set, then \(\tilde{\mu}(N) = 0 \neq \infty \implies N \in \mathcal{M}\) and \(\mu(N) = \tilde{\mu}(N) = 0\), it follows by completion of \(\mu\) that \(F \in \mathcal{M} \subset \tilde{\mathcal{M}}\). \qed
 
-        \textbf{(e)} It is clear that \(\underline{\mu}(\emptyset) = 0 \tand \underline{\mu} \geq 0\). Now let \(\set{E_i}_1^\infty \subset \mathcal{M}\) be disjoint, If some \(\underline{\mu}(E_j) = \infty\), then so does \(\underline{\mu}(\bigcup_1^\infty E_j)\), since the former is a subset of the latter. If this is not the case, then take \(F_i \in \mathcal{M}\) such that \(\underline{\mu}(E_i)\)
+        \textbf{(e)} It is clear that \(\underline{\mu}(\emptyset) = 0 \tand \underline{\mu} \geq 0\). Now let \(\set{E_i}_1^\infty \subset \mathcal{M}\) be disjoint, If some \(\underline{\mu}(E_j) = \infty\), then so does \(\underline{\mu}(\bigcup_1^\infty E_j)\), since the former is a subset of the latter. If this is not the case, then let \(\epsilon > 0\) and take \(F_i \in \mathcal{M}\) such that \(\underline{\mu}(E_i) \geq \mu(F_i) \geq \underline{\mu}(E_i) -\epsilon2^{-i}\), so that
+        \begin{align*}
+            \underline{\mu}(\bigcup_1^\infty E_i) \geq \limsup \mu(\bigcup_1^n F_i) \geq \sum_1^\infty \underline{\mu}(E_i) -\epsilon2^{-i} = -\epsilon + \sum_1^\infty \underline{\mu}(E_i)
+        \end{align*}
+        since epsilon was arbitrary this gives the inequality. For the converse, if \(F \subset \bigcup_1^\infty E_i\) with \(\mu(F) < \infty\), then \(\sum_1^\infty \mu(E_i \cap F) \leq \sum_1^\infty \underline{\mu}(E_i)\), taking a sequence \(F_n\) with \(\lim_{n\to\infty}\mu(F_n) = \underline{\mu}(\bigcup_1^\infty E_i)\), and \(F_n \subset \bigcup_1^\infty E_i\) (we can do this due to the semifinite assumption), we use the inequality to conclude that
+        \begin{align*}
+            \underline{\mu}(\bigcup_1^\infty E_i) = \lim_{n \to \infty}\mu(F_n) = \lim_{n \to \infty} \sum_1^\infty \mu(F_n \cap E_i) \leq \sum_1^\infty \underline{\mu}(E_i)
+        \end{align*}
+        So that indeed \(\underline{\mu}\) is a measure. The fact that \(\underline{\mu}\vert_\mathcal{M} = \mu\) is directly a consequence of monotonicity. Let \(E\) be a \(\underline{\mu}\) locally measurable set, and let \(A \in \mathcal{M} \subset \tilde{\mathcal{M}}\) be such that \(\mu(A) < \infty\), then \(\underline{\mu}(A) = \mu(A) < \infty\), so that by locally measurable assumption we have \(E \cap A \in \tilde{M}\), hence \(E \cap A = (E \cap A) \cap A \in \mathcal{M}\) by definition of \(\tilde{\mathcal{M}}\), this suffices to show that \(E\) is locally measurable with repect to \(\mu\), so that \(E \in \tilde{\mathcal{M}}\), i.e. \(\underline{\mu}\) is saturated. \qed
+
+        \textbf{(f)} It is clear that \(\mu \geq 0\) and \(\mu(\emptyset) = \mu_0(\emptyset) = 0\). Now let \(\set{E_i}_1^\infty \subset \mathcal{M}\) be disjoint. Then
+        \begin{align*}
+            \mu(\bigcup_1^\infty E_i) = \mu_0(X_1 \cap \bigcup_1^\infty E_i) = \mu_0(\bigcup_1^\infty(X_1 \cap E_i)) = \sum_1^\infty \mu_0(X \cap E_i) = \sum_1^\infty \mu(E_i)
+        \end{align*}
+        so that \(\mu\) is a measure. Note that \(X_2\) (which is not countable or cocountable) is locally finite, since if \(A\) has finite measure, then \(A \cap X_1\) is finite, hence \(A^c\) is uncountable, so that \(A \cap X_2\) must be countable, so that \(A \cap X_2 \in \mathcal{M}\). Now for any \(E \subset X_2\) such that \(E \in \mathcal{M}\), we have \(\mu(E) = \mu_0(E \cap X_1) = \mu_0(\emptyset) = 0\), so that \(\underline{\mu}(X_2) = 0\) (note here that \(X_1\cup X_2\) is obviously semifinite since any set containing infinitely members of \(X_1\) contains a set with finitely many which is also countable or cocountable respectively so that \(\underline{\mu}\) is a measure on our space), but \(X_2 \not \in \mathcal{M}\) so that
+        \begin{align*}
+            \tilde{\mu}(X_2) = \infty \neq 0 = \underline{\mu}(X_2)
+        \end{align*} \qed
     \end{pb}
 \end{document}
