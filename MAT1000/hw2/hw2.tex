@@ -135,4 +135,99 @@
             \tilde{\mu}(X_2) = \infty \neq 0 = \underline{\mu}(X_2)
         \end{align*} \qed
     \end{pb}
+    \begin{pb}\textbf{(Folland 1.4.17)}
+        \begin{align*}
+            \mu^*(E\cap\bigcup_1^nA_i) = \mu^*\left((E\cap\bigcup_1^nA_i)\cap A_n\right) + \mu^*\left((E\cap\bigcup_1^nA_i)\cap A_n^c\right) = \mu^*(A_n) + \mu^*(\bigcup_1^{n-1} A_n)
+        \end{align*}
+        applying this process recursively we find that \(\mu^*(E\cap\bigcup_1^nA_i) = \sum_1^n \mu^*(E\cap A_i)\), so that by monotonicity we have for any \(n\),
+        \begin{align*}
+            \mu^*(E\cap\bigcup_1^\infty A_i) \geq \mu^*(E\cap\bigcup_1^nA_i) = \sum_1^n \mu^* (E \cap A_i)
+        \end{align*}
+        and hence \(\mu^*(E\cap\bigcup_1^\infty A_i) \geq \sum_1^\infty \mu^* (E \cap A_i)\). \qed
+    \end{pb}
+    \begin{pb}\textbf{(Folland 1.4.18)}
+
+        \textbf{(a)} Let \(\epsilon > 0\) and \(\set{A_j}_1^\infty \subset \mathcal{A}\), such that \(\mu^*(E) \geq \sum_1^\infty \mu_0(A_j) - \epsilon\) and \(E \subset \bigcup_1^\infty A_j\) (existence of such a collection is guaranteed by the definition of outer measure). Take \(A = \bigcup_1^\infty A_j \in \mathcal{A}_\sigma\), then \[\mu^*(A) = \inf\set{\sum_1^\infty \mu_0(B_i) \mid A \subset \bigcup_1^\infty B_i \tand B_i \in \mathcal{A}} \leq \sum_1^\infty \mu_0(A_j) \leq \mu^*(E) + \epsilon\] \qed
+
+        \textbf{(b)} Suppose such a set exists, since \(\mathcal{A} \subset \mathcal{M}\) is a sigma algebra we know that \(B\) is measurable, it follows that for \(F \subset X\), we have 
+        \begin{align*}
+            \mu^*(F \cap E^c) &= \mu^*(F \cap E^c \cap B^c) + \mu^*(F \cap E^c \cap B) = \mu^*(F \cap (B \setminus E)) + \mu^*(F \cap B^c) \\ 
+            &\leq \mu^*(B\setminus E) + \mu^*(F \cap B^c) = \mu^*(F \cap B^c)
+        \end{align*}
+        so that they are equal, since the other equality follows from monotonicity. Applying this equality, we get
+        \begin{align*}
+            \mu^*(F) = \mu^*(F \cap B) + \mu^*(F \cap B^c) \geq \mu^*(F \cap E) + \mu^*(F \cap B^c) = \mu^*(F \cap E) + \mu^*(F \cap E^c)
+        \end{align*}
+        so that \(E\) is measurable.
+
+        Conversely, assume that \(E\) is measurable, and \(\mu^*(E) < \infty\), then let \((A^\sigma_n)\) be a sequence of \(\mathcal{A}_\sigma\) sets, each containing \(E\), such that \(\lim_{n\to\infty} \mu^*(A^\sigma_n) = \mu^*(E)\) which is possible by part (a), then \(\cap_1^\infty A^\sigma_n\) is \(\mathcal{A}_{\sigma \delta}\), and for any \(n\) we have (using measurability in the equality) that
+        \begin{align*}
+            0 \leq \mu^*(\cap_1^\infty A^\sigma_n \setminus E) \leq \mu^*(A_n^\sigma \setminus E) = \mu^*(A_n^\sigma) - \mu^*(E),\quad \forall n
+        \end{align*}
+        So by the squeeze theorem \(\mu^*(\cap_1^\infty A^\sigma_n \setminus E) = 0\).
+        \qed
+
+        \textbf{(c)} The finiteness condition is only used in the converse, so assume that \(E\) is measurable, and we can write \(X = \bigcup_1^\infty A_i\) for \(A_i \in \mathcal{A}\), then \(X = \bigsqcup_1^\infty B_i\) where \(B_n = A_n \cap_1^{n-1} A_i^c \in \mathcal{A}\). By part (b), we can choose \(E_i\), such that \(E_i\) is \(\mathcal{A}_{\sigma \delta}\), \(E\cap B_i \subset E_i\) and \(\mu^*(E_i \setminus (E \cap B_i)) = 0\) (we can also say \(E_i \subset B_i\) by taking intersection- intersections of \(\mathcal{A}_{\sigma \delta}\) sets are \(\mathcal{A}_{\sigma \delta}\)). Now since each \(E_i \subset B_i\) so that \(\set{E_i}_1^\infty\) are disjoint, it follows that (using here (Folland 1.4.17), because \(E_i\) measurable for all \(i\), since \(E_i\) is \(\mathcal{A}_{\delta \sigma}\))
+        \begin{align*}
+            \mu^*(\bigcup_1^\infty E_i \setminus E) = \mu^*(\bigcup_1^\infty E_i \cap E^c) = \sum_1^\infty \mu^*(E_i \cap E^c) = \sum_1^\infty \mu^*(E_i \setminus (E \cap B_i)) = \sum_1^\infty 0 = 0
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb}\textbf{(Folland 1.4.19)}
+        First suppose that \(E\) is measurable, then
+        \begin{align*}
+            \mu_0(X) = \mu^*(X) = \mu^*(E \cap X) + \mu^*(E^c \cap X) = \mu^*(E) + \mu^*(E^c) \implies \mu^*(E) = \mu_0(X) - \mu^*(E^c)
+        \end{align*}
+        Conversely, if \(\mu_*(E) = \mu^*(E)\), then for any measurable \(A \supset E\),
+        \begin{align*}
+            \mu^*(E) = \mu_0(X) -\mu^*(E^c) = \mu^*(X) - \mu^*(E^c) = \mu^*(A) + \mu^*(A^c) - \mu^*(E^c)
+        \end{align*} 
+        and furthermore
+        \begin{align*}
+            \mu^*(E^c) = \mu^*(A \setminus E) + \mu^*(A^c \cap E^c) = \mu^*(A \setminus E) + \mu^*(A^c) \implies \mu^*(A\setminus E) = \mu^*(E^c) - \mu^*(A^c)
+        \end{align*}
+        Combining these we get for any \(A \supset E\)
+        \begin{align*}
+            \mu^*(A \setminus E) = \mu^*(E^c) - \mu^*(A^c) = (\mu^*(A) + \mu^*(A^c) - \mu^*(E)) - \mu^*(A^c) = \mu^*(A) - \mu^*(E)
+        \end{align*}
+        Now by (Folland 1.4.18 (a)), we have some sequence \((A_n^\sigma)_n\) of \(\mathcal{A}_\sigma\) sets, such that \(E \subset A_n^\sigma\) for all \(n\), and \(\mu(A_n^\sigma) \to \mu(E)\). It follows that for all \(n\), we have
+        \begin{align*}
+            0 \leq \mu^*\left(\left(\bigcap_1^\infty A_n^\sigma\right)\setminus E\right) \leq \mu^*(A_n^\sigma \setminus E) = \mu^*(A_n^\sigma) - \mu^*(E)
+        \end{align*}
+        Since this holds for all \(n\) taking the limit on the right we get \(\mu^*\left(\left(\bigcap_1^\infty A_n^\sigma\right)\setminus E\right) = 0\), so \(E\) is contained in a \(\mathcal{A}_{\sigma \delta}\) set, such that the measure of the difference set is zero. We are done by (Folland 1.4.18(b)). \qed
+    \end{pb}
+    \begin{pb}\textbf{(Folland 1.4.20)}
+
+        \textbf{(a)} If \(\set{A_i}_1^\infty \subset \mathcal{M}^*\), and \(E \subset \bigcup_1^\infty A_i\), then from monotonicity and subadditivity we have \(\mu^*(E) \leq \mu^*(\bigcup_1^\infty A_i) \leq \sum_1^\infty \mu^*(A_i)\), hence
+        \begin{align*}
+            \mu^+(E) = \inf\set{\sum_1^\infty \mu^*(A_i) \mid E \subset \bigcup_1^\infty A_i \tand A_i \in \mathcal{M}^*} \geq \mu^*(E)
+        \end{align*}
+        Suppose there exists \(E \subset A \in \mathcal{M}^*\) with \(\mu^*(A) = \mu^*(E)\), then \(\mu^*(E) = \mu^*(A) \geq \mu^+(E) \geq \mu^*(E)\). Conversely, If \(\mu^+(E) = \mu^*(E)\), then for any \(n\), there are some \(A_i \in \mathcal{M}^*\) with \(E \subset \bigcup_1^\infty A_i\) such that \(\sum_1^\infty \mu^*(A_i) \leq \mu^*(E) + \frac{1}{n}\), then for each \(n\) we define \(B_n = \bigcup_{n=1}^\infty A_n\), then 
+        \[\mu^*(E) \leq \mu^*(B_n) \leq \sum_1^\infty \mu^*(A_i) \leq \mu^*(E) + \frac{1}{n}\]
+        It follows that \(\mu^*(E) \leq \mu^*(\bigcap_1^\infty B_n) \leq \mu^*(E) + \frac{1}{n}\) for all \(n\), and hence \(\mu^*(E) = \mu^*(B_n)\). \qed
+
+        \textbf{(b)} If \(\mu^*\) is induced by a pre-measure, then by (Folland 1.4.18 (a)) we find that for any \(E \subset X\) we have some \(A_n \supset E\) with \(\mu^*(A_n) - n^{-1} \leq \mu^*(E)\), hence for any \(n\), \[\mu^*(E) \leq \mu^*(\bigcap_1^\infty A_n) \leq \mu^*(A_n) \leq \mu^*(E) + n^{-1}\]
+        So that \(\mu^*(E) = \mu^*(\bigcap_1^\infty A_n) \in \mathcal{M}^* \), and hence we are done by (a). \qed
+
+        \textbf{(c)} Define the outer measure as follows:
+        \begin{align*}
+            \mu^*: \begin{cases}
+                X \mapsto 2 \\
+                \set{1} \mapsto 2 \\
+                \set{0} \mapsto 1
+            \end{cases}
+        \end{align*}
+        Then since \(\mu^*(X) \neq \mu^*\set{1} + \mu^*\set{0}\) we find that \(\set{X,\emptyset}\) is the sigma algebra of measurable sets. It follows that \(\mu^+(\set{0}) = \mu^*(X) = 2 \neq 1 = \mu^*(\set{0})\). \qed
+    \end{pb}
+    \begin{pb}\textbf{(Folland 1.4.21)}
+        
+    \end{pb}
+    \begin{pb}\textbf{(Folland 1.4.22)}
+        
+    \end{pb}
+    \begin{pb}\textbf{(Folland 1.4.23)}
+        
+    \end{pb}
+    \begin{pb}\textbf{(Folland 1.4.24)}
+        
+    \end{pb}
 \end{document}
