@@ -1,0 +1,194 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\fancyhf{}
+\lhead{MAT1190 Brief Notes}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{rmk}{Remark}
+\newtheorem{exe}{exercise}
+\newtheorem{definition}{definition}
+\newtheorem*{example}{Example(s)}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\spec}{\text{Spec}}
+\title{Concise AG Notes - UofT MAT1190}
+\author{Tighe}
+
+
+\begin{document}
+\maketitle
+    \section{Lecture Notes}
+    \subsection{Lecture 1 (Sept 3, 2025)}
+    \begin{theorem}\textbf{(Gelfond-Neymark)}
+        A compact topological space is determined by its ring of smooth functions. In particular if the ring \(C(X) := C(X,\mathbb{R})\) and \(C(X) \cong C(Y)\), then \(X \cong Y\).
+    \end{theorem}
+    \begin{proposition} Each point in \(X\) corresponds to a maximal ideal of \(C(X)\), moreover if \(X\) is compact, then the correspondence is 1-1.
+    \end{proposition}
+    \begin{proof}
+        the evaluation at a point gives a surjective homomorphism \(C(X) \to \mathbb{R}\), the image is a field, hence the kernel is a maximal ideal corresponding to the point.
+
+        Now in the compact case, (assume \(X\) is Hausdorff?), then \(X\) is Hausdorff and compact hence normal. We can use Uhrysohn's lemma to get a function vanishing at \(x\) but not \(y\). Now suppose that for some maximal ideal \(\mathfrak{m} \subset C(X)\) for any point \(p \in X\) there is a continuous function with \(f(p) \neq 0\), then the set \(U_f = \set{x \in X \mid f(x) \neq 0}\) is open , and \(\bigcup_{f \in C(X)}U_f = X\), so we get a finite subcover. Take a linear combination of the functions in this subcover to complete the proof.
+    \end{proof}
+    \begin{definition}
+        The Zariski Topology on \(\spec_{\max}(R)\) is the coarsest topology such that when \(\mathfrak{m} \leftrightarrow x\) \(f: \mathfrak{m} \to f(x)\) is continuous, where the topology on \(\mathbb{R}\) is taken as the cofinite topology. The closed sets in this topology are the vanishing loci of \(f \in C(X)\).
+    \end{definition}
+    \begin{itemize}
+        \item Exercise \ref{HS1.4}, complete Hartshorne exercise 1.4
+    \end{itemize}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \subsection{Lecture 2 (Sept 5, 2025)}
+    \begin{definition}
+        For \(T \subset R_n := k[x_1,\hdots,x_n]\) and \(S \subset k^n\) we define \[V(T) = \set{x \in k^n \mid f(x) = 0, \forall f \in T} \tand I(S) = \set{f \in R_n \mid f(x) = 0, \forall x \in S}\]
+    \end{definition}
+    \begin{proposition}
+        Suppose \(k\) is an uncountable field, and \(L/k\) is an extension with \([L:k] \leq \#\mathbb{N}\), then \(L = k\).
+    \end{proposition}
+    \begin{proof}
+        Suppose not, then let \(x \in L\setminus k\), we find that \(\set{\frac{1}{x-\lambda} \mid \lambda \in k}\) is uncountable, so that there must be an algebraic relation. Thus there exist \(\mu_i \in k\) with \(\sum_1^n \frac{\mu_i}{x - \lambda_i} = 0\), so that \(\sum_1^n \mu_j \prod_{i \neq j}(x - \lambda_i) = 0\), but then \(x\) is algebraic over \(k\), hence \(x \in k\), contradiction.
+    \end{proof}
+    \begin{theorem}\textbf{(Nullstellensatz - weak form)}
+        \(V(T) = \emptyset \implies (T) = R_n\)
+    \end{theorem}
+    \begin{proof}
+        We assume here that \(k\) is uncountable (this is unnecessary- use Noether Normalization). Since \(J := (T) \subset R_n\) is an ideal it is contained in a maximal ideal \(\mathfrak{m}\). Then \(R_n/\mathfrak{m}\) is a field extension of \(k\) with countable dimension, by the previous proposition it is equal to \(k\). It follows that each \(x_i \mapsto a_i \in k\) when taking the quotient \(R_n \to R_n/\mathfrak{m} = k\), it follows that \(I\) vanishes on \((a_1,\hdots,a_n)\), so \(I\) cannot be contained in a maximal ideal.
+    \end{proof}
+    \begin{theorem}\textbf{(Nullstellensatz)}
+        \[IV(J) = \sqrt{J}\]
+    \end{theorem}
+    \begin{proof}
+        By Hilbert's basis theorem, we reduce to the finitely generated case. Let \(f \in IV(\set{f_1,\hdots,f_r})\), then \((1-tf,f_1,\hdots,f_r) \subset R_n[t]\) has no common zero. Then \(g_0(1-tf) + g_1f_1 + \cdots + g_rf_r = 1\), and let \(N = \max_i\set{\deg_tg_i}\). Taking \(t = f^{-1}\), we get \(\sum_1^r g_if_i = 1\), so that for \(h_i = f^Ng_i \in R_n\) we get \(\sum_1^r h_if_i = f^N \in I \implies f \in \sqrt{I}\).
+    \end{proof}
+    
+    The Nullstellensatz gives a bijection
+    \begin{align*}
+        \set{\text{Affine algebraic varieties}} &\longleftrightarrow \set{\text{Finitely generated reduced k-algebras}} \\
+        V(\sqrt{J}) &\longleftrightarrow R_n/\sqrt{J}
+    \end{align*}
+    Moreover, this is a categorical equivalence
+    \begin{align*}
+        \text{Var}_k \cong \left(\text{Alg}_k^{\text{reduced}}\right)^{\text{op}}
+    \end{align*}
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \subsection{Lecture 3 (Sept 8, 2025)}
+
+    \begin{definition}
+        Let \(\pi: S \to X\) be a local homeomorphism, then \(S\) is called an \'etal\'e space, or a sheaf on \(X\).
+    \end{definition}
+
+    \begin{example}
+        \begin{enumerate}
+            \item \(\empty \to X\)
+            \item \(1: X \to X\)
+            \item \(I\) a set with the discrete topology and the projection \(X \times I \to X\)
+            \item A covering space, more explicitly the mobious covering
+            \begin{align*}
+                S^1 &\to S^1 \\ z &\mapsto z^2
+            \end{align*}
+            \item \(U \subset X\) an open set, \(\iota: U \to X\)
+            \item If \(x \in X\) is a closed point, then we can construct the space \(X \sqcup_{X \setminus \set{x}}X = X \times \set{1,2}/\sim\) where \((y,1) \sim (y,2)\) when \(y \neq x\). This comes with the codiagonal map \(\nabla: X \sqcup_{X \setminus \set{x}}X \to X\), where \(\nabla\vert_{X \times \set{i}} = 1_X, i \in \set{1,2}\).
+            \item \(I \neq \emptyset\), then take \(\underset{X \setminus \set{x}}{\sqcup_I} X \overset{\nabla}{\longrightarrow} X\)
+        \end{enumerate}
+    \end{example}
+
+    \begin{definition}
+        If \(U \subset X\) is an open set, then a section on \(U\) is a continuous map \(s: U \to S\) such that the following commutes:
+        \begin{equation*}
+            \begin{tikzcd}
+                &S \arrow[d,"{\pi}"] \\
+                U \arrow[ru,"{s}"] \arrow[r,"{\iota}"] &X
+            \end{tikzcd}
+        \end{equation*}
+        The set of sections is denoted \(S(U) \tor \Gamma(U,S)\). If \(U = X\), then \(s\) is called a global section with notation \(S(X)\) or \(\Gamma(S)\).
+    \end{definition}
+
+    \begin{example}\textbf{(Revisited)}
+        \begin{enumerate}
+            \item \begin{align*}
+                S(U) = \begin{cases}
+                    1_\emptyset & U = \emptyset \\
+                    \emptyset & \text{else}
+                \end{cases}
+            \end{align*}
+            \item \begin{align*}
+                S(U) = \set{\iota_U}
+            \end{align*}
+            \item \begin{align*}
+                S(U) = \hom_\text{set}(\pi_0(U),I)
+            \end{align*}
+            \item \begin{align*}
+                S(U) = \set{f: U \to \mathbb{C} \mid f(z^2) = z}
+            \end{align*}
+            \item \begin{align*}
+                S(U) = \begin{cases}
+                    \set{\iota} & x \not \in U \\ \set{1,2} & x \in U
+                \end{cases}
+            \end{align*}
+            \item \begin{align*}
+                S(U) = \begin{cases}
+                    \set{\iota} & x \not \in U \\ I & x \in U
+                \end{cases}
+            \end{align*}
+            This particular example is called the "sky-scraper sheaf"
+        \end{enumerate}
+    \end{example}
+
+    \begin{proposition}\label{Holomorphic as sections}
+            There is a \'etal\'e space \(\mathcal{H}\) over \(\mathbb{C}_\text{EUC}\) with sections corresponding to holomorphic functions on \(\mathbb{C}\).
+    \end{proposition}
+    \begin{proof}
+        The construction of \(\mathcal{H}\) as a set is given, alongside its topology. Verifying the claim is exercise \ref{Holomorphic as sections exe}.
+        
+        \begin{align*}
+            \mathcal{H} := \bigsqcup_{z_0 \in \mathbb{C}}\left\{\sum_1^\infty c_n(z-z_0)^n \mid \text{the series converges in some neighborhood of }z_0\right\}
+        \end{align*}
+        And define the topology on \(\mathcal{H}\) as the strongest topology such that for any open set \(U\), and holomorphic \(f: U \to \mathbb{C}\) we have the following map is continuous
+        \begin{align*}
+            \mathcal{H}f: U &\to \mathcal{H} \\
+            z_0 &\mapsto \text{The Taylor expansion of }f \text{ at }z_0
+        \end{align*}
+    \end{proof}
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \section{Exercises}
+    \begin{exe}\label{HS1.4}\textbf{(Hartshorne Exercise 1.4)}
+        An algebraically closed field is infinite, moreover the zero sets of polynomials are either \(k\) or a finite subset of \(k\). Consider the closed set \(V(x-y) \subset \mathbb{A}^2\), then it is an infinite set so if \(\mathbb{A}^1\times \mathbb{A}^1 = \mathbb{A}^2\), then it must be of the form \(\mathbb{A}^1 \times F \cup E \times \mathbb{A}^1\), where \(E,F \subset \mathbb{A}^1\) are closed. But for a fixed \(x\) \tor \(y\) we have \(V(x-y)\) has cardinality \(1\) which makes this impossible. \qed
+    \end{exe}
+    \begin{example}\label{Holomorphic as sections exe}
+        \textbf{(Show that \(\mathcal{H}(U) = \mathbf{\set{f: U \to \mathbb{C} \mid f \text{ holomorphic}}}\))} where we define \(\mathcal{H}\) in proposition \ref{Holomorphic as sections}.
+    \end{example}
+    \appendix
+    
+    \section{Assigned Readings}
+
+    \section{Misc.}
+    \begin{definition}
+        A ring or algebra is called reduced when it has no non-zero nilpotents.
+    \end{definition}
+\end{document}
