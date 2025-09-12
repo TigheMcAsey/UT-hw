@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.1)  12 SEP 2025 02:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.1)  12 SEP 2025 02:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -627,42 +627,42 @@ LaTeX Warning: Unused global option(s):
 (NotesandExercises.aux)
 \openout1 = `NotesandExercises.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 42.
-LaTeX Font Info:    Trying to load font information for FML+futm on input line 42.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 41.
+LaTeX Font Info:    Trying to load font information for FML+futm on input line 41.
  (C:\Users\Tighe\AppData\Local\Programs\MiKTeX\tex/latex/fourier\fmlfutm.fd
 File: fmlfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futm.
 )
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 42.
-LaTeX Font Info:    Trying to load font information for FMS+futm on input line 42.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 41.
+LaTeX Font Info:    Trying to load font information for FMS+futm on input line 41.
  (C:\Users\Tighe\AppData\Local\Programs\MiKTeX\tex/latex/fourier\fmsfutm.fd
 File: fmsfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FMS/futm.
 )
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 42.
-LaTeX Font Info:    Trying to load font information for FMX+futm on input line 42.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 41.
+LaTeX Font Info:    Trying to load font information for FMX+futm on input line 41.
  (C:\Users\Tighe\AppData\Local\Programs\MiKTeX\tex/latex/fourier\fmxfutm.fd
 File: fmxfutm.fd futm-extension
 )
-LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    ... okay on input line 41.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -723,69 +723,69 @@ Package grfext Info: Graphics extension search list:
  (C:\Users\Tighe\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 42.
+Package hyperref Info: Link coloring OFF on input line 41.
  (NotesandExercises.out) (NotesandExercises.out)
 \@outlinefile=\write4
 \openout4 = `NotesandExercises.out'.
 
-LaTeX Font Info:    Redeclaring math accent \widehat on input line 42.
-LaTeX Font Info:    Redeclaring math accent \widetilde on input line 42.
-LaTeX Font Info:    Trying to load font information for FML+futmi on input line 44.
+LaTeX Font Info:    Redeclaring math accent \widehat on input line 41.
+LaTeX Font Info:    Redeclaring math accent \widetilde on input line 41.
+LaTeX Font Info:    Trying to load font information for FML+futmi on input line 43.
  (C:\Users\Tighe\AppData\Local\Programs\MiKTeX\tex/latex/fourier\fmlfutmi.fd
 File: fmlfutmi.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futmi.
 )
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 11.03998pt on input line 44.
+(Font)              scaled to size 11.03998pt on input line 43.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 8.27998pt on input line 44.
+(Font)              scaled to size 8.27998pt on input line 43.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 6.43999pt on input line 44.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 44.
+(Font)              scaled to size 6.43999pt on input line 43.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 43.
  (C:\Users\Tighe\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 44.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 43.
  (C:\Users\Tighe\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 11.03998pt on input line 44.
+(Font)              scaled to size 11.03998pt on input line 43.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 8.27998pt on input line 44.
+(Font)              scaled to size 8.27998pt on input line 43.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 6.43999pt on input line 44.
+(Font)              scaled to size 6.43999pt on input line 43.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 47.
+(Font)              scaled to size 9.19998pt on input line 46.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 6.99199pt on input line 47.
+(Font)              scaled to size 6.99199pt on input line 46.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 47.
+(Font)              scaled to size 5.51999pt on input line 46.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 47.
+(Font)              scaled to size 9.19998pt on input line 46.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 6.99199pt on input line 47.
+(Font)              scaled to size 6.99199pt on input line 46.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 47.
-LaTeX Font Info:    Trying to load font information for U+euf on input line 54.
+(Font)              scaled to size 5.51999pt on input line 46.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 53.
  (C:\Users\Tighe\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
-LaTeX Font Info:    Trying to load font information for TS1+futs on input line 60.
+LaTeX Font Info:    Trying to load font information for TS1+futs on input line 59.
  (C:\Users\Tighe\AppData\Local\Programs\MiKTeX\tex/latex/fourier\ts1futs.fd
 File: ts1futs.fd 2003/09/14 Fontinst v1.801 font definitions for TS1/futs.
 ) [1
 
 {C:/Users/Tighe/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] [2] [3]
-LaTeX Font Info:    Trying to load font information for U+futs on input line 260.
+LaTeX Font Info:    Trying to load font information for U+futs on input line 259.
  (C:\Users\Tighe\AppData\Local\Programs\MiKTeX\tex/latex/fourier\ufuts.fd
 File: ufuts.fd 2024/07/22 Fontinst v1.933 font definitions for U/futs.
 ) [4]
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 291.
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 290.
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <7.6> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 291.
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 290.
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <6> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 291.
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 290.
  [5] [6] (NotesandExercises.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -795,15 +795,15 @@ Package rerunfilecheck Info: File `NotesandExercises.out' has not changed.
 (rerunfilecheck)             Checksum: 649B0C5B306C9019181B24936216E089;1185.
  ) 
 Here is how much of TeX's memory you used:
- 22704 strings out of 474424
- 430895 string characters out of 5741740
+ 22707 strings out of 474424
+ 430926 string characters out of 5741740
  1950496 words of memory out of 5000000
- 44571 multiletter control sequences out of 15000+600000
+ 44574 multiletter control sequences out of 15000+600000
  645284 words of font info for 128 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  116i,21n,121p,1312b,1110s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/fourier/fourier-bb.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/fourier/fourier-mcl.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/fourier/fourier-mex.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/fourier/fourier-ml.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/fourier/fourier-mlit.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/fourier/fourier-ms.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/fourier/fourier-orns.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/adobe/utopia/putb8a.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/adobe/utopia/putr8a.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on NotesandExercises.pdf (6 pages, 135013 bytes).
+Output written on NotesandExercises.pdf (6 pages, 135072 bytes).
 PDF statistics:
  185 PDF objects out of 1000 (max. 8388607)
  57 named destinations out of 1000 (max. 500000)

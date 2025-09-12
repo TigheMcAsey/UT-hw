@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1757657322.15933 "c:/Users/Tighe/projects/UT-hw/MAT1190/BriefNotesAndExercises/NotesandExercises.tex" "NotesandExercises.pdf" "NotesandExercises" 1757657323.48688 0
+["pdflatex"] 1757657463.46849 "c:/Users/Tighe/projects/UT-hw/MAT1190/BriefNotesAndExercises/NotesandExercises.tex" "NotesandExercises.pdf" "NotesandExercises" 1757657464.94012 0
   "C:/Users/Tighe/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1757653465 85368 0c65674470f9b1720703708ab006907e ""
   "C:/Users/Tighe/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1712006200 24236005 6d56eca885e541cfa5825b8ee25492da ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -187,10 +187,10 @@
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/tex/latex/tools/enumerate.sty" 1700599895 3468 0ef513f22d965f96b06adb5cff671cd7 ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "NotesandExercises.aux" 1757657323 1641 916155685aa5eca6728d6ad529e9af97 "pdflatex"
-  "NotesandExercises.out" 1757657323 1185 649b0c5b306c9019181b24936216e089 "pdflatex"
-  "NotesandExercises.tex" 1757657321 21368 c52955ecfd98b5a2bea8a9b5fd26c353 ""
-  "c:/Users/Tighe/projects/UT-hw/MAT1190/BriefNotesAndExercises/NotesandExercises.tex" 1757657321 21368 c52955ecfd98b5a2bea8a9b5fd26c353 ""
+  "NotesandExercises.aux" 1757657464 1641 916155685aa5eca6728d6ad529e9af97 "pdflatex"
+  "NotesandExercises.out" 1757657464 1185 649b0c5b306c9019181b24936216e089 "pdflatex"
+  "NotesandExercises.tex" 1757657462 21356 078105ea51d1c9d6b7c166fe8fd8e8b6 ""
+  "c:/Users/Tighe/projects/UT-hw/MAT1190/BriefNotesAndExercises/NotesandExercises.tex" 1757657462 21356 078105ea51d1c9d6b7c166fe8fd8e8b6 ""
   (generated)
   "NotesandExercises.aux"
   "NotesandExercises.log"
