@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.1)  8 SEP 2025 23:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.1)  9 SEP 2025 22:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -579,7 +579,7 @@ LaTeX Font Info:    Trying to load font information for U+euf on input line 51.
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 ) [1
 
-{C:/Users/Tighe/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2] [3] (NotesandExercises.aux)
+{C:/Users/Tighe/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2] [3] [4] (NotesandExercises.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
@@ -588,17 +588,17 @@ Package rerunfilecheck Info: File `NotesandExercises.out' has not changed.
 (rerunfilecheck)             Checksum: 3B7CAE005029D8FFC091EDA682DD66A3;985.
  ) 
 Here is how much of TeX's memory you used:
- 21869 strings out of 474424
- 418309 string characters out of 5741740
+ 21872 strings out of 474424
+ 418355 string characters out of 5741740
  1948496 words of memory out of 5000000
- 43817 multiletter control sequences out of 15000+600000
+ 43818 multiletter control sequences out of 15000+600000
  567940 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 116i,16n,121p,710b,1107s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 116i,16n,121p,1312b,1107s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Tighe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on NotesandExercises.pdf (3 pages, 217234 bytes).
+Output written on NotesandExercises.pdf (4 pages, 222954 bytes).
 PDF statistics:
- 175 PDF objects out of 1000 (max. 8388607)
- 36 named destinations out of 1000 (max. 500000)
+ 184 PDF objects out of 1000 (max. 8388607)
+ 38 named destinations out of 1000 (max. 500000)
  69 words of extra memory for PDF output out of 10000 (max. 10000000)
 
