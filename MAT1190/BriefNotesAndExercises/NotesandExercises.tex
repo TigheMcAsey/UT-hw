@@ -176,13 +176,46 @@
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+    \subsection{Lecture 4 (Sept 10, 2025)}
+
+    \begin{definition}
+        Let \(\pi:S \to X\) be \'etal\'e, then \(S_x := \pi^{-1}(x)\) is called the stalk of \(x\).
+    \end{definition}
+
+    \begin{example}
+        \begin{enumerate}
+            \item \(1: X \to X\), \(S_x = \set{x}\)
+            \item \(X \times I \to X\), \(S_x \cong I\)
+            \item \(\underset{X \setminus \set{x}}{\sqcup_I} X \overset{\nabla}{\longrightarrow} X\), then \(S_y \cong \begin{cases}
+                I & y=x\\ \set{\overline{y}} & y\neq x
+            \end{cases}\)
+            \item \(\mathcal{H} \to \mathbb{C}\) \(\mathcal{H}_{z_0}\) is locally convergent power series at \(z_0\).
+        \end{enumerate}
+    \end{example}
+
+    \begin{proposition}
+        If \(\pi:S \to X\) is \'etal\'e and \(y \in \pi^{-1}(x)\), then there is an open set \(U \supset \set{x}\) and a section \(s:U \to S\) with \(s(x) = y\). Moreover, given two sections \(s_i \in \Gamma(U_i,S)\) there is some \(V \subset U_1\cap U_2\) containing \(x\), such that \(s_1\vert_V = s_2\vert_V\).
+    \end{proposition}
+    \begin{proof}
+        The proof is exercise \ref{Existence and uniqueness sections on stalks}.
+    \end{proof}
+
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     \section{Exercises}
     \begin{exe}\label{HS1.4}\textbf{(Hartshorne Exercise 1.4)}
         An algebraically closed field is infinite, moreover the zero sets of polynomials are either \(k\) or a finite subset of \(k\). Consider the closed set \(V(x-y) \subset \mathbb{A}^2\), then it is an infinite set so if \(\mathbb{A}^1\times \mathbb{A}^1 = \mathbb{A}^2\), then it must be of the form \(\mathbb{A}^1 \times F \cup E \times \mathbb{A}^1\), where \(E,F \subset \mathbb{A}^1\) are closed. But for a fixed \(x\) \tor \(y\) we have \(V(x-y)\) has cardinality \(1\) which makes this impossible. \qed
     \end{exe}
-    \begin{example}\label{Holomorphic as sections exe}
+    \begin{exe}\label{Holomorphic as sections exe}
         \textbf{(Show that \(\mathcal{H}(U) = \mathbf{\set{f: U \to \mathbb{C} \mid f \text{ holomorphic}}}\))} where we define \(\mathcal{H}\) in proposition \ref{Holomorphic as sections}.
-    \end{example}
+    \end{exe}
+    \begin{exe}\label{Existence and uniqueness sections on stalks}
+        \textbf{(Show the existence and uniqueness of sections for each element in the stalk)}
+        Existence is not too bad, since \(\pi\) is a local homeomorphism, hence we can choose some neighborhood \(y \in U\) with \(\pi\vert_U\) a homeomorphism. Then define \(s: \pi(U) \to U\) via \(x \mapsto \pi\vert_U^{-1}(x)\). Now assume that \(s_1,s_2\) are two such sections, 
+    \end{exe}
     \appendix
     
     \section{Assigned Readings}

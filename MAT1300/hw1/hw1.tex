@@ -54,7 +54,8 @@
         \end{align*}
         The transition function in each coordinate \((x_i) \mapsto x_k^{-1}\) is smooth on \(U_k\) and hence also \(U_k \cap U_j\) and the product of smooth functions is smooth (the coordinate and constant functions are always smooth).
 
-        \textbf{(ii)} We take the map \(S^n/\sim_1 \to \mathbb{R}^{n+1}\setminus\set{0}/\sim_2\) by taking \([x]_1 \mapsto [x]_2\), since the two representatives of the same equivalence class in \(S^n/\sim_1\) differ by an element of \(\mathbb{R}^\times\) the map is well defined, this map is injective since two elements on the sphere differing by a constant multiple is only possible when the constant is \(\pm 1\), it is also surjective since very element of \(\mathbb{R}^{n+1}\setminus\set{0}\) is a multiple of an element on the unit sphere, thus the map is bijective and its clear in that case that the inverse is \([x]_2 \mapsto [x]_1\) (of course this is abuse of notation since it is really \([x]_2 \mapsto \left[\frac{x}{\norm{x}}\right]_1\)).  
+        \textbf{(ii)} Consider the charts on \(S^n/\sim_1\) given by \((U_j,V_j,\varphi_j)\) where \begin{align*}\varphi_j^{-1}: V_j = \set{x \in S^n \mid x_j \neq 0} &\to U_j \subset \mathbb{R}^n \\ [x_1:\cdots:x_{n+1}] &\mapsto \text{sgn}(x_j)(x_1,\hdots,\widehat{x_j},\hdots,x_{n+1})\end{align*} as described in the lecture notes.
+         We take the map \(S^n/\sim_1 \to \mathbb{R}^{n+1}\setminus\set{0}/\sim_2\) by taking \([x]_1 \mapsto [x]_2\), since the two representatives of the same equivalence class in \(S^n/\sim_1\) differ by an element of \(\mathbb{R}^\times\) the map is well defined, this map is injective since two elements on the sphere differing by a constant multiple is only possible when the constant is \(\pm 1\), it is also surjective since very element of \(\mathbb{R}^{n+1}\setminus\set{0}\) is a multiple of an element on the unit sphere, thus the map is bijective and its clear in that case that the inverse is \([x]_2 \mapsto [x]_1\) (of course this is abuse of notation since it is really \([x]_2 \mapsto \left[\frac{x}{\norm{x}}\right]_1\)).  
 
         To see that its a homeomorphism consider the following diagrams with \(\iota\) denoting inclusion:
         \begin{equation*}
@@ -67,7 +68,7 @@
                 S^n/\sim_1  & \frac{\mathbb{R}^{n+1}\setminus\set{0}}{\sim_2} \arrow[l,"{[x]_1\leftarrow [x]_2} "]
             \end{tikzcd}
         \end{equation*}
-        Since \(\iota\) and \(x \mapsto \frac{x}{\norm{x}}\) are continuous the diagrams show that \([x]_1 \mapsto [x]_2\) is a homeomorphism.
+        Since \(\iota\) and \(x \mapsto \frac{x}{\norm{x}}\) are continuous the diagrams show that \([x]_1 \mapsto [x]_2\) is a homeomorphism (by chasing preimages of opens around the square).
         
         to check that it induces a diffeomorphism we simply compute the transition maps and denote the transition maps in the class example as \(\varphi_j\) to avoid confusion. (assume \(j < k\))
         \begin{align*}
@@ -86,6 +87,32 @@
             &= \phi_j^{-1}\left[x_1x_j^{-1}:\cdots:x_{k-1}x_j^{-1}:x_j^{-1}\sqrt{1-\sum_1^n x_i^2}:x_kx_j^{-1}:\cdots:x_nx_j^{-1}\right] \\
             &= \left(x_1x_j^{-1},\hdots,x_{j-1}x_j^{-1},x_{j+1}x_j^{-1},\hdots,x_{k-1}x_j^{-1},x_j^{-1}\sqrt{1 - \sum_1^n x_i^2},x_kx_j^{-1},\hdots,x_nx_j^{-1}\right)
         \end{align*}
-        Since \(x_j \neq 0\) on \(\phi_j^{-1}(V_k) \subset V_j\), and \(x \mapsto \sqrt{x}\) is smooth on \((0,\infty)\) with \(\sum_1^n x_i^2 < 1\) we have that this map is smooth in each coordinate, which suffices to show its a diffeomorphism (here we are of courses using that products and compositions of smooth maps are smooth). This suffices to show the map is a diffeomorphism for \(j<k\), if \(j \geq k\) the computation is slightly different since a different factor gets dropped, but the coordinate functions are similar and still smooth. \qed
+        Since \(x_j \neq 0\) on \(\phi_j^{-1}(V_k) \subset V_j\), and \(x \mapsto \sqrt{x}\) is smooth on \((0,\infty)\) with \(\sum_1^n x_i^2 < 1\) we have that this map is smooth in each coordinate, which suffices to show its a diffeomorphism (here we are of courses using that products and compositions of smooth maps are smooth). This suffices to show the map is a diffeomorphism for \(j<k\), if \(j \geq k\) the computation is slightly different since a different factor gets dropped, but the coordinate functions are similar and still smooth. (If you dont believe me I will include the computation below) \qed
+
+        Case (\(j=k\)):
+        \begin{align*}
+            \phi_k^{-1}([x]_1 \mapsto [x]_2)\varphi_k(x_1,\hdots,x_n) &= \phi_k^{-1}([x]_1 \mapsto [x]_2)\left[x_1:\cdots:x_{k-1}:\sqrt{1-\sum_1^n x_i^2}:x_k:\cdots:x_n\right] \\
+            &= \phi_k^{-1}\left[x_1:\cdots:x_{k-1}:\sqrt{1-\sum_1^n x_i^2}:x_k:\cdots:x_n\right] \\
+            &= \left(x_1\left(\sqrt{1-\sum_1^n x_i^2}\right)^{-1},\hdots,x_n\left(\sqrt{1-\sum_1^n x_i^2}\right)^{-1}\right)
+        \end{align*}
+        Is smooth since \(\sum_1^n x_i^2 < 1\) on \(U_k\). so that \((x_1,\hdots,x_n) \mapsto \frac{1}{\sqrt{1 - \sum_1^n x_i^2}} = (x \mapsto 1/x)\circ (x_1,\hdots,x_n) \mapsto \sqrt{1 - \sum_1^n x_i^2}\), so the composition of a smooth function on \((0,\infty)\) which is the range of the latter polynomial (and hence smooth) function.
+        \begin{align*}
+            \varphi_k^{-1}([x_2] \mapsto [x_1])\phi_k(x_1,\hdots,x_n) = \varphi_k^{-1}\left[\frac{x_1}{\norm{x}}:\cdots:\frac{x_{k-1}}{\norm{x}}:\frac{1}{\norm{x}}:\frac{x_k}{\norm{x}}:\cdots:\frac{x_n}{\norm{x}}\right] = \left(\frac{x_1}{\norm{x}},\cdots,\frac{x_n}{\norm{x}}\right)
+        \end{align*}
+        is smooth for the same reason as previously.
+
+        Case (\(j > k\)):
+        \begin{align*}
+            \varphi_j^{-1}([x]_2 \mapsto [x]_1)[x_1:\cdots:x_{k-1}:1:x_k:\cdots:x_n] &= \varphi_j^{-1}\left[\frac{x_1}{\norm{x}}:\cdots:\frac{x_{k-1}}{\norm{x}}:\frac{1}{\norm{x}}:\frac{x_k}{\norm{x}}:\cdots:\frac{x_n}{\norm{x}}\right] \\
+            &= \text{sgn} (x_{j-1})\left(\frac{x_1}{\norm{x}},\hdots,\frac{x_{k-1}}{\norm{x}},\frac{1}{\norm{x}},\frac{x_k}{\norm{x}},\hdots,\widehat{\frac{x_{j-1}}{\norm{x}}},\hdots,\frac{x_n}{\norm{x}}\right)
+        \end{align*}
+        So is smooth for the same reason as previously.
+        \begin{align*}
+            \phi_j^{-1}([x]_1 \mapsto [x]_2)\varphi_k(x_1,\hdots,x_n) &= \phi_j^{-1}([x]_1 \mapsto [x]_2)\left[x_1:\cdots:x_{k-1}:\sqrt{1-\sum_1^n x_i^2}:x_k:\cdots:x_n\right] \\
+            &= \phi_j^{-1}\left[x_1:\cdots:x_{k-1}:\sqrt{1-\sum_1^n x_i^2}:x_k:\cdots:x_n\right] \\
+            &= \phi_j^{-1}\left[x_1x_j^{-1}:\cdots:x_{k-1}x_j^{-1}:x_j^{-1}\sqrt{1-\sum_1^n x_i^2}:x_kx_j^{-1}:\cdots:x_nx_j^{-1}\right] \\
+            &= \left(x_1x_j^{-1},\hdots,x_{k-1}x_j^{-1},x_j^{-1}\sqrt{1 - \sum_1^n x_i^2},x_kx_j^{-1},\hdots,x_{j-2}x_j^{-1},1,x_{j+1}x_{j}^{-1}\hdots,x_nx_j^{-1}\right)
+        \end{align*}
+        So is smooth for the same reason as previously.
     \end{pb}
 \end{document}
