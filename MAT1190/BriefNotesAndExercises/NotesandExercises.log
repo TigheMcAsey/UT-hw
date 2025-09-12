@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  11 SEP 2025 17:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  11 SEP 2025 21:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -601,18 +601,18 @@ Package rerunfilecheck Info: File `NotesandExercises.out' has not changed.
 (rerunfilecheck)             Checksum: 649B0C5B306C9019181B24936216E089;1185.
  ) 
 Here is how much of TeX's memory you used:
- 22159 strings out of 473190
- 420694 string characters out of 5715801
- 810577 words of memory out of 5000000
- 45003 multiletter control sequences out of 15000+600000
+ 22160 strings out of 473190
+ 420729 string characters out of 5715801
+ 810601 words of memory out of 5000000
+ 45004 multiletter control sequences out of 15000+600000
  568708 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 116i,16n,121p,707b,1107s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 116i,16n,121p,1309b,1107s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on NotesandExercises.pdf (4 pages, 207526 bytes).
+Output written on NotesandExercises.pdf (4 pages, 210975 bytes).
 PDF statistics:
- 200 PDF objects out of 1000 (max. 8388607)
- 156 compressed objects within 2 object streams
+ 201 PDF objects out of 1000 (max. 8388607)
+ 157 compressed objects within 2 object streams
  46 named destinations out of 1000 (max. 500000)
  77 words of extra memory for PDF output out of 10000 (max. 10000000)
 
