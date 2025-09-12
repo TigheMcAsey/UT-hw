@@ -6,6 +6,7 @@
 \usepackage{tikz-cd}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{fourier}
 
 \fancyhf{}
 \lhead{MAT1190 Brief Notes}
@@ -23,6 +24,7 @@
 \newtheorem{exe}{exercise}
 \newtheorem{definition}{definition}
 \newtheorem*{example}{Example(s)}
+\newtheorem*{warn}{Warning \warning}
 
 % Commands:
 
@@ -32,6 +34,7 @@
 \newcommand{\tand}{\text{ and }}
 \newcommand{\tor}{\text{ or }}
 \newcommand{\spec}{\text{Spec}}
+\newcommand{\colim}{\varinjlim}
 \title{Concise AG Notes - UofT MAT1190}
 \author{Tighe}
 
@@ -196,14 +199,87 @@
         \end{enumerate}
     \end{example}
 
-    \begin{proposition}
+    \begin{proposition}\label{existence and uniqueness of sections on stalks}
         If \(\pi:S \to X\) is \'etal\'e and \(y \in \pi^{-1}(x)\), then there is an open set \(U \supset \set{x}\) and a section \(s:U \to S\) with \(s(x) = y\). Moreover, given two sections \(s_i \in \Gamma(U_i,S)\) there is some \(V \subset U_1\cap U_2\) containing \(x\), such that \(s_1\vert_V = s_2\vert_V\).
     \end{proposition}
     \begin{proof}
         The proof is exercise \ref{Existence and uniqueness sections on stalks}.
     \end{proof}
+    \begin{proposition}
+        \begin{align*}
+            \colim_{x \in U}\Gamma(U,S) \overset{s \mapsto s(x)}{\longrightarrow} S_x
+        \end{align*}
+        is a bijection.
+    \end{proposition}
+    \begin{proof}
+        This is onto since every element of the stalk has a section mapping to it, and injective by uniqueness of such an element up to the equivalence relation in the colimit. This is essentially restating the previous proposition.
+    \end{proof}
+    \begin{proposition}\label{local homeo lemma}
+        \(f:X \to Y\), \(g:Y \to Z\) continuous maps, then
+        \begin{itemize}
+            \item \(f \tand g\) being local homeomorphisms implies \(g \circ f\) is.
+            \item \(g \tand f \circ g\) being local homeomorphisms implies \(f\) is.
+        \end{itemize}
+    \end{proposition}
+    \begin{definition}
+        \textbf{(The Category of Sheaves on X)} The objects are \'etal\'e spaces \(\pi:S \to X\), and the morphisms are \(\varphi: S_1 \to S_2\) continuous maps where the following commutes:
+        \begin{equation*}
+            \begin{tikzcd}
+                S_1 \arrow[rd,"{\pi_1}"] \arrow[rr,"{\varphi}"] &&S_2 \arrow[ld,"{\pi_2}"] \\
+                &X
+            \end{tikzcd}
+        \end{equation*}
+        Note that \(\varphi\) continuous and the diagram commuting implies it is a local homeomorphism, and hence morphisms are actually sheaves on sheaves.
+    \end{definition}
+    \begin{proposition}\textbf{(Isomorphism Criterion)} \makeatletter\def\@currentlabel{Isomorphism Criterion}\makeatother \label{Isomorphism Criterion}
+        A morphism \(\varphi \in \text{Sh}(X)\) is an isomorphism if and only if the induced map \((S_1)_x \to (S_2)_x\) is bijective for all \(x \in X\).
+    \end{proposition}
+    \begin{proof}
+        One direction is easy since stalks get mapped to stalks, and an inverse map must be a bijection. In the converse direction, we know that it must be a local homeomorphism by proposition \ref{local homeo lemma}, hence since its invertible as a set function, its inverse is a local homeomorphism.
+    \end{proof}
+    \begin{proposition}\textbf{(Monomorphism Criterion)}
+        A morphism \(\varphi \in \text{Sh}(X)\) is an monomorphism if and only if the induced map \((S_1)_x \to (S_2)_x\) is injective for all \(x \in X\).
+    \end{proposition}
+    \begin{proof}
+        Once again, one direction is easy. For the other direction, if \(\varphi(x_1) = \varphi(x_2)\), then \(\pi_2 \varphi(x_1) = \pi_2 \varphi(x_2)\), so that \(\varphi(x_1) \tand \varphi(x_2)\) are in the same element of the stalk, by injectivity on stalks we are done.
+    \end{proof}
+    \begin{proposition}\textbf{(Isomorphism Criterion for Sections)}
+        If \(\varphi: S_1 \to S_2\) is a morphism in \(\text{Sh}(X)\) such that for any open set the induced map \(\Gamma(U,S_1) \to \Gamma(U,S_2)\) is a bijection, then \(\varphi\) is an isomorphism. Moreover, the converse is true.
+    \end{proposition}
+    \begin{proof}
+        The main thing to check here is that a bijection for all \(U\) gives a bijection on the colimits. Assuming this for now we get that as sets:
+        \begin{align*}
+            (S_1)_x \cong \colim_{x \in U} \Gamma(U,S_1) \cong \colim_{x \in U} \Gamma(U,S_2) \cong (S_2)_x
+        \end{align*}
+        So that applying the \ref{Isomorphism Criterion} we find that \(\varphi\) is an isomorphism. Now if \(\varphi\) is an isomorphism, then \(\varphi: \Gamma(U,S_1) \to \Gamma(U,S_2)\) via \(s_1 \mapsto \varphi s_1\), this has map inverse \(\varphi^{-1}\), so these sets are in bijective correspondence which suffices to prove the converse.
+    \end{proof}
+    
+    Note that the same proof works for injections.
 
+    \begin{warn}
+        If \(\varphi: S_1 \to S_2\), \(\varphi \in \text{Sh}(X)\) is surjective this does not imply that the induced map on \(\Gamma(U,S)\) is in general surjective. A counter example is the Mobius covering of \(S^1\), i.e. \(X = S = S^1\) with \(\pi_S = \varphi: S \to X\) via \(z \mapsto z^2\) and \(\pi_X = 1_X\). Then \(\Gamma(X,S) = \emptyset\), since there is no globally continuous square root on \(S^1\). This implies that there is no surjection
+        \begin{align*}
+            \emptyset = \Gamma(X,S) \to \Gamma(X,X) = \set{1_X}
+        \end{align*}
+    \end{warn}
+    The upshot is that local lifts do exist.
 
+    \begin{proposition}\textbf{(Local Lifts)}
+        Let \(S_1,S_2\) be \'etal\'e over \(X\), and \(\varphi: S_1 \to S_2\)a surjective morphism. Then given a section \(s \in S_2\), there is an open cover \(\bigcup_I U_i\) with sections \(t_i \in S_1(U_i)\) such that \(\varphi\circ t_i = s\vert_{U_i}\) for all \(i\).
+    \end{proposition}
+    \begin{proof}
+        Since \(\varphi\) is surjective, it must also be surjective on stalks \(S_x \to S_x\). Then for any \(x\), we have some \((t_x,V_x)\) so that \(\varphi \circ t_x(x) = s(x)\), it follows by the existence part of proposition \ref{existence and uniqueness of sections on stalks} that we can choose a neighborhood \(x \in U_x \subset V_x\) so that \(vp: (t_x,U_x) \to (s,U)\).
+    \end{proof}
+    \begin{rmk}
+        \textbf{(An abstract perspective on lifts)} Given the setup
+        \begin{equation*}
+            \begin{tikzcd}
+                S_1 \arrow[rd,"{\pi_1}"] \arrow[rr,"{\varphi}"] &&S_2 \arrow[ld,"{\pi_2}"] \\
+                &X
+            \end{tikzcd}
+        \end{equation*}
+        and a global section \(s \in \Gamma(X,S_2)\), we get a sheaf from the fibered product \(s^{-1}S_1 := S_1 \times_{S_2}X\) (this of course means its points are \(\set{(t,x) \mid \varphi(t) = s(x)}\)). From this perspective, \(s\) having a lift to \(\Gamma(X,S_1)\) is equivalent to \(s^{-1}S_1\) having a global section.
+    \end{rmk}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -226,7 +302,7 @@
     \end{exe}
     \begin{exe}\label{Existence and uniqueness sections on stalks}
         \textbf{(Show the existence and uniqueness of sections for each element in the stalk)}
-        Existence is not too bad, since \(\pi\) is a local homeomorphism, hence we can choose some neighborhood \(y \in U\) with \(\pi\vert_U\) a homeomorphism. Then define \(s: \pi(U) \to U\) via \(x \mapsto \pi\vert_U^{-1}(x)\). Now assume that \(s_1,s_2\) are two such sections associated to open sets \(U_1,U_2\), then \(y \in \pi^{-1}(U_1) \cap \pi^{-1}(U_2)\), and hence some open set \(y \in \tilde{V} \subset \pi^{-1}(U_1) \cap \pi^{-1}(U_2)\) such that \(\pi\vert_{\tilde{V}}\) is a homeomorphism.
+        Existence is not too bad, since \(\pi\) is a local homeomorphism, hence we can choose some neighborhood \(y \in U\) with \(\pi\vert_U\) a homeomorphism. Then define \(s: \pi(U) \to U\) via \(x \mapsto \pi\vert_U^{-1}(x)\). Now assume that \(s_1,s_2\) are two such sections associated to open sets \(U_1,U_2\), then \(y \in \pi^{-1}(U_1) \cap \pi^{-1}(U_2)\), and hence some open set \(y \in \tilde{V} \subset \pi^{-1}(U_1) \cap \pi^{-1}(U_2)\) such that \(\pi\vert_{\tilde{V}}\) is a homeomorphism. Now let \(V = s_1^{-1}(\tilde{V}) \cap s_2^{-1}(\tilde{V})\) which is nonempty since it contains \(x\), and open. Since the inclusions are injective, we can say the same about sections, hence \(s_1,s_2:  V \to \tilde{V}\), and for \(z \in V\) we have \(\pi\vert_{\tilde{V}}s_i(z) = \iota(z) = z\) and hence \(s_i(z) = \pi\vert_{\tilde{V}}^{-1}(z)\). \qed
     \end{exe}
     \appendix
     
@@ -235,5 +311,8 @@
     \section{Misc.}
     \begin{definition}
         A ring or algebra is called reduced when it has no non-zero nilpotents.
+    \end{definition}
+    \begin{definition}
+        A map is a monomorphism when it has the left cancellation property \(fg_1 = fg_2 \implies g_1 = g_2\).
     \end{definition}
 \end{document}
