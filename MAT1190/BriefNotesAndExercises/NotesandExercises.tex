@@ -203,7 +203,36 @@
         The proof is exercise \ref{Existence and uniqueness sections on stalks}.
     \end{proof}
 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    \subsection{Lecture 5 (Sept 12, 2025)}
+
+    \begin{definition}
+        If \(f: X \to Y\) and \(g: Z \to Y\) are morphisms, then we define the fiber product by the universal property
+        \begin{equation*}
+            \begin{tikzcd}
+                T
+                \arrow[bend left]{drr}{\beta}
+                \arrow[bend right,swap]{ddr}{\alpha}
+                \arrow[dashed]{dr}{\exists !} & & \\
+                & X \times_Y Z \arrow{r}{\pi_Z} \arrow{d}[swap]{\pi_X}
+                & Z \arrow{d}{g} \\
+                & X \arrow[swap]{r}{f}
+                & Y
+            \end{tikzcd}
+        \end{equation*}
+    \end{definition}
+    \begin{example}
+        \begin{equation*}
+            \begin{tikzcd}
+                X \times Z \arrow[r] \arrow[d] &Z \arrow[d] \\ X \arrow[r] & \set{\cdot}
+            \end{tikzcd} \quad
+            \begin{tikzcd}
+                f^{-1}(y) \arrow[r] \arrow[d] &\set{y} \arrow[d] \\ X \arrow[r] & Y
+            \end{tikzcd}
+        \end{equation*}
+        So that products and fibers are special cases.
+    \end{example}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -228,6 +257,9 @@
         \textbf{(Show the existence and uniqueness of sections for each element in the stalk)}
         Existence is not too bad, since \(\pi\) is a local homeomorphism, hence we can choose some neighborhood \(y \in U\) with \(\pi\vert_U\) a homeomorphism. Then define \(s: \pi(U) \to U\) via \(x \mapsto \pi\vert_U^{-1}(x)\). Now assume that \(s_1,s_2\) are two such sections associated to open sets \(U_1,U_2\), then \(y \in \pi^{-1}(U_1) \cap \pi^{-1}(U_2)\), and hence some open set \(y \in \tilde{V} \subset \pi^{-1}(U_1) \cap \pi^{-1}(U_2)\) such that \(\pi\vert_{\tilde{V}}\) is a homeomorphism.
     \end{exe}
+    
+
+
     \appendix
     
     \section{Assigned Readings}
