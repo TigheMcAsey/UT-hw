@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  16 SEP 2025 00:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  19 SEP 2025 19:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -795,39 +795,43 @@ File: ufuts.fd 2024/07/22 Fontinst v1.933 font definitions for U/futs.
 [4]
 
 [5]
-LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 335.
-LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <7.6> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 335.
-LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <6> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 335.
-
 
 [6]
 
 [7]
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 460.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <7.6> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 460.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <6> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 460.
 
-[8] (./NotesandExercises.aux)
+
+[8]
+
+[9]
+
+[10] (./NotesandExercises.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `NotesandExercises.out' has not changed.
-(rerunfilecheck)             Checksum: 346DA574CC70DFEBCE985CAF98C03750;1628.
+(rerunfilecheck)             Checksum: 0295F31C31B77570F0A1E52E65DE0144;2080.
  ) 
 Here is how much of TeX's memory you used:
- 23222 strings out of 473190
- 438396 string characters out of 5715801
- 828170 words of memory out of 5000000
- 45984 multiletter control sequences out of 15000+600000
- 646052 words of font info for 128 fonts, out of 8000000 for 9000
+ 23507 strings out of 473190
+ 445005 string characters out of 5715801
+ 827270 words of memory out of 5000000
+ 46240 multiletter control sequences out of 15000+600000
+ 646469 words of font info for 130 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 116i,21n,121p,1309b,1110s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 116i,21n,121p,1324b,1110s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/fourier/fourier-bb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/fourier/fourier-mcl.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/fourier/fourier-mex.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/fourier/fourier-ml.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/fourier/fourier-mlit.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/fourier/fourier-ms.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/fourier/fourier-orns.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on NotesandExercises.pdf (8 pages, 132897 bytes).
+Output written on NotesandExercises.pdf (10 pages, 153320 bytes).
 PDF statistics:
- 224 PDF objects out of 1000 (max. 8388607)
- 188 compressed objects within 2 object streams
- 69 named destinations out of 1000 (max. 500000)
- 101 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 275 PDF objects out of 1000 (max. 8388607)
+ 236 compressed objects within 3 object streams
+ 96 named destinations out of 1000 (max. 500000)
+ 117 words of extra memory for PDF output out of 10000 (max. 10000000)
 
