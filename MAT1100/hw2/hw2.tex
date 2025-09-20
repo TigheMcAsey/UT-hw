@@ -39,7 +39,10 @@
         We can use orbit stabilizer with \(S_9\) acting on the pearls, the stabilizer of the necklace BBBBWWWRR is clearly \(S_4 \times S_3 \times S_2\) has cardinality \(12\cdot4!\), so there are \(\frac{9!}{12\cdot4!}\) necklaces. \qed
     \end{pb}
     \begin{pb}
-        
+        \begin{align*}
+            X = \set{(g_1,\hdots,g_p) \mid g_i \in G \tand \prod_1^p g_i = 1}
+        \end{align*}
+        Then we have an action of \(\mathbf{F}_p\) on \(X\) via \(k\cdot(g_i) = (g_{[k + i]})\) where \([n]\) denotes \(n\) mod \(p\). Note that when determining an element of \(X\), the first \(p-1\) choices are free, meaning there are \(n^{p-1}\) choices for the first \(p-1\) coordinates (here \(n = \#G\)), but the last coordinate is fixed as \(\left(\prod_1^{p-1}g_i\right)^{-1}\), so \(X\) has \(n^{p-1}\) elements. In the case where \(g_i = g_j, \forall i,j\) the action is trivial, otherwise the orbit of the action has order \(p\). The cardinality of \(X\) is the sum of the cardinality of the orbits, letting \(r\) be the number of single element orbits, and \(q\) the number of \(p\) element orbits we get \(n^{p-1} = r + qp\) so that since \(p \vert n\) we get \(p \vert (r + qp)\) which implies \(p \vert r\), but \(r \neq 0\) since \((1,\hdots,1)\) has a one element orbit, hence there is another one element orbit \((g,\hdots,g)\), but this means that \(g^p = 1\), so that \(o(g) \vert p\), but \(g \neq 1\) means that \(o(g) \neq 1\) so \(o(g) = p\) as desired.
     \end{pb}
     \begin{pb}
         Since the groups are not commutative they must have composite order, write \(\#G = \prod_1^r p_i\) where \(p_r \geq p_{r-1} \geq \cdots \geq p_1\). Then \(p_1\) connot be \(11\), so \(p_1\) is at most \(7\), moreover if \(p_1 = 7\), then \(G = C_{49}, C_{7} \tor C_7^2\) all of which are abelian, so that \(p_1\) is at most \(5\), if \(p_1 = 5\), then once again we get an abelian group since the only possible factorizations are \(p_1 = p_2 = 5\) which is abelian by question 1, or \(p_2 = 7\), it follows that the subgroup \(N\) of order \(7\) is normal since it has index \(5\), the smallest prime dividing the order of the group, so this group can't be simple. This implies that \(p_1 \in \set{2,3}\).

@@ -1,0 +1,72 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+
+\fancyhf{}
+\lhead{MAT1300 hw2}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\usepackage{tikz-cd}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+
+\begin{document}
+    \begin{pb}
+        \textbf{(a)} From the definition of a lie group we know that \(\mu: G\times G \to G\) is smooth, then \(\mu_g = \mu \circ \iota_g\), where \(\iota_g: G \to G \times G\) via \(h \mapsto (g,h)\) is the incusion into the product manifold, we have seen previously the inclusion is smooth, so that \(\mu_g = \mu \circ\iota_g\) is smooth. Now we can also see that
+        \begin{align*}
+            \mu_{g^{-1}}\mu_g = 1_G = \mu_g\mu_{g^{-1}}
+        \end{align*}
+        and \(\mu_{g^{-1}}\) is smooth for the same reason \(\mu_g\) is, so that \(\mu_g\) is in fact a diffeomorphism, this implies that \(d_e\mu_g\) is an isomorphism.
+
+        \textbf{(b)} Since \(T_eG\) is \(n\)-dimensional, we can identify it with \(\mathbb{R}^n\), the following diagram specifies the desired correspondence of vector bundles:
+        \begin{equation*}
+            \begin{tikzcd}
+            G\times \mathbb{R}^n \arrow[d] \arrow[r,"F",shift left=1] &TG \arrow[l,"T", shift left = 1] \arrow[d] \\
+            G \arrow[r, "1_G"] & G
+            \end{tikzcd}
+        \end{equation*}
+        Where \(F(g,v) = (g,d_e\mu_g v)\) and \(T(g,v) = (g,d_g\mu_{g^{-1}}v)\). Then
+        \begin{align*}
+            F\circ T(g,v) &= (g,(d_e\mu_g)(d_g\mu_{g^{-1}})v) = (g,d_g1_{G}v) = (g,1_{T_gG}v) = (g,v) \\
+            T\circ F(g,v) &= (g,(d_g\mu_{g^{-1}})(d_e\mu_g)v) = (g,d_e1_G v) = (g,1_{T_eG}v) = (g,v)
+        \end{align*}
+        So we are done once we verify that \(F \tand T\) are maps of vector bundles, but the linearity and restriction to fibers properties are trivial, and \(F,T\) are continuous since
+    \end{pb}
+    \begin{pb}
+        Let \(f: X \to \mathbb{R}^m\) be a submersion, where \(X\) is a compact smooth manifold. The proof will follow if we can show submersions are open maps, assuming this, since the image of a compact set is compact (by pulling back an open cover along the map) we get that \(f(X) \subset \mathbb{R}^m\) is open, but also \(f(X) \subset \mathbb{R}^m\) is compact hence closed, so since \(X \neq \emptyset\) we have \(f(X) = \mathbb{R}^m\), contradicting compactness.
+
+        It remains to show that a submersion is open, since \(f\) is a submersion, we can cover \(M,N\) with charts \((U_\alpha,V_\alpha,\phi_\alpha)\) and \((U'_\beta,V'_\beta,\varphi_\beta)\) respectively with the property that the following commutes (here \(\pi\) is the projection map onto the first \(n\) coordinates)
+        \begin{equation*}
+            \begin{tikzcd}
+                U_\alpha \arrow[d,"\pi"] \arrow[r,"\phi_\alpha"] &V_\alpha \arrow[d,"f"]\\
+                U_\beta' \arrow[r,"\varphi_\beta"] &V_\beta'
+            \end{tikzcd}
+        \end{equation*}
+        Now let \(E \subset X\) be open, and write \(E_\alpha := V_\alpha \cap E\), then
+        \begin{align*}
+            f(E) = \bigcup_\alpha f(E_\alpha) = \bigcup_{\alpha,\beta} \varphi_\beta\pi\phi_\alpha^{-1}(E_\alpha)
+        \end{align*}
+        But \(\varphi_\beta\pi\phi_\alpha^{-1}\) is a composition of open maps hence open, so that \(f(E)\) is open which suffices to show \(f\) is open.
+    \end{pb}
+    \begin{pb}
+        
+    \end{pb}
+\end{document}
