@@ -1,0 +1,50 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+
+\fancyhf{}
+\lhead{MAT1600 hw1}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+
+\begin{document}
+    \begin{pb}\textbf{(Durrett 1.1.5)}
+        \(\mathcal{A}\) is not an algebra, hence not a \(\sigma\)-algebra, as proof let \(A\) be the even numbers, and \(B\) be as defined below
+        \begin{align*}
+            B = \bigcup_{n \text{ even}} \set{k \mid k \text{ odd and } 2^n \leq k < 2^{n+1}} \bigcup_{n \text{ odd}}\set{k \mid k \text{ even and }2^n \leq k < 2^{n+1}}
+        \end{align*}
+        Then it is clear \(\theta(A) = \theta(B) = \frac12\). Now we want to consider \(\theta(A \cup B)\), note that \(A \cup B\) contains \(\set{2^n, 2^n+1,\hdots,2^{n+1}-1}\) when \(n\) is even, but contains only \(\set{2^n, 2^n+1,\hdots,2^{n+1}-1,2^{n+1}} \cap \set{\text{even numbers}}\) for odd \(n\). Then denote \(\theta_n = \frac{\#((A \cup B) \cap \set{1,\hdots,2^{n+1}})}{2^{n+1}}\), then the first few terms are \(\theta_1 = 1, \theta_2 = \frac{3}{4}, \theta_3 = \frac{7}{8}, \theta_4 = \frac{11}{16}\) and from the definition of \(A,B\) we get \(\theta_{2n+1} = \frac{\theta_{2n}}{2} + \frac12\) and \(\theta_{2n+2} = \frac{\theta_{2n+1}}{4} + \frac{1}{4}\), it follows that by induction the subsequences \(\theta_{2n}\) and \(\theta_{2n+1}\) are decreasing, then once again by induction using this recurrence we find that \(\frac{11}{16} \geq \theta_{2n} \geq \frac12\) and \(1 \geq \theta_{2n+1} \geq \frac34\), but then \(\liminf \theta_{2n+1} \geq \frac34 > \frac{11}{16} \geq \limsup \theta_n\), so these subsequences of \(\frac{\#((A \cup B) \cap \set{1,\hdots,n})}{n}\) can't possibly converge to the same limit, and hence a limit for the sequence cannot exist and \(A \cup B\) does not have an asymptotic density.
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 1.2.3)} First note that the left limit of a distribution function is well defined,
+        \[F(x-) := \lim_{y_n\uparrow x}F(x) = \bigcup_1^\infty P(X \leq y_n) = P(X < x)\]
+        The last equality following from throwing out \(y_n\) such that for some \(k<n\), there is \(y_k > y_n\) and applying continuity from below.
+        
+        It follows that for each point of discontinuity of \(F\), we must have \(F(x) > F(x-)\), assuming there are uncountably many points of discontinuity for \(F\) and denote that set of points as \(A\), we know that since \(0 \leq F(x) \leq 1\) is an increasing function that \[1=\lim_{x\to\infty}F(x) \geq \sup\set{\sum_{\alpha \in S}F(\alpha) - F(\alpha-) \mid A \supset S \text{ is finite}}\]
+        Denote \(E_n = \set{\alpha \in A \mid F(\alpha) - F(\alpha-) \geq \frac{1}{n}}\), then since \(\bigcup_1^\infty E_n = A\), we must have atleast one \(E_n\) is uncountable. This implies that 
+        \begin{align*}
+            \sup\set{\sum_{\alpha \in S}F(\alpha) - F(\alpha-) \mid A \supset S \text{ is finite}} \geq \sup_{M \in \mathbb{N}}\frac{M}{n}= \infty
+        \end{align*}
+        Which is a contradiction.
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 1.3.5)}
+        If \(f\) is not LSC, then there is some \(x\) and \(y_n \to x\), such that \(\lim f(y_n) < f(x)\) (this follows from the negation since we can take a subsequence which gives the liminf). But then let \(\epsilon = f(x) - \lim f(y_n)\), if we remove the \(y_n\) terms such that \(f(y_n) > f(x) + \frac{\epsilon}{2}\) from the sequence then the sequence still converges to \(x\), so we may assume the sequence is uniformly bounded by \(f(x) + \frac{\epsilon}{2}\). But then we have a sequence \(y_n \in \set{t \mid f(t) \leq f(x) - \epsilon/2}\) which converges to a value \(x\) not in the set, so in particular the set is not closed.
+
+        Conversely, if for some \(a\), the set \(S_a := \set{x \mid f(x) \leq a}\) is not closed, then we get a sequence \(y_n \in S_a\) such that \(y_n \to x\), but \(x \not \in S_a\), it follows that \(f(x) > a\), but \(\liminf_{y\to x}f(y) \leq \lim f(y_n) \leq a < f(x)\) so that \(f\) is not LEC.
+    \end{pb}
+\end{document}
