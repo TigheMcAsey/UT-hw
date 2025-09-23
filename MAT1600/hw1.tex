@@ -3,6 +3,7 @@
 \usepackage[includeheadfoot]{geometry} % For page dimensions
 \usepackage{fancyhdr}
 \usepackage{enumerate} % For custom lists
+\usepackage{xcolor}
 
 \fancyhf{}
 \lhead{MAT1600 hw1}
@@ -46,5 +47,12 @@
         If \(f\) is not LSC, then there is some \(x\) and \(y_n \to x\), such that \(\lim f(y_n) < f(x)\) (this follows from the negation since we can take a subsequence which gives the liminf). But then let \(\epsilon = f(x) - \lim f(y_n)\), if we remove the \(y_n\) terms such that \(f(y_n) > f(x) + \frac{\epsilon}{2}\) from the sequence then the sequence still converges to \(x\), so we may assume the sequence is uniformly bounded by \(f(x) + \frac{\epsilon}{2}\). But then we have a sequence \(y_n \in \set{t \mid f(t) \leq f(x) - \epsilon/2}\) which converges to a value \(x\) not in the set, so in particular the set is not closed.
 
         Conversely, if for some \(a\), the set \(S_a := \set{x \mid f(x) \leq a}\) is not closed, then we get a sequence \(y_n \in S_a\) such that \(y_n \to x\), but \(x \not \in S_a\), it follows that \(f(x) > a\), but \(\liminf_{y\to x}f(y) \leq \lim f(y_n) \leq a < f(x)\) so that \(f\) is not LEC.
+    \end{pb}
+    \begin{pb} \textbf{(Durrett 1.3.7)}
+        First we note that all simple functions are measurable, and measurable functions are closed under pointwise limits \textcolor{red}{TODO...}. Now let \(f\) be an arbitrary measurable function on \((\Omega,\mathcal{F})\) mapping to \((\mathbb{R},\mathcal{B}_\mathbb{R})\). Then we can write \(f = f_+ - f_-\) so it will suffice to show that an arbitrary positive function \(f\) is a pointwise limit of simple functions. Let \(A_1 = f^{-1}[1,\infty)\), and \(\phi_1 = 1_{A_1}\), now we can define the rest of the \(\phi_i\) recursively:
+        \begin{align*}
+            &A_n = (f - \phi_{n-1})^{-1}[\frac{1}{n},\infty) &\phi_n = n^{-1}1_{A_n}
+        \end{align*} 
+        \textcolor{red}{TODO... use the harmonic series diverges}
     \end{pb}
 \end{document}

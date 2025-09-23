@@ -36,19 +36,38 @@
         \end{align*}
         and \(\mu_{g^{-1}}\) is smooth for the same reason \(\mu_g\) is, so that \(\mu_g\) is in fact a diffeomorphism, this implies that \(d_e\mu_g\) is an isomorphism.
 
-        \textbf{(b)} Since \(T_eG\) is \(n\)-dimensional, we can identify it with \(\mathbb{R}^n\), the following diagram specifies the desired correspondence of vector bundles:
+        \textbf{(b)} 
+        
+        \textbf{(Lemma)} Let \((\rho,E), (\widehat{\rho},\widehat{E})\) be two vector bundles on the same base space \(M\), and \(F: E \to \widehat{E}\) a smooth bijective map of smooth vector bundles with \(F(x,0) = (x,0)\) (i.e. \(F\) descends to the identity), then \(F\) is a diffeomorphism.
+        \begin{proof}
+            Being a diffeomorphism is a local property, so for a point \(x \in M\), let \(U\) be an open neighborhood of \(M\) where \(\rho^{-1}(U)\) admits a local trivialization \(\zeta\), moreover there is a second neighborhood \(x \in V \subset U\) where \(\widehat{\rho}^{-1}(V)\) admits a local trivialization \(\widehat{\zeta}\) (since the base manifold is the same by possibly shrinking the neighborhood we can assume that the two bundle charts are equal on \(V\times \set{0}\), this is not necessary but removes a lot of bloat from notation). Then \(\widehat{\zeta}\circ F\circ\zeta^{-1}: M \times \mathbb{R}^n \to M \times \mathbb{R}^n\) is smooth, linear on each fiber and bijective on each fiber, so on \(V\), we can write \(A(x) = \widehat{\zeta}\circ F\circ\zeta^{-1}(x,-)\). Then on the local trivialization \(F\) is given by
+            \begin{align*}
+                \widehat{\zeta}\circ F\circ\zeta^{-1}(x,v) = (x,A(x)v)
+            \end{align*}
+            In particular, the Jacobian \(D_{(x,v)} (\widehat{\zeta}\circ F\circ\zeta^{-1})\) is given by
+            \begin{align*}
+                \begin{pmatrix} 1_n & 0 \\ B(x,v) & A(x) \end{pmatrix}
+            \end{align*}
+            Bijectivity on each fiber implies that \(A(x)\) is full rank, so that \(\det (D_{(x,v)} \widehat{\zeta}\circ F\circ\zeta^{-1}) = \det A(x) \in \mathbb{R}^\times\), by the inverse function theorem \(\widehat{\zeta}\circ F\circ\zeta^{-1}\) has a local smooth inverse, and hence \(F\) is a diffeomorphism.
+        \end{proof}
+        
+        Since \(T_eG\) is \(n\)-dimensional, we can identify it with \(\mathbb{R}^n\), the following diagram specifies the desired correspondence of vector bundles:
         \begin{equation*}
             \begin{tikzcd}
             G\times \mathbb{R}^n \arrow[d] \arrow[r,"F",shift left=1] &TG \arrow[l,"T", shift left = 1] \arrow[d] \\
             G \arrow[r, "1_G"] & G
             \end{tikzcd}
         \end{equation*}
-        Where \(F(g,v) = (g,d_e\mu_g v)\) and \(T(g,v) = (g,d_g\mu_{g^{-1}}v)\). Then
+        Where \(F(g,v) = (g,d_e\mu_g (v))\), 
+        
+        \emph{(when I originally solved the problem I tried to show \(F\) and the inverse map \(T\) which is not too hard to compute are both smooth, however, after trying to show \(F,T\) are smooth for quite some time I did the following computation which allowed me to see that \(F\) is smooth, this computation does not generalize easily to \(T\), so the lemma is intended to avoid having to do a similar computation for \(T\)).}
+
+        In order to show \(F\) is smooth, it suffices to show that \((g,v) \mapsto d_e\mu_g(v)\) is smooth, here we can use smoothness of \(\mu\), and the identification \(T(G\times G) \longleftrightarrow TG \oplus TG\) by identifying on each fiber, we have previously computed (last homework) that \(d_p \iota_q = \begin{pmatrix}0 \\ 1\end{pmatrix}\) when \(\iota\) denotes inclusion. We have that \(d\mu: T(G\times G) \to TG\) is smooth since \(\mu\) is a smooth map, then
         \begin{align*}
-            F\circ T(g,v) &= (g,(d_e\mu_g)(d_g\mu_{g^{-1}})v) = (g,d_g1_{G}v) = (g,1_{T_gG}v) = (g,v) \\
-            T\circ F(g,v) &= (g,(d_g\mu_{g^{-1}})(d_e\mu_g)v) = (g,d_e1_G v) = (g,1_{T_eG}v) = (g,v)
+            d\mu((g,v),(h,u)) &= d_{(g,h)}\mu(v,u) \\
+            d_e \mu_g = d_e (\mu\circ\iota_g) (v,u) &= (d_{(g,e)}\mu) (d_e\iota_g)(v,u) = d_{(g,e)}\mu(u)
         \end{align*}
-        So we are done once we verify that \(F \tand T\) are maps of vector bundles, but the linearity and restriction to fibers properties are trivial, and \(F,T\) are continuous since
+        From this computation, we can see that \(d_e \mu_g = d_{(g,e)}\mu(0,u)\) is the restriction of \(d\mu\) to \(TG \times \set{e,0}\), this is clearly a submanifold directly from the definition of it being a linear subspace given by inclusion on the first \(2n\) coordinates. Thus the restriction of \(d\mu\) to this submanifold is smooth, and is identified with \(d_e \mu_g\). So \(F\) is smooth, and we appeal to the lemma to find that \(T\), the set theoretic inverse for \(F\) is smooth and hence \(F\) is a diffeomorphism.
     \end{pb}
     \begin{pb}
         Let \(f: X \to \mathbb{R}^m\) be a submersion, where \(X\) is a compact smooth manifold. The proof will follow if we can show submersions are open maps, assuming this, since the image of a compact set is compact (by pulling back an open cover along the map) we get that \(f(X) \subset \mathbb{R}^m\) is open, but also \(f(X) \subset \mathbb{R}^m\) is compact hence closed, so since \(X \neq \emptyset\) we have \(f(X) = \mathbb{R}^m\), contradicting compactness.
