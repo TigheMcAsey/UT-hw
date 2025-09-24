@@ -7,7 +7,7 @@
 \usepackage{graphicx}
 
 \fancyhf{}
-\lhead{MAT1300 hw2}
+\lhead{MAT1300 hw3}
 \rhead{Tighe McAsey - 1008309420}
 \pagestyle{fancy}
 
@@ -16,7 +16,7 @@
 
 \theoremstyle{definition}
 \newtheorem{pb}{}
-\usepackage{tikz-cd}
+\usepackage{tikz-cd, stackengine}
 
 % Commands:
 
@@ -67,7 +67,7 @@
             d\mu((g,v),(h,u)) &= d_{(g,h)}\mu(v,u) \\
             d_e \mu_g = d_e (\mu\circ\iota_g) (v,u) &= (d_{(g,e)}\mu) (d_e\iota_g)(v,u) = d_{(g,e)}\mu(u)
         \end{align*}
-        From this computation, we can see that \(d_e \mu_g = d_{(g,e)}\mu(0,u)\) is the restriction of \(d\mu\) to \(TG \times \set{e,0}\), this is clearly a submanifold directly from the definition of it being a linear subspace given by inclusion on the first \(2n\) coordinates. Thus the restriction of \(d\mu\) to this submanifold is smooth, and is identified with \(d_e \mu_g\). So \(F\) is smooth, and we appeal to the lemma to find that \(T\), the set theoretic inverse for \(F\) is smooth and hence \(F\) is a diffeomorphism.
+        From this computation, we can see that \(d_e \mu_g = d_{(g,e)}\mu(0,u)\) is the restriction of \(d\mu\) to \(G \times \set{0} \times T_eG\), this is clearly a submanifold directly from the definition of it being a linear subspace given by inclusion on the first \(n\) coordinates and last \(n\) coordinates. Thus the restriction of \(d\mu\) to this submanifold is smooth, and is identified with \(d_e \mu_g\). So \(F\) is smooth, and we appeal to the lemma to find that \(T\), the set theoretic inverse for \(F\) is smooth and hence \(F\) is a diffeomorphism.
     \end{pb}
     \begin{pb}
         Let \(f: X \to \mathbb{R}^m\) be a submersion, where \(X\) is a compact smooth manifold. The proof will follow if we can show submersions are open maps, assuming this, since the image of a compact set is compact (by pulling back an open cover along the map) we get that \(f(X) \subset \mathbb{R}^m\) is open, but also \(f(X) \subset \mathbb{R}^m\) is compact hence closed, so since \(X \neq \emptyset\) we have \(f(X) = \mathbb{R}^m\), contradicting compactness.
@@ -86,6 +86,55 @@
         But \(\varphi_\beta\pi\phi_\alpha^{-1}\) is a composition of open maps hence open, so that \(f(E)\) is open which suffices to show \(f\) is open.
     \end{pb}
     \begin{pb}
-        \textbf{(a)} 
+        \textbf{(a)} From the iterated construction we get
+        \begin{align*}
+            \overline{[a,b,c,d,e,f,g,h]} &= [\overline{(a,b,c,d,e,f)},(-g,-h)] = [\overline{(a,b,c,d)},(-e,-f),(-g,-h)] \\
+            &= [\overline{(a,b)},(-c,-d),(-e,-f),(-g,-h)] = [\overline{a}, -b, (-c,-d),(-e,-f),(-g,-h)]
+        \end{align*}
+        from this taking the \(i\)-th coordinate to be \(1\) and the others zero we see \(\overline{e_i} = -e_i\). \qed
+
+        \textbf{(b)} We first note that \(A\) maps real values to real values and imaginary values to imaginary values. This can be seen since if \(\overline{x} = x \tand \overline{y} = -y\), then
+        \begin{align*}
+            &\overline{A(x)} = A(\overline{x}) = A(x) &\overline{A(y)} = A(\overline{y}) = A(-y) = -A(y)
+        \end{align*}
+        And moreover, for arbitrary \(x\), \(A(x)A(1) = A(x)\) implies \(A(1) = 1\) so linearity suffices to show that \(A(\alpha) = \alpha\) for \(\alpha \in \mathbb{R}\), once again by linearity we see that this implies \(\text{Re}(A(x)) = A(\text{\text{Re}(x)})\) for all \(x\). It follows that \(A\) is orthogonal, i.e. preserves the inner product
+        \begin{align*}
+            \gen{A (x), A(y)} = \text{Re}(A(x)\overline{A(y)}) = \text{Re}(A(x)A(\overline{y})) = \text{Re}(A(x \overline{y})) = \text{Re}(x \overline{y}) = \gen{x,y}
+        \end{align*}
+        Since \(A\) preserves the imaginary octonions, it makes sense to restrict \(A\) to acting on \(\text{Im}(\mathbb{O})\), so that identifying \(A\) with its image in \(O(7)\) is well defined, since the inner product on \(\text{Im}(\mathbb{O})\) induces the standard norm on \(\mathbb{R}^7\) (computation provided below), we know from the polarization identity that the inner products are the same since they can be recovered from the norm, so that the image of \(A\) in \(O(7)\) is still orthogonal in the euclidean sense.
+
+        I include here the computation of equivalence of norms using the multiplication table:
+        Consider the octonion given by \(a = (a_ie_i)_0^7\), of course we are only interested in the case of \(a_0 = 0\), so we have \(a = (a_ie_i)_1^7\)
+        \begin{align*}
+            a \overline{a} = \left(\sum_1^7 a_i e_i\right)\left(\sum_1^7-a_je_j\right) = \sum_1^7 a_i^2 + \sum_{i < j} a_ia_j e_ie_j + \sum_{i > j}a_ia_j e_ie_j
+        \end{align*}
+        We can read from the off diagonal of the octonions multiplication table that for \(i,j > 0\) and \(i \neq j\) that \(e_ie_j = -e_je_i\), this kills the two sums on the right to give us \(\sum_1^7 a_i^2\) the euclidean norm as desired. \qed
+
+        \textbf{(c)} From the multiplication table we have for any \(i\), \(e_i \overline{e_i} = e_0\), it follows from definitions that \(\gen{e_i,e_i} = 1\) for \(i = 1,2,4\). Now reading from the table,
+        \begin{align*}
+            e_1 \overline{e_2} = -e_3, \quad e_1 \overline{e_4} = - e_5, \quad e_2 \overline{e_4} = -e_6, \quad (e_1e_2)\overline{e_4} = -e_7
+        \end{align*}
+        these all have zero real part, so that by taking the inner product we get zero, this suffices to show its a special triple. \qed
+
+        \textbf{(d)} Although not explicitly stated in the question, in the lecture notes problems we have \(V_n(\mathbb{R}^m)\) is orthonormal sets of \(n\) vectors in \(\mathbb{R}^m\), to see that this is indeed a manifold we can use the regular value theorem with
+        \begin{align*}
+            F': \text{Mat}_{3\times 7}(\mathbb{R}) &\to \mathbb{R}^6 \\
+            \begin{pmatrix} v_1&v_2&v_3 \end{pmatrix} &\mapsto (\norm{v_1}^2,\norm{v_2}^2,\norm{v_3}^2,\gen{v_1,v_2},\gen{v_1,v_3},\gen{v_2,v_3})
+        \end{align*}
+        \(F'\) is polynomial hence smooth. The total derivative looks like (in \(1 \times 7\) blocks)
+        \begin{align*}
+            d_{(v_1,v_2,v_3)}F = \begin{pmatrix} 2v_1^i & 0 & 0 \\ 0 & 2v_2^i & 0 \\ 0&0& 2v_3^i \\ v_2^i & v_1^i & 0 \\ v_3^i & 0 & v_1^i \\ 0 & v_3^i & v_2^i \end{pmatrix}
+        \end{align*}
+        it is straightforward to see that \((1,1,1,0,0,0)\) is a regular value for \(F'\) by the vectors being nonzero at these points (independence of rows then follows easily from orthogonality). This realizes \(V_3(\mathbb{R}^7)\) as a \(15 = 21 - 6\) dimensional manifold \(F'^{-1}\set{(1,1,1,0,0,0)}\). The only additional condition of a special triple that isnt in \(V_3(\mathbb{R}^7)\) is the equation \(\gen{xy,z} = 0\), so it will suffice to check that \(0\) is a regular value for
+        \begin{align*}
+            F: V_3(\mathbb{R}^7) &\to \mathbb{R} \\
+            (x,y,z) &\mapsto \gen{xy,z}
+        \end{align*}
+        where again we are using the identification of the imaginary octonions with \(\mathbb{R}^7\), also recognize that \(F\) is polynomial hence smooth. To simplify things we can factor through \(V_2(\mathbb{R}^8)\) by taking the composition \((x,y,z) \overset{m}{\mapsto} (xy,z') \overset{\gen{}}{\mapsto} \gen{xy,z'}\) the \(z \mapsto z'\) just denotes appending a zero leading coordinate, i.e. \(z' = (0,z_1,\hdots,z_7)\), everything here is still smooth due to being polynomial in coordinates. Thus \(d_{(x,y,z)}F = (d_{(xy,z')}\gen{})(d_{(x,y,z)}m)\), since all the spaces we are dealing with are just submanifolds of \(\mathbb{R}^N\) for some \(N\) (we can identify matrices with their components) We can identify the space with its chart, and the derivative with the Jacobian on charts, this allows us to readily write down the derivatives for \(m, \gen{}\).
+        \begin{align*}
+            &d_{(x,y,z)}m = \begin{bmatrix} A(x,y) & 0 \\ 0 & 1_{7 \times 7} \end{bmatrix}
+        \end{align*}
+        (written in block form) Then to conclude that the derivative is onto, it just needs to be nonzero, so it will suffice to check that one of the last seven entries of \(d_{(xy,z)} \gen{}\) is non-zero, but in the coordinates the inner product is given by \((a,b) \mapsto (a_0b_0,\hdots,a_7b_7)\), it follows the Jacobian at \((xy,z')\) is given by \[\begin{pmatrix} 0&z_1&\cdots&z_7 &(xy)_0 &\cdots &(xy)_7 \end{pmatrix}\]
+        Since \(\gen{x,y} = 0\), and \(\norm{x}^2 = \norm{y}^2 = 1\) we know that \(xy\) is nonzero (we are working in a division algebra) and \(xy\) is not real, since otherwise \(0 = \gen{x,-y} = \gen{x, \overline{y}} = \text{Re}(xy)\) which would contradict \(xy \neq 0\). It follows that one of \((xy)_j\) is nonzero for \(1 \leq j \leq 7\), but this suffices to prove that \(d_{(x,y,z)}F\) has full rank of \(1\) at \((x,y,z)\). Hence we can apply the regular value theorem so that \(F^{-1}\set{0} = X\) is a submanifold of \(V_3(\mathbb{R}^7)\). \qed
     \end{pb}
 \end{document}
