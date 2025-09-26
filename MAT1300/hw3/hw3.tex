@@ -138,7 +138,11 @@
         \begin{align*}
             \left.\frac{d}{dt}\right\vert_{t=0}F\circ\gamma(t) = \left.\frac{d}{dt}\right\vert_{t=0} \gen{e_1e_2,e_3\sin t + e_4\cos t} = \left.\frac{d}{dt}\right\vert_{t=0}e_3(\overline{e_3}\cos t + \overline{e_3}\sin t) = \left.\frac{d}{dt}\right\vert_{t=0} \cos t + \sin t = 1
         \end{align*}
-        so that indeed we have \(d_{(e_1,e_2,e_4)}\hat{F} = d_{(e_1,e_2,e_4)}F\vert_{T_{(e_1,e_2,e_4)}V_3(\mathbb{R}^7)}\) is nonzero, hence surjective. This gives that \(\hat{F}\) is a submersion at the point \((e_1,e_2,e_4)\), we need to check it for the rest of \(X = \hat{F}^{-1}(0)\), here we can use the theorem that for any other point \((x,y,z) \in X\) we have some \(A \in G_2\) with \(A(e_1,e_2,e_4) = (x,y,z)\). It follows that 
+        so that indeed we have \(d_{(e_1,e_2,e_4)}\hat{F} = d_{(e_1,e_2,e_4)}F\vert_{T_{(e_1,e_2,e_4)}V_3(\mathbb{R}^7)}\) is nonzero, hence surjective. This gives that \(\hat{F}\) is a submersion at the point \((e_1,e_2,e_4)\), we need to check it for the rest of \(X = \hat{F}^{-1}(0)\), here we can use the theorem that for any other point \((x,y,z) \in X\) we have some \(A \in G_2\) with \(A(e_1,e_2,e_4) = (x,y,z)\). Now since \(A\) respects products and inner products we have \(\hat{F}\circ A = \hat{F}\), so that
+        \begin{align*}
+            (d_{(x,y,z)}\hat{F})(d_{(e_1,e_2,e_4)}A) = d_{(e_1,e_2,e_4)}(\hat{F}\circ A) = d_{(e_1,e_2,e_4)}\hat{F}
+        \end{align*}
+        So surjectivity of the derivative at the single triple \((e_1,e_2,e_4)\) gives surjectivity at all triples, this proves that \(0\) is a regular value. \qed
 
         \textbf{(e)} Define the map using the theorem by defining \(A(x,y,z)\) to be the unique map transforming \((e_1,e_2,e_4) \mapsto (x,y,z)\)
         \begin{align*}
