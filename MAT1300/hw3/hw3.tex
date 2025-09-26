@@ -116,25 +116,40 @@
         \end{align*}
         these all have zero real part, so that by taking the inner product we get zero, this suffices to show its a special triple. \qed
 
-        \textbf{(d)} Although not explicitly stated in the question, in the lecture notes problems we have \(V_n(\mathbb{R}^m)\) is orthonormal sets of \(n\) vectors in \(\mathbb{R}^m\), to see that this is indeed a manifold we can use the regular value theorem with
+        \textbf{(d)} 
+        
+        Although not stated in the question, \(V_n(\mathbb{R}^m)\) is orthonormal sets of \(n\) vectors in \(\mathbb{R}^m\), it is also defined in the notes as a quotient of the orthogonal group by a group action \(O(m)/O(m-n)\). It follows that \(V_3(\mathbb{R}^7)\) can be realized as \(O(7)/O(4)\), since \(O(4)\) is a lie group of dimension \(6\), and \(O(7)\) is a lie group of dimension \(21\), the quotient \(V_3(\mathbb{R}^7)\) is a \(21 - 6 = 15\) dimensional manifold, its also important here that we are identifying \(O(4)\) as the elements fixing the first second and fourth columns \(e_1,e_2,e_4\), taking these columns in particular is important for the projection to work out in part (e).
+
+        The only additional condition of a special triple that isnt in \(V_3(\mathbb{R}^7)\) is the equation \(\gen{xy,z} = 0\), so it will suffice to check that \(0\) is a regular value for
+        \begin{align*}
+            \hat{F}: V_3(\mathbb{R}^7) &\to \mathbb{R} \\
+            (x,y,z) &\mapsto \gen{xy,z}
+        \end{align*}
+        where again we are using the identification of the imaginary octonions with \(\mathbb{R}^7\). The smoothness of \(\hat{F}\) is immediate by multilinearity. It is somewhat hard to deal with \(V_3(\mathbb{R}^7)\), but we can show that it is a submanifold of \(\mathbb{R}^{21}\), to do so use the regular value theorem with
         \begin{align*}
             F': \text{Mat}_{3\times 7}(\mathbb{R}) &\to \mathbb{R}^6 \\
             \begin{pmatrix} v_1&v_2&v_3 \end{pmatrix} &\mapsto (\norm{v_1}^2,\norm{v_2}^2,\norm{v_3}^2,\gen{v_1,v_2},\gen{v_1,v_3},\gen{v_2,v_3})
         \end{align*}
         \(F'\) is polynomial hence smooth. The total derivative looks like (in \(1 \times 7\) blocks)
         \begin{align*}
-            d_{(v_1,v_2,v_3)}F = \begin{pmatrix} 2v_1^i & 0 & 0 \\ 0 & 2v_2^i & 0 \\ 0&0& 2v_3^i \\ v_2^i & v_1^i & 0 \\ v_3^i & 0 & v_1^i \\ 0 & v_3^i & v_2^i \end{pmatrix}
+            d_{(v_1,v_2,v_3)}F' = \begin{pmatrix} 2v_1 & 0 & 0 \\ 0 & 2v_2 & 0 \\ 0&0& 2v_3 \\ v_2 & v_1 & 0 \\ v_3 & 0 & v_1 \\ 0 & v_3 & v_2 \end{pmatrix}
         \end{align*}
-        it is straightforward to see that \((1,1,1,0,0,0)\) is a regular value for \(F'\) by the vectors being nonzero at these points (independence of rows then follows easily from orthogonality). This realizes \(V_3(\mathbb{R}^7)\) as a \(15 = 21 - 6\) dimensional manifold \(F'^{-1}\set{(1,1,1,0,0,0)}\). The only additional condition of a special triple that isnt in \(V_3(\mathbb{R}^7)\) is the equation \(\gen{xy,z} = 0\), so it will suffice to check that \(0\) is a regular value for
+        it is straightforward to see that \((1,1,1,0,0,0)\) is a regular value for \(F'\) by the vectors being nonzero at these points (independence of rows then follows easily from orthogonality). This realizes \(V_3(\mathbb{R}^7)\) as a \(15 = 21 - 6\) dimensional manifold \(F'^{-1}\set{(1,1,1,0,0,0)}\). Now we want to show that \(d_{(e_1,e_2,e_4)}\hat{F}\) is surjective, we will check later that using the action of \(G_2\) this gives surjectivity at all points. In order to avoid overloading notation on \(e_i\) I will use \((f_i)_1^{21}\) to denote the basis on \(\mathbb{R}^{21}\). Then we can define the path \(\gamma: (-\epsilon,\epsilon) \to V_3(\mathbb{R}^7)\) via \(\gamma(t) = (e_1,e_2,e_3\sin t + e_4\cos t)\), it is clear by definition that \(\gamma(-\epsilon,\epsilon)\) does indeed lie in \(V_3(\mathbb{R}^7)\), moreover we have \(\gamma(0) = (e_1,e_2,e_4)\) and \(\gamma'(t) = (0,0,e_3) = f_{17} \in T_{(e_1,e_2,e_4)}V_3(\mathbb{R}^7)\). Now we can take 
         \begin{align*}
-            F: V_3(\mathbb{R}^7) &\to \mathbb{R} \\
-            (x,y,z) &\mapsto \gen{xy,z}
+            \left.\frac{d}{dt}\right\vert_{t=0}F\circ\gamma(t) = \left.\frac{d}{dt}\right\vert_{t=0} \gen{e_1e_2,e_3\sin t + e_4\cos t} = \left.\frac{d}{dt}\right\vert_{t=0}e_3(\overline{e_3}\cos t + \overline{e_3}\sin t) = \left.\frac{d}{dt}\right\vert_{t=0} \cos t + \sin t = 1
         \end{align*}
-        where again we are using the identification of the imaginary octonions with \(\mathbb{R}^7\), also recognize that \(F\) is polynomial hence smooth. To simplify things we can factor through \(V_2(\mathbb{R}^8)\) by taking the composition \((x,y,z) \overset{m}{\mapsto} (xy,z') \overset{\gen{}}{\mapsto} \gen{xy,z'}\) the \(z \mapsto z'\) just denotes appending a zero leading coordinate, i.e. \(z' = (0,z_1,\hdots,z_7)\), everything here is still smooth due to being polynomial in coordinates. Thus \(d_{(x,y,z)}F = (d_{(xy,z')}\gen{})(d_{(x,y,z)}m)\), since all the spaces we are dealing with are just submanifolds of \(\mathbb{R}^N\) for some \(N\) (we can identify matrices with their components) We can identify the space with its chart, and the derivative with the Jacobian on charts, this allows us to readily write down the derivatives for \(m, \gen{}\).
+        so that indeed we have \(d_{(e_1,e_2,e_4)}\hat{F} = d_{(e_1,e_2,e_4)}F\vert_{T_{(e_1,e_2,e_4)}V_3(\mathbb{R}^7)}\) is nonzero, hence surjective. This gives that \(\hat{F}\) is a submersion at the point \((e_1,e_2,e_4)\), we need to check it for the rest of \(X = \hat{F}^{-1}(0)\), here we can use the theorem that for any other point \((x,y,z) \in X\) we have some \(A \in G_2\) with \(A(e_1,e_2,e_4) = (x,y,z)\). It follows that 
+
+        \textbf{(e)} Define the map using the theorem by defining \(A(x,y,z)\) to be the unique map transforming \((e_1,e_2,e_4) \mapsto (x,y,z)\)
         \begin{align*}
-            &d_{(x,y,z)}m = \begin{bmatrix} A(x,y) & 0 \\ 0 & 1_{7 \times 7} \end{bmatrix}
+            \Phi: X &\to O(7) \\
+            (x,y,z) &\mapsto A_{(x,y,z)}
         \end{align*}
-        (written in block form) Then to conclude that the derivative is onto, it just needs to be nonzero, so it will suffice to check that one of the last seven entries of \(d_{(xy,z)} \gen{}\) is non-zero, but in the coordinates the inner product is given by \((a,b) \mapsto (a_0b_0,\hdots,a_7b_7)\), it follows the Jacobian at \((xy,z')\) is given by \[\begin{pmatrix} 0&z_1&\cdots&z_7 &(xy)_0 &\cdots &(xy)_7 \end{pmatrix}\]
-        Since \(\gen{x,y} = 0\), and \(\norm{x}^2 = \norm{y}^2 = 1\) we know that \(xy\) is nonzero (we are working in a division algebra) and \(xy\) is not real, since otherwise \(0 = \gen{x,-y} = \gen{x, \overline{y}} = \text{Re}(xy)\) which would contradict \(xy \neq 0\). It follows that one of \((xy)_j\) is nonzero for \(1 \leq j \leq 7\), but this suffices to prove that \(d_{(x,y,z)}F\) has full rank of \(1\) at \((x,y,z)\). Hence we can apply the regular value theorem so that \(F^{-1}\set{0} = X\) is a submanifold of \(V_3(\mathbb{R}^7)\). \qed
+        That \(\Phi\) is injective is an immediate consequence of the theorem, surjectivity onto \(G_2\) is also straightforward, since \(G_2\) preserves norms, products and inner products (which are all of the special triple conditions) so all elements of \(G_2\) send special triples to special triples, whence \(G_2\) elements are all in the image of \(X\), determined by their action on \(e_1,e_2,e_4\). We can also take \(O(7)\) now with respect to the basis given by the special triple \((e_1,e_2,e_4)\), and note that this just amounts to flipping the signs on basis elements \(e_5,e_6\) and \(e_7\), the reason for doing this is to clean up notation that \(\Phi(e_1,e_2,e_4) = 1\). We also have that \(A\) is multilinear hence smooth. We check that it indeed defines an imersion, to do so consider the quotient map induced by the action of \(O(4)\) given by \(\pi: O(7) \to V_3{\mathbb{R}^7}\), then \(\pi\) is smooth, and \(\pi\circ \Phi = 1_X\) (recall that \(X\) is a submanifold, then the composition maps into it), it follows that at any special triple we have
+        \begin{align*}
+            (d_{A(x,y,z)}\pi)(d_{(x,y,z)}\Phi) = 1_{T_{(x,y,z)}X}
+        \end{align*}
+        injectivity of \(1_{T_{(x,y,z)}X}\) implies injectivity of \(d_{(x,y,z)}\Phi\), so that \(\Phi\) is an immersion. Finally it only remains to check that \(\Phi\) is proper, but this follows immediately from \(X\) compact. To see that \(X\) is compact, we can identify \(X \subset \overline{B_{0,1}(\mathbb{R}^{21})}\), where \(X\) is given by the intersection of zero-loci of polynomial equations. This realizes \(X\) as a closed compact subset of Euclidean space, hence compact. \qed
+
     \end{pb}
 \end{document}
