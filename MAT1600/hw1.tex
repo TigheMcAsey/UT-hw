@@ -58,4 +58,20 @@
     \begin{pb} \textbf{(Durrett 1.3.8)}
         If \(Y = f\circ X\) for \(f: (\mathbb{R},\mathcal{B}_\mathbb{R}) \to (\mathbb{R},\mathcal{B}_\mathbb{R})\), then for any borel set \(B\), we have \(Y^{-1}(B) = X^{-1}(f^{-1}(B))\), since \(f\) is measurable we know that \(f^{-1}(B) \in \mathcal{B}_\mathbb{R}\), so that \(X^{-1}(f^{-1}(B)) \in \sigma(X)\) by definition of \(\sigma(X)\), which suffices to show all functionsof this form are measurable with respect to \(\sigma(X)\). To show that all measurable functions on \(\sigma(X)\) are of this form, we can use (Durrett 1.3.7) to check that all pointwise limits of simple functions on \(\sigma(X)\) can be written in this form. Consider the simple functions \(\phi_k = \sum_1^{N_k} c^k_i 1_{X^{-1}(B^k_i)}\), with \(\phi_k \to g: (X,\sigma(X)) \to (\mathbb{R},\mathcal{B}_\mathbb{R})\) pointwise. It is immediate that \(\phi_k = \varphi_k\circ X\) where \(\varphi_k = \sum_1^{N_k}c^k_i 1_{B_i^k}\). It is straightforward to see that \(\varphi_k\) converges pointwise on \(\mathbb{R}\), since if \(x \in \mathbb{R}\), then \(x = X(y)\) for \(y \in \Omega\), then sequence \(\phi_k\circ X (y)\) is equal to the sequence \(\varphi_k (x)\), and hence \(\lim_{k\to\infty}\varphi_k(x) = \lim_{k\to\infty}\phi_k\circ X (y) = g(y)\), denoting the pointwise limit of \(\varphi_k\) as \(f\) we know that \(f\) is measurable by closure of measurable functions under pointwise limits, and moreover, \(f \circ X = g\) from construction. \qed
     \end{pb}
+    \begin{pb}\textbf{(Durrett 1.6.6)}
+        \begin{align*}
+            E[Y] = \int Y 1_{Y>0} \overset{\text{H\"older}}{\leq} \left(\int Y^2\right)^{\frac12}\left(\int 1_{Y>0}\right)^{\frac12}
+        \end{align*}
+        squaring both sides gives us
+        \begin{align*}
+            (E[Y])^2 \leq E[Y^2]P(Y>0)
+        \end{align*}
+        we can rearrange to find
+        \begin{align*}
+            \frac{(E[Y])^2}{E[Y^2]} \leq P(Y>0)
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 2.1.4)}
+        
+    \end{pb}
 \end{document}
