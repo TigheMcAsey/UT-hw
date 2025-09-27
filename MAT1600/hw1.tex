@@ -72,6 +72,46 @@
         \end{align*} \qed
     \end{pb}
     \begin{pb}\textbf{(Durrett 2.1.4)}
-        
+        To see that the \(X_n\) are uncorrelated (we could recall these functions are orthogonal in \(L^2(0,1)\) from basic Fourier analysis-- but I'll include some details) note that \(\int_0^1 \sin(2\pi nx)dx = 0 = \int_0^1 \cos(2\pi nx)\) for any \(n \in \mathbb{Z}\). We can also compute the expectation of the product using this observation, and the trigonometric identity for expressions of the form \(\sin(a)\sin(b)\).
+        \begin{align*}
+            E[X_nX_m] &= \int_0^1 \sin(2\pi nx)\sin(2\pi mx)dx = \int_0^1\frac12\left(\cos(2\pi(n - m)x) - \cos(2\pi(n+m)x)\right)dx = 0 \\ &= E[X_n]E[X_m]
+        \end{align*}
+    \end{pb}
+    This suffices to show the variables are uncorrelated. The collection \(\set{X_i}\) is not independent, this can be seen by taking
+    \begin{align*}
+        &X_1^{-1}(0,\frac12) = (0,\frac{1}{12}) \cup (\frac{5}{12},\frac12) &X_2^{-1}(0,\frac{1}{2}) = (0,\frac{1}{24})\cup(\frac{5}{24},\frac14)\cup(\frac12,\frac{13}{24})\cup(\frac{17}{24},\frac34)
+    \end{align*}
+    It is immediate that
+    \begin{align*}
+        \frac{1}{24} = P\left(X_1,X_2 \in (0,\frac12)\right) \neq P\left(X_1 \in (0,\frac12)\right)P\left(X_2 \in (0,\frac12)\right) = \frac{1}{36}
+    \end{align*}\qed
+
+    \begin{pb}\textbf{(Durrett 2.1.6)}
+        \begin{align*}
+            &P(f\circ X \in A, g\circ Y \in B) = P(X \in f^{-1}(A), Y \in g^{-1}(B)) = P(X \in f^{-1}(A)) \cap P(Y \in g^{-1}(B)) \\
+            &P(f\circ X \in A)P(g\circ Y \in B) = P(X \in f^{-1}(A))P(Y \in g^{-1}(B))
+        \end{align*}
+        From independence of \(X,Y\) we can conclude that
+        \begin{align*}
+            P(X \in f^{-1}(A)) \cap P(Y \in g^{-1}(B)) = P(X \in f^{-1}(A))P(Y \in g^{-1}(B))
+        \end{align*}
+        This is the definition of independence for \(f,g\) since \(A,B\) were arbitrary measurable sets. \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 2.1.9)}
+        Let \(\mathcal{A}_1 = \set{\emptyset,\Omega,\set{1,2},\set{1,4}}\) and \(\mathcal{A}_2 = \set{\emptyset,\Omega,\set{1,3}}\), to check independence of these collections, it suffices to check pairwise independence of \(\set{1,2} \tand \set{1,3}\) and \(\set{1,4} \tand \set{1,3}\). This is clear since
+        \begin{align*}
+            P(\set{1,2})P(\set{1,3}) = \frac14 = P(\set{1}) = P(\set{1,2} \cap \set{1,3})
+        \end{align*}
+        We can run the same computation for \(\set{1,4}\) and \(\set{1,3}\). To see that the generated algebra is not independent, we have \(\set{1,2}^c \cap \set{1,4}^c = \set{3,4} \cap \set{2,3} = \set{3} \in \sigma(\mathcal{A}_1)\), but
+        \begin{align*}
+            P(\set{3}\cap\set{1,3}) = P(\set{3}) = \frac14 \neq \frac18 = P(\set{3})P(\set{1,3})
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 2.1.14)}
+        since \(X,Y \geq 0\) we may assume that \(z \geq 0\), otherwise \(P(XY \leq z) = 0\) trivially, so the distribution is known for those values. To compute the distribution when \(z \geq 0\) we can use that
+        independence means that \((X,Y)\) has distribution given by \(dF\times dG\) (Durrett Proposition 2.1.11).
+        \begin{align*}
+            P(XY \leq z) &= \int\int 1_{XY \leq z}dGdF = \int\int 1_{0 < X < z}1_{Y < \frac{z}{X}} + 1_{X = 0} dGdF \\ &= F(0) + \int 1_{0 < X < z}\int 1_{Y < \frac{z}{X}}dG dF = F(0) + \int 1_{0<X<z}G(\frac{z}{X})dF
+        \end{align*} \qed
     \end{pb}
 \end{document}
