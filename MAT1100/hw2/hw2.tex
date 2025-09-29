@@ -68,8 +68,20 @@
         \textbf{(e)}
     \end{pb}
     \begin{pb}
-        \textbf{(a)} Suppose \(gx = y\), then for \(h \in \text{Stab}_x\) we have \(ghg^{-1}y = ghx = gx = y\), so that \(ghg^{-1} \in \text{Stab}_y\), by rewriting the equation \(g^{-1}y = x\), we see this conjugation is onto since it has inverse \(h \mapsto g^{-1}hg\) by the same argument. \qed
+        Note first that in general \(g \in G\) and \(z\) in a left \(G\)-set, then \(\text{Stab}(gz) = g\text{Stab}(z)g^{-1}\)
         
-        \textbf{(b)} If \(F: X \to Y\) is a \(G\)-set isomorphism, then suppose \(g \in \text{Stab}(x)\), then \(gF(x) = F(gx) = F(x)\), moreover if \(h \in \text{Stab}(y)\), then \(hF(x) = F(x)\)
+        \textbf{(a)} 
+        If \(gx = y\), then from the previous remark
+        \begin{align*}
+            \text{Stab}(y) = \text{Stab}(gx) = g\text{Stab}(x)g^{-1}
+        \end{align*}\qed
+        
+        \textbf{(b)} First suppose \(g\text{Stab}(x)g^{-1} = \text{Stab}(y)\), then let take \(F: hx \mapsto hgy\), this is clearly a bijection and a \(G\)-set morphism so long as its well defined. If \(hx = h'x\), then \(h^{-1}h' \in \text{Stab}(x)\), so that
+        \begin{align*}
+            g^{-1}h^{-1}h'gy = y \iff h'gy = hgy
+        \end{align*}
+        as desired.
+        
+        Conversely, if \(F: X \to Y\) is a \(G\)-set isomorphism, then write \(F(x) = gy\), then \[\text{Stab}(x) = \text{Stab}F(x) = g\text{Stab(y)}g^{-1}\] \qed
     \end{pb}
 \end{document}

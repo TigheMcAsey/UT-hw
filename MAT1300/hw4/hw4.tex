@@ -7,31 +7,31 @@
 \usepackage{graphicx}
 
 \fancyhf{}
-\lhead{MAT1300 hw1}
+\lhead{MAT1300 hw4}
 \rhead{Tighe McAsey - 1008309420}
 \pagestyle{fancy}
 
 % Page dimensions
 \geometry{a4paper, margin=1in}
 
-\newtheorem{pb}{Problem}[section]
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{definition}{Definition}[section]
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\usepackage{tikz-cd, stackengine}
 
 % Commands:
 
 \newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
 \newcommand{\abs}[1]{\lvert#1\rvert}
 \newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
 \newcommand{\tand}{\text{ and }}
 \newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
 
 \begin{document}
-    \section{Lecture 1}
     \begin{pb}
-        
+        Let \(\set{\lambda_i}_I\cup\set{\lambda_j}_J\) be a partition of unity subordinate to \(A^c, B^c\), with \(i \in I \iff \text{supp}(\lambda_i) \subset A^c\). Then \(f = \sum_I \lambda_i\) is smooth (smoothness is a local property and locally it is a finite sum of smooth functions), and \(f \equiv 0\) on \(A\) by construction. Finally on \(B\) we have \(1 = f + \sum_J \lambda_j = f + 0 = f\) since \(\lambda_j\) are only supported on \(B^c\). \qed 
     \end{pb}
-    \section{Lecture 2}
     \begin{pb}
         
     \end{pb}
