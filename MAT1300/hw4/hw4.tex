@@ -33,6 +33,16 @@
         Let \(\set{\lambda_i}_I\cup\set{\lambda_j}_J\) be a partition of unity subordinate to \(A^c, B^c\), with \(i \in I \iff \text{supp}(\lambda_i) \subset A^c\). Then \(f = \sum_I \lambda_i\) is smooth (smoothness is a local property and locally it is a finite sum of smooth functions), and \(f \equiv 0\) on \(A\) by construction. Finally on \(B\) we have \(1 = f + \sum_J \lambda_j = f + 0 = f\) since \(\lambda_j\) are only supported on \(B^c\). \qed 
     \end{pb}
     \begin{pb}
-        
+        In order to make sense of the problem, we first should check that for a linear map \(A\), \(\text{Graph}(A) \subset \mathbb{R}^{2k}\) is a submanifold. To do so we can take the chart on \((\mathbb{R}^k)^2\) to be \((x,y) \mapsto (x,y - Ax)\), this map is clearly smooth and with smooth inverse (to get the inverse just add \(Ax\)), moreover we see that \(\text{Graph}(A)\) is a linear subspace by construction on this chart, now that everything makes sense we should forget about ever doing this and just use the standard coordinate chart on \(\mathbb{R}^{2k}\).
+
+        Now if \(1\) is not an eigenvalue of \(A\) we are done trivially, since \(\text{Graph}(A) \cap \Delta = \emptyset\) so that transversality is vacuously true. Now suppose that \(1\) is an eigenvalue of \(A\) with eigenvector \(v\), then since \(\text{Graph}(A)\) and \(\Delta\) are both \(k\) dimensional, it suffices to check that the intersection of their tangent spaces is non-zero at \((v,v)\) to see that they are not transverse. Noticing that a path in \(\text{Graph}(A)\) is of the form \((\gamma(t),A\gamma(t))\), we can take \(\gamma(t) = tv\), to see that \(\begin{pmatrix} v \\ v \end{pmatrix} \in T_{(v,v)}\text{Graph}(A)\), by virtually the same argument \(\begin{pmatrix} v \\ v \end{pmatrix}\) is also in \(T_{(v,v)}\Delta\), so that \(T_{(v,v)}\text{Graph}(A) \cap T_{(v,v)}\Delta \supset \text{span}(v)\) has dimension atleast one, from here we are done since
+        \begin{align*}
+            2k > 2k-1 &\geq \dim T_{(v,v)}\text{Graph}(A) + \dim T_{(v,v)}\Delta - \dim T_{(v,v)}(\text{Graph}(A) \cap T_{(v,v)}\Delta) \\ &= \dim (T_{(v,v)}\text{Graph}(A) +  T_{(v,v)}\Delta)
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} The convention chosen effectively fixes our polygon up to rotation and translation. This is because for any fixed rotation, we choose the translate of the polygon with \(p_1 = 0\), which is a unique representative for this fixed rotation. Fixing the rotation is fine since the rotation can be chosen independent of translation as the unique representative with \(p_n - p_1 \in \mathbb{R}_{>0} \times \set{0}\). \qed
+
+        \textbf{(b)} Define the function
     \end{pb}
 \end{document}
