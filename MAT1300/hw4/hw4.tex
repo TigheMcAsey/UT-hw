@@ -27,22 +27,63 @@
 \newcommand{\tand}{\text{ and }}
 \newcommand{\tor}{\text{ or }}
 \newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\setcounter{MaxMatrixCols}{20}
 
 \begin{document}
     \begin{pb}
         Let \(\set{\lambda_i}_I\cup\set{\lambda_j}_J\) be a partition of unity subordinate to \(A^c, B^c\), with \(i \in I \iff \text{supp}(\lambda_i) \subset A^c\). Then \(f = \sum_I \lambda_i\) is smooth (smoothness is a local property and locally it is a finite sum of smooth functions), and \(f \equiv 0\) on \(A\) by construction. Finally on \(B\) we have \(1 = f + \sum_J \lambda_j = f + 0 = f\) since \(\lambda_j\) are only supported on \(B^c\). \qed 
     \end{pb}
     \begin{pb}
-        In order to make sense of the problem, we first should check that for a linear map \(A\), \(\text{Graph}(A) \subset \mathbb{R}^{2k}\) is a submanifold. To do so we can take the chart on \((\mathbb{R}^k)^2\) to be \((x,y) \mapsto (x,y - Ax)\), this map is clearly smooth and with smooth inverse (to get the inverse just add \(Ax\)), moreover we see that \(\text{Graph}(A)\) is a linear subspace by construction on this chart, now that everything makes sense we should forget about ever doing this and just use the standard coordinate chart on \(\mathbb{R}^{2k}\).
+        In order to make sense of the problem, we first should check that for a linear map \(A\), \(\text{Graph}(A) \subset \mathbb{R}^{2k}\) is a submanifold. To do so we can take the chart on \((\mathbb{R}^k)^2\) to be \((x,y) \mapsto (x,y - Ax)\), this map is clearly smooth and with smooth inverse (to get the inverse just add \(Ax\)), moreover we see that \(\text{Graph}(A)\) is a linear subspace by construction on this chart and that \(\text{Graph}(A)\) has dimension \(k\), moreover specializing the result to \(\Delta\) we have that \(\Delta\) is a submanifold of dimension \(k\). Now that everything makes sense we should forget about ever doing this and just use the standard coordinate chart on \(\mathbb{R}^{2k}\).
 
-        Now if \(1\) is not an eigenvalue of \(A\) we are done trivially, since \(\text{Graph}(A) \cap \Delta = \emptyset\) so that transversality is vacuously true. Now suppose that \(1\) is an eigenvalue of \(A\) with eigenvector \(v\), then since \(\text{Graph}(A)\) and \(\Delta\) are both \(k\) dimensional, it suffices to check that the intersection of their tangent spaces is non-zero at \((v,v)\) to see that they are not transverse. Noticing that a path in \(\text{Graph}(A)\) is of the form \((\gamma(t),A\gamma(t))\), we can take \(\gamma(t) = tv\), to see that \(\begin{pmatrix} v \\ v \end{pmatrix} \in T_{(v,v)}\text{Graph}(A)\), by virtually the same argument \(\begin{pmatrix} v \\ v \end{pmatrix}\) is also in \(T_{(v,v)}\Delta\), so that \(T_{(v,v)}\text{Graph}(A) \cap T_{(v,v)}\Delta \supset \text{span}(v)\) has dimension atleast one, from here we are done since
+        Now if \(1\) is not an eigenvalue of \(A\) we only need to check transversality at \((0,0)\), the only point of intersection. Since \(1\) is not an eigenvector for \(A\), there is no \(v \in \mathbb{R}^k \setminus \set{0}\) with \(Av = v\). Moreover, any path must be of the form \((\gamma(t),A\gamma(t))\), so it is easy to see that \(T_{(0,0)}\text{Graph}(A) = \set{(v,Av) \mid v \in \mathbb{R}^k}\) and \(T_{(0,0)}\Delta = \set{(v,v) \mid v \in \mathbb{R}^k}\). From this identification we can see that \(T_{(0,0)}\Delta \cap T_{(0,0)}\text{Graph}(A) = 0\). It follows that
         \begin{align*}
-            2k > 2k-1 &\geq \dim T_{(v,v)}\text{Graph}(A) + \dim T_{(v,v)}\Delta - \dim T_{(v,v)}(\text{Graph}(A) \cap T_{(v,v)}\Delta) \\ &= \dim (T_{(v,v)}\text{Graph}(A) +  T_{(v,v)}\Delta)
+            2k = \dim T_{(0,0)}\Delta + \dim T_{(0,0)}\text{Graph}(A) - \dim T_{(0,0)}\Delta \cap T_{(0,0)}\text{Graph}(A) = \dim T_{(0,0)}\Delta + T_{(0,0)}\text{Graph}(A)
+        \end{align*}
+        Which proves transversality.
+        
+        Now suppose that \(1\) is an eigenvalue of \(A\) with eigenvector \(v\), then since \(\text{Graph}(A)\) and \(\Delta\) are both \(k\) dimensional, it suffices to check that the intersection of their tangent spaces is non-zero at \((0,0)\) to see that they are not transverse. Noticing that a path in \(\text{Graph}(A)\) is of the form \((\gamma(t),A\gamma(t))\), we can take \(\gamma(t) = tv\), to see that \(\begin{pmatrix} v \\ v \end{pmatrix} \in T_{(0,0)}\text{Graph}(A)\), by virtually the same argument \(\begin{pmatrix} v \\ v \end{pmatrix}\) is also in \(T_{(0,0)}\Delta\), so that \(T_{(0,0)}\text{Graph}(A) \cap T_{(0,0)}\Delta \supset \text{span}(v)\) has dimension atleast one, from here we are done since
+        \begin{align*}
+            2k > 2k-1 &\geq \dim T_{(0,0)}\text{Graph}(A) + \dim T_{(0,0)}\Delta - \dim T_{(0,0)}(\text{Graph}(A) \cap T_{(0,0)}\Delta) \\ &= \dim (T_{(0,0)}\text{Graph}(A) +  T_{(0,0)}\Delta)
         \end{align*} \qed
     \end{pb}
     \begin{pb}
         \textbf{(a)} The convention chosen effectively fixes our polygon up to rotation and translation. This is because for any fixed rotation, we choose the translate of the polygon with \(p_1 = 0\), which is a unique representative for this fixed rotation. Fixing the rotation is fine since the rotation can be chosen independent of translation as the unique representative with \(p_n - p_1 \in \mathbb{R}_{>0} \times \set{0}\). \qed
 
         \textbf{(b)} Define the function
+        \begin{align*}
+            f: (\mathbb{R}^2)^n &\to \mathbb{R}^{n+3} \\
+            (p_1,\hdots,p_n) &\mapsto (d(p_1,p_2),\hdots,d(p_{n-1},p_n),p_1,p_n)
+        \end{align*}
+        Now define the notation \(\mathbb{R}_{>0}\) to refer to \(\prod_1^{n-1}\set{\ell_i} \times \set{0} \times \set{0} \times (0,\infty) \times \set{0}\) which is clearly a codimension \(n+2\) submanifold. By construction we get \(\mathcal{A}(\ell_1,\hdots,\ell_{n-1}) = f^{-1}(\mathbb{R}_{>0})\), so to see that it is a submanifold we can use the transverse regular value theorem. For \(p \in f^{-1}(\mathbb{R}_{>0})\) we find that writing \(c_j(x)\) to denote the \(j-th\) coordinate of \(x\) for \(j = 1,2\) and \(x \in \mathbb{R}^2\).
+        \begin{align*}
+            d_pf &= \begin{pmatrix}
+                \frac{c_1(p_1 - p_2)}{d(p_1,p_2)} & \frac{c_2(p_1 - p_2)}{d(p_1,p_2)} & \frac{c_1(p_2 - p_1)}{d(p_1,p_2)} & \frac{c_2(p_2 - p_1)}{d(p_1,p_2)} & 0 & 0 & \cdots & 0 & 0 \\
+                0 & 0 & \frac{c_1(p_2 - p_3)}{d(p_2,p_3)} & \frac{c_2(p_2 - p_3)}{d(p_2,p_3)} & \frac{c_1(p_3 - p_2)}{d(p_2,p_3)} & \frac{c_2(p_3 - p_2)}{d(p_2,p_3)} & \ddots &  0 & 0\\
+                \vdots  & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots  & \vdots & \vdots\\
+                0 & 0 & 0 & 0 & 0 & 0 & \cdots & \frac{c_1(p_n - p_{n-1})}{d(p_{n-1},p_n)} & \frac{c_2(p_n - p_{n-1})}{d(p_{n-1},p_n)}\\
+                1 & 0 & 0 & 0 & 0 & 0 & \cdots & 0 & 0\\
+                0 & 1 & 0 & 0& 0& 0 &\cdots &0 & 0\\
+                0 & 0 & 0 & 0 & 0 & 0 & \cdots & 1 & 0 \\
+                0 & 0 & 0 & 0 & 0 & 0 & \cdots & 0 & 1 
+            \end{pmatrix} \\
+            T_p\mathbb{R}_{>0} &= \text{Span}\set{e_{n+2}}
+            % \begin{pmatrix}
+            %     \frac{\partial}{\partial p_1}d(p_1,p_2) & 0  &\cdots & 0 & (1,1)\\
+            %     \frac{\partial}{\partial p_2}d(p_1,p_2) & \frac{\partial}{\partial p_2}d(p_2,p_3) & \ddots & 0 & 0 \\
+            %     0 & \frac{\partial}{\partial p_3}d(p_2,p_3) \\
+            %     0 & 0 & \ddots & \vdots & \vdots\\
+            %     \vdots & \vdots & \ddots & \frac{\partial}{\partial p_{n-1}}d(p_{n-1},p_n) & 0 &\\
+            %     0 & 0 & \cdots & \frac{\partial}{\partial p_n}(p_{n-1},p_n) & 0 & (1,1)
+            % \end{pmatrix}
+        \end{align*}
     \end{pb}
+    For convenience denote \(A = d_pf\), then it should be clear the first \(n-1\) rows of the matrix are linearly independent due to \(c_1(p_i - p_{i+1})\) being zero implying that \(c_2(p_i - p_{i+1}) \neq 0\) since \(\ell_i > 0\), this puts the first \(n-1\) rows directly in row-echelon form. Now looking at the appended three rows on the bottom, we can identify that the second column is linearly independent from the first, adding one to the rank. Since the last two columns are not pivots in the upper matrix, the appended bottom two rows also add two to the rank, meaning that \(A\) has rank \(n + 2\). To see that \(A\pitchfork_p \mathbb{R}_{>0}\) it will suffice to check that \(e_{n+2} \in \text{Im}(A)\) implies \(A\) has full rank (because otherwise \(A\) has rank \(n+2\) and its image doesn't contain \(e_{n+2}\) so that \(\dim(\text{Im}(A) + T_p \mathbb{R}_{>0})=n+3\) and we are done), to do so notice by definition of point \(p\), we have \(\frac{c_1(p_n - p_{n-1})}{d(p_{n-1},p_n)} > 0\), so that \(e_{n+2}\) is in the image if and only if \(e_{n-1}\) is, but if this were the case we could go right to left and observe that \(e_{n-2}, \hdots , e_1\) would all be in the image, in which case the matrix will already have rank \(n + 3\), since then subtracting some multiple of \(e_i\) from the image of a basis vector from the first and last two columns will also give \(e_n,e_{n+1},e_{n+2},e_{n+3} \in \text{Im}(A)\) so that \(A\) has full rank and transversality follows trivially.
+    
+    Since \(A\) is transverse to \(\mathbb{R}_{>0}\) we can use the transverse regular value theorem to conclude that \(f^{-1}(\mathbb{R}_{>0}) = \mathcal{A}(\ell_1,\hdots,\ell_{n-1})\) is a codimension \(n+2\) sub-manifold of \(\mathbb{R}^{2n}\), and hence has dimension \(n-2\). \qed
+
+    \textbf{(c)} \(\mathcal{M}(\ell_1,\hdots,\ell_n) = \pi^{-1}\set{\ell_n}\) by definition. By Sard's theorem, we know that the \(\text{CriticalValues}(\pi) \subset \mathcal{A}(\ell_1,\hdots,\ell_{n-1})\) has measure \(0\), and therefore \[\set{\ell_n \mid \mathcal{M}(\ell_1,\hdots,\ell_n) \text{ is a }n-3\text{ dimensional submanifold}} \subset \mathbb{R}_{>0}\]
+    is a dense subset. Since this holds for any \(\ell_1,\hdots,\ell_{n-1}\), we get a dense subset of \(\mathbb{R}_{>0}^{n}\). The easiest way to see this is that open rectangles form a basis for the topology on \(\mathbb{R}^n\), then taking an open rectangle in \(\mathbb{R}_{>0}^n\), we can take the slice of the \(n\)-th coordinate at some \((\ell_1,\hdots,\ell_{n-1})\) to get an open subset of \(\mathbb{R}_{>0}\), so by density of this slice proved above by Sard's theorem, this slice contains some \(\ell_n\) such that \(\mathcal{M}(\ell_1,\hdots,\ell_n)\) is an \(n-3\) dimensional manifold, since an arbitrary basis element of the topology must contain a point \((\ell_1,\hdots,\ell_n)\) satisfying the condition this concludes the proof of density. \qed
+
+    \textbf{(d)}
 \end{document}
