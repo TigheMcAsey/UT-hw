@@ -94,11 +94,10 @@
         \begin{align*}
             e(t,x) = \phi(x,t\tilde{s}(x))
         \end{align*}
-        disjointness of \(e_1(M)\) from \(M = e_0(M)\) follows from injectivity of \(\phi\), and their disjointness in the normal bundle. Now we only need check that \(e\) is an isotopy.
+        Clearly \(e\) is smooth, disjointness of \(e_1(M)\) from \(M = e_0(M)\) follows from injectivity of \(\phi\), and their disjointness in the normal bundle. Now we only need check that \(e\) is an isotopy, but it is clear that for each \(t\), we have \(x \mapsto (x,t\tilde{s}(x))\) is an embedding, since it is a smooth section of the normal bundle (so has smooth inverse \(\pi_N\vert_{e_t(M)}\), i.e. is diffeomorphic to its image), then post composing with the diffeomorphism \(\phi\) giving \(e_t\) of course still gives an embedding.
 
         \textbf{(b)} This proof is a bit more involved than previous homework problems, so I will provide an outline before diving in, here we want to first Whitney embed \(N \hookrightarrow \mathbb{R}^r\) so we can use metrics. The main idea here is to reconstruct the normal bundle of \(M\) by taking the normal bundle of embeddings of \(S^1\) into \(M\), and then restricting their normal bundles to \(NM\). Once we show that this reconstruction is possible, we will use the classification of line bundles on \(S^1\), if one of the line bundles is a M\"obius bundle, then a section \(s\) will give a transverse intersection with \(M\), in this case we can take the section to be closer to \(M\) than \(d(e_1(M),M)\), so that \(I_2(e_1,s) = 0 \neq 1 = I_2(e_0,s)\), which will reduce the problem to all of the line bundles being trivial, in which case we can show that we can take sections on line bundles from the embeddings which are compatible and give a nonvanishing global section on \(M\).
-    \end{pb}
-    \begin{pb}
-        
+
+        As stated in the preamble, we can consider \(N \subset \mathbb{R}^r\) by taking a Whitney embedding, this also allows us to deal with normal bundles less formally. Now consider the collection of embeddings \(\set{\gamma_\alpha}_{\alpha \in I}\) where each \(\gamma_\alpha: S^1 \hookrightarrow M\), then we may consider \(NM\vert_{\gamma_\alpha(S^1)} \subset N\gamma_\alpha(S^1) \subset TN\vert_{\gamma_{\alpha}(S^1)}\), so that \(NM\vert_{\gamma_\alpha(S^1)}\) is a line bundle over \(S^1\), we first assume for the sake of contradiction that there exists some \(\alpha\), with \(NM\vert_{\gamma_\alpha(S^1)} \cong \text{Mobius}(S^1)\), we can take the section on the mobius bundle \(s(x) = (x,\sin(\pi x))\), which is a smooth section with intersection number \(1\),
     \end{pb}
 \end{document}
