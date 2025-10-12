@@ -89,4 +89,16 @@
 
         % (check! 2):
     \end{pb}
+    \begin{pb}
+        \textbf{(a)} From the Tubular neighborhood theorem we have a diffeomorphism \(\phi: NM \to W\) where \(W\) is an open neighborhood of \(M\) in \(N\), then we take take \(s: M \to NM\), where \(s(x) = (x,\tilde{s}(x))\), We define the isotopy as follows:
+        \begin{align*}
+            e(t,x) = \phi(x,t\tilde{s}(x))
+        \end{align*}
+        disjointness of \(e_1(M)\) from \(M = e_0(M)\) follows from injectivity of \(\phi\), and their disjointness in the normal bundle. Now we only need check that \(e\) is an isotopy.
+
+        \textbf{(b)} This proof is a bit more involved than previous homework problems, so I will provide an outline before diving in, here we want to first Whitney embed \(N \hookrightarrow \mathbb{R}^r\) so we can use metrics. The main idea here is to reconstruct the normal bundle of \(M\) by taking the normal bundle of embeddings of \(S^1\) into \(M\), and then restricting their normal bundles to \(NM\). Once we show that this reconstruction is possible, we will use the classification of line bundles on \(S^1\), if one of the line bundles is a M\"obius bundle, then a section \(s\) will give a transverse intersection with \(M\), in this case we can take the section to be closer to \(M\) than \(d(e_1(M),M)\), so that \(I_2(e_1,s) = 0 \neq 1 = I_2(e_0,s)\), which will reduce the problem to all of the line bundles being trivial, in which case we can show that we can take sections on line bundles from the embeddings which are compatible and give a nonvanishing global section on \(M\).
+    \end{pb}
+    \begin{pb}
+        
+    \end{pb}
 \end{document}
