@@ -1,0 +1,92 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+
+\fancyhf{}
+\lhead{MAT1300 hw5}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\usepackage{tikz-cd, stackengine}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\setcounter{MaxMatrixCols}{20}
+
+\begin{document}
+    \begin{pb}
+        We start by computing the Jacobian of the map \(F: x \mapsto \frac{x}{\norm{x}}\)
+        \begin{align*}
+            \pd \frac{x_i}{\sqrt{\sum_1^{n+1} x_k^2}} = \frac{\delta_{ij}\norm{x} - x_ix_j\norm{x}^{-1}}{\norm{x}^2} = \frac{\delta_{ij}}{\norm{x}} - \frac{x_ix_j}{\norm{x}^3}
+        \end{align*}
+        So the Jacobian looks like
+        \begin{align*}
+            \frac{1}{\norm{x}}1 - \frac{1}{\norm{x}^3}xx^T
+        \end{align*}
+
+        Now beginning the actual proof, let \(\set{f_1,\hdots,f_{n-m}}\) be a basis for \((\text{Im}\,A)^\perp\), then define \(T: \mathbb{R}^{n-m+1} \to \mathbb{R}^{n+1}\) via \(e_i \mapsto f_i\) when \(1 \leq i \leq n-m\) and \(e_{n-m+1} \mapsto Ae_1\), then \(\overline{T}: \mathbb{RP}^{n-m}\to \mathbb{RP}^n\) is an embedding, so we can refer to its image as the submanifold \(X \subset \mathbb{RP}^n\). Now we get that \(\text{Im}(\overline{A})\cap X = q(\text{Im}\,A \cap \text{Im}\,T)\), where \(q: \mathbb{R}^{n+1}\setminus\set{0} \to \mathbb{RP}^n\) is the quotient. By construction this intersection is \([Ae_1]\), so that once we verify \(\overline{A}\pitchfork_{[Ae_1]}X\) we will get that \(I_2(\overline{A},X) = 1\). Now checking transversality, we will use the following maps, where the \(\pi\) maps are the indiced quotients under the action by the discrete group. Note that in particular the \(\pi\) maps are submersions of manifolds of equal dimension and hence local diffeomorphisms by the inverse function theorem.
+        \begin{align*}
+            &\widehat{A}: S^m \to S^n &\widehat{T}: S^{m-n} \to S^n\\
+            &v \mapsto \frac{Av}{\norm{Av}} &v \mapsto \frac{Tv}{\norm{Tv}} \\
+            &\pi_m: S^m \to \mathbb{RP}^m &\pi_{n-m}: S^{n-m} \to \mathbb{RP}^{n-m} \\
+            &\pi: S^n \to \mathbb{RP}^n
+        \end{align*}
+        Moreover, the following diagrams commute by definition of \(\widehat{A},\widehat{T}\)
+        \begin{equation*}
+            \begin{tikzcd}
+            S^m \arrow[r,"{\widehat{A}}"] \arrow[d,"{\pi_m}"] &S^n \arrow[d,"{\pi}"] & S^{n-m} \arrow[r,"{\widehat{T}}"] \arrow[d,"{\pi_{n-m}}"] &S^n \arrow[d,"{\pi}"]\\
+            \mathbb{RP}^m \arrow[r,"{\overline{A}}"] &\mathbb{RP}^n &\mathbb{RP}^{n-m} \arrow[r,"\overline{T}"] &\mathbb{RP}^n
+            \end{tikzcd}
+        \end{equation*}
+        We will verify later that \(\text{Im}\,d_{e_1}\widehat{A} + \text{Im}\,d_{e_{m-n+1}}\widehat{T} = T_{A(e_1)}S^n\), but assuming it for now we find that (using repeatedly the submersion properties of the projections)
+        \begin{align*}
+            T_{\overline{A}e_1}\mathbb{RP}^n &= d_{\widehat{A}e_1}\pi(\text{Im}\,d_{e_1}\widehat{A} + \text{Im}\,d_{e_{m-n+1}}\widehat{T}) \\
+            &= \text{Im}\,d_{e_1}(\pi\circ\widehat{A}) + \text{Im}\,d_{e_{n-m+1}}(\pi\circ\widehat{T}) \\
+            &= \text{Im}\,d_{e_1}(\overline{A}\circ\pi_m) + \text{Im}\,d_{e_{n-m+1}}(\overline{T}\circ\pi_{n-m}) \\
+            &= \text{Im}\,(d_{[e_1]}\overline{A}) + \text{Im}\,(d_{[e_{n-m+1}]}\overline{T}) \\
+            &= \text{Im}\,(d_{[e_1]}\overline{A}) + T_{[Ae_1]}X
+        \end{align*}
+        This verifies that indeed \(\overline{A}\pitchfork_{[Ae_1]}X\), now to complete the proof, note that we have some \([p] \in \mathbb{RP}^n \setminus X\), since \(\mathbb{RP}^n\) is connected (therefore path connected), any constant map \(\mathbb{RP}^m \to \mathbb{RP}^n\) is homotopic to the map \(c:\mathbb{RP}^m \to [p]\), where \(I_2(c,X) = 0\) trivially, since intersection number is a homotopy invarient this completes the proof.
+
+        \textbf{(Proof of \(\mathbf{d_{e_1}\widehat{A} + d_{e_{m-n+1}}\widehat{T} = T_{A(e_1)}S^n}\)):} To show this, we will compute the derivatives as maps of \(\mathbb{R}^k\setminus\set{0} \to \mathbb{R}^{n+1}\), then use the characterization of the tangent space \(T_pS^k = p^\perp \cap T_p \mathbb{R}^{k+1}\). To compute the derivative note that the maps are of the form \(\widehat{A} = F\circ A \tand \widehat{T} = F \circ T\), where we computed the derivative of \(F\) prior to tackling the problem, by the chain rule we have
+        \begin{align*}
+            d_{e_1}\widehat{A} &= \left(\frac{1}{\norm{Ae_1}}1 - \frac{1}{\norm{Ae_1}^3}(Ae_1)\cdot(Ae_1)^T\right)d_{e_1}A\\
+            d_{e_{n-m+1}}\widehat{T} &= \left(\frac{1}{\norm{Ae_1}}1 - \frac{1}{\norm{Ae_1}^3}(Ae_1)\cdot(Ae_1)^T\right)d_{e_{n+m-1}}T
+        \end{align*}
+        restricting to the orthogonal compliment of \(Ae_1\), \(\frac{1}{\norm{Ae_1}^3}(Ae_1)\cdot(Ae_1)^T \equiv 0\), so that
+        \begin{align*}
+            d_{e_1}\widehat{A} \equiv \frac{1}{\norm{Ae_1}}d_{e_1}A \tand d_{e_{n-m+1}}\widehat{T} \equiv \frac{1}{\norm{Ae_1}}d_{e_{n-m+1}}T
+        \end{align*}
+        the derivative should also have restricted domain since these are maps of spheres, restricting the domain of \(d_{e_1}\widehat{A}\) to \(e_1^\perp\) and \(d_{e_{n-m+1}}\widehat{T}\) to \(e_{n-m+1}^\perp\) and taking \(\rho: \mathbb{R}^{n+1} \to (Ae_1)^\perp\) to be the orthogonal projection we find the images of either differential have respective bases
+        \begin{align*}
+            \set{\rho(Ae_2),\hdots,\rho(Ae_{m+1})} \tand \set{\rho(Te_1),\hdots,\rho(Te_{n-m})}
+        \end{align*}
+        By definition of \(T\), and injectivity of both \(A\) and \(T\) (which have \(Ae_1\) in their image), this collection of \(n\) vectors forms a basis for \(T_{Ae_1}S^n\), this is easiest to see by writing it as
+        \begin{align*}
+            \rho(\gen{Ae_2,\hdots,Ae_{m+1},f_1,\hdots,f_{n-m}})
+        \end{align*}
+        where \(\rho\) has no kernel on this subspace, and this space has dimension \(n\) by definition of the \(f_i\) and injectivity of \(A\). \qed
+        
+        % Consider the translated vectorspace \(W \subset \mathbb{R}^{n+1} = (\text{Im}\,A)^\perp + \frac{A(e_1)}{2\norm{A e_1}}\), then this defines a submanidold \(X\) of \(\mathbb{RP}^n\) after taking the quotient (check!). Moreover, \(\overline{A}(\mathbb{RP}^m) \cap X = [Ae_1]\), and the intersection is transverse, \(A \pitchfork_{[Ae_1]} X\) (check!). This gives that \(I_2(A,X) = 1\), we will be done once we shot the straightforward result that a constant map has zero intersection number with \(X\). Since \(\mathbb{RP}^n\) is connected and therefore path connected, and \(X \subsetneq \mathbb{RP}^n\), we can take \([z] \in X^c\) so that any constant map is homotopic to \(c:\mathbb{RP}^m \to [z]\) which has \([z] \cap X = \emptyset\) so that \(c \pitchfork X\) trivially with \(I_2(c,X) = 0\).
+
+        % (check! 1):  We can realize \(X\) as a submanifold via an embedding, namely take \(W' = W\cap S^n\), then the quotient map \(q: S^n \to \mathbb{RP}^n\) is an embedding when restricted to \(W'\), this follows from \(q\) being a submersion between spaces of equal dimension and hence also an immersion, moreover \(q\vert_{W'}\) is injective since \(0 \not \in W'\) implies that only one representative of each equivalence class in \(\mathbb{RP}^n\) lies in \(W'\) (if \(x,-x \in W'\) then \(x = v + Ae_1\), so that \(-x + v = -Ae_1 \in W' \implies -2Ae_1 \in (\text{Im}A)^\perp\) a contradiction), to conclude that \(q\vert_{W'}\) is an immersion it will suffice to check that \(W'\) is closed (hence compact by being a subset of the sphere), to see this note that . We can easily check that the image of \(\overline{A}\) intersected with \(X\) is \([Ae_1]\), since \(W'\cap \text{Im}\,A = Ae_1\), so there is also only one point of intersection after taking the quotient.
+
+        % (check! 2):
+    \end{pb}
+\end{document}
