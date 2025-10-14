@@ -138,4 +138,7 @@
         \end{align*}
         The first term we have \(\frac{X_k}{\log n}(x) \leq \frac{X_k}{\log M}(x) < 1\) since \(1 \leq k \leq N\), and the second term we have \(\frac{X_k}{\log n}(x) \leq \frac{X_k(x)}{\log k} \leq 1 + \epsilon\) since \(k \geq N\). This completes the proof that \(\set{\frac{M_n}{\log n} > 1 + \epsilon \text{ only finitely often}} \supset \set{x \mid \limsup \frac{X_n}{\log n} = 1}\), and hence the former has probability \(1\) completing the proof of \(\lim \frac{M_n}{\log n} = 1\) a.s. \qed
     \end{pb}
+    \begin{pb} \textbf{(Durrett 2.3.19)}
+        We first note that \(X_k \sim \text{Poisson}(\lambda_k)\) gives us that \(\sum_1^n X_k \sim \text{Poisson}(\sum_1^n \lambda_k)\), the naive proof technique runs into an issue if the means are not bounded, so we will use this to reduce to the case of bounded means.
+    \end{pb}
 \end{document}
