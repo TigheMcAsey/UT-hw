@@ -62,6 +62,80 @@
         \begin{align*}
             \frac{1}{b_n^2}\sum_1^nE\overline{X}_{n,k}^2 \leq \frac{2n}{b_n^2} = \frac{2n}{2^{-2m(n)}} < \frac{2m(n)^{3/2}}{2^{-m(n)}} \overset{n \to \infty}{\longrightarrow} 0
         \end{align*}
-        Now we want to obtain workable expressions to explain the asymptotic behaviour, we obtain the following expression for \(\sum_1^n E \overline{X}_{n,k}\)
+        Now we want to obtain workable expressions to explain the asymptotic behaviour, we obtain the following expression for \(\sum_1^n E \overline{X}_{n,k}\) (here I not writing the dependence of \(m\) on \(n\) out of laziness)
+        \begin{align*}
+            \sum_1^n E \overline{X}_{n,k} &= n\left(-p_0 + \sum_1^m (2^k - 1)p_k\right) = n\left(\sum_1^m \frac{1}{k(k+1)} - 1 - \sum_1^m \frac{1}{2^k k(k+1)} + \sum_1^\infty \frac{1}{2^k k(k+1)}\right) \\ &= -n\left(1 - \frac{1}{m+1} - 1 + \sum_{m+1}^\infty \frac{1}{2^k k(k+1)}\right) = \frac{-n}{m+1} +n\sum_{m+1}^\infty \frac{1}{2^kk(k+1)}
+        \end{align*}
+        This gives us the following inequalities:
+        \begin{align}
+            \frac{-n}{m(n)+1} \leq \sum_1^n E \overline{X}_{n,k} \leq \frac{-n}{m(n)+1} + \frac{n}{(m(n)+1)(m(n)+2)}\sum_{m(n)+1}^\infty 2^{-k} \leq \frac{-n}{m(n)+1} + \frac{n}{m(n)^22^{m(n)}}
+        \end{align}
+        We also have that \(2n > 2^mm^{3/2}>n\) which gives us
+        \begin{align}
+            1 + \log n > m + \frac32 \log m > \log n
+        \end{align}
+        so that \(m \sim \log n\) and \(\sum_1^n E \overline{X}_{n,k} \sim \frac{-n}{m} \sim \frac{-n}{\log n}\) and \(b_n = m^{-3/2}n \sim n(\log n)^{-3/2}\). The weak law for triangular arrays applied here gives us that
+        \begin{align*}
+            \frac{S_n + \frac{n}{\log n}}{n(\log n)^{-3/2}} \overset{P}{\longrightarrow} 0 \implies \frac{S_n + \frac{n}{\log n}}{n\log n} \overset{P}{\longrightarrow} 0
+        \end{align*}
+        this can be rewritten as \(\frac{S_n}{\frac{n}{\log n}} \overset{P}{\to} -1\) \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 2.3.6)}
+
+        \textbf{(Lemma)} If \(d(x,y)\) is a metric, then \(\frac{d(x,y)}{1+d(x,y)}\) is a metric, in particular \(D(x,y) = \frac{\abs{x-y}}{1 + \abs{x-y}}\) is a metric on \(\mathbb{R}\).
+        \begin{proof}
+            Symmetry, nonnegativity and \(\frac{d(x,y)}{1+d(x,y)} = 0 \iff x = y\) are obvious, as for triangle inequality, notice that \(\frac{x}{1+x}\) is an increasing function on \([0,\infty)\), and hence
+            \begin{align*}
+                \frac{d(x,z)}{1+d(x,z)} \leq \frac{d(x,y) + d(y,z)}{1+d(x,y) + d(y,z)} \leq \frac{d(x,y)}{1+d(x,y)} + \frac{d(y,z)}{1+d(y,z)}
+            \end{align*}
+        \end{proof}
+
+        \textbf{(a)} Now to prove the main statement, firstly symmetry is obvious. If \(X = Y\) a.s. then \(\abs{X-Y}\) = 0 a.s. So that \(d(X,Y) = E[0] = 0\), and if this is not the case, then there exists some \(\epsilon > 0\) and some positive measure set \(S\) with \(\abs{X - Y} > \epsilon\) on \(S\) (to see this we can write \(\set{X \neq Y} = \bigcup_1^\infty \set{\abs{X-Y} > \frac{1}{n}}\), so that one of these sets in the countable union must have positive measure), then it follows that
+        \begin{align*}
+            d(X,Y) \geq E[\frac{\abs{X-Y}}{1+\abs{X-Y}}1_S] \geq \frac{\epsilon}{1 + \epsilon}P(S) > 0
+        \end{align*}
+        Now triangle inequality simply follows from pointwise triangle inequality on \(\mathbb{R}\) from the lemma, i.e. for all \(\omega\) we have \(D(X(\omega),Z(\omega)) \leq D(X(\omega),Y(\omega)) + D(Y(\omega),Z(\omega))\), so that
+        \begin{align*}
+            d(X,Z) = E[D(X,Z)] \leq E[D(X,Y) + D(Y,Z)] = E[D(X,Y)] + E[D(Y,Z)] = d(X,Y) + d(Y,Z)
+        \end{align*} \qed
+
+        \textbf{(b)} First suppose that \(X_n \to X\) in probability, then for some \(N\) we have for any \(n \geq N\) that \(P(\abs{X - X_n} \geq \epsilon) < \epsilon\), so for \(n \geq N\) we have
+        \begin{align*}
+            d(X,X_n) &\leq E[D(X,X_n)1_{\abs{X-X_n} \geq \epsilon} + D(X,X_n)1_{\abs{X-X_n} < \epsilon}] \\
+            &\leq P(\abs{X-X_n} \geq \epsilon) + \frac{\epsilon}{1 + \epsilon} \leq 2 \epsilon
+        \end{align*}
+        Where here we used in the second inequality that \(D(X,X_n) \leq 1\) and \(P(\abs{X - X_n} < \epsilon) \leq 1\). To prove the converse, assume that \(X_n \not \to X\) in probability, then for some \(\epsilon > 0\), and any \(N\) we can find \(n \geq N\) so that \(P(\abs{X - X_n} \geq \epsilon) \geq \epsilon\), so letting \(N\) be arbitrary, we choose such an \(n\), then
+        \begin{align*}
+            d(X,X_n) \geq P(\abs{X - X_n} \geq \epsilon)\frac{\epsilon}{1+\epsilon} = \frac{\epsilon^2}{1+\epsilon} > 0
+        \end{align*}
+        so that we dont get metric convergence. \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 2.3.15)}
+        Note that although the sets of probability one which properties are proven to hold may be different, we may intersect them to obtain another set of probability one in which all the properties hold, so I won't worry too much about what the sets of probability \(1\) are in the proof.
+
+        \textbf{(i)} \(P(X_n > \log n) = \frac{1}{n}\), so that \(\sum_1^\infty P(X_n > \log n) = \infty\), by the second Borel Cantelli lemma, we get that \(P(X_n/\log n > 1 \text{ i.o.}) = P(X_n > \log n \text{ i.o.}) = 1\), so that \(\limsup \frac{X_n}{\log n} \geq 1\) almost surely. To prove that \(\limsup \frac{X_n}{\log n} \leq 1\) on a set of probability \(1\), it suffices to prove that for each natural number \(m\), there is a set of probability \(1\) so that \(\frac{X_n}{\log n} \leq 1 + \frac{1}{m}\) for all but finitely many \(n\), then to take the intersection of all these sets which will still have probability \(1\). This of course will be true if we can show that for any \(\epsilon > 0\) we have \(P(\frac{X_n}{\log n} > 1 + \epsilon \text{ i.o.}) = 0\), this follows from Borel Cantelli lemma since \(P(\frac{X_n}{\log n} > 1 + \epsilon \text{ i.o.}) = \frac{1}{n^{1 + \epsilon}}\), so that \(\sum_1^\infty P(X_n/\log n > 1 + \epsilon) < \infty\). \qed
+
+        \textbf{(ii)} We have that \(\lim \frac{M_n}{\log n} = 1\) on \(\bigcap_{m=1}^\infty \set{\frac{M_n}{\log n} \leq 1 - \frac{1}{m} \text{ i.o.}}^c \bigcap_{m=1}^\infty \set{\frac{M_n}{\log n} > 1 + \frac{1}{m} \text{ only finitely often}}\), so showing each of the sets in the intersection have probability \(1\) will complete the proof. Therefore it is sufficient to show that for any \(\epsilon > 0\), \(P(\frac{M_n}{\log n} \leq 1 - \epsilon \text{ i.o.}) = 0\) and \(\set{\frac{M_n}{\log n} > 1 + \epsilon \text{ only finitely often}} \supset \set{x \mid \limsup \frac{X_n}{\log n} = 1}\), the latter has probability one by (i). We check the first condition with the Borel-Cantelli lemma
+        \begin{align*}
+            P\left(\frac{M_n}{\log n} \leq 1 - \epsilon\right) &= P\left(\bigcap_1^n \set{\frac{X_k}{\log n} \leq 1 - \epsilon}\right) = \prod_1^n P\left(X_k/\log n \leq 1 - \epsilon\right) \\
+            &= \prod_1^n 1 - P\left( X_k/\log n > 1 - \epsilon\right) = \prod_1^n 1 - \frac{1}{n^{1-\epsilon}}
+        \end{align*}
+        Now we can apply the inequality \(1-x \leq e^{-x}\) to find that
+        \begin{align*}
+            P\left(\frac{M_n}{\log n} \leq 1 - \epsilon\right) \leq \exp\left(\frac{-1}{n^{1-\epsilon}}n\right) = \exp(-n^\epsilon)
+        \end{align*}
+        To apply Borel-Cantelli, we want to check that \(\sum_1^\infty \exp(-n^\epsilon) < \infty\), since \(\exp(-x^\epsilon)\) is monotone decreasing, we can apply the integral test.
+        \begin{align*}
+            \int_1^\infty \exp(-x^\epsilon)dx = \frac{1}{\epsilon}\int_1^\infty e^{-u}u^{1/\epsilon - 1}du \leq \frac{1}{\epsilon}\int_1^\infty e^{-u}du = 1/\epsilon
+        \end{align*}
+        So that
+        \begin{align*}
+            \sum_1^\infty P\left(\frac{M_n}{\log n} \leq 1 - \epsilon\right) \leq \sum_1^\infty \exp(-n^\epsilon) < \infty
+        \end{align*}
+        which gives us \(P\left(\frac{M_n}{\log n} \leq 1 - \epsilon \text{ i.o.}\right) = 0\) from Borel-Cantelli. Now we will prove the set inclusion above to finish the proof, let \(x \in \set{x \mid \limsup \frac{X_n}{\log n} = 1}\), then \(\frac{X_n}{\log n}(x) > 1 + \epsilon\) only finitely many times. So take \(N\) such that for all \(n \geq N\) we have \(\frac{X_n}{\log n}(x) \leq 1 + \epsilon\), since \(\log n \to \infty\) we can take \(M \geq N\) so that \(\log M > X_k(x)\) when \(1 \leq k \leq N\), then for any \(n > \max{N,M}\) we find that
+        \begin{align*}
+            \frac{\max_{1 \leq k \leq n}X_k(x)}{\log n} = \max\left\{\frac{\max_{1 \leq k \leq N}X_k(x)}{\log n}, \frac{\max_{N \leq k \leq n}X_k(x)}{\log n}\right\}
+        \end{align*}
+        The first term we have \(\frac{X_k}{\log n}(x) \leq \frac{X_k}{\log M}(x) < 1\) since \(1 \leq k \leq N\), and the second term we have \(\frac{X_k}{\log n}(x) \leq \frac{X_k(x)}{\log k} \leq 1 + \epsilon\) since \(k \geq N\). This completes the proof that \(\set{\frac{M_n}{\log n} > 1 + \epsilon \text{ only finitely often}} \supset \set{x \mid \limsup \frac{X_n}{\log n} = 1}\), and hence the former has probability \(1\) completing the proof of \(\lim \frac{M_n}{\log n} = 1\) a.s. \qed
     \end{pb}
 \end{document}
