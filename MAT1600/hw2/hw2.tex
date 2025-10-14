@@ -23,6 +23,7 @@
 \newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
 \newcommand{\tand}{\text{ and }}
 \newcommand{\tor}{\text{ or }}
+\newcommand{\floor}[1]{\lfloor#1\rfloor}
 
 \begin{document}
     \begin{pb}\textbf{(Durrett 2.2.2)}
@@ -139,6 +140,42 @@
         The first term we have \(\frac{X_k}{\log n}(x) \leq \frac{X_k}{\log M}(x) < 1\) since \(1 \leq k \leq N\), and the second term we have \(\frac{X_k}{\log n}(x) \leq \frac{X_k(x)}{\log k} \leq 1 + \epsilon\) since \(k \geq N\). This completes the proof that \(\set{\frac{M_n}{\log n} > 1 + \epsilon \text{ only finitely often}} \supset \set{x \mid \limsup \frac{X_n}{\log n} = 1}\), and hence the former has probability \(1\) completing the proof of \(\lim \frac{M_n}{\log n} = 1\) a.s. \qed
     \end{pb}
     \begin{pb} \textbf{(Durrett 2.3.19)}
-        We first note that \(X_k \sim \text{Poisson}(\lambda_k)\) gives us that \(\sum_1^n X_k \sim \text{Poisson}(\sum_1^n \lambda_k)\), the naive proof technique runs into an issue if the means are not bounded, so we will use this to reduce to the case of bounded means.
+        We first note the property of poisson distributions \(Y_k \sim \text{Poisson}(\lambda_k)\) implies that \(\sum_1^n Y_k \sim \text{Poisson}(\sum_1^n \lambda_k)\), the naive proof technique runs into an issue if the means are not bounded, so we will use this to reduce to the case of bounded means.
+
+        Assume for now we can write \(X_n = \sum_{j=1}^{\floor{\lambda_n} + 1} X_{n,j}\) with \(X_{n,j}\) independent and poisson with mean at most \(1\). Then writing \(Y_1 = X_{1,1}, Y_2 = X_{1,2}, \hdots, Y_{\floor{\lambda_1} + 1} = X_{1,\floor{\lambda_1} + 1}, Y_{\floor{\lambda_1} + 2} = X_{2,1}, \hdots\) we find that \(\sum_1^n X_k\) is a subsequence of \(\sum_1^n Y_k\) and hence it suffices to prove the result in the case that \(\lambda_k \leq 1\) for all \(k\). It is actually very annoying to write down this decomposition and verify that it works, so I will delay that until after I have completed the proof.
+
+        Now assuming that \(\lambda_k \leq 1\), we use in one of the equalities that Poisson distribution has equal variance and expectation.
+        \begin{align*}
+            P\left(\frac{\abs{S_{n} - E[S_{n}]}}{E[S_n]} > \epsilon\right) \leq \frac{1}{\epsilon^2}\frac{\text{Var}\,S_n}{E[S_n]^2} = \frac{1}{\epsilon^2}\frac{E[S_n]}{E[S_n]^2} = \frac{1}{\epsilon^2}\frac{1}{\sum_1^n \lambda_k}
+        \end{align*}
+        Then since \(\sum_1^n \lambda_k = E[S_n] \to \infty\), we can for each natural number \(k\) define \(n_k := \inf\set{n \mid E[S_n] > k^2}\), our assumption on the variances being small thus gives us that \(k^2 + 1 \geq E S_{n_k} > k^2\), then by the computation above applied to this subsequence, we find that
+        \begin{align*}
+            P\left(\frac{\abs{S_{n_k} - E[S_{n_k}]}}{E[S_{n_k}]} > \epsilon\right) \leq \frac{1}{k^2 \epsilon^2}
+        \end{align*}
+        which implies that \(\sum_{k=1}^\infty P\left(\frac{\abs{S_{n_k} - E[S_{n_k}]}}{E[S_{n_k}]} > \epsilon\right) \leq \frac{1}{\epsilon^2}\sum_1^\infty 1/k^2 < \infty\), applying Borel-Cantelli we get that
+        \begin{align*}
+            \frac{\abs{S_{n_k} - E[S_{n_k}]}}{E[S_{n_k}]} \leq \epsilon \text{ a.s.}
+        \end{align*}
+        and since \(\epsilon\) was arbitrary we get that \(\frac{\abs{S_{n_k}}}{E[S_{n_k}]} \to 1\) almost surely (here we can apply it for \(\epsilon = 1/m\) for \(m = 1,2,\hdots\), then intersect all these sets of probability 1). Now let \(\mathcal{S} = \set{\frac{\abs{S_{n_k}}}{E[S_{n_k}]} \to 1}\), then for any \(z \in \mathcal{S}\) and any \(n \geq n_1\), we can take \(n_k\) such that \(n_k \leq n \leq n_{k+1}\) so that
+        \begin{align*}
+            \frac{S_{n_k}}{E[S_{n_{k+1}}]}(z) \leq \frac{S_n}{E[S_n]}(z) \leq \frac{S_{n_{k+1}}}{E[S_{n_k}]}(z)
+        \end{align*}
+        then letting \(c_k := \frac{E[S_{n_{k+1}}]}{E[S_{n_{k}}]}\), we have \(c_k \geq 1\) and \(c_k \leq \frac{(k+1)^2 + 1}{k^2}\), so that \(\lim_{k\to \infty}c_k = 1\). Then we find that on \(\mathcal{S}\), we have both
+        \begin{align*}
+            \frac{S_{n_k}}{E[S_{n_{k+1}}]} &= \frac{S_{n_k}}{E[S_{n_k}]}c_k^{-1} \to 1 \\
+            \frac{S_{n_{k+1}}}{E[S_{n_{k}}]} &= \frac{S_{n_{k+1}}}{E[S_{n_{k+1}}]}c_k \to 1
+        \end{align*}
+        It follows that on \(\mathcal{S}\) we have
+        \begin{align*}
+            1 &= \lim_{k\to\infty}\frac{S_{n_k}}{E[S_{n_{k+1}}]} \leq \liminf \frac{S_n}{E[S_n]} \\
+            1 &= \lim_{k\to\infty}\frac{S_{n_{k+1}}}{E[S_{n_{k}}]} \geq \limsup \frac{S_n}{E[S_n]}
+        \end{align*}
+        so that \(\frac{S_n}{E[S_n]} \to 1\) on \(\mathcal{S}\) and hence almost surely, as desired.
+
+        Now to prove we can break up our random variable as exploited in the proof, we first prove it for integer mean using induction, then use the proof of the induction step to prove it for non-integer mean. So suppose that \(X\) is a poisson random variable with mean \(\lambda \in \mathbb{Z}_{>0}\), if \(\lambda = 1\), then we are done, so we have the base case and we can assume that any Poisson distributed random variable mean \(\lambda - 1\) can be written as a sum of independent Poisson distributed random variables with mean \(1\). Now let \(\set{Y_j}_{j=1}^\infty\) be i.i.d with \(P(Y_j = 1) = 1/\lambda\) and \(P(Y_j = 0) = \frac{\lambda - 1}{\lambda}\). We now take \(X_1(x) = \sum_{j=1}^{X(x)} Y_j(x)\) and \(X_2 = X - X_1\). We need to check that \(X_1 \sim \text{Poisson}(1)\), \(X_2 \sim \text{Poisson}(\lambda-1)\) and that \(X_1,X_2\) are independent, then we will be done by induction. First we check that \(X_1\) is Poisson, this follows from
+        \begin{align*}
+            P(X_1 = k) &= \sum_{\ell \geq k} P(X = \ell)P\left(\sum_1^\ell Y_j = k\right) = \sum_{\ell \geq k} P(X = \ell) \binom{\ell}{k}\frac{1}{\lambda^k} \left(\frac{\lambda - 1}{\lambda}\right)^{\ell - k} \\
+            &= \sum_{\ell \geq k} \frac{\lambda^\ell e^{-\lambda}}{\ell!} \binom{\ell}{k}\frac{1}{\lambda^k} \left(\frac{\lambda - 1}{\lambda}\right)^{\ell - k}
+        \end{align*}
     \end{pb}
 \end{document}
