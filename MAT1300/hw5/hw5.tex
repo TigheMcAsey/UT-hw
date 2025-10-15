@@ -100,4 +100,23 @@
 
         As stated in the preamble, we can consider \(N \subset \mathbb{R}^r\) by taking a Whitney embedding, this also allows us to deal with normal bundles less formally. Now consider the collection of embeddings \(\set{\gamma_\alpha}_{\alpha \in I}\) where each \(\gamma_\alpha: S^1 \hookrightarrow M\), then we may consider \(NM\vert_{\gamma_\alpha(S^1)} \subset N\gamma_\alpha(S^1) \subset TN\vert_{\gamma_{\alpha}(S^1)}\), so that \(NM\vert_{\gamma_\alpha(S^1)}\) is a line bundle over \(S^1\), we first assume for the sake of contradiction that there exists some \(\alpha\), with \(NM\vert_{\gamma_\alpha(S^1)} \cong \text{Mobius}(S^1)\), we can take the section on the mobius bundle \(s(x) = (x,\sin(\pi x))\), which is a smooth section with intersection number \(1\),
     \end{pb}
+    \begin{pb}
+        Suppose \(n > 2(r+1)\), and \(e: S^r \hookrightarrow \mathbb{R}^n\), we define a sort of smooth mapping cone \(E: D^{r+1} \to \mathbb{R}^n \times \mathbb{R}\) via identifying \(D^{r+1} = S^r \times [0,1]\), and taking the map (unfortunately to get \(S^r\) along the zero section we have to flip our convention for radius)
+        \begin{align*}
+            E:(s,t) \mapsto \left(e(s)\cos\frac{\pi t}{2},\sin\frac{\pi t}{2}\right)
+        \end{align*}
+        Now we want to modify the proof of the strong Whitney embedding theorem to turn this into a map into \(\mathbb{R}^n\) repsecting the original embedding, let \(\iota: \mathbb{R}^n \to \mathbb{R}^n\times \mathbb{R}\) be the inclusion into \(\mathbb{R}^n \times \set{0}\). The main labour involved in this proof is to show that for some \(x \in S^n\), denoting \(\pi_x\) to be the projection onto \(x^\perp\) the following properties hold
+        \begin{enumerate}
+            \item \(\pi_x \circ E\) is injective
+            \item \(\pi_x \circ E\) is an immersion
+            \item \(\pi_x \circ \iota\) is an isomorphism \(\mathbb{R}^n \to \mathbb{R}^n\)
+        \end{enumerate}
+        For now we assume such an \(x\) exists, then \(\pi_x \circ E\) is an embedding \(D^{r+1} \to \mathbb{R}^n\) (properness follows from the \(r+1\) disc being compact). This implies that \[(\pi_x \circ \iota)^{-1}\circ(\pi_x\circ E): D^{r+1} \to \mathbb{R}^n\] is also an embedding, in fact it is the desired embedding since for \(s \in S^r\) we have
+        \begin{align*}
+            \pi_x\circ E(s) = \pi_x(e(s),0) = \pi_x\circ\iota\circ e(s)
+        \end{align*}
+        so that \((\pi_x\circ \iota)^{-1}\pi_x\circ E(s) = e(s)\).
+
+        Now we need to verify properties (1-3), it will be easiest to show using Sard's theorem that values of \(x\) failing each of these individual properties have measure zero, so that some \(x\) satisfying all three must exist.
+    \end{pb}
 \end{document}
