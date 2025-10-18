@@ -209,7 +209,30 @@
     \begin{pb}\textbf{(Durrett 3.2.6)}
         We first show that \(\rho(F,G)\) is real valued, since taking \(\epsilon = 1\), we get the desired inequalities so that the inf is finite. Now to see its a metric, suppose that \(F = G\) in distribution, then for any \(\epsilon > 0\), we have \(F(x- \epsilon) -\epsilon \leq F(x - \epsilon) \leq G(x) \leq F(x + \epsilon) \leq F(x + \epsilon) + \epsilon\), since \(F = G\) except at jump discontinuities, but this takes \(F\) before and after each jump discontinuity, hence \(\rho(F,G) = 0\). Now suppose \(F \neq G\), then there is a point \(x_0\) such that \(F\) is continuous at \(x_0\), and \(F(x_0) \neq G(x_0)\) (WLOG assume that \(F(x_0) > G(x_0)\), otherwise we can do the same proof for \(F(x_0) < G(x_0)\)). Then defining \(r = F(x_0) - G(x_0) > 0\), there is some \(\delta > 0\), such that \(\abs{x-x_0} < \delta\) implies \(\abs{F(x_0) - F(x)} < r/2\), letting \(\epsilon = \min\set{\delta/2,r/4}\) we get that
         \begin{align*}
-            
+            F(x_0 - \epsilon) - \epsilon \geq F(x_0) - \abs{F(x_0) - F(x_0 - \epsilon)} - \epsilon \geq F(x_0) - \frac{3r}{4} > G(x_0)
         \end{align*}
+        so that \(\rho(F,G) \geq \min\set{\delta/2,r/4} > 0\). Now we can prove symmetry, suppose we have for all \(x\),
+        \begin{align*}
+            F(x - \epsilon) - \epsilon \leq G(x) \leq F(x + \epsilon) + \epsilon
+        \end{align*}
+        then taking the substitution of variables, \(u = x - \epsilon\) and \(v = x + \epsilon\), we find for all \(u\) and \(v\) that
+        \begin{align*}
+            F(u) - \epsilon \leq G(u + \epsilon) \tand G(v - \epsilon) \leq F(v) + \epsilon
+        \end{align*}
+        Since this holds for all \(u,v\) we find that for any \(x\),
+        \begin{align*}
+            G(x - \epsilon) - \epsilon \leq F(x) \leq G(x + \epsilon) + \epsilon
+        \end{align*}
+        this gives us the inequality \(\rho(G,F) \leq \rho(F,G)\), but the same argument gives us \(\rho(F,G) \leq \rho(G,F)\) so they are equal. Now for the triangle inequality, let \(a > \rho(F,G)\) and \(b > \rho(G,H)\), then
+        \begin{align*}
+            F(x - b - a) - a - b \leq G(x - b) - b \leq H(x) \leq G(x + b) + b \leq F(x + b + a) + a + b
+        \end{align*}
+        so that \(a + b \geq \rho(F,H)\), since this holds for all such \(a,b\) we find that \(\rho(F,H) \leq \rho(F,G) + \rho(G,H)\).
+
+        Now assume that \(\rho(F_n,F) \to 0\), let \(\epsilon > 0\) and suppose that \(x_0\) is a point of continuity for \(F\) so there exists some \(\delta > 0\) with \(F\vert_{B_\delta(x_0)} \in B_{\epsilon/2}(F(x_0)) \), then we can define \(a_n = \rho(F_n,F) + 1/n\), so that \(a_n \to 0\), then for \(a_n\) sufficiently large we have \(N\) so that \(n \geq N\) implies \(a_n < \min\set{\delta,\epsilon/2}\), so that
+        \begin{align*}
+            F(x_0) - \epsilon < F(x_0 - a_n) - a_n \leq F_n(x_0) \leq F(x_0 + a_n) + a_n < F(x_0) + \epsilon
+        \end{align*}
+        therefore \(F_n(x) \to F(x)\) at all points where \(F\) is continuous, so we get convergence in distribution. Conversely, suppose that \(F_n\) converges weakly to \(F\), then let \(\epsilon > 0\), and denote \(\mathcal{C} := \set{x \mid F \text{ is continuous at }x}\). Then \(\mathcal{C}^c\) is countable, so that \(\mathcal{C}\) is dense, define \(y' = \sup\set{x \mid F(x) < \epsilon}\), then we can take some \(y < y'\) with \(y \in \mathcal{C}\), similarly letting \(z' = \inf\set{x \mid F(x) > 1 - \epsilon}\), we can take some \(z > z'\) with \(z \in \mathcal{C}\). Now using density, we can choose 
     \end{pb}
 \end{document}
