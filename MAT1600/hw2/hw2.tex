@@ -172,10 +172,44 @@
         \end{align*}
         so that \(\frac{S_n}{E[S_n]} \to 1\) on \(\mathcal{S}\) and hence almost surely, as desired.
 
-        Now to prove we can break up our random variable as exploited in the proof, we first prove it for integer mean using induction, then use the proof of the induction step to prove it for non-integer mean. So suppose that \(X\) is a poisson random variable with mean \(\lambda \in \mathbb{Z}_{>0}\), if \(\lambda = 1\), then we are done, so we have the base case and we can assume that any Poisson distributed random variable mean \(\lambda - 1\) can be written as a sum of independent Poisson distributed random variables with mean \(1\). Now let \(\set{Y_j}_{j=1}^\infty\) be i.i.d with \(P(Y_j = 1) = 1/\lambda\) and \(P(Y_j = 0) = \frac{\lambda - 1}{\lambda}\). We now take \(X_1(x) = \sum_{j=1}^{X(x)} Y_j(x)\) and \(X_2 = X - X_1\). We need to check that \(X_1 \sim \text{Poisson}(1)\), \(X_2 \sim \text{Poisson}(\lambda-1)\) and that \(X_1,X_2\) are independent, then we will be done by induction. First we check that \(X_1\) is Poisson, this follows from
+        Now to prove we can break up our random variable as exploited in the proof, we first prove it for integer mean using induction, then notice the proof of the induction step suffices to prove the result for non-integer mean (I will not do this explicitly since the proof is the exact same but much uglier). So suppose that \(X\) is a poisson random variable with mean \(\lambda \in \mathbb{Z}_{>0}\), if \(\lambda = 1\), then we are done, so we have the base case and we can assume that any Poisson distributed random variable mean \(\lambda - 1\) can be written as a sum of independent Poisson distributed random variables with mean \(1\). Now let \(\set{Y_j}_{j=1}^\infty\) be i.i.d with \(P(Y_j = 1) = 1/\lambda\) and \(P(Y_j = 0) = \frac{\lambda - 1}{\lambda}\). We now take \(X_1(x) = \sum_{j=1}^{X(x)} Y_j(x)\) and \(X_2 = X - X_1\). We need to check that \(X_1 \sim \text{Poisson}(1)\), \(X_2 \sim \text{Poisson}(\lambda-1)\) and that \(X_1,X_2\) are independent, then we will be done by induction. First we check that \(X_1\) is Poisson, this follows from
         \begin{align*}
-            P(X_1 = k) &= \sum_{\ell \geq k} P(X = \ell)P\left(\sum_1^\ell Y_j = k\right) = \sum_{\ell \geq k} P(X = \ell) \binom{\ell}{k}\frac{1}{\lambda^k} \left(\frac{\lambda - 1}{\lambda}\right)^{\ell - k} \\
-            &= \sum_{\ell \geq k} \frac{\lambda^\ell e^{-\lambda}}{\ell!} \binom{\ell}{k}\frac{1}{\lambda^k} \left(\frac{\lambda - 1}{\lambda}\right)^{\ell - k}
+            P(X_1 = k) &= \sum_{\ell \geq k} P(X = \ell)P\left(\sum_1^\ell Y_j = k\right) = \sum_{\ell \geq k} P(X = \ell)\binom{\ell}{k}\left(\frac{1}{\lambda}\right)^k\left(\frac{\lambda - 1}{\lambda}\right)^{\ell - k} \\
+            &= \sum_{\ell \geq k} \frac{\lambda^\ell e^{-\lambda}}{\ell!}\binom{\ell}{k}\frac{(\lambda-1)^{\ell-k}}{\lambda^\ell} = \sum_{\ell \geq k} \frac{e^{-\lambda}}{k!(\ell-k)!}(\lambda-1)^{\ell - k} = \frac{e^{-\lambda}}{k!}\sum_0^\infty \frac{(\lambda - 1)^j}{j!} \\
+            &= \frac{e^{-\lambda}}{k!} e^{\lambda - 1} = \frac{e^{-1}}{k!}
+        \end{align*}
+        So \(X_1 \sim \text{Poisson}(1)\), to work with \(X_2\), we can take the Bernoulli random variables \(1 - Y_j\), with parameter \(\frac{\lambda - 1}{\lambda}\), and notice \(X_2(x) = \sum_{j=1}^{X(x)} (1 - Y_j)(x)\), carrying out a similar computation to above we find that
+        \begin{align*}
+            P(X_2 = k) = e^{-\lambda}\sum_{\ell \geq k}\frac{(\lambda - 1)^k}{k!(\ell-k)!} = \frac{e^{-\lambda}(\lambda-1)^k}{k!}\sum_0^\infty 1/j! = \frac{e^{1-\lambda}(\lambda-1)^k}{k!}
+        \end{align*}
+        so \(X_2 \sim \text{Poisson}(\lambda - 1)\). To check independence, we once again compute directly
+        \begin{align*}
+            P(X_1 = k, X_2 = r) &= \sum_{\ell = 0}^\infty P(X_1 = k, X_2 = r, X = \ell)P(X = \ell) \\
+            &= P(X_1 = k, X_2 = r, X = k+r)P(X = k + r) \\
+            &= \binom{k+r}{k}\frac{1}{\lambda^k}\left(\frac{\lambda - 1}{\lambda}\right)^r \frac{e^{-\lambda}\lambda^{k+r}}{(k+r)!} = e^{-\lambda}\frac{(\lambda-1)^r}{k!r!} \\
+            &= P(X_1 = k)P(X_2 = r)
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 2.4.2)}
+        Define random variables \(Y_n = \frac{\abs{X_n}}{\abs{X_{n-1}}}\), then since \(Y_n\) is independent of \(X_1,\hdots,X_{n-1}\) we get that \(Y_1,\hdots,Y_n\) are pairwise independent, and hence so are \(\log Y_j\) for each \(j\), moreover since the \(Y_j\) are identically distributed in the problem statement, we have \(\set{\log Y_j}_{j=1}^\infty\) are identically distributed and pairwise independent. Now we can compute
+        \begin{align*}
+            E\abs{\log Y_1} &= \frac{1}{\pi}\int_0^{2\pi}\int_0^1 \abs{\log r}rdrd\theta = 2\int_0^1 \abs{\log r}rdrd\theta = 2\int_0^1 -x\log x dx \\
+            &= -2 \left[\frac{x^2}{2}\log x - \int \frac{x}{2}dx\right]_0^1 = \frac{1}{2} < \infty
+        \end{align*}
+        So we may apply the strong law of large numbers to \(\set{\log Y_j}_1^\infty\), which gives us
+        \begin{align*}
+            \frac{\sum_1^n \log Y_j}{n} \overset{\text{a.s.}}{\longrightarrow} E[\log Y_1] = \frac{1}{\pi}\int_0^{2\pi}\int_0^1 (\log r) r drd\theta = 2\int_0^1 x\log x dx = -\frac12
+        \end{align*}
+        Now we are done with \(c = -\frac12\), since
+        \begin{align*}
+            \abs{X_n} = \prod_1^n Y_n \implies \log \abs{X_n} = \sum_1^n \log Y_j
+        \end{align*}
+        so that \(n^{-1}\log \abs{X_n} = \frac{1}{n}\sum_1^n \log Y_j \to -\frac12\) a.s. \qed 
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.2.6)}
+        We first show that \(\rho(F,G)\) is real valued, since taking \(\epsilon = 1\), we get the desired inequalities so that the inf is finite. Now to see its a metric, suppose that \(F = G\) in distribution, then for any \(\epsilon > 0\), we have \(F(x- \epsilon) -\epsilon \leq F(x - \epsilon) \leq G(x) \leq F(x + \epsilon) \leq F(x + \epsilon) + \epsilon\), since \(F = G\) except at jump discontinuities, but this takes \(F\) before and after each jump discontinuity, hence \(\rho(F,G) = 0\). Now suppose \(F \neq G\), then there is a point \(x_0\) such that \(F\) is continuous at \(x_0\), and \(F(x_0) \neq G(x_0)\) (WLOG assume that \(F(x_0) > G(x_0)\), otherwise we can do the same proof for \(F(x_0) < G(x_0)\)). Then defining \(r = F(x_0) - G(x_0) > 0\), there is some \(\delta > 0\), such that \(\abs{x-x_0} < \delta\) implies \(\abs{F(x_0) - F(x)} < r/2\), letting \(\epsilon = \min\set{\delta/2,r/4}\) we get that
+        \begin{align*}
+            
         \end{align*}
     \end{pb}
 \end{document}
