@@ -257,7 +257,19 @@
         \end{align*}
         which suffices to show that for \(n \geq M\) we have \(\rho(F,F_n) \leq 2 \epsilon\), and since \(\epsilon\) was arbitrary we conclude that \(\rho(F_n,F) \to 0\). \qed
     \end{pb}
-    \begin{pb}
-        
+    \begin{pb}\textbf{(Durrett 3.2.7)}
+        If \(\rho(F,G) = 0\), then we are done, so assuming not let \(0 < \epsilon < \rho(F,G)\), then for some \(x\) we have either \(F(x - \epsilon) - \epsilon > G(x)\), or \(F(x + \epsilon) + \epsilon < G(x)\), the proof is the same in either case by swapping \(F\) and \(G\), so assume the first case. Then we have
+        \begin{align*}
+            P(X \leq x - \epsilon) \geq P(Y \leq x) + \epsilon
+        \end{align*}
+        since \(P(X \leq x - \epsilon, Y \leq x) + P(X \leq x - \epsilon, Y > x) = P(X \leq x - \epsilon)\), we get that
+        \begin{align*}
+            P(X \leq x - \epsilon, Y > x) \geq \epsilon
+        \end{align*}
+        Moreover, \(\set{\omega \mid X(\omega) \leq x - \epsilon \tand Y(\omega) > x} \subset \set{\abs{X - Y} > \epsilon}\), so that
+        \begin{align*}
+            \epsilon \leq P(X \leq x - \epsilon, Y > x) \leq P(\abs{X - Y} > \epsilon)
+        \end{align*}
+        which implies that \(\epsilon \leq \alpha(X,Y)\), since this holds for any \(0 < \epsilon < \rho(F,G)\) we can conclude that \(\rho(F,G) \leq \alpha(X,Y)\). \qed
     \end{pb}
 \end{document}
