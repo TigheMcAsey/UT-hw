@@ -233,6 +233,31 @@
         \begin{align*}
             F(x_0) - \epsilon < F(x_0 - a_n) - a_n \leq F_n(x_0) \leq F(x_0 + a_n) + a_n < F(x_0) + \epsilon
         \end{align*}
-        therefore \(F_n(x) \to F(x)\) at all points where \(F\) is continuous, so we get convergence in distribution. Conversely, suppose that \(F_n\) converges weakly to \(F\), then let \(\epsilon > 0\), and denote \(\mathcal{C} := \set{x \mid F \text{ is continuous at }x}\). Then \(\mathcal{C}^c\) is countable, so that \(\mathcal{C}\) is dense, define \(y' = \sup\set{x \mid F(x) < \epsilon}\), then we can take some \(y < y'\) with \(y \in \mathcal{C}\), similarly letting \(z' = \inf\set{x \mid F(x) > 1 - \epsilon}\), we can take some \(z > z'\) with \(z \in \mathcal{C}\). Now using density, we can choose 
+        therefore \(F_n(x) \to F(x)\) at all points where \(F\) is continuous, so we get convergence in distribution. Conversely, suppose that \(F_n\) converges weakly to \(F\), then let \(\epsilon > 0\), and denote \(\mathcal{C} := \set{x \mid F \text{ is continuous at }x}\). Then \(\mathcal{C}^c\) is countable, so that \(\mathcal{C}\) is dense, define \(y' = \sup\set{x \mid F(x) < \epsilon}\), then we can take some \(y < y'\) with \(y \in \mathcal{C}\), similarly letting \(z' = \inf\set{x \mid F(x) > 1 - \epsilon}\), we can take some \(z > z'\) with \(z \in \mathcal{C}\). Now using density, we can choose (here \(t\) is some positive number \(\leq \epsilon/2\))
+        \begin{align*}
+            &x_0 = y \\
+            &x_1 \in (y,y+\epsilon/2) \cap \mathcal{C} \\
+            &x_2 \in (y+\epsilon/2,y+\epsilon) \cap \mathcal{C} \\
+            &\vdots \\
+            &x_{N-1} \in (z - t, z - t + \epsilon/2) \cap \mathcal{C} \\
+            &x_N \in (z - t + \epsilon/2, z - t + \epsilon) \cap \mathcal{C}
+        \end{align*}
+        It follows that \(\bigcup_1^N [x_{j-1},x_j] = [x_0,x_N]\) with \(F(x_0) < \epsilon\), \(F(x_N) > 1 - \epsilon\), \(F\) continuous at each \(x_j\), and \(\abs{x_j - x_{j-1}} < \epsilon\). For each \(x_j\) there is some \(M_j\) so that \(n \geq M_j\) implies \(\abs{F(x_j) - F_n(x_j)} < \epsilon\), letting \(M = \max_{0 \leq j \leq N}{M_j}\), we find that letting \(n \geq M\) we have for \(x \leq x_0\) that \(F_n(x) < F(x_0) + \epsilon < 2 \epsilon\), so that
+        \begin{align*}
+            F(x - 2 \epsilon) - 2 \epsilon \leq 0 \leq F_n(x) \leq 2 \epsilon \leq F(x + 2 \epsilon) + 2 \epsilon
+        \end{align*}
+        and similarly for \(x \geq x_N\), we have 
+        \begin{align*}
+            F(x - 2 \epsilon) - 2 \epsilon  \leq 1 - 2 \epsilon \leq F_n(x_N) \leq F_n(x) \leq 1 \leq F(x + 2 \epsilon) + 2 \epsilon
+        \end{align*}
+        Now if \(x_0 < x < x_N\), there is some \(j\) such that \(x \in [x_{j-1},x_j]\), it follows by construction that
+        \begin{align*}
+            &F(x - 2\epsilon) - 2 \epsilon \leq F(x_{j-1}) - 2 \epsilon \leq F_n(x_{j-1}) \leq F_n(x) \\
+            &F_n(x) \leq F_n(x_j) \leq F(x_j) + 2 \epsilon \leq F(x_j + 2 \epsilon) + 2 \epsilon
+        \end{align*}
+        which suffices to show that for \(n \geq M\) we have \(\rho(F,F_n) \leq 2 \epsilon\), and since \(\epsilon\) was arbitrary we conclude that \(\rho(F_n,F) \to 0\). \qed
+    \end{pb}
+    \begin{pb}
+        
     \end{pb}
 \end{document}
