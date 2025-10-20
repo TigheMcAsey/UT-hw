@@ -117,7 +117,7 @@
                 1 & x \in V^c
             \end{cases}
         \end{align*}
-        So that \(\eta_1,\eta_2\) are smooth, \(\eta_1 + \eta_2 = 1\) and \(\eta_1\vert_S^r = 1\). Now let \(F: D^{r+1} \hookrightarrow \mathbb{R}^d\) for some \(d\) be given by the Whitney embedding theorem, this allows us to define the following embedding (where once again we can identify \(x \in V\) as \((s,t) \in S^r\times[0,1)\), this is well defined by the support of \(\eta_1\))
+        So that \(\eta_1,\eta_2\) are smooth, \(\eta_1 + \eta_2 = 1\) and \(\eta_1\vert_{S^r} = 1\). Now let \(F: D^{r+1} \hookrightarrow \mathbb{R}^d\) for some \(d\) be given by the Whitney embedding theorem, this allows us to define the following embedding (where once again we can identify \(x \in V\) as \((s,t) \in S^r\times[0,1)\), this is well defined by the support of \(\eta_1\))
         \begin{align*}
             E: D^{r+1} &\to \mathbb{R}^{n + d + 3} \\
             x &\mapsto (e(s)\eta_1(x),F(x)\eta_2(x),\eta_2(x),(1-t)\eta_1(x), 1 - \eta_1(x))
@@ -143,9 +143,9 @@
         Now if \(x \not \in \text{Im}\,f^{\text{tang}}\), then \(d(\pi_x\circ E)\) is injective, hence \(\pi_x \circ E\) is an immersion, since \(\dim TD^{r+1} = 2r+2 < n \leq n + \ell - 1\), a point \(x\) is a regular value for \(f^{\text{tang}}\) exactly when it is disjoint from the image, so \(\text{Im}\,f^\text{\text{tang}}\) has measure zero by Sard's theorem, as desired. Finally, we show condition 1, due to the constraints of manifolds with boundary (i.e. not being able to take products) we will actually need to use multiple maps to do so, define the following maps here we again identify points in \(D^{r+1}\) with their polar coordinates \((s,t)\), where \(S^r = \set{(s,0) \mid s \in S^r}\)
         \begin{align*}
             f^\text{inj}_1: &(D^{r+1} \times S^r) \setminus \set{(s,0),s} \to S^{n + \ell - 1}  \\
-            &(x,y,t) \mapsto \frac{E(x) - E(y,0)}{\norm{E(x) - E(y,0)}} \\
+            &(x,y) \mapsto \frac{E(x) - E(y,0)}{\norm{E(x) - E(y,0)}} \\
             f^{\text{inj}}_2: &(D^{r+1} \times S^r \times (0,1)) \setminus \set{(s,t),(s,t) \mid s \in S^r, t\in (0,1)} \to S^{n + \ell - 1}  \\
-            &(x,y) \mapsto \frac{E(x) - E(y,t)}{\norm{E(x) - E(y,t)}}\\
+            &(x,y,t) \mapsto \frac{E(x) - E(y,t)}{\norm{E(x) - E(y,t)}}\\
             f^\text{inj}_3: &D^{r+1} \setminus \set{1} \to S^{n + \ell - 1}  \\
             &x \mapsto \frac{E(x) - E(1)}{\norm{E(x) - E(1)}}
         \end{align*}

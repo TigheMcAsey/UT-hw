@@ -1,0 +1,79 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{xcolor}
+
+\fancyhf{}
+\lhead{MAT1600 Exercises}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\var}{\text{Var}}
+
+\begin{document}
+    \begin{pb}\textbf{(Durrett 2.5.3)}
+        Define \(Y_n = \frac{\sin(n\pi t)}{n}X_n\), then since \(X_n \sim N(0,1)\) we get \(\var\, Y_n = \frac{\abs{\sin(n\pi t)}}{n^2} \leq 1/n^2\). Then since \(\sum_1^\infty \text{Var}\,Y_n < \infty\) and \(Y_1,Y_2,\hdots\) are independent, we get from the consequence of Kolmogorov maximal inequality that \(\sum_1^\infty Y_n\) converges almost surely. \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 2.5.6)}
+        We can use the Kolmogorov \(3\)-series test. First notice,
+        \begin{align*}
+            E[\psi(X_n)] = E\left[\abs{X_n}1_{\abs{X_n} > 1} + X_n^21_{\abs{X_n} \leq 1}\right]
+        \end{align*}
+        So in particular by the comparison test,
+        \begin{align*}
+            & \sum_1^\infty E\left[\abs{X_n}1_{\abs{X_n} > 1}\right] < \infty &\sum_1^\infty E\left[X_n^21_{\abs{X_n} \leq 1}\right] < \infty
+        \end{align*}
+        The latter is the series \(\sum_1^\infty \var(X_n1_{\abs{X_n} \leq 1})\), another of the series is relatively free, namely
+        \begin{align*}
+            \sum_1^\infty P(\abs{X_n} > 1) \leq \sum E\left[\abs{X_n}1_{\abs{X_n}>1}\right] < \infty
+        \end{align*}
+        Finally, we have \(\abs{E[X_n1_{\abs{X_n} > 1}]} \leq E\left[\abs{X_n}1_{\abs{X_n} > 1}\right]\), so that \(\sum_1^\infty E\left[X_n1_{\abs{X_n} > 1}\right]\) converges, since
+        \begin{align*}
+            0 = \sum_1^N E\left[X_n\right] = \sum_1^N E\left[X_n1_{\abs{X_n} > 1} + X_n1_{\abs{X_n \leq 1}}\right] = \sum_1^N E\left[X_n1_{\abs{X_n} > 1}\right] + \sum_1^N E\left[X_n1_{\abs{X_n \leq 1}}\right]
+        \end{align*}
+        we have
+        \begin{align*}
+            \sum_1^\infty E\left[X_n1_{\abs{X_n \leq 1}}\right] = - \sum_1^\infty E\left[X_n1_{\abs{X_n} > 1}\right] \in \mathbb{R}
+        \end{align*}
+        Thus \(X_n\) satisfy the hypothesis of the Kolmogorov \(3\)-series test and converge almost surely. \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 2.5.8)}
+        Write \(Y = \log^+\abs{X_1}\) and assume first that \(EY = \infty\), then for any \(c > 0\), we find that
+        \begin{align*}
+            EY = \int P(Y>t)dt = \sum_1^\infty \int_{(n-1)c}^{nc} P(Y>t)dt \leq \sum_0^\infty cP(Y>nc)
+        \end{align*}
+        which in turn implies that \(\sum_1^\infty P(\log^+\abs{X_n} > nc) =  \sum_1^\infty P(Y > nc) = \infty\), therefore by Borel-Cantelli (ii), we find that \(P(X_n > e^{nc} \text{ i.o.}) = 1\), so for any \(c \neq 0\) we find that \(\abs{X_n}c^n > 1\) i.o. almost-surely. This of course implies that \(\sum_1^\infty \abs{X_n}c^n\) has radius of convergence zero almost surely.
+
+        Now, conversely suppose \(E\log^+ \abs{X_n} < \infty\), and let \(0 < c < 1\), then choose \(\gamma > 0\) so that \(e^{\gamma}c < 1\) we get another layer cake estimate,
+        \begin{align*}
+            EY = \int P(Y>t)dt = \sum_1^\infty \int_{(n-1)\gamma}^{n\gamma} P(Y>t)dt \geq \sum_1^\infty \gamma P(Y>n\gamma)
+        \end{align*}
+        Since \(\sum_1^\infty \gamma P(Y>n\gamma) = \sum_1^\infty P(\log^+ \abs{X_n} > n\gamma)\) by Borel Cantelli, we have \(\abs{X_n} > e^{n\gamma}\) only finitely many times. Letting \(N\) so that \(n \geq N\) implies \(\abs{X_n} \leq e^{n\gamma}\), we get
+        \begin{align*}
+            \sum_1^\infty c^n\abs{X_n} \overset{\text{a.s.}}{\leq} \sum_1^{N-1}c^n\abs{X_n} + \sum_N^\infty (ce^{\gamma})^n < \infty
+        \end{align*}
+        So that the series converges a.s. for any \(c < 1\). Now letting \(c > 1\), we once again use Borel-Cantelli (ii), we first check the hypothesis
+        \begin{align*}
+            \sum_1^\infty P(\abs{X_n}c^n > 1) = \sum_1^\infty P(\abs{X_1} > \frac{1}{c^n}) = \infty
+        \end{align*}
+        Since \(\lim_{n\to\infty}P(\abs{X_1} > \frac{1}{c^n}) = P(X_1 \neq 0) > 0\) by assumption, it follows that \(P(\abs{X_n}c^n > 1 \text{ i.o.}) = 1\), so the series diverges a.s. for \(c > 1\). \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.2.9)}
+        We can use a mesh to show that \(\norm{F - F_n}_u = 0\). Namely, let \(\epsilon > 0\), then we can choose \(x_0\) so that \(F(x_1) < \epsilon\) and \(y\) so that \(F(y) > 1 - \epsilon\)
+    \end{pb}
+\end{document}
