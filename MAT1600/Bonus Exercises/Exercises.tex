@@ -74,6 +74,18 @@
         Since \(\lim_{n\to\infty}P(\abs{X_1} > \frac{1}{c^n}) = P(X_1 \neq 0) > 0\) by assumption, it follows that \(P(\abs{X_n}c^n > 1 \text{ i.o.}) = 1\), so the series diverges a.s. for \(c > 1\). \qed
     \end{pb}
     \begin{pb}\textbf{(Durrett 3.2.9)}
-        We can use a mesh to show that \(\norm{F - F_n}_u = 0\). Namely, let \(\epsilon > 0\), then we can choose \(x_0\) so that \(F(x_1) < \epsilon\) and \(y\) so that \(F(y) > 1 - \epsilon\)
+        We can use a mesh to show that \(\norm{F - F_n}_u = 0\). Namely, let \(\epsilon > 0\), then we can choose \(x_0\) so that \(F(x_1) < \epsilon\) and \(y\) so that \(F(y) > 1 - \epsilon\), then \(F\) is uniformly continuous on \([x_0,y]\), so in particular there is some \(\delta > 0\) such that \(\abs{w - z} < \delta \implies \abs{F(w) - F(z)} < \epsilon\) on \([x_0,y]\), then take \(x_j = x_0 + j\frac{\delta}{2}\) for \(j \in \set{1,\hdots,N-1}\), so that \(y - \delta/2 < x_{N-1} \leq y\) and denote \(y = x_N\). Then take \(M_j\), so that \(n \geq M_j \implies \abs{F_n(x_j) - F(x_j)} < \epsilon\) and define \(M = \max_{0 \leq j \leq N}M_j\). It follows that for \(n \geq N\), we have for \(x \in (-\infty,x_0)\),
+        \begin{align*}
+            F_n(x) \leq F_n(x_0) < F(x_0) + \epsilon < 2 \epsilon
+        \end{align*}
+        and for \(x \in (x_N,\infty)\)
+        \begin{align*}
+            F_n(x) \geq F_n(x_N) > F(x_N) - \epsilon > 1- 2 \epsilon
+        \end{align*}
+        and on these ranges \(F(x) < \epsilon\) and \(F(x) > 1 - \epsilon\) respectively, meaning \(\abs{F(x) - F_n(x)} < 2 \epsilon\). Finally, suppose that \(x \in [x_{j-1},x_j]\) for some \(j\), then we have
+        \begin{align*}
+            F(x) - 2 \epsilon < F(x_{j-1}) - \epsilon \leq F_n(x_{j-1}) \leq F_n(x) \leq F_n(x_j) \leq F(x_j) + \epsilon < F(x) + 2 \epsilon
+        \end{align*}
+        So that \(\norm{F - F_n}_u < 2 \epsilon\) and since \(\epsilon\) was arbitrary, \(\norm{F -F_n}_u \to 0\). \qed
     \end{pb}
 \end{document}

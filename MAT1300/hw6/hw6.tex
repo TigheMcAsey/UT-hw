@@ -31,17 +31,32 @@
 
 \begin{document}
     \begin{pb}
-        
+        We use from the notes the existence of the oriented intersection number, defined when \(f: M \to N\), and \(Z \subset N\) is a submanifold with \(f = f_0 \sim f_1\) and \(f_1 \pitchfork Z\), \(I(f,Z) = \sum_{p \in f_1^{-1}(Z)} \text{orientation }\#(p)\), which is congruent to \(I_2(f,Z)\) (I will not give this construction since it was done in class). Now since \(\dim M = \dim N\), we can define \(\deg f = I(f,\set{p})\) for \(p \in M\), we need to show that this is well defined for arbitrary \(p\) and that it reduces to \(\deg_2 f\).
     \end{pb}
     \begin{pb}
-        
+        Use the separation theorem to show that \(NM\) is orientable, then since \(T \mathbb{R}^{k+1} = TM \oplus NM\) and \(T \mathbb{R}^{k+1}\) and \(NM\) are orientable, we get an orientation on \(TM\) (see handwritten notes).
     \end{pb}
     \begin{pb}
-        \textbf{Lemma.} If \(G\) a (finite) discrete group acts on an orientable manifold \(M\) such that the action is smooth, free and proper, such that for each \(g \in G\) and \(p \in M\), \(\det (d_p g) > 0\) then there is an induced orientation on \(M/G\).
+        \textbf{Lemma.} If \(G\) a (finite) discrete group acts on an orientable manifold \(M\) such that the action is smooth, free and proper, such that for each \(g \in G\) we have \(\det (d g) > 0\) on \(M\), then there is an induced orientation on \(M/G\).
         \begin{proof}
-            For convenience, take the section \(s: M \to \Lambda^n TM\) so that \(s > 0\). Let \(q: M \to M/G\) be the quotient map induced by the group action, and let \(\set{V_\alpha}_{\alpha \in \mathcal{A}}\) be an open cover for \(M\) with \(q^{-1}(V_\alpha) = \bigsqcup_1^r U_\alpha^i\) and \(q\vert_{U_\alpha^i}: U_\alpha^i \overset{\cong}{\longrightarrow} V_\alpha\). Now let \(\set{\eta_\alpha}_\mathcal{A}\) be a partition of unity subordinate to the \(V_\alpha\)
+            For convenience, take the section \(s: M \to \Lambda^n TM\) so that \(s > 0\). Let \(q: M \to M/G\) be the quotient map induced by the group action, and let \(\set{V_\alpha}_{\alpha \in \mathcal{A}}\) be an open cover for \(M\) with \(q^{-1}(V_\alpha) = \bigsqcup_1^r U_\alpha^i\) and \(q\vert_{U_\alpha^i}: U_\alpha^i \overset{\cong}{\longrightarrow} V_\alpha\). Now let \(\set{\eta_\alpha}_\mathcal{A}\) be a partition of unity subordinate to the \(V_\alpha\), we consider the following diagram, and local invertibility of \(q\) to define a section \(V_\alpha \to \Lambda^n TV_\alpha\) which is either everywhere positive or negative, since \(q\vert_{U_\alpha^i}\) is a diffeomorphism, it induces an isomorphism of tangent bundles \(\det dq\vert_{U_\alpha^1}\), since this is a smooth map which is everywhere non-zero, it is in particular everywhere positive or negative.
+            \begin{equation*}
+                \begin{tikzcd}
+                    U_\alpha^1 \arrow[d,"q\vert_{U_\alpha^1}"] \arrow[r,"s"] & \Lambda^nTU \arrow[d, "\det(dq\vert_{U_\alpha^1})"] \\
+                    V_\alpha & \Lambda^n TV_\alpha
+                \end{tikzcd}
+            \end{equation*}
+            So that we get the section \(\overline{s}: x \mapsto \sum_\alpha \eta_\alpha \det dq\vert_{U_\alpha^1}(s(q\vert_{U_\alpha^1}^{-1}(x)))\), to check it is everywhere non-zero suppose that \(\eta_{\alpha_1}(x),\hdots,\eta_{\alpha_s}(x) > 0\), notice that for each \(j\) letting \(y_k = q\vert_{U^1_{\alpha_j}}^{-1}(x)\) we have on some neighborhood of \(y_j\)
+            \[q\vert_{U^1_{\alpha_j}} = q\vert_{U_{\alpha_1}^1}\left(q\vert^{-1}_{U^1_{\alpha_1}}q\vert_{U^1_{\alpha_j}}\right) = q\vert_{U_{\alpha_1}^1}g_j\]
+            for some \(g_j \in G\), this gives us that (using functoriality of \(\det\))
+            \begin{align*}
+                \det d_{y_j}q\vert_{U_{\alpha_j}^1} = \det d_{y_j}q\vert_{U_{\alpha_1}^1}g_j = \left(\det d_{y_1}q\vert_{U_{\alpha_1}^1}\right)\left(\det d_{y_j}g_j\right)
+            \end{align*}
+            Since \(\det dg_j > 0\), this implies that each term of the sum \(\sum_\alpha \eta_\alpha \det dq\vert_{U_\alpha^1}(s(q\vert_{U_\alpha^1}^{-1}(x)))\) is a positive multiple of \(\det dq\vert_{U_{\alpha_1}^1}(s(q\vert_{U_\alpha^1}^{-1}(x)))\), then since each term is nonzero and has the same sign this suffices to show nowhere vanishing at the point \(x\), and since \(x\) was arbitrary, the section is nowhere vanishing.
         \end{proof}
 
-        Denote \(j:S^d \to S^d\) as the antipodal map. When \(d\) is odd, we have an isotopy \(1_{S^d} \sim j\) via \(H((z_1,\hdots,z_{\frac{d+1}{2}}),t) = (e^{i\pi t}z_1,\hdots,e^{i\pi t}z_{\frac{d+1}{2}})\), 
+        Denote \(j:S^d \to S^d\) as the antipodal map. When \(d\) is odd, we have an isotopy \(1_{S^d} \sim j\) via \(H((z_1,\hdots,z_{\frac{d+1}{2}}),t) = (e^{i\pi t}z_1,\hdots,e^{i\pi t}z_{\frac{d+1}{2}})\), denoting \(H(x,t)\) as \(j_t(x)\) we find each induced \(\det dj_t: \Lambda^d TS^d \to \Lambda^n TS^d\) is non-vanishing by virtue of being an embedding, moreover by IVT and smoothness in \(t\), we find that \(\det dj_t > 0\) on \(M\) for all \(t\), and hence the antipodal map satisfies the conditions of the lemma, applying the lemma we find \(\mathbb{RP}^d = S^d/(\mathbb{Z}/ 2 \mathbb{Z})\) has an induced orientation for odd \(n\).
+
+        In the case that \(d\) is even, suppose for the sake of contradiction that \(\mathbb{RP}^d\) is orientable. We first check that the antipodal map \(j\) is indeed orientation reversing on \(S^d\). Consider \(S^d\) as embedded in \(\mathbb{R}^{d+1}\) via the standard embedding, we get the decomposition \(T \mathbb{R}^{d+1}\vert_{S^d} = TS^d \oplus (TS^d)^\perp\), since \(T \mathbb{R}^{d+1}\vert_{S^d}\) is trivial, we can fix a section \(t\) for it, we can also take nonvanishing the outward normal section \(n: S^d \to (S^d)^\perp\) via \(n(x) = x\), this gives an orientation on \((S^d)^\perp\) since we have the canonical isomorphism \(\Lambda (S^d)^\perp \cong (S^d)^\perp\). We have that \(j\) extends to the map \(\hat{j}: x \mapsto -x\) on \(\mathbb{R}^{d+1}\)
     \end{pb}
 \end{document}

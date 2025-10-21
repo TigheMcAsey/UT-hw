@@ -56,12 +56,19 @@
 
         \textbf{(ii) - \(\mathbf{\frac{1}{b_n^2}\sum_1^nE\overline{X}_{n,k}^2 \to 0}\)}, where \(\overline{X}_{n,k} = X_k1_{\set{\abs{X_k}\leq b_n}}\)
         \begin{align*}
-            E\overline{X}_{n,k}^2 &= \left(\sum_1^{2^{m(n)}}p_k(2^k-1)-p_0\right)^2 = p_0^2 - 2p_0\left(\sum_1^{2^{m(n)}}\frac{1}{k(k+1)}-p_k\right) + \left(\sum_1^{2^{m(n)}}p_k(2^k-1)\right)^2 \\
-            &\leq p_0^2 + \left(\sum_1^{2^{m(n)}}\frac{1}{k(k+1)} - p_k\right)^2 \leq p_0^2 + \left(\sum_1^{2^{m(n)}}\frac{1}{k(k+1)}\right)^2 \leq 1 + 1 = 2
+            E\overline{X}_{n,k}^2 &= p_0 + \sum_1^{m(n)} p_k(2^k-1)^2 \leq p_0 + \sum_1^{m(n)} p_k(2^{2k} - 2^{k+1} + 1) \leq p_0 + \sum_1^{m(n)} p_k2^{2k} = p_0 + \sum_1^{m(n)} \frac{2^k}{k(k+1)} 
         \end{align*}
-        And hence,
+        And hence, 
         \begin{align*}
-            \frac{1}{b_n^2}\sum_1^nE\overline{X}_{n,k}^2 \leq \frac{2n}{b_n^2} = \frac{2n}{2^{-2m(n)}} < \frac{2m(n)^{3/2}}{2^{-m(n)}} \overset{n \to \infty}{\longrightarrow} 0
+            \frac{1}{b_n^2}\sum_1^nE\overline{X}_{n,k}^2 \leq \frac{n}{b_n^2}\left(p_0 + \sum_1^{m(n)}\frac{2^k}{k(k+1)}\right) \leq \frac{m(n)^{3/2}}{2^{m(n)}}\left(p_0 + \sum_1^{m(n)}\frac{2^k}{k(k+1)}\right)
+        \end{align*}
+        It is clear that the \(m(n)^{3/2}2^{-m(n)}p_0\) term goes to zero, so we must check that the second term goes to zero,
+        \begin{align*}
+            \frac{m(n)^{3/2}}{2^{m(n)}}\sum_1^{m(n)}\frac{2^k}{k(k+1)} &= \frac{m(n)^{3/2}}{2^{m(n)}}\left(\sum_{1}^{m(n) - (\log m(n))^2}\frac{2^k}{k(k+1)} + \sum_{m(n) - (\log m(n))^2}^{m(n)}\frac{2^k}{k(k+1)}\right) \\
+            &\leq \frac{m(n)^{3/2}2^{m(n) - (\log m(n))^2}}{2^{m(n)}} + \frac{m(n)^{3/2}2^{m(n)}}{2^{m(n)}}\left(\frac{1}{m(n) - (\log m(n))^2 + 1} - \frac{1}{m(n)+1}\right) \\
+            &= \frac{m(n)^{3/2}}{m(n)^2} + m(n)^{3/2}\frac{m(n) + 1 - m(n) - 1 + (\log m(n))^2}{(m(n) + 1)(m(n) - (\log m(n))^2 + 1)} \\
+            &= \frac{m(n)^{3/2}}{m(n)^2} + m(n)^{3/2}\frac{(\log m(n))^2}{(m(n) + 1)(m(n) - (\log m(n))^2 + 1)} \\
+            &= \frac{1}{\sqrt{m(n)}} + \frac{m(n)^{3/2}(\log m(n))^2}{\Theta(m(n)^2)} \overset{n\to \infty}{\longrightarrow} 0
         \end{align*}
         Now we want to obtain workable expressions to explain the asymptotic behaviour, we obtain the following expression for \(\sum_1^n E \overline{X}_{n,k}\) (here I not writing the dependence of \(m\) on \(n\) out of laziness)
         \begin{align*}
@@ -77,7 +84,7 @@
         \end{align}
         so that \(m \sim \log n\) and \(\sum_1^n E \overline{X}_{n,k} \sim \frac{-n}{m} \sim \frac{-n}{\log n}\) and \(b_n = m^{-3/2}n \sim n(\log n)^{-3/2}\). The weak law for triangular arrays applied here gives us that
         \begin{align*}
-            \frac{S_n + \frac{n}{\log n}}{n(\log n)^{-3/2}} \overset{P}{\longrightarrow} 0 \implies \frac{S_n + \frac{n}{\log n}}{n\log n} \overset{P}{\longrightarrow} 0
+            \frac{S_n + \frac{n}{\log n}}{n(\log n)^{-3/2}} \overset{P}{\longrightarrow} 0 \implies \frac{S_n + \frac{n}{\log n}}{n(\log n)^{-1}} \overset{P}{\longrightarrow} 0
         \end{align*}
         this can be rewritten as \(\frac{S_n}{\frac{n}{\log n}} \overset{P}{\to} -1\) \qed
     \end{pb}
