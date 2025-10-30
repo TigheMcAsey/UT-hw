@@ -88,4 +88,209 @@
         \end{align*}
         So that \(\norm{F - F_n}_u < 2 \epsilon\) and since \(\epsilon\) was arbitrary, \(\norm{F -F_n}_u \to 0\). \qed
     \end{pb}
+    \begin{pb}\textbf{(Durrett 3.2.12)}
+        One direction is much easier, so first suppose that \(X_n \implies c\), then for any \(\epsilon > 0\), we have \(P(X_n \leq c - \epsilon) \to P(c \leq c - \epsilon) = 0\), and \(P(X_n > c + \epsilon) = 1 - P(X_n \leq c + \epsilon) \to 1 - P(c \leq c + \epsilon) = 0\), so that \[P(\abs{X_n - c} > \epsilon) \leq P(X_n > c + \epsilon) + P(X_n \leq c - \epsilon) \to 0\]
+
+        For the (more general) converse, I should first mention that the DCT applies to convergence in probability (every subsequence has a subsequence converging almost surely which will have the same DCT limit) we can use the Portmanteau lemma, which gives equivalence to weak-* convergence on bounded continuous functions. Namely, we want to show that \(\int f d\mu_n \to \int f d\mu\) for all bounded continuous \(f\). Now letting \(f\) be bounded and continuous, we have that \(E\abs{f} < \infty\) so we can apply DCT, observe from the change of variables formula,
+        \begin{align*}
+            \int fd\mu_n = E[f\circ X_n] \overset{\text{DCT}}{\longrightarrow} E[f\circ X] = \int fd\mu
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.2.13) - Converging Together Lemma}
+        
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.2.15)}
+        We let \(Y_j \sim N(0,1)\), and \(\hat{X}^j_n = Y_j(\frac{n}{\sum_1^n Y_j^2})\), we will show later that \(\hat{X} \overset{\text{dist.}}{=} X\), and that \(\hat{X}_n^1 \implies N(0,1)\). Starting with the latter, \(Y_j^2\) are i.i.d. With \(E \abs{Y_j^2} = E Y_j^2 = \text{var}(Y_j) + (E Y_j)^2 = 1\), whence we can apply the strong law of large numbers to \(\frac{\sum_1^n Y_j^2}{n} \overset{\text{a.s.}}{\longrightarrow} 1\) so that \(\hat{X}_n^1 \overset{\text{a.s.}}{\longrightarrow} Y_1 \sim N(0,1)\).
+
+        Now to see that \(\hat{X} \overset{\text{dist.}}{=} X\), we will show that \(\hat{X}\) is uniformly distributed on the sphere of radius \(\sqrt{n}\), first note that it indeed takes values on this sphere since \(\sqrt{\sum_1^n \left(Y_j\left(\frac{n}{\sum_1^n Y_k^2}\right)\right)^2} = \sqrt{n}\). Now we can use that the uniform distribution is the unique distribution which is preserved by rotation on the \(\sqrt{n}\)-sphere. Denoting \(Y = (Y_1,\hdots,Y_n)\), \(Y\) having distribution \(F\) can use characteristic functions to check that
+        \begin{align*}
+            \varphi_{AY}(t) = \int e^{it^T AY}dF = \int e^{i(A^Tt)^TY}dF = \varphi_Y(A^Tt) = e^{\norm{A^Tt}^2/2} = e^{\norm{t}^2/2} = \varphi_Y(t)
+        \end{align*}
+        So that \(Y = AY\), now \(A\hat{X} = \sqrt{n}\frac{AY}{\norm{Y}} = \sqrt{n}\frac{Y}{\norm{Y}}\). \qed
+    \end{pb}
+    \begin{pb} \textbf{(Durrett 1.7.5)}
+        The following is used in the proof of Fourier inversion, namely \(\int_0^\infty \frac{\sin x}{x} = \frac{\pi}{2}\). Moreover the trick \(\frac{1}{x} = \int_0^\infty e^{-xy}dy\), then using Fubini is frequently useful for integration. Now on with the proof,
+
+        Let \(I := \int_0^a e^{-xy}\sin x dx\), then
+        \begin{align*}
+            I &= \left[-\cos x e^{-xy} - y\int \cos x e^{-xy}\right]_{x=0}^a = \left[-\cos x e^{-xy} - ye^{-xy}\sin x - y^2\int e^{-xy}\sin x\right]_{x=0}^a \\
+            &= 1 -\cos a e^{-ay} - ye^{-ay}\sin a + y^2 I
+        \end{align*}
+        So that \(I = \frac{1}{1 + y^2} - \cos a \frac{e^{-ay}}{1 + y^2} - \sin a \frac{ye^{-ay}}{1+y^2}\)
+    \end{pb}
+    Now it is easy to see \(\int_0^\infty Idy = \pi/2 - \cos a \int_0^\infty \frac{e^{-ay}}{1 + y^2}dy - \sin a \int_0^\infty \frac{ye^{-ay}}{1+y^2}\). Since Tolleni's theorem always holds for positive functions, we can check the assumptions of Fubini on \(\abs{e^{-xy}\sin x}\), using \(\abs{\sin x} \leq \abs{x}\)
+    \begin{align*}
+        \int_0^a \int_0^\infty \abs{e^{-xy}\sin x}dydx = \int_0^a \frac{\abs{\sin x}}{x}dx \leq a
+    \end{align*}
+    All of the work has been done, so now we can breeze through the proof
+    \begin{align*}
+        \int_0^a \frac{\sin x}{x} &= \int_0^a \int_0^\infty e^{-xy}\frac{\sin x}{x} dydx \overset{\text{fubini}}{=} \int_0^\infty\int_0^a e^{-xy}\frac{\sin x}{x} dxdy \\
+        &= \int_0^\infty \frac{1}{1 + y^2} - \cos a \frac{e^{-ay}}{1 + y^2} - \sin a \frac{ye^{-ay}}{1+y^2} \\ &= \pi/2 - \cos a \int_0^\infty\frac{e^{-ay}}{1 + y^2}dy - \sin a \int_0^\infty \frac{ye^{-ay}}{1+y^2}dy
+    \end{align*}
+    This gives the desired inequality, namely
+    \begin{align*}
+        \abs{\int_0^a \frac{\sin x}{x} - \pi/2} \leq \abs{\cos a}\int_0^\infty e^{-ay}dy + \abs{\sin a} \int_0^\infty  ye^{-ay}dy \leq \frac{1}{a} + \frac{1}{a^2} \overset{a \geq 1}{\leq} \frac{2}{a}
+    \end{align*} \qed
+
+    \begin{pb}\textbf{(Durrett 3.3.1)}
+        Let \(\varphi\) be the characteristic function of \(X\), then let \(Y\) be i.i.d. with \(-X\), so that
+        \begin{align*}
+            \varphi_{X+Y}(t) = E[e^{it(X+Y)}] \overset{\text{ind.}}{=} E[e^{itX}]E[e^{itY}] = \varphi(t)\overline{\varphi(t)} = \abs{\varphi(t)}^2
+        \end{align*}
+
+        To get that \(\Re \varphi\) is a characteristic function, note first that it must be
+        \begin{align*}
+            \Re \varphi(t) = E\left[\frac{1}{2}(e^{itX} + e^{-itX})\right]
+        \end{align*}
+        We can actually cheat here using Bochner's theorem with linearity, and \(\Re \varphi(0) = 1\), but using Bochner's theorem can feel like bad practice. Instead let \(Y\) be a random variable independent of \(X\) with \(P(Y = 1) = P(Y = -1) = \frac12\), then
+        \begin{align*}
+            \varphi_{YX}(t) &= E[e^{itYX}] = E[e^{itYX}(1_{Y=1} + 1_{Y=-1})] = E[e^{itX}1_{Y=1}] + E[e^{-itX}1_{Y=-1}] \\
+            &\overset{\text{indep}}{=} \varphi(t)E[1_{Y=1}] + \overline{\varphi(t)}E[1_{Y=-1}] = \Re \varphi(t)
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.3.2)} \textbf{(i)}
+        \begin{align*}
+            \int_{-T}^T e^{-ita}\varphi(t)dt &= \int_{-T}^T \int e^{it(X-a)}d\mu dt \overset{\text{Fubini}}{=} \int\int_{-T}^T e^{it(X-a)}dtd\mu = \int\int_{-T}^T (\cos + i\sin)(t(X-a))dtd\mu \\
+            &= \int\int_{-T}^T \cos(t(X-a))dtd\mu = \int \frac{2\sin(T(X-a))}{X-a}d\mu
+        \end{align*}
+        Fubini here is justified, since the integrand has absolute value \(\leq 1\), and \(\mu\) is a probability measure, now applying the limit we want to use DCT, which is justified by \(\frac{\sin(T(X-a))}{T(X-a)} \leq 1\).
+        \begin{align*}
+            \lim_{T \to \infty}\int\frac{2\sin(T(X-a))}{2T(X-a)}d\mu = \int\lim_{T\to\infty}\frac{\sin(T(X-a))}{T(X-a)}d\mu = \int1_{\set{a}}d\mu = \mu\set{a}
+        \end{align*}
+
+        \textbf{(ii)} If \(x \not \in h \mathbb{Z}\), then \(P(X = x) = 0\). Now assuming \(x \in h \mathbb{Z}\), we find that \(e^{-i t x}\) is \(\frac{2\pi}{h}\) periodic. Moreover
+        \begin{align*}
+            \varphi(t + 2\pi/h) &= E[\exp(iX(t + 2\pi/h))] = E[1_{h \mathbb{Z}}\exp(iX(t + 2\pi/h))] = \int_{h \mathbb{Z}}\exp(iX(t + 2\pi/h)) d\mu \\
+            &= \int_{h \mathbb{Z}}e^{itX}e^{X2\pi/h}d\mu = \int_{h \mathbb{Z}} e^{itX} = \varphi(t)
+        \end{align*}
+        Now, using the previous subpart we find that
+        \begin{align*}
+            P(X = x) = \lim_{T \to \infty} \frac{1}{2T}\int_{-T}^T \exp(-i tx)\varphi(t)dt
+        \end{align*}
+        Since the limit exists, it suffices to examing a subsequence, using \(2\pi/h\) periodicity, we take \(T_n = \frac{2\pi n + \pi}{h}\)
+        \begin{align*}
+            P(X = x) = \lim_{n\to\infty} \frac{h}{2\pi(2n+1)}\int_{-T_n}^{T_n} exp(-i tx)\varphi(t)dt = \frac{h}{2\pi}\int_{-\pi/h}^{\pi/h} exp(-i tx)\varphi(t)dt
+        \end{align*}
+
+        \textbf{(iii)} The equality written in the statement is one of the consequences of the definition of characteristic functions. This result is striaghtforward.
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.3.3)}
+        \(\varphi_{X-Y} = \abs{\varphi}^2\), so by the previous problem, and noting \(\set{x \mid \mu\set{x} \neq 0}\) is countable,
+        \begin{align*}
+            \lim_{T\to\infty}\frac{1}{2T}\int_{-T}^T \abs{\varphi(t)}^2dt &= P(X-Y = 0) = \int{1_{X - Y = 0}}d\mu d\mu = \int \int 1_{Y=X} d\mu d\mu = \int \int 1_{Y = x}d \mu d\mu(x) \\
+            &= \int \mu\set{x} d\mu = \int\mu\set{x}1_{\mu\set{x}\neq 0} = \sum_{\set{x \mid \mu\set{x} \neq 0}} \mu\set{x}\int 1_{\set{x}}d\mu = \sum_x \mu\set{x}^2
+        \end{align*} \qed
+
+        This exercise has some important consequences, namely if \(\varphi(t) \overset{t\to\infty}{\longrightarrow} 0\), then \(\mu\) does not have any point masses, moreover the converse is false by the next exercise (3.3.11). There is a partial converse, which says that if \(\mu\) has a density, the \(\varphi(t) \to 0\), to see this if \(\mu\) has a density \(f\), then \(\varphi(t) = \int e^{itx}f(x)dx\), and this is a consequence of the Riemann lebesgue lemma, where we show it for simple functions of intervals, then use that these are dense in \(L^1(\mathbb{R})\). On an interval, \(\abs{\int_a^b e^{itx}} = \leq 2/\abs{t}\). \qed
+    \end{pb}
+    \begin{pb}\textbf{Durrett 3.3.11}
+        This problem provides an example of a random variable, with a continuous density, but not satisfying \(\lim_{t\to\infty}\varphi(t) = 0\), the random variable is defined using \(X_k \sim \text{Bernoulli}(1/2)\) and \(X = 2\sum_1^\infty X_j/3^j\). The distribution function is continuous, since it is the Cantor-Lebesgue function. Now we compute \(\varphi\), using exercise 3.3.9, the characteristic function for the Bernoulli distribution and \(\varphi_{aX}(t)=\varphi_X(at)\) we get
+        \begin{align*}
+            \varphi(t) = \prod_1^\infty \varphi_{2X_i/3^j}(t) = \prod_1^\infty \frac12\left(e^{it\frac{2}{3^j}} + 1\right)
+        \end{align*}
+        Now when \(t = 3^k\pi\), we get
+        \begin{align*}
+            \varphi(t) = \prod_1^\infty \frac{1}{2}\left(e^{it\frac{2\pi}{3^{j-k}}} + 1\right) = 1\cdot\prod_{k+1}^\infty \frac{1}{2}\left(e^{it\frac{2\pi}{3^{j-k}}} + 1\right) = \varphi(\pi)
+        \end{align*}
+        So as long as we can show \(\abs{\varphi(\pi)} > 0\), we are done. We first establish
+        \begin{align*}
+            \abs{e^{i2\pi/3^j} - 1} \leq \abs{\sin2\pi/3^j} + \abs{1 - \cos2\pi/3^j} \leq \frac{2\pi}{3^j} + \frac{2\pi^2}{3^{2j}} \overset{j>2}{\leq} \frac{4\pi}{3^j}
+        \end{align*}
+        Now taking \(C = \abs{\prod_1^{r-1} \frac12\left(e^{it\frac{2}{3^j}} + 1\right)}\), where \(r > 2\) is chosen so that \(2\pi\sum_r^\infty3^{-j} < \frac12\) we find that
+        \begin{align*}
+            \abs{\varphi(\pi)} \geq C\prod_r^\infty \frac12\left(2-\frac{4\pi}{3^j}\right) \geq C\prod_r^\infty 1 - \frac{2\pi}{3^j} \geq C - C2\pi\sum_r^\infty 1/3^j \geq C/2 > 0
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.3.4)}
+        Take the distribution of a coinflip, with \(P(X=1)=P(X=-1)=\frac12\), then
+        \begin{align*}
+            \varphi(t) = E[e^{itX}] = \frac{1}{2}(e^{it} - e^{-it}) = \cos t
+        \end{align*}
+        \(\cos t \not \to 0\), so it is apparent that \(\int_{-\infty}^\infty \abs{\cos t} = \infty\). \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.3.6)}
+        Firstly, to solve for the Cauchy distribution, we use that \(f(x) = \frac{1}{2\pi}\int e^{-itx}\varphi(t)dt\), in our case we find that \(\varphi = e^{-\abs{t}}\), since
+        \begin{align*}
+            \frac{2}{\pi}f(x) &= \frac{2}{1+x^2} = \frac{1}{1+ix} - \frac{1}{1-ix} = \int_0^\infty e^{-t(1+ix)}dt - \int_0^\infty e^{-t(1-ix)}dt \\
+            &= \int_0^\infty e^{-t(1+ix)}dt + \int_{-\infty}^0 e^{-t(ix - 1)}dt = \int e^{-\abs{t}}e^{-itx}dt = \int \varphi(t)e^{-itx}dt
+        \end{align*}
+        Then we can use \(\varphi_{\frac{\sum_1^n X_k}{n}} = \prod_1^n \varphi_{\frac{X_k}{n}}\), and \(\varphi_{\frac{X_k}{n}}(t) = \varphi_{X_k}(t/n)\), so that
+        \begin{align*}
+            \varphi_{\frac{\sum_1^n X_k}{n}}(t) = \prod_1^n e^{-\abs{t}/n} = \exp\left(\sum_1^n-\abs{t}/n \right)= e^{-\abs{t}} = \varphi_{X_1}(t)
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.3.7)}
+        \(X_n \implies X\), hence \(\varphi_n \to \varphi\), where \(\varphi_n = e^{-\frac12 \sigma_n^2t^2}\) and \(\varphi = e^{-\frac12 \sigma^2t^2}\), noting that \(\varphi_n/\varphi \to 1\), we have that \(e^{\frac12 t^2 (\sigma^2 - \sigma_n^2)} \to 1\) for all \(t\), now letting \(t = \sqrt{2}\), its apparent this only happens when \(\sigma_n \to \sigma\). To justify the characteristic functions,
+        \begin{align*}
+            E[\exp(itX)] = \frac{1}{\sqrt{2\pi \sigma^2}}\int \exp(itx - \frac{x^2}{2\sigma^2})dx = \frac{1}{\sqrt{2\pi \sigma^2}}\int \cos(tx)e^{-\frac{x^2}{2 \sigma^2}}dx
+        \end{align*}
+        Now defining \(\varphi(t) = \frac{1}{\sqrt{2\pi \sigma^2}}\int \cos(tx)e^{-\frac{x^2}{2 \sigma^2}}dx\), we can swap the derivative and integral since our function is absolutely integrable. This gives us
+        \begin{align*}
+            \varphi'(t) = \int -xe^{-\frac{x^2}{2 \sigma^2}}\sin tx dx
+        \end{align*}
+        Now integrating by parts with \(u = \sin tx, du = t\cos tx\), and \(dv = -xe^{-\frac{x^2}{2 \sigma^2}}\), we get \(v = \sigma^2 e^{-\frac{x^2}{2 \sigma^2}}\) so that
+        \begin{align*}
+            \varphi'(t) = - \sigma^2t \varphi(t) \implies \varphi(t) = e^{- \frac{\sigma^2 t^2}{2}}
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.3.8)}
+        We get \(\varphi_n^X \to \varphi^X\) and \(\varphi_n^Y \to \varphi^Y\), then \(\varphi_n^{X+Y} = \varphi_n^X \varphi_n^Y \to \varphi^X \varphi^Y\).
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.3.9)}
+        For any \(n\), we get that
+        \begin{align*}
+            \varphi_{S_n} = \varphi_{S_{n-1} + X_n} = \varphi_{S_{n-1}}\varphi_{X_n}
+        \end{align*}
+        applying this inductively we get that \(\varphi_{S_n} = \prod_1^n \varphi_{X_n}\), since \(S_n \to S\), the characteristic functions \(\varphi_{S_n} \to \varphi_S\) pointwise, since \(S_n \implies S\). Then it follows that for each \(t\), \(\varphi_S(t) = \lim_{n\to\infty} \prod_1^n \varphi_{X_n}(t)\), and in particular the limit exists.
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.3.12)}
+        We first Taylor expand \(e^{-t^2/2}\),
+        \begin{align*}
+            e^{-t^2/2} = \sum_0^\infty (-1)^n\frac{t^{2n}}{n!2^n}
+        \end{align*}
+        Now taking \(X \sim N(0,1)\), and using the taylor expansion in the last equality, we find that
+        \begin{align*}
+            EX^{2n} = \frac{1}{\sqrt{2\pi}}\int x^{2n}e^{-x^2/2}dx = (-1)^n \varphi^{(2n)}(0) = (-1)^n\left.\left(\frac{d}{dt}\right)^{2n}\right\vert_0 e^{-t^2/2} = \frac{2n!}{2^n n!}
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.3.14)} \textbf{(i)}
+        We can't use an \(L^2\) weak law because we only have access to information on the first two terms of the expansion, it will be hard to use a weak law in general due to only having the characteristic functions, so we need to show it directly, first noting
+        \begin{align*}
+            \lim_{n\to\infty} \frac{\varphi(t/n) - \varphi(0)}{t/n} = ia \implies n(\varphi(t/n) - 1) = iat
+        \end{align*}
+        we can rearrange to find that
+        \begin{align*}
+            \varphi_{S_n/n}(t) = \varphi(t/n)^n = \left(1 + n\frac{\varphi(t/n) - 1}{n}\right)^n
+        \end{align*}
+        So that \(\lim_{n\to\infty} \varphi_{S_n/n} = e^{iat} = \varphi_a\) by continuity of \(\log\), since \(e^{iat}\) is continuous at zero, we get weak convergence \(S_n/n \implies a\).
+
+        \textbf{(ii)} Immediate consequence of the continuity theorem.
+
+        \textbf{(iii)} \textcolor{red}{TODO}
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.3.16)}
+        If \(EX = 0\), and \(\var X = 0\), then \(EX^2 = 0\), which implies \(X \overset{L^2}{=} 0\), so that \(X = 0\) a.s.
+
+        Now for the main result, we have from taylors theorem \(\lim_{h\to 0}\frac{1 - \cos hx}{h^2} = x^2\), this alongside Fatou's lemma gives us
+        \begin{align*}
+            E[X^2] &\overset{\text{Fatou}}{\leq} 2\liminf_{h\to 0}E\left[\frac{1-\cos(hX)}{h^2}\right] = 2\liminf_{h\to0}E\left[\frac{1}{h^2} - \frac{e^{ihx} + e^{-ihx}}{2h^2}\right] = \liminf_{h\to 0}\frac{2 - \varphi(h) - \varphi(-h)}{h^2} \\
+            &= - \limsup_{h\to 0} \frac{\varphi(h) + \varphi(-h) - 2}{h^2} = -2\limsup_{h \to 0}\frac{\varphi(h)-1}{h^2} < \infty
+        \end{align*}
+        Then since \(E[X^2] < \infty\), we get that
+        \begin{align*}
+            \varphi(t) = 1 +itE[X] -t^2E[X^2] + o(t^2)
+        \end{align*} so that \(E[X] = 0\) for the above limit to make sense. \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.3.17)}
+        One direction is obvious from the continuity theorem, in the other direction \(\varphi_n \to \varphi\) where \(\varphi\) is continuous on \((-\delta,\delta)\) so once again by the continuity theorem, \(Y_n \implies Y\), where \(Y\) has characteristic function \(\varphi\), we want to show that \(\varphi = 1\), so we will be done by the inversion formula. Now since \(\lim_{t\downarrow 0}\frac{\varphi(t) - 1}{t^2} = 0 > -\infty\), we get from the proof of the previous exercise (3.3.16) \(E[Y^2] = 0\), and hence \(Y = 0\) a.s. \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.4.1)}
+        The histogram correction in this case is \(P(S_{180} \leq 24.5)\), applying the approximation given by the CLT,
+        \begin{align*}
+            P(S_{180} \leq 24.5) = P\left(\frac{S_{180}-30}{5} \leq -11/10\right) = \Phi(-1.1) \approx 13.57
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.4.4)}
+        
+    \end{pb}
 \end{document}
