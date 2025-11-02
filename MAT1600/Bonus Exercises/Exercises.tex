@@ -432,7 +432,7 @@
 
         \textbf{(c)} Let \(t \in \mathbb{R}\), then consider for \(1 \leq k \leq n\), \(c_{n,k} := \frac{1 - \cos(tk/n)}{k/n}\), then since \(\abs{\frac{1 - \cos x}{x}} \leq \min\set{2/\abs{x},\frac{\abs{x}}{2}}\), we find that
         \begin{align*}
-            \abs{c_{n,k}} = \abs{t}\abs{\frac{1 - \cos(tk/n)}{tk/n}} \leq \min\set{\frac{2n}{\abs{tk}},\frac{k}{2n}\abs{t^2}} \leq \min\set{\frac{2n}{\abs{t}},\frac{1}{2}\abs{t^2}}
+            \abs{c_{n,k}} = \abs{t}\abs{\frac{1 - \cos(tk/n)}{tk/n}} \leq \frac{k}{2n}\abs{t^2} \leq \frac{1}{2}\abs{t^2}
         \end{align*}
         Noting here that independent of \(t\), we always have \(\abs{c_{n,k}}/n \to 0\). Now still for fixed \(t\), consider
         \begin{align*}
@@ -444,14 +444,25 @@
         \end{align*}
         This method of obtaining the inequality unfortunately means we will not be able to use the technique from CLT of writing \(\abs{\prod_1^n z_k - \prod_1^n \omega_k} \leq \theta^{n-1}\sum_1^n \abs{z_k-\omega_k}\) since we havent shown \(c_{n,k} \to c\), fortunately we can apply a similar proof specific to the real case. Considering \(n\) be large enough so that \(\abs{c_{n,k}}/n < \frac12\)
         \begin{align*}
-            \abs{c - \sum_1^n \log(1-\frac{c_{n,k}}{n})} = \abs{c - \sum_1^n \frac{c_{n,k}}{n} - \sum_1^n \eta_{n,k}\frac{c_{n,k}^2}{n^2}}
+            \abs{-c - \sum_1^n \log(1-\frac{c_{n,k}}{n})} = \abs{-c + \sum_1^n \frac{c_{n,k}}{n} + \sum_1^n \eta_{n,k}\frac{c_{n,k}^2}{n^2}}
         \end{align*}
         Here \(\abs{\eta_{n,k}} \leq \sup_{x \in [\frac{1}{2},\frac32]}\frac{1}{2}\frac{1}{(1-x)^2} =: \eta < \infty\) where this estimate on \(\eta_{n,k}\) and the above equality follow from Taylor's theorem.
         It follows that
         \begin{align*}
-            \abs{c - \sum_1^n \log(1-\frac{c_{n,k}}{n})} &\leq \abs{c - \sum_1^n \frac{c_{n,k}}{n}} + \frac{\eta}{n}\abs{\sum_1^n c_{n,k}^2/n} \leq \abs{c - \sum_1^n \frac{c_{n,k}}{n}} + \frac{\eta}{n} \sum_1^n \frac{1}{4n}\abs{t}^4 \\
+            \abs{-c - \sum_1^n \log(1-\frac{c_{n,k}}{n})} &\leq \abs{c - \sum_1^n \frac{c_{n,k}}{n}} + \frac{\eta}{n}\abs{\sum_1^n c_{n,k}^2/n} \leq \abs{c - \sum_1^n \frac{c_{n,k}}{n}} + \frac{\eta}{n} \sum_1^n \frac{1}{4n}\abs{t}^4 \\
             &\leq \abs{c - \sum_1^n \frac{c_{n,k}}{n}} + \frac{1}{n}\eta\abs{t}^4
         \end{align*}
-        Which goes to zero as \(n \to \infty\). It follows that by continuity of exponential, we get
+        Which goes to zero as \(n \to \infty\). It follows that by continuity of exponential, we get \(\prod_1^n 1 - \frac{c_{n,k}}{n} \to e^{-c}\).
+
+        Now denote the characteristic function of \(\frac{S_n}{n}\) as \(\varphi_n\), and the characteristic functions of \(X_k \tand \frac{X_k}{n}\) as \(\varphi_k \tand \varphi_{n,k}\) respectively, then
+        \begin{align*}
+            \varphi_n(t) &= \prod_1^n \varphi_{n,k}(t) = \prod_1^n \varphi_k(t/n) = \prod_1^n E[\exp(itX_k)] = \prod_1^n 1 - k^{-1} + k^{-1}\cos(tk/n) \\
+            &= \prod_1^n 1 - k^{-1}\left(1-\cos(tk/n)\right) = \prod_1^n 1-n^{-1}\left(\frac{1-\cos(tk/n)}{k/n}\right) = \prod_1^n 1 - \frac{c_{n,k}}{n}
+        \end{align*}
+        Now we will be done once we show \(\varphi(t) = \exp\left(\int_0^1 x^{-1}(1-\cos xt)dx\right)\) is continuous at \(t=0\) by the continuity lemma. It suffices to check that \(\int_0^1 x^{-1}(1-\cos xt)dx\) is since \(e\) is, this is easy to see by the DCT, since at \(t = 0\) the integrand is zero, we write
+        \begin{align*}
+            \abs{x^{-1}(1-\cos xt)} = \abs{t} \abs{(tx)^{-1}(1-\cos xt)} \leq \abs{tx}^2/2
+        \end{align*}
+        so restricting to \(\abs{t} \leq 1\) we get the bounded convergence theorem with \(\frac12\) dominating the function, so that \(\lim_{t\to0}\int_0^1 x^{-1}(1-\cos xt)dx = \int_0^1\lim_{t\to0}x^{-1}(1-\cos xt)dx = 0\), this gives us that \(\varphi(t)\) is continuous at zero, and hence by the continuity theorem \(S_n/n \to \aleph\). \qed
     \end{pb}
 \end{document}
