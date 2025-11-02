@@ -18,8 +18,8 @@
 
 % Commands:
 
-\newcommand{\set}[1]{\{#1\}}
-\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
 \newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
 \newcommand{\tand}{\text{ and }}
 \newcommand{\tor}{\text{ or }}
@@ -97,7 +97,25 @@
         \end{align*} \qed
     \end{pb}
     \begin{pb}\textbf{(Durrett 3.2.13) - Converging Together Lemma}
-        
+        We use the previous problem, \(Y_n \implies c\), so that \(Y_n\overset{P.}{\longrightarrow} c\) now we can write \(P(X \leq \omega) = P(X + c \leq \omega + c)\), if \(\mathcal{C}_X\) is the set of points where \(F_X\) is continuous, the set of points where \(F\) is continuous is \(\mathcal{C}_X + c\). Now let \(\epsilon > 0\), and \(x \in \mathcal{C}_X + c\), then choose \(\delta\) such that \(\abs{x-c-y} \leq \delta\) implies \(\abs{F(x-c) - F(y)} < \epsilon\) and \(x - c -\delta\) is a point of continuity for \(F\)
+        \begin{align*}
+            \set{X_n + Y_n \leq x} \supset \set{X_n \leq x - \delta - c}\cap\set{Y \in (c-\delta,c+\delta)}
+        \end{align*}
+        We can then write
+        \begin{align*}
+            &P(X_n + Y_n \leq x) \geq F_n(x - c - \delta) - P(Y_n \not \in (c - \delta, c + \delta)) \\
+            &\geq F_X(x-c) - \abs{F_n(x-c-\delta) - F_X(x-c-\delta)} - \abs{F_X(x - c - \delta) - F_X(x-c)} - P(Y_n \not \in (c - \delta, c + \delta))
+        \end{align*}
+        Now taking \(n\) large enough, we get \(\abs{F_n(x-c-\delta) - F_X(x-c-\delta)} < \epsilon\) and \(P(Y_n \not \in (c - \delta, c + \delta)) = P(\abs{Y_n - c} \geq \delta) < \epsilon\) so that
+        \begin{align*}
+            P(X_n + Y_n \leq x) \geq F_X(x-c) - 3 \epsilon = F(x-c) - 3 \epsilon
+        \end{align*}
+        For the converse inequality,
+        \begin{align*}
+            P(X_n+Y_n \leq X) &= P(X_n + Y_n \leq x, \abs{Y_n - c} \geq \delta) + P(X_n + Y_n \leq x, \abs{Y_n - c} < \delta) \\
+            &\leq P(\abs{Y_n - c} \geq \delta) + P(X_n \leq x - c - \delta) \leq F_X(x-c) + 3 \epsilon
+        \end{align*}
+        by the same inequalities as above \qed
     \end{pb}
     \begin{pb}\textbf{(Durrett 3.2.15)}
         We let \(Y_j \sim N(0,1)\), and \(\hat{X}^j_n = Y_j(\frac{n}{\sum_1^n Y_j^2})\), we will show later that \(\hat{X} \overset{\text{dist.}}{=} X\), and that \(\hat{X}_n^1 \implies N(0,1)\). Starting with the latter, \(Y_j^2\) are i.i.d. With \(E \abs{Y_j^2} = E Y_j^2 = \text{var}(Y_j) + (E Y_j)^2 = 1\), whence we can apply the strong law of large numbers to \(\frac{\sum_1^n Y_j^2}{n} \overset{\text{a.s.}}{\longrightarrow} 1\) so that \(\hat{X}_n^1 \overset{\text{a.s.}}{\longrightarrow} Y_1 \sim N(0,1)\).
@@ -291,6 +309,149 @@
         \end{align*} \qed
     \end{pb}
     \begin{pb}\textbf{(Durrett 3.4.4)}
+        We may apply the central limit theorem to conclude that \(\frac{S_n - n}{\sigma\sqrt{n}} \implies \chi\). Now we consider \(B_n = \sqrt{\frac{S_n}{n}} + 1\), then we can apply the Cauchy Schwartz inequality,
+        \begin{align*}
+            E\abs{X_i} \leq \left(EX_i^2\right)^{\frac12}P(\Omega) = \sigma < \infty
+        \end{align*}
+        so that we may apply the strong law of large numbers to \(\frac{S_n}{n} \overset{\text{a.s.}}{\longrightarrow} 1\), it follows that \(B_n \to 2\) a.s. and \(\frac{1}{B_n} \to \frac12\) a.s. which of course implies \(\frac{1}{B_n} \implies \frac12\), by the converging together lemma for products we get that
+        \begin{align*}
+            \frac{S_n - n}{\sigma\sqrt{n}}\frac{1}{B_n} \implies \frac{1}{2}\chi
+        \end{align*}
+        rewriting the left side gives us
+        \begin{align*}
+            \frac{(\sqrt{S_n}-\sqrt{n})(\sqrt{S_n}+\sqrt{n})}{\sigma\sqrt{n}}\frac{\sqrt{n}}{(\sqrt{S_n}+\sqrt{n})} \implies \frac12 \chi
+        \end{align*}
+        Cancelling and multiplying constants gives
+        \begin{align*}
+            2(\sqrt{S_n}-\sqrt{n}) \implies \sigma \chi
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb} \textbf{(Durrett 3.4.5)}
+        Let \(L_n = \frac{\sigma\sqrt{n}}{\sqrt{\sum_1^n X_k^2}} \tand R_n = \frac{\sum_1^n X_k}{\sigma\sqrt{n}}\), then \(\frac{1}{L_n} \to 1\) a.s. by the strong law, which gives us \(L_n \to 1\) a.s. whence \(L_n \implies 1\) we also have \(R_n \implies \chi\) by the CLT, so by the converging together lemma \(L_n R_n \implies \chi\). We are done since
+        \begin{align*}
+            T_n = T_n \frac{\sigma\sqrt{n}}{\sigma\sqrt{n}} = L_nR_n
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb} \textbf{(Durrett 3.4.6)}
+        Define \(Y_n = \frac{S_{N_n}}{\sigma\sqrt{a_n}}, Z_n = \frac{S_{a_n}}{\sigma\sqrt{a_n}}\), then since \(a_n \to \infty\), and \(\frac{S_n}{\sigma\sqrt{n}} \implies \chi\) by CLT, we get that \(Z_n \implies \chi\). We check now that \(Y_n - Z_n \overset{P}{\longrightarrow} 0\), since this will imply they also converge weakly to zero, then we can use the converging together lemma to get
+        \begin{align*}
+            Y_n = Z_n + Y_n - Z_n \implies \chi + 0 = \chi
+        \end{align*}
+        It remains to show convergence in probability, letting \(\epsilon > 0\), and choosing \(\delta = \frac{\epsilon^3}{2}\), we find that
+        \begin{align*}
+            P(\abs{Y_n - Z_n} > \epsilon) &= P(\abs{Y_n - Z_n} > \epsilon,\abs{1-\frac{N_n}{a_n}} < \delta) + P(\abs{Y_n - Z_n} > \epsilon,\abs{1-\frac{N_n}{a_n}} < \delta) \\
+            &\leq P(\abs{Y_n - Z_n} > \epsilon,\abs{1-\frac{N_n}{a_n}} < \delta) + P(\abs{1-\frac{N_n}{a_n}} < \delta)
+        \end{align*}
+        The second term goes to zero by assumption, so it remains to bound the first term.
+        \begin{align*}
+            P(\abs{Y_n - Z_n} > \epsilon,\abs{1-\frac{N_n}{a_n}} < \delta) &\leq P\left(\max_{a_n - \delta \leq m \leq a_n + \delta}\abs{\frac{\sum_{\min\set{m,a_n}}^{\max\set{m,a_n}}X_k}{\sigma\sqrt{a_n}}} > \epsilon\right) \\
+            &= P\left(\max_{a_n - \delta \leq m \leq a_n + \delta}\abs{\sum_{\min\set{m,a_n}}^{\max\set{m,a_n}}X_k} > \epsilon\sigma\sqrt{a_n}\right) \\
+            &\overset{\text{max. ineq.}}{\leq} \frac{1}{\sigma^2 a_n \epsilon^2} \var\sum_{\lceil a_n(1-\delta)\rceil}^{\lfloor a_n(1+\delta)\rfloor} X_k \\
+            &= \frac{1}{\sigma^2 a_n \epsilon^2} \abs{\lfloor a_n(1+\delta)\rfloor - \lceil a_n(1-\delta)\rceil}\sigma^2 \\
+            &\leq \frac{a_n 2\delta \sigma^2}{\sigma^2 a_n \epsilon^2} = \epsilon
+        \end{align*}
+        So that \(\abs{X_n - Y_n} \overset{P}{\longrightarrow} 0\). \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.4.9)}
+        The example shows why the assumption \(\sum_1^nE[X_{n,k}^21_{\abs{X_{n,k}}>e}] \to 0\) is essential in the LF-CLT.
+        \begin{align*}
+            \var(X_k) = \frac{2k^2}{2} + 2(\frac{1 - k^{-2}}{2}) = 2 - k^{-2}
+        \end{align*}
+        It follows that \(\var\left(\frac{S_n}{\sqrt{n}}\right) = \frac{1}{n}\sum_1^n 2 - k^{-2} \geq 2 - \frac{1}{n}\sum_1^\infty k^{-2}\) so by the squeeze theorem the quantity converges to \(2\), this satisfies condition \((i)\) of the LF-CLT for \(X_{n,k} = \frac{X_k}{\sqrt{n}}\), intuitively condition (ii) fails because of the mass at \(X_k = \pm k\), however, we don't need to check this explicitly since failure of the LF-CLT confirms our suspicions. Let \(Y_k = X_k1_{\abs{X_k} \leq 1}\) and \(Y_{n,k} = \frac{1}{\sqrt{n}}Y_k\). Then \(P(X_k \neq Y_k) = \frac{1}{k^2}\), so that Borel-Cantelli tells us \(P(X_k \neq Y_k \text{ i.o.}) = 0\), now defining \(Z_n = \sum_1^n Y_k\), we find that if \(x\) is such that \(X_k(x) \neq Y_k(x)\) for only finitely many \(k\), then letting \(N\) be an index larger than the last occurence,
+        \begin{align*}
+            \frac{\abs{S_n - Z_n}(x)}{\sqrt{n}} \leq \frac{1}{\sqrt{n}} \sum_1^N k^2 \overset{n\to\infty}{\longrightarrow} 0
+        \end{align*}
+        So that \(n^{-\frac12}(S_n - Z_n) \to 0\) a.s. (weak convergence of course follows from this as well). Then if we can show \(Z_n \implies \chi\), we will be done by the converging together lemma. Finally, we check that we can apply the Lindenberg-Feller CLT to \(Y_{n,k}\), we first check that \(\sum_1^n E[Y_{n,k}^21_{\abs{Y_{n,k}}>\epsilon}] \to 0\), but this is straightforward since \(\abs{Y_k} \leq 1\), so for \(\sqrt{n} > 1/\epsilon\) we get \(\sum_1^n E[Y_{n,k}^21_{\abs{Y_{n,k}}>\epsilon}] =  0\). Finally we check that \(\sum_1^n E[Y_{n,k}^2] \to 1\), which allows us to conclude that \(Z_n \implies 1\) by the Lindenberg-Feller CLT.
+        \begin{align*}
+            \sum_1^n E[Y_{n,k}^2] = \frac{1}{n}\left(n - \sum_1^n k^{-2}\right) \geq 1 - \frac{1}{n}\sum_1^\infty k^{-2} \to 1
+        \end{align*}
+        This sum is also clearly less than or equal to \(1\) for all \(n\), so were done by the squeeze theorem.
+        \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.4.10)}
+        Define \(X_{n,k} = \frac{1}{\sqrt{\var S_n}}(X_k - EX_k)\), we simply check the conditions for Lindenberg-Feller CLT.
         
+        \textbf{(i)}
+        \begin{align*}
+            \sum_1^n EX_{n,k}^2 = \frac{1}{\var S_n}\sum_1^n \var(X_k) = \frac{\var S_n}{\var S_n} = 1
+        \end{align*}
+
+        \textbf{(ii)}
+        Let \(\epsilon > 0\), since \(\lim_{n\to\infty}\var S_n = \infty\) we can choose \(N\) such that \(n \geq N\) implies that \(\var S_n \geq \left(\frac{2M}{\epsilon}\right)^2\), then for \(n \geq N\), we have
+        \begin{align*}
+            \abs{X_{n,k}} = \frac{1}{S_n^{\frac12}}\abs{X_k - E[X_k]} \leq \frac{1}{S_n^{1/2}}2M \leq \epsilon
+        \end{align*}
+        So that \(E[X_{n,k}^21_{\abs{X_{n,k}} > \epsilon}] = 0\). \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.4.11)}
+        Once again, we check the conditions of the Lindenberg-Feller CLT with \(X_{n,k} = X_k/\sqrt{n}\).
+
+        \textbf{(i)} \(\sum_1^n E[(X_k/\sqrt{n})^2] = \frac{1}{n}nEX_1^2 = 1\)
+
+        \textbf{(ii)} We can use the Borel-Cantelli lemma by noticing for any \(\epsilon > 0\), the following is summable
+        \begin{align*}
+            P(\abs{X_n}/\sqrt{n} > \epsilon) \leq \frac{1}{(\epsilon\sqrt{n})^{2+\delta}}E\abs{X_n}^{2+\delta} \leq \frac{C \epsilon^{-2}}{n^{1+\delta/2}}
+        \end{align*}
+        Then \(P(\abs{X_n}/\sqrt{n} > \epsilon \text{ i.o.}) = 0\), so for some \(N\), we have \(n \geq N\) implies that \(\abs{X_n}/\sqrt{n} \leq \epsilon\) almost surely. It follows that for \(n \geq N\), we have
+        \begin{align*}
+            \sum_1^n E[X_k^2/\sqrt{n}1_{\abs{X_k}/\sqrt{n}>\epsilon}] = \sum_1^N E[X_k^2/\sqrt{n}1_{\abs{X_k}/\sqrt{n}>\epsilon}] \leq \frac{1}{n}\sum_1^N EX_k^2 = N/n \to 0
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.4.12 - Lyapunov's Theorem)}
+        Once again, we check the conditions of the Lindenberg-Feller CLT with \(X_{n,k} = \frac{X_k - EX_k}{\alpha_n}\)
+
+        \textbf{(i)}
+        \begin{align*}
+            \sum_1^n EX_{n,k}^2 = \frac{1}{\alpha_n^2}\sum_1^n\var X_k = \alpha_n^2/\alpha_n^2 = 1
+        \end{align*}
+
+        \textbf{(ii)}
+        \begin{align*}
+            \sum_1^n E[X_{n,k}^21_{\abs{X_{n,k}} > \epsilon}] &\leq \sum_1^n E\left[\frac{\abs{X_{n,k}}^\delta}{\epsilon^\delta}X_{n,k}^21_{\abs{X_{n,k}} > \epsilon}\right] \leq \frac{1}{\epsilon^\delta}\sum_1^n E\left[\abs{X_{n,k}}^{2+\delta}\right] \\ &= \frac{1}{\epsilon^\delta} \alpha_n^{-2-\delta}\sum_1^n E[\abs{X_k - EX_k}^{2+\delta}] \to 0
+        \end{align*}
+        The convergence of the above sequence is by assumption. \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.4.13)}
+        \textbf{(a)}
+
+        \textbf{(b)} We can simply check the conditions for the Lindenberg-Feller CLT with \(X_{n,k} = X_k/n^{(3-b)/2}\)
+
+        \textbf{(i)}
+        \begin{align*}
+            \sum_1^n E[X_{n,k}^2] = n^{\beta - 3}\sum_1^n EX_k^2 = n^{\beta - 3}\sum_1^n k^{2-\beta} =: T_n
+        \end{align*}
+        Which is clearly between zero and one for all \(n\). We need to check now that it converges to some \(\sigma^2 \in (0,\infty)\), to do so, consider \(T_{n+1} - T_n\) (and denote \(C = \sum_1^\infty k^{2-\beta} < \infty\)), then
+        \begin{align*}
+            T_{n+1} - T_n &= \frac{1}{n+1} + ((n+1)^{\beta-3} - n^{\beta-3})\sum_1^nk^{2-\beta} \geq \frac{1}{n+1} + ((n+1)^{\beta-3} - n^{\beta-3})C \\
+            & \geq \frac{1}{n+1} - Cn^{\beta-3}
+        \end{align*}
+        This is of course positive for sufficiently large \(n\), since \(\beta-3 > 1\), so the sequence \(T_n\) is bounded, and eventually increasing hence converges to some \(c \in [\inf\set{T_n}, 1]\) by Bolzano Weierstrass. The sequence being eventually increasing, and lying in \((0,1]\) also allows us to conclude \(c \geq \inf\set{T_n} > 0\).
+
+        \textbf{(ii)} We have \[\abs{X_{n,k}} \leq \frac{k}{n^{(3-b)/2}} \leq \frac{n}{n^{(3-b)/2}} \leq n^{(\beta - 1)/2} \to 0\]
+        So for sufficiently large \(n\), \(\abs{X_{n,k}} \leq \epsilon\) for any \(\epsilon > 0\).
+
+        \textbf{(c)} Let \(t \in \mathbb{R}\), then consider for \(1 \leq k \leq n\), \(c_{n,k} := \frac{1 - \cos(tk/n)}{k/n}\), then since \(\abs{\frac{1 - \cos x}{x}} \leq \min\set{2/\abs{x},\frac{\abs{x}}{2}}\), we find that
+        \begin{align*}
+            \abs{c_{n,k}} = \abs{t}\abs{\frac{1 - \cos(tk/n)}{tk/n}} \leq \min\set{\frac{2n}{\abs{tk}},\frac{k}{2n}\abs{t^2}} \leq \min\set{\frac{2n}{\abs{t}},\frac{1}{2}\abs{t^2}}
+        \end{align*}
+        Noting here that independent of \(t\), we always have \(\abs{c_{n,k}}/n \to 0\). Now still for fixed \(t\), consider
+        \begin{align*}
+            c := \int_0^1 x^{-1}(1-\cos xt)dx
+        \end{align*}
+        by a similar inequality to what we just showed, we know that the integrand is bounded on \([0,1]\) thus is Riemann integrable, moreover since the limit of the integrand as \(x \to 0\) exists, and it is clearly continuous away from \(0\), we find that the integrand is continuous, so that the integral is equal to the Riemann sum of any partition, so long as the mesh of the partition goes to zero. From this, we find that
+        \begin{align*}
+            \sum_1^n \frac{c_{n,k}}{n} \to c
+        \end{align*}
+        This method of obtaining the inequality unfortunately means we will not be able to use the technique from CLT of writing \(\abs{\prod_1^n z_k - \prod_1^n \omega_k} \leq \theta^{n-1}\sum_1^n \abs{z_k-\omega_k}\) since we havent shown \(c_{n,k} \to c\), fortunately we can apply a similar proof specific to the real case. Considering \(n\) be large enough so that \(\abs{c_{n,k}}/n < \frac12\)
+        \begin{align*}
+            \abs{c - \sum_1^n \log(1-\frac{c_{n,k}}{n})} = \abs{c - \sum_1^n \frac{c_{n,k}}{n} - \sum_1^n \eta_{n,k}\frac{c_{n,k}^2}{n^2}}
+        \end{align*}
+        Here \(\abs{\eta_{n,k}} \leq \sup_{x \in [\frac{1}{2},\frac32]}\frac{1}{2}\frac{1}{(1-x)^2} =: \eta < \infty\) where this estimate on \(\eta_{n,k}\) and the above equality follow from Taylor's theorem.
+        It follows that
+        \begin{align*}
+            \abs{c - \sum_1^n \log(1-\frac{c_{n,k}}{n})} &\leq \abs{c - \sum_1^n \frac{c_{n,k}}{n}} + \frac{\eta}{n}\abs{\sum_1^n c_{n,k}^2/n} \leq \abs{c - \sum_1^n \frac{c_{n,k}}{n}} + \frac{\eta}{n} \sum_1^n \frac{1}{4n}\abs{t}^4 \\
+            &\leq \abs{c - \sum_1^n \frac{c_{n,k}}{n}} + \frac{1}{n}\eta\abs{t}^4
+        \end{align*}
+        Which goes to zero as \(n \to \infty\). It follows that by continuity of exponential, we get
     \end{pb}
 \end{document}
