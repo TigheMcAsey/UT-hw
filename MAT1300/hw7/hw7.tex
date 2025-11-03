@@ -97,4 +97,24 @@
             \end{cases}
         \end{align*}
     \end{pb}
+    \begin{pb}
+        \textbf{(a)} Since terms in the product with any repeated forms are zero, and for each \(\sigma \in S_n\), there is exactly one form in the product \(\bigwedge_1^n dx_{p_{\sigma(j)}}\wedge dx_{q_{\sigma(j)}}\) before rearranging, we can write
+        \begin{align*}
+            \left(\sum_1^n dx_{p_j}\wedge dx_{q_j}\right)^{\wedge^n} = \sum_{\sigma \in S_n}\bigwedge_1^n dx_{p_{\sigma(j)}}\wedge dx_{q_{\sigma(j)}}
+        \end{align*}
+        I claim that \(\sum_{\sigma \in S_n}\bigwedge_1^n dx_{p_{\sigma(j)}}\wedge dx_{q_{\sigma(j)}} = n!\bigwedge_1^n dx_{p_j}\wedge dx_{q_j}\), to check this it suffices to check for each \(\sigma \in S_n\), we ahve \(\bigwedge_1^n dx_{p_{\sigma(j)}}\wedge dx_{q_{\sigma(j)}} = \bigwedge_1^n dx_{p_j}\wedge dx_{q_j}\), to do so it will suffice to notice if \(\zeta\) is a 2-form, then for any form \(\eta\), we have \(\eta\wedge\zeta = (-1)^{2\deg\eta}\zeta\wedge\eta = \zeta\wedge\eta\), then
+        \begin{align*}
+            \bigwedge_1^n dx_{p_{\sigma(j)}}\wedge dx_{q_{\sigma(j)}} = \eta \wedge dx_{p_1}\wedge dx_{q_1} \wedge \eta' = dx_{p_1}\wedge dx_{q_1} \wedge \eta\wedge\eta'
+        \end{align*}
+        where \(\eta\wedge \eta' = dx_{p_{\sigma(1)}}\wedge dx_{q_{\sigma(1)}}\wedge \cdots (\widehat{dx_{p_{\sigma(\sigma^{-1}(1))}}\wedge dx_{q_{\sigma(\sigma^{-1}(1))}}})\wedge\cdots\wedge dx_{p_{\sigma(n)}}\wedge dx_{q_{\sigma(n)}}\), then we can repeat this process recursively, on the remaining form \(\eta\wedge\eta'\), until we get the desired volume form. This is a constant multiple of the standard volume form on \(\mathbb{R}^{2n}\) (which is nonvanishing), hence is nonvanishing.
+        
+        % It follows that \(\omega_{\text{std}} = n! \bigwedge_1^n dx_{p_j}\wedge dx_{q_j}\) is non-vanishing, since any nonvanishing section \(s \in \bigwedge^n TM\) can be written as \(c\bigwedge_1^n\partial_{x_{p_j}}\wedge\partial_{x_{q_j}}\) for \(c \in C^\infty\) nonvanishing, then \(\omega_{\text{std}}\)
+
+        \textbf{(b)}
+        \begin{align*}
+            &\lambda_{\text{std}} = \sum_1^n x_{p_j}dx_{q_j}, &d\lambda_{\text{std}} = \sum_1^n d(x_{p_j}dx_{q_j}) = \sum_1^n dx_{p_j}\wedge dx_{q_j} - xp_j \wedge d^2x_{q_j} = \sum_1^n dx_{p_j}\wedge dx_{q_j} = \omega_{\text{std}}
+        \end{align*}
+
+        \textbf{(c)} What is another structure? -- Assume it is a non-cohomologous one?
+    \end{pb}
 \end{document}

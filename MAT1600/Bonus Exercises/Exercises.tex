@@ -73,6 +73,19 @@
         \end{align*}
         Since \(\lim_{n\to\infty}P(\abs{X_1} > \frac{1}{c^n}) = P(X_1 \neq 0) > 0\) by assumption, it follows that \(P(\abs{X_n}c^n > 1 \text{ i.o.}) = 1\), so the series diverges a.s. for \(c > 1\). \qed
     \end{pb}
+    \begin{pb}\textbf{(Durrett 2.5.9)}
+        
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 2.5.11)}
+        Let \(\epsilon > 0\), then suppose that for some sequence \(n_p\), we have \[\min_{k \leq n_p}P\left(\abs{\sum_k^{n_p}x_j} < n \epsilon\right) \to 0\] \(k_p := \text{argmin}_{k\leq n_p}P\left(\abs{\sum_k^{n_p}x_j} < n \epsilon\right)\) Then since we have
+        \begin{align*}
+            \frac{\abs{S_{n_p}-\sum_{k_p}^{n_p}X_j}}{n_p} = \frac{\abs{S_{k_p}}}{n_p}
+        \end{align*}
+        we can conclude that
+        \begin{align*}
+            P(\abs{S_{k_p}} > n_p \epsilon) \leq 
+        \end{align*}
+    \end{pb}
     \begin{pb}\textbf{(Durrett 3.2.9)}
         We can use a mesh to show that \(\norm{F - F_n}_u = 0\). Namely, let \(\epsilon > 0\), then we can choose \(x_0\) so that \(F(x_1) < \epsilon\) and \(y\) so that \(F(y) > 1 - \epsilon\), then \(F\) is uniformly continuous on \([x_0,y]\), so in particular there is some \(\delta > 0\) such that \(\abs{w - z} < \delta \implies \abs{F(w) - F(z)} < \epsilon\) on \([x_0,y]\), then take \(x_j = x_0 + j\frac{\delta}{2}\) for \(j \in \set{1,\hdots,N-1}\), so that \(y - \delta/2 < x_{N-1} \leq y\) and denote \(y = x_N\). Then take \(M_j\), so that \(n \geq M_j \implies \abs{F_n(x_j) - F(x_j)} < \epsilon\) and define \(M = \max_{0 \leq j \leq N}M_j\). It follows that for \(n \geq N\), we have for \(x \in (-\infty,x_0)\),
         \begin{align*}
@@ -302,6 +315,9 @@
     \begin{pb}\textbf{(Durrett 3.3.17)}
         One direction is obvious from the continuity theorem, in the other direction \(\varphi_n \to \varphi\) where \(\varphi\) is continuous on \((-\delta,\delta)\) so once again by the continuity theorem, \(Y_n \implies Y\), where \(Y\) has characteristic function \(\varphi\), we want to show that \(\varphi = 1\), so we will be done by the inversion formula. Now since \(\lim_{t\downarrow 0}\frac{\varphi(t) - 1}{t^2} = 0 > -\infty\), we get from the proof of the previous exercise (3.3.16) \(E[Y^2] = 0\), and hence \(Y = 0\) a.s. \qed
     \end{pb}
+    \begin{pb}\textbf{(Durrett 3.3.18)}
+        
+    \end{pb}
     \begin{pb}\textbf{(Durrett 3.4.1)}
         The histogram correction in this case is \(P(S_{180} \leq 24.5)\), applying the approximation given by the CLT,
         \begin{align*}
@@ -413,6 +429,14 @@
     \end{pb}
     \begin{pb}\textbf{(Durrett 3.4.13)}
         \textbf{(a)}
+        \begin{align*}
+            \sum_1^\infty P(X_k \neq 0) = \sum_1^\infty k^{-\beta} <\infty
+        \end{align*}
+        so by Borel-Cantelli, \(P(X_k \neq \text{ i.o.}) = 0\), Considering any \(x\) not in the set, let \(N\) be the largest index such that \(X_N(x) \neq 0\), then for any \(n \geq N\), we have
+        \begin{align*}
+            (S_\infty - S_n)(x) = \sum_{n+1}^\infty X_k(x) = 0
+        \end{align*}
+        This shows almost sure convergence. \qed
 
         \textbf{(b)} We can simply check the conditions for the Lindenberg-Feller CLT with \(X_{n,k} = X_k/n^{(3-b)/2}\)
 
@@ -428,7 +452,7 @@
         This is of course positive for sufficiently large \(n\), since \(\beta-3 > 1\), so the sequence \(T_n\) is bounded, and eventually increasing hence converges to some \(c \in [\inf\set{T_n}, 1]\) by Bolzano Weierstrass. The sequence being eventually increasing, and lying in \((0,1]\) also allows us to conclude \(c \geq \inf\set{T_n} > 0\).
 
         \textbf{(ii)} We have \[\abs{X_{n,k}} \leq \frac{k}{n^{(3-b)/2}} \leq \frac{n}{n^{(3-b)/2}} \leq n^{(\beta - 1)/2} \to 0\]
-        So for sufficiently large \(n\), \(\abs{X_{n,k}} \leq \epsilon\) for any \(\epsilon > 0\).
+        So for sufficiently large \(n\), \(\abs{X_{n,k}} \leq \epsilon\) for any \(\epsilon > 0\). \qed
 
         \textbf{(c)} Let \(t \in \mathbb{R}\), then consider for \(1 \leq k \leq n\), \(c_{n,k} := \frac{1 - \cos(tk/n)}{k/n}\), then since \(\abs{\frac{1 - \cos x}{x}} \leq \min\set{2/\abs{x},\frac{\abs{x}}{2}}\), we find that
         \begin{align*}
