@@ -74,17 +74,58 @@
         Since \(\lim_{n\to\infty}P(\abs{X_1} > \frac{1}{c^n}) = P(X_1 \neq 0) > 0\) by assumption, it follows that \(P(\abs{X_n}c^n > 1 \text{ i.o.}) = 1\), so the series diverges a.s. for \(c > 1\). \qed
     \end{pb}
     \begin{pb}\textbf{(Durrett 2.5.9)}
-        
+        First define some notation to make the problem read more easily, 
+        \begin{align*}
+            &A = \set{\max_{m<j\leq n}\abs{S_{m,j}} > 2a} &A_j = \set{\abs{S_{m,j} > 2a \tand \abs{S_{m,i}} \leq 2a \text{ for }i<j}} \\
+            &B_k = \set{\abs{S_{k,n}} \leq a}
+        \end{align*}
+        Now we get that \(A = \bigsqcup_{m+1}^n A_j\), moreover \(A_j\), \(B_j\) are independent since \(A_j \in \mathcal{F}(X_m,\hdots,X_j)\) and \(B_j \in \mathcal{F}(X_{j+1},\hdots,X_n)\), finally notice that for each \(j\), we have \(S_{m,n} = S_{m,j} + S_{j,n}\) so that \(\abs{S_{m,n}} \geq \abs{S_{m,j}} - \abs{S_{j,n}}\) which namely implies that
+        \begin{align*}
+            \set{\abs{S_{m,n}} > a} \supset \bigsqcup_{m+1}^n A_j\cap B_j
+        \end{align*}
+        At this point we are basically done, we only need to check a simple computation
+        \begin{align*}
+            P(\abs{S_{m,n}} > a) &\geq P(\bigsqcup_{m+1}^n (A_j \cap B_j)) = \sum_{m+1}^n P(A_j \cap B_j) = \sum_{m+1}^n P(A_j)P(B_j) \\
+            &\geq \sum_{m+1}^n P(A_j)\min_kP(B_k) = P(A)\min_kP(B_k)
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 2.5.10)}
+        Letting \(1 \leq M < n <\infty\), we get the inequality
+        \begin{align*}
+            \max_{M \leq k < m \leq n}\abs{S_{k,m}} = \max_{M \leq k < m \leq n} \abs{S_{k,n} - S_{m,n}} \leq 2\max_{M \leq m \leq n}\abs{S_{m,n}}
+        \end{align*}
+        Now we can use this to rewrite the inequality from exercise (2.5.9),
+        \begin{align*}
+            P(\abs{S_{M,n}} > \epsilon) \geq P(\max_{M \leq k < m \leq n}\abs{S_{k,m}} > 4 \epsilon)\min_{M < k \leq n}P(\abs{S_{k,n}} \leq \epsilon)
+        \end{align*}
+        Taking the limit as \(n \to \infty\) we get
+        \begin{align*}
+            P(\abs{S_{M,\infty}} > \epsilon) \geq P(\sup_{k,m \geq M}\abs{S_{k,m}} > 4 \epsilon)\inf_{k > M}P(\abs{S_{k,\infty}} < \epsilon)
+        \end{align*}
+        Since \(S_n\) is cauchy in measure, the term on the left goes to zero and the infimum term goes to \(1\) as \(M \to \infty\), it follows that \(\lim_{M \to \infty}P(W^\epsilon_M) = 0\) for any positive \(\epsilon\) where \(W^\epsilon_M := \set{\sup_{k,m \geq M}\abs{S_{k,m}} > \epsilon}\). We may notice in our case that \(W^\epsilon_1 \supset W^\epsilon_2 \supset \cdots\), so that
+        \begin{align*}
+            P(W_M^\epsilon \text{ i.o.}) = P(\bigcap_1^\infty W_M^\epsilon) = \lim_{M \to \infty} P(W_M^\epsilon) = 0
+        \end{align*}
+        We also have that \(\set{W_M^{1} \text{ i.o.}} \subset \set{W_M^{1/2} \text{ i.o.}} \subset \set{W_M^{1/3} \text{ i.o.}} \subset \cdots\) so that \(P(\bigcup_{n=1}^\infty W^{1/n}_M \text{ i.o.}) = \lim_{n\to \infty}P(W^{1/n}_M \text{ i.o.}) = 0\) it follows that \(S_n(x)\) is cauchy (hence convergent) almost everywhere, so that \(S_n \to S_\infty\) a.s. because \(x \not \in \bigcup_{n=1}^\infty \set{W^{1/n}_M \text{ i.o.}}\) implies \(S_n(x)\) is cauchy. \qed
     \end{pb}
     \begin{pb}\textbf{(Durrett 2.5.11)}
-        Let \(\epsilon > 0\), then suppose that for some sequence \(n_p\), we have \[\min_{k \leq n_p}P\left(\abs{\sum_k^{n_p}x_j} < n \epsilon\right) \to 0\] \(k_p := \text{argmin}_{k\leq n_p}P\left(\abs{\sum_k^{n_p}x_j} < n \epsilon\right)\) Then since we have
+        Let \(\epsilon > 0\), then suppose that for some sequence \(n_p\), we have \[\min_{k \leq n_p}P\left(\abs{\sum_k^{n_p}x_j} < n_p \epsilon\right) \to 0\] \(k_p := \text{argmin}_{k\leq n_p}P\left(\abs{\sum_k^{n_p}x_j} < n_p \epsilon\right)\) Then we can write
         \begin{align*}
             \frac{\abs{S_{n_p}-\sum_{k_p}^{n_p}X_j}}{n_p} = \frac{\abs{S_{k_p}}}{n_p}
         \end{align*}
-        we can conclude that
+        Which gives the inequality
         \begin{align*}
-            P(\abs{S_{k_p}} > n_p \epsilon) \leq 
+            \frac{\abs{S_{k_p}}}{n_p} \geq \frac{\abs{\sum_{k_p}^{n_p}X_j}}{n_p} - \frac{\abs{S_{n_p}}}{n_p}
         \end{align*}
+        So that \(\set{\abs{S_{k_p}}/n_p < \epsilon} \subset \set{\abs{\sum_{k_p}^{n_p}X_j}/n_p < 2 \epsilon} \cup \set{\abs{S_{n_p}}/n_p \geq \epsilon}\), taking probabilities we find that
+        \begin{align*}
+            P\left(\abs{S_{k_p}}/n_p < \epsilon\right) \leq P\left(\abs{\sum_{k_p}^{n_p}X_j}/n_p < 2 \epsilon\right) + P\left(\abs{S_{n_p}}/n_p \geq \epsilon\right)
+        \end{align*}
+        \(P\left(\abs{S_{n_p}}/n_p \geq \epsilon\right) \to 0\) by assumption, and checking the left hand side, we find that along any subsequence with \(k_p\) uniformly bounded by some \(N\), we have \(\abs{S_{k_p}}/n_p \to 0\) pointwise, since each of \(\abs{S_1}/n_p,\hdots,\abs{S_N}/n_p \to 0\) pointwise as \(p \to \infty\). Whereas on any increasing subsequence of the \(k_p\), we have \(\abs{S_{k_p}}/n_p \leq S_{k_p}/k_p \overset{P}{\to} 0\), so that every subsequence of \(k_p\) has a further subsequence converging to zero in probability, it follows that \(P\left(\abs{S_{k_p}}/n_p < \epsilon\right) \to 1\), which in turn implies that \(P\left(\abs{\sum_{k_p}^{n_p}X_j}/n_p < 2 \epsilon\right) \to 1\) which contradicts our previous assumption. Hence we find that \(\liminf_n \min_{k \leq n}P\left(\abs{\sum_k^{n}x_j} < n \epsilon\right) > 0\). Now we apply the inequality of exercise (2.5.9) to notice that
+        \begin{align*}
+            P\left(\max_{1\leq k\leq n}\abs{S_k}/n > 2 \epsilon\right)\min_{1 \leq j \leq n}P\left(\abs{\sum_j^n X_j}/n \leq \epsilon\right) \leq P\left(\abs{S_n}/n > \epsilon\right)
+        \end{align*}
+        Then since the right hand side goes to zero by assumption, and \(P\left(\abs{\sum_j^n X_j}/n \leq \epsilon\right)\) is bound away from zero for sufficiently large \(n\) we must have \(P\left(\max_{1\leq k\leq n}\abs{S_k}/n > 2 \epsilon\right) \to 0\) as desired. \qed
     \end{pb}
     \begin{pb}\textbf{(Durrett 3.2.9)}
         We can use a mesh to show that \(\norm{F - F_n}_u = 0\). Namely, let \(\epsilon > 0\), then we can choose \(x_0\) so that \(F(x_1) < \epsilon\) and \(y\) so that \(F(y) > 1 - \epsilon\), then \(F\) is uniformly continuous on \([x_0,y]\), so in particular there is some \(\delta > 0\) such that \(\abs{w - z} < \delta \implies \abs{F(w) - F(z)} < \epsilon\) on \([x_0,y]\), then take \(x_j = x_0 + j\frac{\delta}{2}\) for \(j \in \set{1,\hdots,N-1}\), so that \(y - \delta/2 < x_{N-1} \leq y\) and denote \(y = x_N\). Then take \(M_j\), so that \(n \geq M_j \implies \abs{F_n(x_j) - F(x_j)} < \epsilon\) and define \(M = \max_{0 \leq j \leq N}M_j\). It follows that for \(n \geq N\), we have for \(x \in (-\infty,x_0)\),
