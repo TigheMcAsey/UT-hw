@@ -90,6 +90,8 @@
         \end{align*} \qed
     \end{pb}
     \begin{pb}\textbf{(Durrett 2.5.10)}
+        This problem uses a few techniques I felt may be useful, the first of which is a set of nonconvergence can be written nicely as a limsup of sets. The second technique is to show the measure of the limsup of a set is zero is not always possible using Borel Cantelli, but in many cases we may have descending sequences of sets, in which case we can simply apply continuity from above.
+
         Letting \(1 \leq M < n <\infty\), we get the inequality
         \begin{align*}
             \max_{M \leq k < m \leq n}\abs{S_{k,m}} = \max_{M \leq k < m \leq n} \abs{S_{k,n} - S_{m,n}} \leq 2\max_{M \leq m \leq n}\abs{S_{m,n}}
@@ -357,7 +359,19 @@
         One direction is obvious from the continuity theorem, in the other direction \(\varphi_n \to \varphi\) where \(\varphi\) is continuous on \((-\delta,\delta)\) so once again by the continuity theorem, \(Y_n \implies Y\), where \(Y\) has characteristic function \(\varphi\), we want to show that \(\varphi = 1\), so we will be done by the inversion formula. Now since \(\lim_{t\downarrow 0}\frac{\varphi(t) - 1}{t^2} = 0 > -\infty\), we get from the proof of the previous exercise (3.3.16) \(E[Y^2] = 0\), and hence \(Y = 0\) a.s. \qed
     \end{pb}
     \begin{pb}\textbf{(Durrett 3.3.18)}
+        As in the problem statement, it suffices to check that \(S_n \to S_\infty\) in probability, since exercise (2.5.10) shows that CIP implies almost sure convergence in this case.
+
+        We first would like to show that \((\varphi_n)_n\) is equicontinuous at \(0\), so let \(\epsilon > 0\), writing \(\mu_n \sim \varphi_n\), equicontinuity of \((\mu_n)_n\) gives some compact set \(K\) such that \(\mu_n(K^c) < \epsilon\) for all \(n\), morover since \(t \mapsto e^{it}\) is continuous at \(0\), we can choose \(\delta\), so that \(\abs{t} < \delta\) implies that \(\abs{1 - e^{it}} < \epsilon\) now letting \(M = \sup \abs{K}\), we get for \(\abs{t} < \delta/M\)
+        \begin{align*}
+            \abs{\varphi_n(0) - \varphi_n(t)} \leq \int_K \abs{1 - e^{itX}}d\mu_n + \int_{K^c} \abs{1 - e^{itX}}d\mu_n \leq \epsilon + 2\mu_n(K^c) = 3 \epsilon
+        \end{align*}
+        establishing equicontinuity.
         
+        Now suppose \(S_n \implies S_\infty\), then we get \(\varphi_n \to \varphi_\infty\), using equicontinuity, we can choose \(\delta\) such that \(t \in N_\delta(0)\) implies \(\varphi(t) \geq \frac12\), on this neighborhood
+        \begin{align*}
+            \lim_{m,n\to\infty}\varphi_{S_n - S_m}(t) = \lim_{m,n \to \infty}\varphi_n(t)/\varphi_m(t) = \varphi_\infty(t)/\varphi_\infty(t) = 1
+        \end{align*}
+        And therefore by exercise (3.3.17) we have \(S_n - S_m \implies 0\), to see that it converges to zero in probability it suffices to check it converges to zero in probability along every subsequence \(\tilde{S}_k := S_{n_k} - S_{m_k}\). The fact that \(\tilde{S}_k \overset{P}{\to} 0\) follows from \(\tilde{S}_k \implies 0\) and the fact that zero is constant (c.f. exercise (3.2.12)).
     \end{pb}
     \begin{pb}\textbf{(Durrett 3.4.1)}
         The histogram correction in this case is \(P(S_{180} \leq 24.5)\), applying the approximation given by the CLT,
