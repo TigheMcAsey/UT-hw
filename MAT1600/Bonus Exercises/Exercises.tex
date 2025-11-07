@@ -26,6 +26,22 @@
 \newcommand{\var}{\text{Var}}
 
 \begin{document}
+    \begin{pb}\textbf{(Durrett 2.1.5)}
+        Let \(D\) be the set of pointmasses of \(\mu\)
+        \begin{align*}
+            \int\int1_{x+y = 0}d \mu d \nu = \int\int1_{x = -y}d \mu d \nu = \int \mu\set{-y} d\nu = \sum_{-y \in D} \mu\set{-y}\nu{y} = \sum_y \mu\set{-y}\nu{y}
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 2.1.8)}
+        \(X_1,\hdots,X_4\) independent taking values \(\pm 1\) with probability \(\frac12\). \(Y_1 = X_1X_2\), \(Y_2 = X_1X_3\), \(Y_3 = X_2X_4\), \(Y_4 = X_3X_4\), by symmetry and the fact that \(\set{Y_i = 1}\) is the desired \(\pi\)-system, it suffices to check that \(P(Y_1 = Y_2 = Y_3 = 1) = \frac{1}{8}\), but this is striaghtforward by using the definition of the \(X_i\). \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 2.1.12)}
+        The combinatorial proof of \(\sum_j\binom{n}{j}\binom{m}{k-j} = \binom{n+m}{j}\) writes itself. This is a straightforward computation
+        \begin{align*}
+            P(X+Y = k) &= \sum_j P(X = j)P(Y = k-j) = \sum_j\sum_j\binom{n}{j}\binom{m}{k-j}p^{j+k-j}(1-p)^{n+m-k+j-j} \\
+            &= p^k(1-p)^{n+m-k}\sum_j\binom{n}{j}\binom{m}{k-j} = p^k(1-p)^{n+m-k}\binom{n+m}{j}
+        \end{align*} \qed
+    \end{pb}
     \begin{pb}\textbf{(Durrett 2.5.3)}
         Define \(Y_n = \frac{\sin(n\pi t)}{n}X_n\), then since \(X_n \sim N(0,1)\) we get \(\var\, Y_n = \frac{\abs{\sin(n\pi t)}}{n^2} \leq 1/n^2\). Then since \(\sum_1^\infty \text{Var}\,Y_n < \infty\) and \(Y_1,Y_2,\hdots\) are independent, we get from the consequence of Kolmogorov maximal inequality that \(\sum_1^\infty Y_n\) converges almost surely. \qed
     \end{pb}

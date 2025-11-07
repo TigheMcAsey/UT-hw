@@ -37,12 +37,12 @@
         \end{align*} \qed
     \end{pb}
     \begin{pb}
-        First suppose that \(\omega\) is closed, then \(\omega = df\), so that for any \(\gamma: S^1 \to M\),
+        First suppose that \(\omega\) is exact, then \(\omega = df\), so that for any \(\gamma: S^1 \to M\),
         \begin{align*}
             \int_{S^1} \gamma^* \omega = \int_{S^1} \gamma^* df = \int_{S^1}d \gamma^*f \overset{\text{Stokes}}{=} \int_{\emptyset} \gamma^*f = 0
         \end{align*}
 
-        For the converse, I will explicitly produce such an \(f\), the assumption is used when showing that \(f\) is well defined. It will suffice to prove the connected case, since the proof can be iterated on each connected component. So letting \(x_0 \in M\), for any other \(x \in M\) define \(f(x) = \int_{x_0}^x \omega\) (which is more explicitly the integral of the pullback along any path), a path for this integral always exists since we are working in the connected case. To show that the integral is well defined, we need to check that it is path independent, so assuming \(\gamma(1) = x = \overline{\gamma}(1)\), we want to show \(\int_{[0,1]}\gamma^* \omega = \int_{[0,1]}\overline{\gamma}^* \omega\), so that \(f\) is well defined. I will first prove the result in the case that \(\omega\) is closed, so we may assume without loss of generality that the paths are constantly \(x_0\) on \([0,\frac{1}{4}]\) and constantly \(x\) on \([\frac{3}{4},1]\) or otherwise replace them with homotopic paths with this property using bump functions, (it should also be noted that we can use homotopy invariance since \(\gamma([0,1])\cup\overline{\gamma}([0,1])\) is compact, and hence contained in an open neighborhood with compact closure, replacing \(\omega\) with its product with the component of a partition of unity subordinate to this open reduces to the compact case so homotopy can be used) it follows that we can write the smooth map \(\beta: S^1 \to M\) via
+        For the converse, I will explicitly produce such an \(f\), the assumption is used when showing that \(f\) is well defined. It will suffice to prove the connected case, since the proof can be iterated on each connected component i.e. if \(M=\bigsqcup M_j\), then write \(\omega = \sum \omega_j\) where \(\omega_j\) is supported on \(M_j\), then by using the proof in the connected case, we get smooth functions \(f_j\) on \(M_j\) with \(df_j = \omega_j\), it follows that \(d \sum f_j = \sum df_j = \sum \omega_j = \omega\). So letting \(x_0 \in M\), for any other \(x \in M\) define \(f(x) = \int_{x_0}^x \omega\) (which is more explicitly the integral of the pullback along any path), a path for this integral always exists since we are working in the connected case. To show that the integral is well defined, we need to check that it is path independent, so assuming \(\gamma(1) = x = \overline{\gamma}(1)\), we want to show \(\int_{[0,1]}\gamma^* \omega = \int_{[0,1]}\overline{\gamma}^* \omega\), so that \(f\) is well defined. Since \(\omega\) is closed, we may assume by homotopy invariance of the integral of closed forms that the paths are constantly \(x_0\) on \([0,\frac{1}{4}]\) and constantly \(x\) on \([\frac{3}{4},1]\) or otherwise replace them with homotopic paths with this property using bump functions, (it should also be noted that we can use homotopy invariance since \(\gamma([0,1])\cup\overline{\gamma}([0,1])\) is compact, and hence contained in an open neighborhood with compact closure, replacing \(\omega\) with its product with the component of a partition of unity subordinate to this open reduces to the compact case so homotopy can be used) it follows that we can write the smooth map \(\beta: S^1 \to M\) via
         \begin{align*}
             \beta(t) = \begin{cases}
                 \gamma(2t) & t \in [0,\frac12] \\
@@ -53,68 +53,70 @@
         \begin{align*}
             \int_{S^1} \beta^* \omega = \int_{[0,1]} \gamma^* \omega - \int_{[0,1]} \overline{\gamma}^* \omega
         \end{align*}
-        so the two are equal as desired and \(f\) is well defined. It remains to check that \(\omega = df\), to do so we can check at each \(x \in M\), so let \(x \in M\), so that \(x \in U\) with \((U,V,\varphi)\) a chart for \(M\), we may assume for simplicity that \(\varphi(0) = x\), then for some small \(\epsilon\) the paths \(\alpha_j: t \mapsto t e_j\) (where \(e_j\) is the \(j\)-th standard basis vector on \(\mathbb{R}^n\)) satisfy \(\alpha_j[-\epsilon,\epsilon] \subset U\), for \(1 \leq j \leq n\), now let \(x_j = \alpha_j(-\epsilon)\), then for any \(y \in M\), we have writing \(c_j := \int_{x_0}^{x_j} \omega\)
+        and the integral of the pullback along \(\beta\) is zero by assumption, so the two are equal as desired and \(f\) is well defined. It remains to check that \(\omega = df\), to do so we can check at each \(x \in M\), so let \(x \in M\), so that \(x \in V\) with \((U,V,\varphi)\) a chart for \(M\), we may assume for simplicity that \(\varphi(0) = x\), then for some small \(\epsilon\) the paths \(\alpha_j: t \mapsto t e_j\) (where \(e_j\) is the \(j\)-th standard basis vector on \(\mathbb{R}^n\)) satisfy \(\alpha_j[-\epsilon,\epsilon] \subset U\), for \(1 \leq j \leq n\), now let \(x^j = \alpha_j(-\epsilon)\), then for any \(y \in M\), we have writing \(c_j := \int_{x_0}^{x^j} \varphi^*\omega\), then (where the integral is once again implicitly the pull back along any smooth path)
         \begin{align*}
-            \int_{x_j}^y \omega = \int_{x_0}^y\omega - \int_{x_0}^{x_j} \omega = f(y) - \int_{x_0}^{x_j} \omega = f(y) - c_j
+            \int_{\varphi(x^j)}^y \omega = \int_{x_0}^y\omega - \int_{x_0}^{\varphi(x^j)} \omega = f(y) - \int_{x_0}^{\varphi(x^j)} \omega = f(y) - c_j
         \end{align*}
-        so that \(f = f_j + c_j\) since \(c_j\) is constant for the sake of differentiating we can take \(f(x) = \int_{x_j}^{x} \omega =: f_j\) for whichever \(j\) is convenient. Now we get that \(d f = \sum_1^n \pd f dx_j = \sum_1^n \pd f_j dx_j\), moreover we have that \(\alpha_j'(t) = \left.\pd\right\vert_{\alpha_j(t)}\) (here we implicilty pull everything back along \(\varphi\), this is done implicitly to simplify notation)
+        so that \(f = f_j + c_j\) since \(c_j\) is constant for the sake of differentiating we can take \(f(x) = \int_{\varphi (x^j)}^{x} \omega =: f_j\) for whichever \(j\) is convenient. Now we get by definition \(d f = \sum_1^n \pd f dx_j = \sum_1^n \pd f_j dx_j\). We can write \(\varphi^* \omega = \sum_1^n \omega_k dx_k\), where the \(\omega_k\) are smooth real valued  functions,
         \begin{align*}
-            d_xf &= \sum_1^n \left.\pd\right\vert_x f_j dx_j = \sum_1^n \left(\left.\frac{d}{dt}\right\vert_{t=0} f\circ\alpha_j\right)dx_j = \sum_1^n \left(\left.\frac{d}{dt}\right\vert_{t=0} \int_{x_j}^{\alpha_j(t)} \omega(\alpha_j'(t))\right)dx_j  \\
-            &= \sum_1^n \left(\left.\frac{d}{dt}\right\vert_{t=0}\int_{-\epsilon}^t \alpha_j^* \omega\right)dx_j = \sum_{j=1}^n \left(\left.\frac{d}{dt}\right\vert_{t=0}\int_{-\epsilon}^t \sum_{k=1}^n \alpha_j^*\omega_k dx_k\right)dx_j \\ 
+            \varphi^* d_x f =  d_0 \varphi^* f &= \sum_1^n \left.\pd\right\vert_0 \varphi^* f dx_j = \sum_1^n \left(\left.\frac{d}{dt}\right\vert_{t=0} \varphi^* f\circ\alpha_j\right)dx_j  \\ &= \sum_1^n \left(\left.\frac{d}{dt}\right\vert_{t=0} \int_{x_j}^{\alpha_j(t)} \omega( \varphi \circ \alpha_j'(t))\right)dx_j  \\
+            &= \sum_1^n \left(\left.\frac{d}{dt}\right\vert_{t=0}\int_{-\epsilon}^t \alpha_j^* \varphi^* \omega\right)dx_j = \sum_{j=1}^n \left(\left.\frac{d}{dt}\right\vert_{t=0}\int_{-\epsilon}^t \sum_{k=1}^n \alpha_j^* \omega_k dx_k\right)dx_j \\ 
             &= \sum_{j=1}^n \left(\left.\frac{d}{dt}\right\vert_{t=0}\int_{-\epsilon}^t \sum_{k=1}^n \omega_k\circ\alpha_j d(x_k\circ\alpha_j)\right)dx_j\\ 
             &= \sum_1^n\left(\left.\frac{d}{dt}\right\vert_{t=0}\int_{-\epsilon}^t \omega_j\circ\alpha_j\right)dx_j
-            \overset{\text{FTC}}{=} \sum_1^n \omega_j(x)dx_j = \omega(x)
+            \overset{\text{FTC}}{=} \sum_1^n \omega_j(x)dx_j = \varphi^* \omega(x)
         \end{align*}
-
-        Now it remains to prove the above still holds when \(\omega\) is not a closed form, the only portion where we used that \(\omega\) was closed was in concatenating paths to ensure that \(\beta\) was smooth, to do so we work with a neighborhood \(V\) of \(\gamma([0,1])\cup\gamma'([0,1])\) with compact closure \(K\), moreover we will assume that \(V\) lies in a single chart with coordinate map \(\varphi\), if this is not the case the argument can be broken up into multiple paths (this works since there are finitely many due to compactness), since the integral is invariant under orientation preserving diffeomorphisms, we can work directly with \(\gamma: [0,1] \to F = \varphi^{-1}(K) \subset \varphi^{-1}(V) = U\), then suppose \(\gamma_n : [0,1] \to F\) are such that \(\varphi^{-1}\circ\gamma_n \to \varphi^{-1}\circ\gamma\) in \(C^1\), the convergence is uniform since \([0,1]\) is compact, we can compute
-        \begin{align}
-            &\abs{\varphi^*\omega_{\varphi^{-1}\gamma_n(t)}(\varphi^{-1}\gamma_n'(t)) - \varphi^*\omega_{\varphi^{-1}\gamma(t)}(\varphi^{-1}\gamma'(t))} \\\leq &\sup_{t \in [0,1]}\left(\norm{\varphi^*\omega_{\varphi^{-1}\gamma_n(t)} - \varphi^*\omega_{\varphi^{-1}\gamma(t)}}\norm{\varphi^{-1}\gamma_n'(t)} + \norm{\varphi^*\omega_{\varphi^{-1}\gamma(t)}}\norm{\varphi^{-1}\gamma_n'(t) - \varphi^{-1}\gamma'(t)}\right)
-        \end{align}
-        In order to bound the above, we write explicitly \(\varphi^*\omega = \sum a_jdx_j\) for smooth \(a_j\), then each \(a_j\) is smooth on \(F\), hence Lipschitz, so that \(\abs{a_j(x) - a_j(y)} \leq C_j \norm{x - y}\) on \(F\), choosing \(C = \max\set{C_j \mid 1 \leq j \leq n}\), we get that
-        \begin{align*}
-            \norm{\varphi^*\omega_x(v) - \varphi^*\omega_y(v)} \leq \sum_1^n C\norm{x - y} \abs{dx_i v} \leq n C \norm{v}\norm{x - y}
-        \end{align*}
-        It follows that (here writing the operator norm) \(\norm{\varphi^*\omega_x - \varphi^*\omega_y}\leq M \norm{x-y}\) for \(M = nC\), we similarly have \(\sup_{x \in F} \norm{\varphi^*\omega_x} \leq \sum_1^n \sup_{x \in F} \abs{a_j} < \infty\), we may assume that this is also less than \(M\), by possibly increasing \(M\), we possibly increase \(M\) a final time by ensuring it is larger than \(\sup_{[0,1]}\norm{\varphi^{-1}\gamma'(t)} + 1\). Let \(\epsilon > 0\), then using uniform convergence of \(\varphi^{-1}\gamma_n \to \varphi^{-1}\gamma\), and similarly the derivative, we can choose \(N\) large enough so that for any \(n \geq N\) and for all \(t \in [0,1]\)
-        \begin{align*}
-            \norm{\varphi^{-1}\gamma_n(t) - \varphi^{-1}\gamma(t)} < \epsilon/2M^2 \tand \norm{\varphi^{-1}\gamma_n(t) - \varphi^{-1}\gamma(t)} < \epsilon/2M \tand \norm{\varphi^{-1}\gamma_n'(t)} \leq M
-        \end{align*}
-        Then for all \(n \geq N\), we get using the inequality between lines (1) and (2),
-        \begin{align*}
-            \abs{\varphi^*\omega_{\gamma_n(t)}(\gamma_n'(t)) - \varphi^*\omega_{\gamma(t)}(\gamma'(t))} < \epsilon
-        \end{align*}
-        This allows us to approximate the integral along the pull back of \(\gamma\) by \(\gamma_n\), since
-        \begin{align*}
-            \abs{\int_{[0,1]}\gamma_n^*\omega - \int_{[0,1]}\gamma^*\omega} &= \abs{\int_{[0,1]}(\varphi^{-1}\gamma_n)^*\varphi^*\omega - \int_{[0,1]}(\varphi^{-1}\gamma^*)\varphi^*\omega} \\
-            &= \abs{\int_{[0,1]}\varphi^*\omega(\varphi^{-1}\gamma_n'(t))dt - \int_{[0,1]}\varphi^*\omega(\varphi^{-1}\gamma'(t))dt} \\
-            &\leq \int_{[0,1]}\abs{\varphi^*\omega_{\varphi^{-1}\gamma_n(t)}(\varphi^{-1}\gamma_n'(t)) - \varphi^*\omega_{\varphi^{-1}\gamma(t)}(\varphi^{-1}\gamma'(t))}dt \\
-            & < \epsilon
-        \end{align*}
-
-        The proof will be established once we provide existence of such \(\gamma_n\) which are constant and equal to \(x\) on \([1 - \epsilon_n,1]\), and constant and equal to \(x_0\) on \([0, \epsilon_n]\) for some \(\epsilon_n \to 0\), since then we may simply approximate both paths \(\gamma\) and \(\overline{\gamma}\) by such sequences, which can be glued, and with the property that defining \(\beta\) by concatenating \(\gamma_n,-\overline{\gamma_n}\) we get a smooth map from \(S^1\), this will give well definedness, since by this approximation we get that \(\abs{\int \gamma^*\omega - \int \overline{\gamma}^*\omega} < \epsilon\) for any \(\epsilon > 0\). Letting \(\eta_n\) be smooth bump functions equal to \(1\) on \([1/n,1-1/n]\) and \(0\) on \([0,\frac{1}{2n}]\cup[1 - \frac{1}{2n},1]\) smoothness of \(\gamma\) guarantees that the following sequence satisfies \(C^1\) convergence of \(\varphi^*\gamma_n\)
-        \begin{align*}
-            \gamma_n(t) = \begin{cases}
-                1     
-            \end{cases}
-        \end{align*}
+        Thus we have shown locally that, \(\varphi^* df = d \varphi^* f = \varphi^* \omega\), so that \((\varphi^{-1})^* \varphi^* df = (\varphi^{-1})^* \varphi^* \omega\), and on \(V\) we have \(df = (\varphi^{-1})^* \varphi^* df = (\varphi^{-1})^* \varphi^* \omega = \omega\), but since we are working with an arbitrary chart for \(M\), we find that \(df = \omega\), as desired. \qed
     \end{pb}
+
+    %     Now it remains to prove the above still holds when \(\omega\) is not a closed form, the only portion where we used that \(\omega\) was closed was in concatenating paths to ensure that \(\beta\) was smooth, to do so we work with a neighborhood \(V\) of \(\gamma([0,1])\cup\gamma'([0,1])\) with compact closure \(K\), moreover we will assume that \(V\) lies in a single chart with coordinate map \(\varphi\), if this is not the case the argument can be broken up into multiple paths (this works since there are finitely many due to compactness), since the integral is invariant under orientation preserving diffeomorphisms, we can work directly with \(\gamma: [0,1] \to F = \varphi^{-1}(K) \subset \varphi^{-1}(V) = U\), then suppose \(\gamma_n : [0,1] \to F\) are such that \(\varphi^{-1}\circ\gamma_n \to \varphi^{-1}\circ\gamma\) in \(C^1\), the convergence is uniform since \([0,1]\) is compact, we can compute
+    %     \begin{align}
+    %         &\abs{\varphi^*\omega_{\varphi^{-1}\gamma_n(t)}(\varphi^{-1}\gamma_n'(t)) - \varphi^*\omega_{\varphi^{-1}\gamma(t)}(\varphi^{-1}\gamma'(t))} \\\leq &\sup_{t \in [0,1]}\left(\norm{\varphi^*\omega_{\varphi^{-1}\gamma_n(t)} - \varphi^*\omega_{\varphi^{-1}\gamma(t)}}\norm{\varphi^{-1}\gamma_n'(t)} + \norm{\varphi^*\omega_{\varphi^{-1}\gamma(t)}}\norm{\varphi^{-1}\gamma_n'(t) - \varphi^{-1}\gamma'(t)}\right)
+    %     \end{align}
+    %     In order to bound the above, we write explicitly \(\varphi^*\omega = \sum a_jdx_j\) for smooth \(a_j\), then each \(a_j\) is smooth on \(F\), hence Lipschitz, so that \(\abs{a_j(x) - a_j(y)} \leq C_j \norm{x - y}\) on \(F\), choosing \(C = \max\set{C_j \mid 1 \leq j \leq n}\), we get that
+    %     \begin{align*}
+    %         \norm{\varphi^*\omega_x(v) - \varphi^*\omega_y(v)} \leq \sum_1^n C\norm{x - y} \abs{dx_i v} \leq n C \norm{v}\norm{x - y}
+    %     \end{align*}
+    %     It follows that (here writing the operator norm) \(\norm{\varphi^*\omega_x - \varphi^*\omega_y}\leq M \norm{x-y}\) for \(M = nC\), we similarly have \(\sup_{x \in F} \norm{\varphi^*\omega_x} \leq \sum_1^n \sup_{x \in F} \abs{a_j} < \infty\), we may assume that this is also less than \(M\), by possibly increasing \(M\), we possibly increase \(M\) a final time by ensuring it is larger than \(\sup_{[0,1]}\norm{\varphi^{-1}\gamma'(t)} + 1\). Let \(\epsilon > 0\), then using uniform convergence of \(\varphi^{-1}\gamma_n \to \varphi^{-1}\gamma\), and similarly the derivative, we can choose \(N\) large enough so that for any \(n \geq N\) and for all \(t \in [0,1]\)
+    %     \begin{align*}
+    %         \norm{\varphi^{-1}\gamma_n(t) - \varphi^{-1}\gamma(t)} < \epsilon/2M^2 \tand \norm{\varphi^{-1}\gamma_n(t) - \varphi^{-1}\gamma(t)} < \epsilon/2M \tand \norm{\varphi^{-1}\gamma_n'(t)} \leq M
+    %     \end{align*}
+    %     Then for all \(n \geq N\), we get using the inequality between lines (1) and (2),
+    %     \begin{align*}
+    %         \abs{\varphi^*\omega_{\gamma_n(t)}(\gamma_n'(t)) - \varphi^*\omega_{\gamma(t)}(\gamma'(t))} < \epsilon
+    %     \end{align*}
+    %     This allows us to approximate the integral along the pull back of \(\gamma\) by \(\gamma_n\), since
+    %     \begin{align*}
+    %         \abs{\int_{[0,1]}\gamma_n^*\omega - \int_{[0,1]}\gamma^*\omega} &= \abs{\int_{[0,1]}(\varphi^{-1}\gamma_n)^*\varphi^*\omega - \int_{[0,1]}(\varphi^{-1}\gamma^*)\varphi^*\omega} \\
+    %         &= \abs{\int_{[0,1]}\varphi^*\omega(\varphi^{-1}\gamma_n'(t))dt - \int_{[0,1]}\varphi^*\omega(\varphi^{-1}\gamma'(t))dt} \\
+    %         &\leq \int_{[0,1]}\abs{\varphi^*\omega_{\varphi^{-1}\gamma_n(t)}(\varphi^{-1}\gamma_n'(t)) - \varphi^*\omega_{\varphi^{-1}\gamma(t)}(\varphi^{-1}\gamma'(t))}dt \\
+    %         & < \epsilon
+    %     \end{align*}
+
+    %     The proof will be established once we provide existence of such \(\gamma_n\) which are constant and equal to \(x\) on \([1 - \epsilon_n,1]\), and constant and equal to \(x_0\) on \([0, \epsilon_n]\) for some \(\epsilon_n \to 0\), since then we may simply approximate both paths \(\gamma\) and \(\overline{\gamma}\) by such sequences, which can be glued, and with the property that defining \(\beta\) by concatenating \(\gamma_n,-\overline{\gamma_n}\) we get a smooth map from \(S^1\), this will give well definedness, since by this approximation we get that \(\abs{\int \gamma^*\omega - \int \overline{\gamma}^*\omega} < \epsilon\) for any \(\epsilon > 0\). Letting \(\eta_n\) be smooth bump functions equal to \(1\) on \([1/n,1-1/n]\) and \(0\) on \([0,\frac{1}{2n}]\cup[1 - \frac{1}{2n},1]\) smoothness of \(\gamma\) guarantees that the following sequence satisfies \(C^1\) convergence of \(\varphi^*\gamma_n\)
+    %     \begin{align*}
+    %         \gamma_n(t) = \begin{cases}
+    %             1     
+    %         \end{cases}
+    %     \end{align*}
+    % \end{pb}
     \begin{pb}
-        \textbf{(a)} Since terms in the product with any repeated forms are zero, and for each \(\sigma \in S_n\), there is exactly one form in the product \(\bigwedge_1^n dx_{p_{\sigma(j)}}\wedge dx_{q_{\sigma(j)}}\) before rearranging, we can write
+        \textbf{(a)} Since terms in the product with any repeated forms are zero, and for each \(\sigma \in S_n\), there is exactly one form in the product \(\bigwedge_1^n dp_{\sigma(j)}\wedge dq_{\sigma(j)}\) before rearranging, we can write
         \begin{align*}
-            \left(\sum_1^n dx_{p_j}\wedge dx_{q_j}\right)^{\wedge^n} = \sum_{\sigma \in S_n}\bigwedge_1^n dx_{p_{\sigma(j)}}\wedge dx_{q_{\sigma(j)}}
+            \left(\sum_1^n dp_j\wedge dq_j\right)^{\wedge^n} = \sum_{\sigma \in S_n}\bigwedge_1^n dp_{\sigma(j)}\wedge dq_{\sigma(j)}
         \end{align*}
-        I claim that \(\sum_{\sigma \in S_n}\bigwedge_1^n dx_{p_{\sigma(j)}}\wedge dx_{q_{\sigma(j)}} = n!\bigwedge_1^n dx_{p_j}\wedge dx_{q_j}\), to check this it suffices to check for each \(\sigma \in S_n\), we ahve \(\bigwedge_1^n dx_{p_{\sigma(j)}}\wedge dx_{q_{\sigma(j)}} = \bigwedge_1^n dx_{p_j}\wedge dx_{q_j}\), to do so it will suffice to notice if \(\zeta\) is a 2-form, then for any form \(\eta\), we have \(\eta\wedge\zeta = (-1)^{2\deg\eta}\zeta\wedge\eta = \zeta\wedge\eta\), then
+        I claim that \(\sum_{\sigma \in S_n}\bigwedge_1^n dp_{\sigma(j)}\wedge dq_{\sigma(j)} = n!\bigwedge_1^n dp_j\wedge dq_j\), to check this it suffices to check for each \(\sigma \in S_n\), we ahve \(\bigwedge_1^n dp_{\sigma(j)}\wedge dq_{\sigma(j)} = \bigwedge_1^n dp_j\wedge dq_j\), to do so it will suffice to notice if \(\zeta\) is a 2-form, then for any form \(\eta\), we have \(\eta\wedge\zeta = (-1)^{2\deg\eta}\zeta\wedge\eta = \zeta\wedge\eta\), then
         \begin{align*}
-            \bigwedge_1^n dx_{p_{\sigma(j)}}\wedge dx_{q_{\sigma(j)}} = \eta \wedge dx_{p_1}\wedge dx_{q_1} \wedge \eta' = dx_{p_1}\wedge dx_{q_1} \wedge \eta\wedge\eta'
+            \bigwedge_1^n dp_{\sigma(j)}\wedge dq_{\sigma(j)} = \eta \wedge dp_1\wedge dq_1 \wedge \eta' = dp_1\wedge dq_1 \wedge \eta\wedge\eta'
         \end{align*}
-        where \(\eta\wedge \eta' = dx_{p_{\sigma(1)}}\wedge dx_{q_{\sigma(1)}}\wedge \cdots (\widehat{dx_{p_{\sigma(\sigma^{-1}(1))}}\wedge dx_{q_{\sigma(\sigma^{-1}(1))}}})\wedge\cdots\wedge dx_{p_{\sigma(n)}}\wedge dx_{q_{\sigma(n)}}\), then we can repeat this process recursively, on the remaining form \(\eta\wedge\eta'\), until we get the desired volume form. This is a constant multiple of the standard volume form on \(\mathbb{R}^{2n}\) (which is nonvanishing), hence is nonvanishing.
+        where \(\eta\wedge \eta' = dp_{\sigma(1)}\wedge dq_{\sigma(1)}\wedge \cdots (\widehat{dp_{\sigma(\sigma^{-1}(1))}\wedge dq_{\sigma(\sigma^{-1}(1))}})\wedge\cdots\wedge dp_{\sigma(n)}\wedge dq_{\sigma(n)}\), then we can repeat this process recursively, on the remaining form \(\eta\wedge\eta'\), until we get the desired volume form. This is a constant multiple of the standard volume form on \(\mathbb{R}^{2n}\) (which is nonvanishing), hence is nonvanishing. \qed
         
-        % It follows that \(\omega_{\text{std}} = n! \bigwedge_1^n dx_{p_j}\wedge dx_{q_j}\) is non-vanishing, since any nonvanishing section \(s \in \bigwedge^n TM\) can be written as \(c\bigwedge_1^n\partial_{x_{p_j}}\wedge\partial_{x_{q_j}}\) for \(c \in C^\infty\) nonvanishing, then \(\omega_{\text{std}}\)
+        It follows that \(\omega_{\text{std}} = n! \bigwedge_1^n dp_j\wedge dq_j\) is non-vanishing, since any nonvanishing section \(s \in \bigwedge^n TM\) can be written as \(c\bigwedge_1^n\partial_{x_{p_j}}\wedge\partial_{x_{q_j}}\) for \(c \in C^\infty\) nonvanishing, then \(\omega_{\text{std}}\)
 
         \textbf{(b)}
         \begin{align*}
-            &\lambda_{\text{std}} = \sum_1^n x_{p_j}dx_{q_j}, &d\lambda_{\text{std}} = \sum_1^n d(x_{p_j}dx_{q_j}) = \sum_1^n dx_{p_j}\wedge dx_{q_j} - xp_j \wedge d^2x_{q_j} = \sum_1^n dx_{p_j}\wedge dx_{q_j} = \omega_{\text{std}}
-        \end{align*}
+            &\lambda_{\text{std}} = \sum_1^n p_jdq_j, &d\lambda_{\text{std}} = \sum_1^n d(p_j dq_j) = \sum_1^n dp_j\wedge dq_j - p_j \wedge d^2q_j = \sum_1^n dp_j\wedge dq_j = \omega_{\text{std}}
+        \end{align*} \qed
 
-        \textbf{(c)} What is another structure? -- Assume it is a non-cohomologous one?
+        \textbf{(c)} Take \(\omega' = \sum_1^n dq_j\wedge dp_j\), then \(\omega' = -\omega_{\text{std}}\), so these are indeed distinct. It is sraightforward to see it is a symplectic form, since we may simply swap each \(q_j\) with \(p_j\) in (a) and (b). \qed
     \end{pb}
 \end{document}
