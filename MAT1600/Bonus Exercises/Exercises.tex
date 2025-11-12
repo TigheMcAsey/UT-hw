@@ -560,4 +560,40 @@
         \end{align*}
         so restricting to \(\abs{t} \leq 1\) we get the bounded convergence theorem with \(\frac12\) dominating the function, so that \(\lim_{t\to0}\int_0^1 x^{-1}(1-\cos xt)dx = \int_0^1\lim_{t\to0}x^{-1}(1-\cos xt)dx = 0\), this gives us that \(\varphi(t)\) is continuous at zero, and hence by the continuity theorem \(S_n/n \to \aleph\). \qed
     \end{pb}
+    \begin{pb}\textbf{(Durrett 3.6.1)}
+        I think the 2 is a mistake, taking any \(\delta \in (\frac12,1)\), we could simply take \(X = 1\) and \(Y = 0\), but then \(\norm{\mu - \nu} \leq 1 < 2\delta\) but \(P(X \neq Y) > \delta\). I will ignore the 2 and proceed,
+        \begin{align*}
+            \norm{\mu - \nu} &= \frac12 \sum_\omega \abs{\mu(\omega) - \nu(\omega)} = \frac12 \left(\sum_{\set{\omega\mid \mu(\omega) \geq \nu(\omega)}}\mu(\omega) - \nu(\omega) + \sum_{\set{\omega\mid \mu(\omega) < \nu(\omega)}}\nu(\omega) - \mu(\omega)\right) \\
+            &\leq \frac12 \left(\sum_{\set{\omega\mid \mu(\omega) \geq \nu(\omega)}}\mu(\omega) - \mu(\omega)\nu(\omega) + \sum_{\set{\omega\mid \mu(\omega) < \nu(\omega)}}\nu(\omega) - \mu(\omega)\nu(\omega)\right) \\
+            &\leq \frac12 \left(\sum \mu(\omega) - \mu(\omega)\nu(\omega) + \sum \nu(\omega) - \mu(\omega) \nu(\omega)\right) \\ 
+            &= \frac12 \left(\sum \mu(\omega) - \sum \mu(\omega)\nu(\omega) + \sum \nu(\omega) - \sum\mu(\omega)\nu(\omega)\right) \\
+            &= 1 - P(X = Y) = P(X \neq Y)
+        \end{align*}
+        Now in the converse direction, we can define \(X,Y\) independent such that they have joint distribution
+        \begin{align*}
+            P(X = x, Y = y) = \begin{cases}
+                \min\set{\mu(x),\nu(x)} & x=y \\
+                \frac{1}{\norm{\mu-\nu}}(\mu(x) - \nu(x))^+(\nu(y)-\mu(y))^+ & x\neq y
+            \end{cases}
+        \end{align*}
+        To check that this indeed satisfies our desideratum we simply compute (note here the condition is symmetric socomputing for \(X\) should suffice), firstly suppose \(\mu(x) \leq \nu(x)\), then
+        \begin{align*}
+            P(X = x) = \mu(x) + \sum_{y \neq x} \frac{1}{\norm{\mu-\nu}}0(\nu(y)-\mu(y))^+ = \mu(x)
+        \end{align*}
+        If \(\mu(x) > \nu(x)\) then we can similarly compute
+        \begin{align*}
+            P(X = x) &= \nu(x) + \sum_{y\neq x}\frac{1}{\norm{\mu-\nu}}(\mu(x) - \nu(x))^+(\nu(y)-\mu(y))^+ \\
+            &= \nu(x) + \frac{\mu(x) - \nu(x)}{\norm{\mu - \nu}}\sum_y (\nu(y)-\mu(y))^+ = \nu(x) + (\mu(x) - \nu(x))\frac{\norm{\mu-\nu}}{\norm{\mu-\nu}} \\ &= \mu(x)
+        \end{align*}
+        Now finally we compute
+        \begin{align*}
+            P(X \neq Y) &= \sum_{x\neq y} \frac{1}{\norm{\mu-\nu}}(\mu(x) - \nu(x))^+(\nu(y)-\mu(y))^+ \\
+            &= \frac{1}{\norm{\mu-\nu}} \sum_x \left((\mu(x) - \nu(x))^+\sum_{y \neq x}(\nu(y)-\mu(y))^+\right)
+        \end{align*}
+        Now since one of the two terms \((\mu(x) - \nu(x))^+\) and \((\nu(y)-\mu(y))^+\) vanishes when \(x = y\), we can reindex the summation to a sum over all \(y\), but then we can recognize the inner sum as \(\norm{\mu - \nu}\), continuing the computation we find
+        \begin{align*}
+            P(X \neq Y) &= \frac{1}{\norm{\mu-\nu}} \sum_x (\mu(x) - \nu(x))^+\norm{\mu-\nu} = \sum_x (\mu(x) - \nu(x))^+ = \norm{\mu - \nu}
+        \end{align*}
+        So the specified \(X,Y\) give the desired conclusion.
+    \end{pb}
 \end{document}

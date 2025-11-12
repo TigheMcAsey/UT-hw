@@ -1,0 +1,80 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+
+\fancyhf{}
+\lhead{MAT1300 hw8}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\usepackage{tikz-cd, stackengine}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\setcounter{MaxMatrixCols}{20}
+
+\begin{document}
+    \begin{pb}
+        If compactly supported cohomology were homotopy invariant, then we would require \(H^*_c(\mathbb{R}^n) \cong H_c^*(\set{\text{pt.}})\) for all \(n \in \mathbb{Z}_{\geq 0}\) since \(\mathbb{R}^n \simeq \set{\text{pt.}}\) for all \(n\). To further explicate this, Consider for each \(n\), the homotopy
+        \begin{align*}
+            H: \mathbb{R}^n \times [0,1] &\to \mathbb{R}^n \\
+            (x,t) &\mapsto x(1-t)
+        \end{align*}
+        interpolates the maps \(1_{\mathbb{R}^n}\) and the zero map. Then we could take \(g: \set{0} \hookrightarrow \mathbb{R}^n\), and \(f: \mathbb{R}^n \to \set{0}\), so that \(gf = 1_{\set{0}}\), and \(fg\) is the zero map which we already showed is homotopy equivalent to \(1_{\mathbb{R}^n}\).
+
+        Thus if compactly supported cohomology were a homotopy invariant we would have
+        \begin{align*}
+            H_c^* (\mathbb{R}^n) \cong H_c^* (\set{0})
+        \end{align*}
+        choosing \(n = 1 = *\), we get \(\mathbb{R} \cong 0\) (as \(\mathbb{R}\)-vector spaces) by the poincare lemma. This is a contradiction. \qed
+    \end{pb}
+    \begin{pb}
+        Let \(\eta_U\), \(\eta_V\) be a partition of unity subordinate to \(U,V\), then we can define the following maps making the sequence short exact:
+        \begin{equation*}
+            \begin{tikzcd}
+                0
+            \end{tikzcd}
+        \end{equation*}
+        The first map has \(\text{supp} (\eta_V\cdot\omega) \subset \text{supp}(\omega) \supset \text{supp} (\eta_U\cdot\omega)\), so there are no issues with the compact support, similarly for the second map \(\text{supp}(\eta_U\cdot\omega + \eta_V\cdot\nu) \subset \text{supp}(\omega) \cup \text{supp}(\nu)\) which is a union of two compact sets hence compact.
+
+        To see the first map is an injection let \(\omega \in \Omega_c^p(U\cap V)\) (for some \(p\)) and suppose that \((\eta_V\cdot \omega,\eta_U\cdot \omega) \equiv 0\), then \(\eta_V\cdot \omega \equiv 0\) on \(U\) and \(\eta_U\cdot \omega \equiv 0\) on \(V\), this of course implies \((\eta_V\cdot \omega)\vert_{U\cap V} \equiv 0\) and \((\eta_U\cdot \omega)\vert_{U\cap V} \equiv 0\) on \(U\cap V\), so the following easy computation shows injectivity,
+        \begin{align*}
+            (\eta_V\cdot \omega)\vert_{U\cap V} + (\eta_U\cdot \omega)\vert_{U\cap V} = \eta_V\vert_{U\cap V}\cdot \omega + \eta_U\vert_{U\cap V}\cdot \omega = (\eta_U\vert_{U\cap V} + \eta_V\vert_{U\cap V})\cdot\omega = \omega
+        \end{align*}
+        Now checking surjectivity of the second map, Let \(\omega \in \Omega_c^p(M)\) for some \(p\), then we have \(\omega\vert_U \in \Omega_c^p(U)\) and \(-\omega\vert_V \in \Omega_c^p(V)\), then I claim that the image of \((\omega\vert_U,-\omega\vert_V) = \eta_U\cdot\omega\vert_U + \eta_V\cdot\omega\vert_V = \omega\). To check this, it suffices to check equivalence pointwise, so we can simply check on each of the sets \(U \cap V^c\), \(V \cap U^c\) and \(U \cap V\), to see it on \(U \cap V^c\) we have \(\eta_V = 0\), and \(\eta_U = 1\) so that \(\eta_U\cdot\omega\vert_U + \eta_V\cdot\omega\vert_V = \omega\vert_U\) on this set, but since \(U \cap V^c \subset U\), this is the same thing as \(\omega\) here. Checking on \(V \cap U^c\) is similar, finally on \(U \cap V\), we have
+        \begin{align*}
+            \eta_U\cdot\omega\vert_U + \eta_V\cdot\omega\vert_V = (\eta_U + \eta_V) \omega\vert_{U \cap V} = \omega\vert_{U\cap V}
+        \end{align*}
+        which is of course just \(\omega\) on \(U\cap V\), this shows surjectivity.
+        
+        Finally, we need to check that \(\ker ((\omega, \nu) \mapsto \eta_U\cdot \omega - \eta_V\cdot\omega) = \text{Im}(\omega \mapsto (\eta_V\cdot \omega, \eta_U\cdot\omega))\), checking the image is a subset of the kernel, is straightforward since composing both maps we get
+        \begin{align*}
+            \omega \mapsto \eta_U\cdot\eta_V(\omega - \omega) = 0
+        \end{align*}
+        Now to check that all elements of the kernel are of this form, suppose \((\omega,\nu) \mapsto 0\), then wherever \(\eta_V = 0\), we have \(\eta_U\cdot \omega - \eta_V\cdot \nu = \omega\), but since we are assuming this is zero we must have \(\text{supp}\,\omega \subset \text{supp}\,\eta_V\), the same argument shows that \(\text{supp}\,\nu \subset \text{supp}\,\eta_U\). Now we define the following form \(\alpha\) on \(U \cap V\)
+        \begin{align*}
+            \alpha = \begin{cases}
+                \eta_V^{-1}\cdot\omega & \eta_U,\eta_V > 0 \\
+                \omega & \eta_U = 0 \\
+                \nu & \eta_V = 0
+            \end{cases}
+        \end{align*}
+        Then \(\text{supp}\,\alpha \subset \text{supp}\, \omega \cup \text{supp}\,\eta\) is compact, to verify that \(\alpha\) is indeed smooth, 
+    \end{pb}
+\end{document}
