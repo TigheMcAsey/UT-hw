@@ -45,10 +45,12 @@
         choosing \(n = 1 = *\), we get \(\mathbb{R} \cong 0\) (as \(\mathbb{R}\)-vector spaces) by the poincare lemma. This is a contradiction. \qed
     \end{pb}
     \begin{pb}
-        Let \(\eta_U\), \(\eta_V\) be a partition of unity subordinate to \(U,V\), then we can define the following maps making the sequence short exact:
+        \textbf{(a)} Let \(\eta_U\), \(\eta_V\) be a partition of unity subordinate to \(U,V\), then we can define the following maps making the sequence short exact:
         \begin{equation*}
             \begin{tikzcd}
-                0
+                0 \arrow[r] & \Omega_c^*(U\cap V) \arrow[r] &\Omega_c^*(U)\oplus\Omega_c^*(V) \arrow[r] &\Omega_c^*(M) \arrow[r] &0 \\
+                &\omega \arrow[r] &(\eta_V\cdot \omega, \eta_U\cdot \omega) \\
+                & & (\omega,\nu) \arrow[r] & (\eta_U\cdot\omega,\eta_V\cdot\nu)
             \end{tikzcd}
         \end{equation*}
         The first map has \(\text{supp} (\eta_V\cdot\omega) \subset \text{supp}(\omega) \supset \text{supp} (\eta_U\cdot\omega)\), so there are no issues with the compact support, similarly for the second map \(\text{supp}(\eta_U\cdot\omega + \eta_V\cdot\nu) \subset \text{supp}(\omega) \cup \text{supp}(\nu)\) which is a union of two compact sets hence compact.
@@ -75,6 +77,76 @@
                 \nu & \eta_V = 0
             \end{cases}
         \end{align*}
-        Then \(\text{supp}\,\alpha \subset \text{supp}\, \omega \cup \text{supp}\,\eta\) is compact, to verify that \(\alpha\) is indeed smooth, 
+        Then \(\text{supp}\,\alpha \subset \text{supp}\, \omega \cup \text{supp}\,\eta\) is compact, to verify that \(\alpha\) is indeed smooth, note that away from \(\eta_V = 0\), this is clear, to see that its smooth near \(\eta_V = 0\), we can use the kernel condition to give us \(\eta_U\cdot \omega = \eta_V\cdot\nu\), when \(\eta_U,\eta_V > 0\) this gives us \(\eta_V^{-1}\omega = \eta_U^{-1}\nu\), but this shows that we are smooth near \(\eta_V = 0\). Finally, we compute
+        \begin{align*}
+            \eta_V \cdot \alpha &= \begin{cases}
+                \omega & \eta_V > 0\\
+                0 &\eta_V = 0
+            \end{cases} = \omega
+        \end{align*}
+        since \(\text{supp}\,\omega \subset \text{supp}\,\eta_V\), similarly
+        \begin{align*}
+            \eta_U \alpha &= \begin{cases}
+                \eta_U \eta_V^{-1}\cdot \omega & \eta_V, \eta_U > 0 \\
+                0 & \eta_U = 0 \\
+                \nu & \eta_V = 0
+            \end{cases} = \begin{cases}
+                \eta_V \eta_V^{-1}\cdot \nu & \eta_V, \eta_U > 0 \\ 0 & \eta_U = 0 \\ \nu & \eta_V = 0
+            \end{cases} \\ &= \nu
+        \end{align*}
+        Once again, the last equality follows from \(\text{supp}\,\nu \subset \text{supp}\,\eta_U\). This suffices to show exactness of the previous sequence. \qed
+
+        \textbf{(b)} Since Theorem 1.4, Lecture 22 in the notes holds for any short exact sequence of cochain complexes, it in particular holds for
+        \begin{equation*}
+            \begin{tikzcd}
+                0 \arrow[r] & \Omega_c^*(U\cap V) \arrow[r] &\Omega_c^*(U)\oplus\Omega_c^*(V) \arrow[r] &\Omega_c^*(M) \arrow[r] &0
+            \end{tikzcd}
+        \end{equation*}
+        The induced long exact sequence is exactly the desired one. \qed
+    \end{pb}
+    \begin{pb}
+        I will denote \(\rho\) to be the covering map \(\mathbb{R}^2 \to \mathbb{T}^2\).
+
+        \textbf{(a)} Since \(\mathbb{T}^2 \hookrightarrow \mathbb{R}^3\), we get by problem 2 of homework 6 it is orientable, since its a codimension 1 submanifold of \(\mathbb{R}^3\), since its orientable it has a trivial determinant bundle so we can just take the section \(t(x) = (x,1)\). Now we can choose an orientation on \(\mathbb{R}^2\) using the section \(s:x \mapsto (x,s'(x))\) where \(s'(x) = \pi(\det d\rho(1))\) (here \(\pi\) denotes the map throwing out the base point), \(s\) is smooth from construction, and is nonvanishing since \(\rho\) is a local diffeomorphism, which implies that \(\det d\rho\) is an isomorphism on each fiber, but now by construction we have \(\rho\) orientation preserving, since \(\pi\det d\rho (s) = (\pi\det d\rho(1))^2 > 0\).
+
+        Now that we have shown \(\rho\) is orientation preserving, we can use the fact that \(A: \mathbb{R}^2 \to \mathbb{R}^2\) is orientation preserving when \(\det A = 1\) and orientation reversing when \(\det A = -1\) alongside the following diagram, to conclude that the top path is orientation reversing when \(\det A = -1\), and orientation preserving when \(\det A = 1\) (for extra justification use functoriality of determinant and the fact that \(\det \rho > 0\)), by commutativity of the diagram, this means that \(\phi_A\) is orientation preserving iff \(\det A = 1\).
+        \begin{equation*}
+            \begin{tikzcd}
+                \mathbb{R}^2 \arrow[d,"\rho"] \arrow[r,"A"] & \mathbb{R}^2 \arrow[d,"\rho"] \\
+                \mathbb{T}^2 \arrow[r,"\phi_A"] & \mathbb{T}^2
+            \end{tikzcd}
+        \end{equation*} \qed
+
+        \textbf{(b)} In part (a), we verified that \(SL_2(\mathbb{Z}) \to \Gamma_{1,0}\) via the map, it remains to check its a homomorphism. The following diagram commutes by definition of \(\phi_{X}\) being induced by \(X\) for each \(X \in SL_2(\mathbb{Z})\)
+        \begin{equation*}
+            \begin{tikzcd}
+                \mathbb{R}^2 \arrow[d,"\rho"] \arrow[r,"A"] & \mathbb{R}^2 \arrow[d,"\rho"] \arrow[r,"B"] & \mathbb{R}^2 \arrow[d,"\rho"] \\
+                \mathbb{T}^2 \arrow[r,"\phi_A"] & \mathbb{T}^2 \arrow[r,"\phi_B"] & \mathbb{T}^2
+            \end{tikzcd} \rightsquigarrow \begin{tikzcd}
+                \mathbb{R}^2 \arrow[d,"\rho"] \arrow[r,"BA"] & \mathbb{R}^2 \arrow[d,"\rho"] \\
+                \mathbb{T}^2 \arrow[r,"\phi_B\phi_A"] & \mathbb{T}^2
+            \end{tikzcd}
+        \end{equation*}
+        But by definition the induced map in the right diagram is \(\phi_{BA}\), so that \(\phi_B\phi_A = \phi_{BA}\), this is exactly the homomorphism property.
+
+        \textbf{(c)} If \(A = B\), then \(\phi_A = \phi_B\), so clearly they are isotopic and we are done. Conversely, assume \(\phi_A \simeq \phi_B\), we want to write down how \(\phi_A\) acts on cohomology.
+
+        We start by defining \(1\)-forms on \(\mathbb{T}^2\), consider the standard one forms \(dx,dy\) on \(\mathbb{R}^2\), we get well defined forms from the restriction (it will suffice to check just for \(dx\)). To check this, take open sets \(U_1,\hdots,U_s \subset \mathbb{R}^2\) with \(\bigcup_1^s \rho(U_j) = \mathbb{T}^2\), and \(\rho \vert_{U_j}\) is a diffeomorphism to its image, denote the inverse as \(\rho^{-1}_j\). The existence of such sets follows from \(\rho\) being a covering map and we can guarantee finitely many since \(\mathbb{T}^2\) is compact. Now let \(\eta_j\) be a partition of unity subordinate to the \(U_j\), then we can define \(dx' = \sum_1^s \eta_j\cdot (\rho_j^{-1})^*dx\), then since \(\rho\) is a local diffeomorphism any tangent vector in \(T \mathbb{T}^2\) is locally of the form \(d\rho(v)\) for \(v \in T \mathbb{R}^2\), then
+        \begin{align*}
+            dx'(d\rho(v)) = \sum_1^s \eta_j\cdot (\rho_j^{-1})^*dx d\rho(v) = \sum_1^s \eta_j (dx) (d\rho_j^{-1})(d\rho)(v)
+        \end{align*}
+        Then since \(dx\) is translation invariant, and \((d\rho_j^{-1})(d\rho) = d(x \mapsto x + g)\) for some \(g \in \mathbb{Z}^2\), there are no issues with what point we are taking \(dx\) at, so that the sum simplifies to \(\sum_1^s \eta_j dx(v) = dx(v)\), so the form descends to \(\mathbb{T}^2\).
+
+        % \textbf{(a)} We first check that the map \(\rho\) is orientation preserving, a quick way would be that the action of \(\mathbb{Z}^2\) is orientation preserving, which makes the induced covering map orientation preserving. If this is not satisfactory I will prove by hand. To do so define the  following section \(s: \mathbb{R}^2 \to \bigwedge^2 T \mathbb{R}^2 \cong \mathbb{R}^2 \times \mathbb{R}\) to be \(x \mapsto (x,1)\), (this is a representative for the standard orientation on \(\mathbb{R}^2\)), then since \(\mathbb{T}^2\) is compact and \(\rho\) is a covering map, we have open sets \(U_1,\hdots,U_r\) with \(\mathbb{T}^2 \subset \bigcup_1^r \rho(U_j)\) and \(\rho_j := \rho \vert_{U_j}\) is a diffeomorphism onto its image. Take \(\eta_j\) to be a partition of unity subordinate to the \(U_j\), then define
+        % \begin{align*}
+        %     &t: \mathbb{T}^2 \to \bigwedge^2T\mathbb{T}^2 &
+        %     x \mapsto \sum_1^r \eta_j(x)\cdot(\det d\rho_j)(s \rho_j^{-1}(x))
+        % \end{align*}
+        
+        % We first check that the volume form \(dx\wedge dy\) descends to \(\mathbb{T}^2\), to do so take open sets \(U_1,\hdots,U_s \subset \mathbb{R}^2\) with \(\bigcup_1^s \rho(U_j) = \mathbb{T}^2\), and \(\rho \vert_{U_j}\) is a diffeomorphism to its image, denote the inverse as \(\rho^{-1}_j\). The existence of such sets follows from \(\rho\) being a covering map and we can guarantee finitely many since \(\mathbb{T}^2\) is compact. Now let \(\eta_j\) be a partition of unity subordinate to the \(U_j\), then we can define \(dx'\wedge dy' = \sum_1^s \eta_j\cdot (\rho_j^{-1})^*dx\wedge dy\), to check this indeed gives us a volume form, we check nowhere vanishing, this is straightforward once we notice that \(dx\wedge dy\) is translation invariant, so that \((\rho^{-1}_j)^* dx\wedge dy\) is independent of \(j\), and since \(\rho\) is a local diffeomorphism, it gives us an isomorphism of tangent spaces, so that we can write for any \(v \in T\mathbb{T}^2\), that \(v = d\rho(u)\), so for \(w \in \bigwedge^2T\mathbb{T}^2\), we have \(w = dp(u)\wedge dp(v)\), so that
+        % \begin{align*}
+        %     \left(\sum_1^s \eta_j\cdot (\rho_j^{-1})^*dx\wedge dy\right)(w) = \sum_1^s \eta_j\cdot(dx\wedge dy)(u \wedge v) = (dx\wedge dy)(u \wedge v)\sum_1^s \eta_j = (dx\wedge dy)(u \wedge v)
+        % \end{align*}
+        % Thus this form is nowhere vanishing since \(dx\wedge dy\) is nowhere vanishing. Finally it is immediate that \(\rho\) preserves orientation in this case, since 
     \end{pb}
 \end{document}
