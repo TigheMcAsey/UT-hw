@@ -131,12 +131,34 @@
 
         \textbf{(c)} If \(A = B\), then \(\phi_A = \phi_B\), so clearly they are isotopic and we are done. Conversely, assume \(\phi_A \simeq \phi_B\), we want to write down how \(\phi_A\) acts on cohomology.
 
-        We start by defining \(1\)-forms on \(\mathbb{T}^2\), consider the standard one forms \(dx,dy\) on \(\mathbb{R}^2\), we get well defined forms from the restriction (it will suffice to check just for \(dx\)). To check this, take open sets \(U_1,\hdots,U_s \subset \mathbb{R}^2\) with \(\bigcup_1^s \rho(U_j) = \mathbb{T}^2\), and \(\rho \vert_{U_j}\) is a diffeomorphism to its image, denote the inverse as \(\rho^{-1}_j\). The existence of such sets follows from \(\rho\) being a covering map and we can guarantee finitely many since \(\mathbb{T}^2\) is compact. Now let \(\eta_j\) be a partition of unity subordinate to the \(U_j\), then we can define \(dx' = \sum_1^s \eta_j\cdot (\rho_j^{-1})^*dx\), then since \(\rho\) is a local diffeomorphism any tangent vector in \(T \mathbb{T}^2\) is locally of the form \(d\rho(v)\) for \(v \in T \mathbb{R}^2\), then
+        We start by defining \(1\)-forms on \(\mathbb{T}^2\), consider the standard one forms \(dx,dy\) on \(\mathbb{R}^2\), we get well defined forms from the restriction (it will suffice to check just for \(dx\)). To check this, take open sets \(U_1,\hdots,U_s \subset \mathbb{R}^2\) with \(\bigcup_1^s \rho(U_j) = \mathbb{T}^2\), and \(\rho \vert_{U_j}\) is a diffeomorphism to its image, denote the inverse as \(\rho^{-1}_j\). The existence of such sets follows from \(\rho\) being a covering map and we can guarantee finitely many since \(\mathbb{T}^2\) is compact. Now let \(\eta_j\) be a partition of unity subordinate to the \(U_j\), then we can define \(dx' = \left(\sum_1^s \eta_j\cdot\rho_j^{-1}\right)^*dx\), then since \(\rho\) is a local diffeomorphism any tangent vector in \(T \mathbb{T}^2\) is locally of the form \(d\rho(v)\) for \(v \in T \mathbb{R}^2\), then
         \begin{align*}
-            dx'(d\rho(v)) = \sum_1^s \eta_j\cdot (\rho_j^{-1})^*dx d\rho(v) = \sum_1^s \eta_j (dx) (d\rho_j^{-1})(d\rho)(v)
+            dx'(d\rho(v)) = \left(\sum_1^s \eta_j\cdot\rho_j^{-1}\right)^*dx d\rho(v) = (dx) (d \sum_1^s \eta_j\cdot\rho_j^{-1})(d\rho)(v) = (dx) \sum_1^s (d\eta_j)(d\rho_j^{-1})(d\rho)(v)
         \end{align*}
-        Then since \(dx\) is translation invariant, and \((d\rho_j^{-1})(d\rho) = d(x \mapsto x + g)\) for some \(g \in \mathbb{Z}^2\), there are no issues with what point we are taking \(dx\) at, so that the sum simplifies to \(\sum_1^s \eta_j dx(v) = dx(v)\), so the form descends to \(\mathbb{T}^2\).
+        Then since \(dx\) is translation invariant, and \((d\rho_j^{-1})(d\rho) = d(x \mapsto x + g)\) for some \(g \in \mathbb{Z}^2\), there are no issues with what point we are taking \(dx\) at, so that the right hand side further simplifies to \((dx) d\left(\sum_1^s \eta_j\right)(v) = dx(v)\), so the form descends to \(\mathbb{T}^2\). Writing \(f = \sum_1^s \eta_j\cdot\rho_j^{-1}\), the computation also verifies that \(\rho^*f^* dx = dx\), and the same will hold for \(dy\).  In order to write down how \([\phi^*_A]\) acts on cohomology, we will first determine how \(\phi^*_A\) acts on \(dx',dy'\), to do so first let \(\alpha \partial_x + \beta \partial_y = v \in T \mathbb{R}^2\)
+        \begin{align*}
+            A^*dx(v) &= (dx) (dA) (v) = dx ((a \alpha + b \beta)\partial_x + (c \alpha + d \beta)\partial_y) = a \alpha + b \beta \\
+            A^*dy(v) &= (dy)(dA)(v) = dy((a \alpha + b \beta)\partial_x + (c \alpha + d \beta)\partial_y) = c \alpha + d \beta
+        \end{align*}
+        So that \(A^*dx = adx + bdy\) and \(A^*dy = cdx + ddy\). Now, we can use this to compute \(\phi_A^* dx'\) and \(\phi_A^* dy'\), by noticing that \(\phi_A \rho = \rho A\), so that \(\rho^* \phi_A^* = A^*\rho^*\) as well as noticing since \(\rho f =1_{\mathbb{T}^2}\) we get \(f^*\rho^* = 1_{\mathbb{T}^2}^*\), from here we can compute
+        \begin{align*}
+            \phi_A^*dx' &= 1_{\mathbb{T}^2}^* \phi_A^*dx' = f^*\rho^*\phi_A^*dx' = f^*A^*\rho^*dx' = f^* A^* \rho^* f^* dx = f^* A^* dx = f^* (adx + bdy)  \\ 
+            &= a\circ f \cdot f^*dx + b\circ f \cdot f^*dy = a dx' + bdy' \\
+            \phi_A^*dy' &= 1_{\mathbb{T}^2}^* \phi_A^*dy' = f^*\rho^*\phi_A^*dy' = f^*A^*\rho^*dy' = f^* A^* \rho^* f^* dy = f^* A^* dy = f^* (cdx + ddy)  \\ 
+            &= c\circ f \cdot f^*dx + d\circ f \cdot f^*dy = c dx' + ddy'
+        \end{align*}
+        Now assuming that \(\set{[dx'],[dy']}\) is a basis for \(H^1(\mathbb{T}^2)\) what we just computed shows that \[[\phi_A^*]^1: H^1(\mathbb{T}^2) \overset{A^{\text{T}}}{\longrightarrow} H^1(\mathbb{T}^2)\]
+        with respect to this basis, and therefore if \(\phi_A \simeq \phi_B\), then \(A^T = [\phi_A^*]^1 = [\phi_B^*]^1 = B^T\), but this of course implies that \(A = B\).
 
+        Now, checking that indeed \([dx'],[dy']\) is a basis, we use that \(S^1 \cong \mathbb{R}/ \mathbb{Z}\), and that \(d \theta\) is given by \(dx\) using the analogous 1-dimensional restriction for what we did on the Torus, we can write the pull-back here as \(\hat{f}\), and the quotient map as \(q\), using the same computations as for the Torus this gives us \(\rho^* \hat{f}^* dx = dx\). To see that \(H^1(S^1) = [d\theta]\), recall that \(H^1(S^1) \cong \mathbb{Z}\), and using stokes theorem we know that if \(d \theta\) were exact it would have zero integral since the circle has no boundary. Now it is straightforward to compute
+        \begin{align*}
+            \int_{S^1} d\theta = \int_0^1 \rho^* d\theta = \int_0^1 \rho^* \hat{f}^* dx = \int_0^1 dx = 1
+        \end{align*}
+        So that indeed \(H^1(S^1) = [d\theta]\). I will denote the constant function \(S^1 \to \set{1}\) as \(1\), we use the Kunneth Theorem (from the notes Lecture 23) to find that the following is an isomorphism:
+        \begin{align*}
+            \mathbb{Z}^2 \cong (H^*(S^1)\otimes H^*(S^1))^1 = \gen{[d\theta]\otimes [1]}\oplus \gen{[1]\otimes [d\theta]} \overset{[\pi_1^* \wedge \pi_2^*]\oplus [\pi_1^* \wedge \pi_2^*]}{\longrightarrow} H^1(\mathbb{T}^2)
+        \end{align*}
+        Then by construction we get that \([\pi_1^* \wedge \pi_2^*] (d\theta \otimes 1) \overset{\text{def}}{=} [\pi_1^*(d\theta) \wedge \pi_2^*(1)] =  [dx']\) and \([\pi_1^* \wedge \pi_2^*](1 \otimes d\theta) \overset{\text{def}}{=} [\pi_1^*(1) \wedge \pi_2^*(d\theta)] = [dy']\), which verifies that these indeed form a basis for the first cohomology. \qed
         % \textbf{(a)} We first check that the map \(\rho\) is orientation preserving, a quick way would be that the action of \(\mathbb{Z}^2\) is orientation preserving, which makes the induced covering map orientation preserving. If this is not satisfactory I will prove by hand. To do so define the  following section \(s: \mathbb{R}^2 \to \bigwedge^2 T \mathbb{R}^2 \cong \mathbb{R}^2 \times \mathbb{R}\) to be \(x \mapsto (x,1)\), (this is a representative for the standard orientation on \(\mathbb{R}^2\)), then since \(\mathbb{T}^2\) is compact and \(\rho\) is a covering map, we have open sets \(U_1,\hdots,U_r\) with \(\mathbb{T}^2 \subset \bigcup_1^r \rho(U_j)\) and \(\rho_j := \rho \vert_{U_j}\) is a diffeomorphism onto its image. Take \(\eta_j\) to be a partition of unity subordinate to the \(U_j\), then define
         % \begin{align*}
         %     &t: \mathbb{T}^2 \to \bigwedge^2T\mathbb{T}^2 &
