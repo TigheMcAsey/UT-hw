@@ -106,4 +106,35 @@
         
         % consider \(S^n\) embedded in \(\mathbb{R}^{n+1}\) in the standard way and let \(A = \set{(x_0,\hdots,x_n) \in S^n \mid x_n \geq 0}\), and \(B = -A\), then projection along the \(n\)-th coordinate gives \(A \cong D^n\) with \((0,\hdots,0,1) \mapsto 0\) and \(\partial A \overset{1_{S^{n-1}}}{\longrightarrow} \partial D^n\), to get a similar diffeomorphism for \(B\), compose the diffeomorphisms of projecting along the \(n\)-th coordinate then taking \(x \mapsto -x\), by construction we get the image of \(x \in A\) agrees with the image of \(-x \in B\). Now we get that \(D^n \setminus \set{0}\) is homotopic to \(S^{n-1}\) by exhibiting the strong deformation retract \(H(x,t) = (1-t)x + t\frac{x}{\norm{x}}\), now let \(\pi_A : A \to D^n\) and \(\pi_B: B \to D^n\) be the maps described above, and let \(H^A(x,t) = \pi_A^{-1}H(\pi_A(x),t)\), \(H^B(x,t) = \pi_B^{-1}H(\pi_B(x),t)\)
     \end{pb}
+    \begin{pb}
+        
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} Since real inner products are symmetric it suffices to show one case, so assume \(v_1\wedge\cdots\wedge v_p = \alpha \neq 0\). Now, it will suffice to show by induction that if \(k < p\), then we can choose \(\omega_{k+1}\), so that
+        \begin{align*}
+            \left\{\begin{pmatrix}
+            \gen{v_1,\omega_1} \\ \vdots  \\ \gen{v_p,\omega_1}
+            \end{pmatrix},\begin{pmatrix}
+            \gen{v_1,\omega_2} \\ \vdots  \\ \gen{v_p,\omega_2}
+            \end{pmatrix},\hdots, \begin{pmatrix}
+            \gen{v_1,\omega_{k+1}} \\ \vdots  \\ \gen{v_p,\omega_{k+1}}
+            \end{pmatrix}\right\} \subset \mathbb{R}^p
+        \end{align*}
+        are linearly independent. Since \(\alpha = v_1\wedge\cdots\wedge v_p \neq 0\) we have necessarily that the \(v_j\) are linearly independent. Now since \(k < p\), we can choose some \((x_1,\hdots,x_p) \in \mathbb{R}^p\) linearly independent from the first \(k\)-columns, then \(\omega = \omega_{k+1}\) can be constructed as follows, start with \(\omega = \frac{x_1 v_1}{\norm{v_1}^2}\) this is the base case, now assume recursively we have \(\gen{v_1,\omega} = x_1,\hdots, \gen{v_j,\omega} = x_j\), then we can take \(u\) to be the projection of \(v_{j+1}\) to \(\text{span}\set{v_1,\hdots,v_j}^\perp\), this is nonzero since \(v_{j+1} \not \in \text{span}\set{v_1,\hdots,v_j}\). Then we have \(\gen{v_{j+1},u} = a \neq 0\) finally denote \(\gen{v_{j+1}, \omega} = b\), and now take \(\omega' = \omega + \frac{x_{j+1} - b}{a}u\), then since \(u\) is orthogonal to \(v_1,\hdots,v_j\), we still get \(\gen{v_i,\omega'} = x_i\) for \(i = 1,\hdots, j\), but now we also get that
+        \begin{align*}
+            \gen{v_{j+1},\omega'} = \gen{v_{j+1},\omega} + \frac{x_{j+1} - b}{a}\gen{v_{j+1},u} = b + \frac{x_{j+1} - b}{a}a = x_{j+1}
+        \end{align*}
+        Continuing this process we get the desired \(\omega_{k+1}\), since this holds for any \(k < p\), we can always construct some \(\omega_1\wedge\cdots\wedge \omega_p\) with the property that the columns of \((\gen{v_i,\omega_j})_{1 \leq i,j \leq p}\) are linearly independent, and hence \(\gen{\alpha,\omega_1\wedge\cdots\wedge \omega_p}_p = \det (\gen{v_i,\omega_j})_{1 \leq i,j \leq p} \neq 0\). \qed
+
+        \textbf{(b)} Consider two positively oriented orthonormal bases \(e_1,\hdots,e_k\) and \(d_1,\hdots,d_k\). Let \(T\) be the linear map defined by \(T(e_i) = d_i\), and extending linearly, since both bases are positively oriented we get \(\det T > 0\), moreover we have \((T^\text{T}T)_{ij} = \gen{d_i,d_j} = \delta_{ij}\), so that \(T^\text{T}T = 1_V\) is orthogonal, since \(\det T^\text{T} = \det T\), this relation gives us \((\det T)^2 = 1\), so \(\det T = \pm 1\), but since we have established \(\det T > 0\), we get to conclude that \(\det T = 1\). Now we are done since
+        \begin{align*}
+            d_1\wedge\cdots\wedge d_k = T(e_1)\wedge \cdots \wedge T(e_k) = (\det T)(e_1\wedge\cdots\wedge e_k) = e_1\wedge\cdots\wedge e_k
+        \end{align*} \qed
+
+        \textbf{(c)} We first consider an element of the form \(\beta = e_{i_1}\wedge\cdots\wedge e_{i_{k-p}}\) with \(i_1 < i_2 < \cdots < i_{k-p}\), now we can denote \(\set{j_1,\hdots,j_p} = \set{1,\hdots,k} \setminus \set{i_1,\hdots,i_{k-p}}\) with \(j_1 < \cdots < j_p\). It follows that \(e_{j_1}\wedge\cdots\wedge e_{j_p} \wedge \beta = (-1)^\ell \omega\) for some \(\ell\). I claim that \(\star \beta = (-1)^\ell e_{j_1}\wedge\cdots\wedge e_{j_p}\) satisfies \(\lambda_\beta(\alpha) = \gen{\alpha,\star\beta}_p\). We first check this for \(\alpha\) of the form \(e_{r_1}\wedge\cdots\wedge e_{r_p}\), since if it holds for elements of this form we get general elements of \(\Lambda^p(V) = \sum a_i \alpha_i\) for \(a_i\) of this form, so that since \(\lambda_\beta\) is linear we get
+        \begin{align*}
+            \lambda_\beta(\sum a_i \alpha_i) = \sum a_i \lambda_\beta(\alpha_i) = \sum a_i \gen{\alpha_i,\star\beta} = \gen{\sum a_i \alpha_i, \star \beta}
+        \end{align*}
+        so it suffices to check in this simplified case. Now if \(\set{r_1,\hdots,r_p} \cap \set{i_1,\hdots,i_{k-p}} = \set{i_z} \neq \emptyset\), then we get \(\alpha \wedge \beta = 0\), hence \(\lambda_\beta(\alpha) = 0\), as well as the matrix with determinant \(\gen{\alpha,\star\beta}_p\) having a row corresponding to \((\gen{e_{i_z},e_{j_1}},\hdots,\gen{e_{i_z},e_{j_p}}) = (0,\hdots,0)\), so that \(\gen{\alpha,\star\beta}_p = 0\), now in the case that \(\set{r_1,\hdots,r_p} \cap \set{i_1,\hdots,i_{k-p}} = \emptyset\), we get that \(r_1,\hdots,r_p = \sigma(j_1),\hdots,\sigma(j_p)\) for \(\sigma \in S_p\), then \(e_{r_1}\wedge\cdots\wedge e_{r_p} = \text{sgn}(\sigma)e_{j_1}\wedge\cdots\wedge e_{j_p}\), so that \(\alpha \wedge \beta = \text{sgn}(\sigma)(-1)^\ell \omega\), and \(\gen{\alpha\wedge\beta,\omega}_k = \text{sgn}(\sigma)(-1)^\ell\), moreover \(\gen{\alpha,\star \beta} = (-1)^\ell \det P_\sigma\) where \(P_\sigma\) denotes the permutation matrix taking \(j_1 \mapsto \sigma(j_1)\), of course this is also equal to \((-1)^\ell \text{sgn}(\sigma)\), so we have provided existence of \(\star\beta\) for \(\beta\) of the form \(e_{i_1}\wedge\cdots\wedge e_{i_{k-p}}\), from this we can establish existence for all \(\beta\), since any \(\beta \in \Lambda^{k-p}(V)\) can be written as \(\sum a_i \beta_i\) for \(\beta_i\) of this form. From this we establish for any \(\alpha \in \Lambda^p(V)\) that 
+    \end{pb}
 \end{document}
