@@ -596,4 +596,29 @@
         \end{align*}
         So the specified \(X,Y\) give the desired conclusion.
     \end{pb}
+    \begin{pb} \textbf{(Durrett 3.7.1)}
+        Let \(f(t) := \log P(T > t)\), the memoryless assumption then tells us in this case that \(f(t+s)=f(t) + f(s)\), since \(P(T > t) = 1 - P(T \leq t)\), and \(\log\) is continuous we find that \(f\) is continuous apart from a countable set. Now we will be done once we prove the following
+
+        \textbf{If \(\mathbf{f}\) is continuous at a point and satisfies \(\mathbf{f(x+y) = f(x) + f(y)}\), then \(\mathbf{f}\) is linear}
+        \begin{proof}
+            The functional equation gives us for integers \(f(z) = zf(1)\), moreover on rationals we get \(f(1) = zf(1/z)\), so that \(f(1/z) = z^{-1}f(1)\), since this hold on rationals let \(p\) be a point of continuity for \(f\), then in some neighborhood of \(p\), we get \(f(\lim z_n) = \lim f(z_n)\), since rationals are dense, we get in some neighborhood of \(p\), for any \(z\), \(z_n \to z\) and \(\lim f(z_n) = \lim z_n f(1) = zf(1)\) whence \(f(z) = f(1)z\) in a neighborhood of \(p\), now any \(z\) is a rational translate of an element of this neighborhood of \(p\), so for any \(z\) we can pick \(x\) in a sufficiently small neighborhood of \(p\), and \(y \in \mathbb{Q}\) so that \(f(z) = f(x + y) = f(x) + f(y) = xf(1) + yf(1) = zf(1)\), so that \(f(z)\) is linear.
+        \end{proof}
+    \end{pb}
+    \begin{pb} \textbf{(Durrett 3.7.2)}
+        Let \(F,G\) be the respective distribution functions for \(S,T\), then we can use independence
+        \begin{align*}
+            P(V > t) = P(S > t, T > t) = P(S > t)P(T > t) = \begin{cases}
+            e^{-\lambda t}e^{- \mu t} = e^{-(\lambda + \mu)t} & t > 0 \\
+            1 & t \leq 0
+            \end{cases} 
+        \end{align*}
+        So \(V \sim \exp(\lambda+\mu)\). Now we can also compute
+        \begin{align*}
+            P(V = S) &= P(S \leq T) = \int P(S \leq T(y)) dG(y) = \int (1- e^{-\lambda T(y)})dG(y) = \int_0^\infty (1-e^{-\lambda y})e^{- \mu y}dy \\
+            &= \frac{1}{\mu} - \frac{1}{\lambda + \mu} = \frac{\lambda}{\lambda + \mu}
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb} \textbf{(Durrett 3.7.3)}
+        
+    \end{pb}
 \end{document}

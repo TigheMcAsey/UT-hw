@@ -1,0 +1,109 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+
+\fancyhf{}
+\lhead{MAT1300 hw9}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\usepackage{tikz-cd, stackengine}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\setcounter{MaxMatrixCols}{20}
+\tikzset{
+  curarrow/.style={
+  rounded corners=8pt,
+  execute at begin to={every node/.style={fill=red}},
+    to path={-- ([xshift=-50pt]\tikztostart.center)
+    |- (#1)  {}
+    -| ([xshift=50pt]\tikztotarget.center)
+    -- (\tikztotarget)}
+    }
+}
+
+\begin{document}
+    \begin{pb}
+        I will first prove a lemma, since I will use it multiple times in order to prove homotopy equivalences.
+
+        \textbf{Lemma.} If \(e: X \hookrightarrow M\) is an embedding for manifolds \(M,X\), and there is a strong deformation retract \(H: M \to M\) with \(H(M\times\set{1}) = X\), then \(M \simeq X\).
+        \begin{proof}
+            Let \(r(x) = H(x,1)\), then \(e\vert_{e(X)}^{-1}r: M \to X\) is smooth, and since \(H\) is a strong deformation retract we have \(e\vert_{e(X)}^{-1}r e = 1_X\), from which it suffices to show that \(e e\vert_{e(X)}^{-1}r = r \simeq 1_M\), but \(r = H(-,1)\), so this homotopy is exhibited by \(H\) and we are done.
+        \end{proof}
+
+        Let \(V_0,\hdots,V_n\) be the standard charts on \(\mathbb{RP}^n\), now take \(V = V_0\), and let \(\text{pt.} = [0:0:\cdots:1] \in V_0^c\), then take \(U = \mathbb{RP}^n\setminus \set{\text{pt.}}\), the standard chart map \(\phi_0\) gives us \(V \cong \mathbb{R}^n\). Similarly, we find that \(U \cap V = V \setminus \set{\text{pt.}}\), so that
+        \begin{align*}
+            \phi_0^{-1}\vert_{U \cap V}: U \cap V \overset{\cong}{\longrightarrow} \mathbb{R}^n \setminus \set{\phi_0^{-1}(\text{pt.})} \simeq S^{n-1}
+        \end{align*}
+        The homotopy equivalence is given by \(\mathbb{R}^n \setminus \set{\phi_0^{-1}(\text{pt.})} \overset{\cong}{\longrightarrow} \mathbb{R}^{n} \setminus \set{0}\) via \(x \mapsto x - \phi_0^{-1}(\text{pt.})\), then taking the strong deformation retract \(H(x,t) = (1-t)x + t\frac{x}{\norm{x}}\) which gives a homotopy equivalence to \(S^{n-1}\). Now it remains to show \(U \simeq \mathbb{RP}^{n-1}\). First we consider the smooth map \(\theta: \mathbb{RP}^n\setminus \set{\text{pt.}} \to (0,\pi/2)\) via \([x_0,\hdots,x_n] \mapsto \arcsin x_n\), where we take the representative of \([x_0,\hdots,x_n]\) with \(x_n > 0\), we can do this since we removed the point \(x_n = 0\), and smoothness follows by \(\arcsin\) being smooth on \([0,1)\), so our map is smooth in coordinates, it follows that points in \(\mathbb{RP}^n \setminus \set{\text{pt.}}\), now we can define the homotopy (where once again we define the maps on the representative with \(x_n > 0\))
+        \begin{align*}
+            H([x],t) = \left[\cos((1-t)\theta(x))\frac{(x_0,\hdots,x_{n-1},0)}{\norm{(x_0,\hdots,x_{n-1},0)}} + \sin\theta(x)\right]
+        \end{align*}
+        Once again, this map is smooth since it is defined to be smooth on coordinates, and \(H(\mathbb{RP}^n\times \set{1}) = \set{[x] \in \mathbb{RP} \mid x_n = 0} \cong \mathbb{RP}^{n-1}\), where the diffeomorphism is given by the embedding \(\mathbb{RP}^{n-1} \hookrightarrow \mathbb{RP}^n\) via \([x_0,\hdots,x_{n-1}] \mapsto [x_0,\hdots,x_{n-1},0]\), this map is smooth due to being identity on the charts given by the same coordinate non-vanishing loci. Proper since \(\mathbb{RP}^{n-1}\) is compact, is clearly injective, and is an immersion since in appropriate coordinates its given by the identity. Hence the homotopy defined above gives a strong deformation retract from \(\mathbb{RP}^n\) to \(\set{[x] \in \mathbb{RP} \mid x_n = 0}\) from which we get a homotopy equivalence. This concludes the annoying details and now we can proceed with the algebraic argument.
+
+        We first want to show that for \(0 < k < n\), we have \(H^k(\mathbb{RP}^n) = 0\). Let \(q: S^n \to \mathbb{RP}^n\) be the covering map, then since \(q\) is locally invertible and \(\mathbb{RP}^n\) is compact, we have an open cover \(U_1,\hdots,U_s\) for \(\mathbb{RP}^n\), with associated maps \(q_1,\hdots,q_s\) satisfying \(qq_j = 1_{\mathbb{RP}^n}\) for each \(j\), taking a partition of unity suboordinate to the \(U_j\), we can define \(f = \sum_1^s \eta_j\cdot q_j\), with \(q\circ f = 1_{\mathbb{RP}^n}\), it follows that \(f^*q^* = 1_{\mathbb{RP}^n}^*\). Now we want to show that \([q^*]: H^*(\mathbb{RP}^n) \to H^*(S^n)\) is injective, to do so assume that \([q^*]([\omega]) = [0]\), then \(q^* \omega = d \nu\) for some \(\omega\) representing the class \([\omega]\), and some form \(\nu\), now we can use our section to find that \[\omega = f^*q^* \omega = f^* d\nu = d f^* \nu\]
+        this shows that \(\omega\) is an exact form, and hence \([\omega] = 0\). This suffices to show that \([q^*]\) is injective, but then for \(0 < k < n\), we have \([q^*]: H^k(\mathbb{RP}^n) \hookrightarrow H^k(S^n) = 0\), so that \(H^k(\mathbb{RP}^n) = 0\) for \(0 < k < n\) as desired.
+        
+        Since \(U \cup V\) is an open cover for \(\mathbb{RP}^n\), we get the short exact sequence of chain complexes
+        \begin{equation*}
+            \begin{tikzcd}
+                0 \arrow[r] &\Omega^*(\mathbb{RP}^n)\arrow[r] &\Omega^*(U) \oplus \Omega^*(V) \arrow[r] &\Omega^*(U\cap V) \arrow[r] &0
+            \end{tikzcd}
+        \end{equation*}
+        Mayer Vietoris gives us a long exact sequence on cohomology, the portion of interest is for \(n > 1\)
+        \begin{equation*}
+            \begin{tikzcd}[arrow style=math font,cells={nodes={text height=2ex,text depth=0.75ex}}]
+            \cdots & H^{n}(U) \oplus H^{n}(V) \arrow[l] \arrow[draw=none]{d}[name=Z,shape=coordinate]{} & H^{n}(\mathbb{RP}^n) \arrow[l] \\
+            H^{n-1}(U \cap V) \arrow[curarrow=Z]{urr}{} & H^{n-1}(U) \oplus H^{n-1}(V) \arrow[l] & H^{n-1}(\mathbb{RP}^n) \arrow[l]
+            \end{tikzcd}
+        \end{equation*}
+        Since cohomology is a homotopy invariant, we may substitute in the spaces above to this LES.
+        \begin{equation*}
+            \begin{tikzcd}[arrow style=math font,cells={nodes={text height=2ex,text depth=0.75ex}}]
+            \cdots & H^{n}(\mathbb{RP}^{n-1}) \oplus H^{n}(\mathbb{R}^n) \arrow[l] \arrow[draw=none]{d}[name=Z,shape=coordinate]{} & H^{n}(\mathbb{RP}^n) \arrow[l] \\
+            H^{n-1}(S^{n-1}) \arrow[curarrow=Z]{urr}{} & H^{n-1}(\mathbb{RP}^{n-1}) \oplus H^{n-1}(\mathbb{R}^n) \arrow[l] & H^{n-1}(\mathbb{RP}^n) \arrow[l]
+            \end{tikzcd}
+        \end{equation*}
+        Now we know the cohomology for spheres, and euclidean space, \(\mathbb{RP}^{n-1}\) is \(n-1\) dimensional so that its \(n\)-th cohomology is zero and finally we already computed that \(H^{n-1}(\mathbb{RP}^n) = 0\). Applying this we get
+        \begin{equation*}
+            \begin{tikzcd}[arrow style=math font,cells={nodes={text height=2ex,text depth=0.75ex}}]
+            \cdots & 0 \arrow[l] \arrow[draw=none]{d}[name=Z,shape=coordinate]{} & H^{n}(\mathbb{RP}^n) \arrow[l] \\
+            \mathbb{R} \arrow[curarrow=Z]{urr}{} & H^{n-1}(\mathbb{RP}^{n-1}) \arrow[l] & 0 \arrow[l]
+            \end{tikzcd}
+        \end{equation*}
+        Exactness of this sequence gives us that \(\mathbb{R} \cong H^{n-1}(\mathbb{RP}^{n-1}) \oplus H^n(\mathbb{RP}^n)\) (the splitting is guaranteed since were working with vector spaces). Now since \(\mathbb{RP}^1 \cong S^1\), which has \(H^1(S^1) \cong \mathbb{R}\), and the above formula holds for \(n > 1\), we find recursively that for \(n \geq 1\)
+        \begin{align*}
+            H^n(\mathbb{RP}^n) \cong \begin{cases}
+                \mathbb{R} & n \text{ odd} \\
+                0 & n \text{ even}
+            \end{cases}
+        \end{align*}
+         From this and the fact that \(\mathbb{RP}^n\) is connected giving it \(0\)-th cohomology \(\mathbb{R}\), we get the cohomology ring
+         \begin{align*}
+            H^*(\mathbb{RP}^n) \cong \begin{cases}
+                \mathbb{R}[x_n]/(x_n^2) & n\text{ odd} \\
+                \mathbb{R} & n \text{ even}
+            \end{cases}
+         \end{align*}
+         since the zero-th cohomology class is a unit with respect to wedge, and \(x_n\) represents the \(n\)-form \([\omega]\), but \(\omega\wedge \omega = 0\) since \(H^{2n}(\mathbb{RP}^n) = 0\) by dimension considerations. \qed
+        
+        % consider \(S^n\) embedded in \(\mathbb{R}^{n+1}\) in the standard way and let \(A = \set{(x_0,\hdots,x_n) \in S^n \mid x_n \geq 0}\), and \(B = -A\), then projection along the \(n\)-th coordinate gives \(A \cong D^n\) with \((0,\hdots,0,1) \mapsto 0\) and \(\partial A \overset{1_{S^{n-1}}}{\longrightarrow} \partial D^n\), to get a similar diffeomorphism for \(B\), compose the diffeomorphisms of projecting along the \(n\)-th coordinate then taking \(x \mapsto -x\), by construction we get the image of \(x \in A\) agrees with the image of \(-x \in B\). Now we get that \(D^n \setminus \set{0}\) is homotopic to \(S^{n-1}\) by exhibiting the strong deformation retract \(H(x,t) = (1-t)x + t\frac{x}{\norm{x}}\), now let \(\pi_A : A \to D^n\) and \(\pi_B: B \to D^n\) be the maps described above, and let \(H^A(x,t) = \pi_A^{-1}H(\pi_A(x),t)\), \(H^B(x,t) = \pi_B^{-1}H(\pi_B(x),t)\)
+    \end{pb}
+\end{document}
