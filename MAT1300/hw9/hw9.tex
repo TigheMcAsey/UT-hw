@@ -27,6 +27,12 @@
 \newcommand{\tand}{\text{ and }}
 \newcommand{\tor}{\text{ or }}
 \newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\newcommand{\px}{\frac{\partial}{\partial x}}
+\newcommand{\py}{\frac{\partial}{\partial y}}
+\newcommand{\pz}{\frac{\partial}{\partial z}}
+\newcommand{\ppx}{\frac{\partial^2}{\partial x^2}}
+\newcommand{\ppy}{\frac{\partial^2}{\partial y^2}}
+\newcommand{\ppz}{\frac{\partial^2}{\partial z^2}}
 \setcounter{MaxMatrixCols}{20}
 \tikzset{
   curarrow/.style={
@@ -110,7 +116,7 @@
         
     \end{pb}
     \begin{pb}
-        \textbf{(a)} Since real inner products are symmetric it suffices to show one case, so assume \(v_1\wedge\cdots\wedge v_p = \alpha \neq 0\). Now, it will suffice to show by induction that if \(k < p\), then we can choose \(\omega_{k+1}\), so that
+        \textbf{(a)} The proof of the case \(\alpha' = 0\) is identical to that of \(\alpha = 0\), but we show that the rows rather than columns are linearly independent, so assume \(v_1\wedge\cdots\wedge v_p = \alpha \neq 0\). Now, it will suffice to show by induction that if \(k < p\), then we can choose \(\omega_{k+1}\), so that
         \begin{align*}
             \left\{\begin{pmatrix}
             \gen{v_1,\omega_1} \\ \vdots  \\ \gen{v_p,\omega_1}
@@ -135,6 +141,37 @@
         \begin{align*}
             \lambda_\beta(\sum a_i \alpha_i) = \sum a_i \lambda_\beta(\alpha_i) = \sum a_i \gen{\alpha_i,\star\beta} = \gen{\sum a_i \alpha_i, \star \beta}
         \end{align*}
-        so it suffices to check in this simplified case. Now if \(\set{r_1,\hdots,r_p} \cap \set{i_1,\hdots,i_{k-p}} = \set{i_z} \neq \emptyset\), then we get \(\alpha \wedge \beta = 0\), hence \(\lambda_\beta(\alpha) = 0\), as well as the matrix with determinant \(\gen{\alpha,\star\beta}_p\) having a row corresponding to \((\gen{e_{i_z},e_{j_1}},\hdots,\gen{e_{i_z},e_{j_p}}) = (0,\hdots,0)\), so that \(\gen{\alpha,\star\beta}_p = 0\), now in the case that \(\set{r_1,\hdots,r_p} \cap \set{i_1,\hdots,i_{k-p}} = \emptyset\), we get that \(r_1,\hdots,r_p = \sigma(j_1),\hdots,\sigma(j_p)\) for \(\sigma \in S_p\), then \(e_{r_1}\wedge\cdots\wedge e_{r_p} = \text{sgn}(\sigma)e_{j_1}\wedge\cdots\wedge e_{j_p}\), so that \(\alpha \wedge \beta = \text{sgn}(\sigma)(-1)^\ell \omega\), and \(\gen{\alpha\wedge\beta,\omega}_k = \text{sgn}(\sigma)(-1)^\ell\), moreover \(\gen{\alpha,\star \beta} = (-1)^\ell \det P_\sigma\) where \(P_\sigma\) denotes the permutation matrix taking \(j_1 \mapsto \sigma(j_1)\), of course this is also equal to \((-1)^\ell \text{sgn}(\sigma)\), so we have provided existence of \(\star\beta\) for \(\beta\) of the form \(e_{i_1}\wedge\cdots\wedge e_{i_{k-p}}\), from this we can establish existence for all \(\beta\), since any \(\beta \in \Lambda^{k-p}(V)\) can be written as \(\sum a_i \beta_i\) for \(\beta_i\) of this form. From this we establish for any \(\alpha \in \Lambda^p(V)\) that 
+        so it suffices to check in this simplified case. Now if \(\set{r_1,\hdots,r_p} \cap \set{i_1,\hdots,i_{k-p}} = \set{i_z} \neq \emptyset\), then we get \(\alpha \wedge \beta = 0\), hence \(\lambda_\beta(\alpha) = 0\), as well as the matrix with determinant \(\gen{\alpha,\star\beta}_p\) having a row corresponding to \((\gen{e_{i_z},e_{j_1}},\hdots,\gen{e_{i_z},e_{j_p}}) = (0,\hdots,0)\), so that \(\gen{\alpha,\star\beta}_p = 0\), now in the case that \(\set{r_1,\hdots,r_p} \cap \set{i_1,\hdots,i_{k-p}} = \emptyset\), we get that \(r_1,\hdots,r_p = \sigma(j_1),\hdots,\sigma(j_p)\) for \(\sigma \in S_p\), then \(e_{r_1}\wedge\cdots\wedge e_{r_p} = \text{sgn}(\sigma)e_{j_1}\wedge\cdots\wedge e_{j_p}\), so that \(\alpha \wedge \beta = \text{sgn}(\sigma)(-1)^\ell \omega\), and \(\gen{\alpha\wedge\beta,\omega}_k = \text{sgn}(\sigma)(-1)^\ell\), moreover \(\gen{\alpha,\star \beta} = (-1)^\ell \det P_\sigma\) where \(P_\sigma\) denotes the permutation matrix taking \(j_1 \mapsto \sigma(j_1)\), of course this is also equal to \((-1)^\ell \text{sgn}(\sigma)\), so we have provided existence of \(\star\beta\) for \(\beta\) of the form \(e_{i_1}\wedge\cdots\wedge e_{i_{k-p}}\), from this we can establish existence for all \(\beta\), since any \(\beta \in \Lambda^{k-p}(V)\) can be written as \(\sum a_i \beta_i\) for \(\beta_i\) of this form, this allows us to define \(\star \beta = \sum a_i \star \beta_i\) then for any \(\alpha \in \Lambda^p(V)\) we get
+        \begin{align*}
+            \lambda_\beta(\alpha) &= \gen{\alpha \wedge \sum a_i \beta_i, \omega}_k = \gen{\sum a_i \alpha \wedge \beta_i, \omega}_k = \sum a_i \gen{\alpha \wedge \beta_i, \omega}_k \\ &= \sum a_i \gen{\alpha, \star \beta_i}_p = \gen{\alpha, \sum a_i \star \beta_i}_p = \gen{\alpha, \star \beta}_p
+        \end{align*}
+        Which suffices to prove existence for any \(\beta \in \Lambda^{k-p}(V)\). Now we need to check uniqueness Suppose \(\star \beta' = \star \beta\), then \(\alpha \mapsto \gen{\alpha \wedge (\beta - \beta'),\omega}_k = 0\) for all \(\alpha\). Suppose now that \(\beta \neq \beta'\), we can write \(\beta = \sum a_i \beta_i\), and \(\beta' = \sum b_i \beta'_i\) where \(\beta_i, \beta'_i\) are of the form \(e_{i_1}\wedge\cdots\wedge e_{i_{k-p}}\) for \(i_1 < \cdots < k-p\), it follows that the multiplicity of one of these summands must differ between \(\beta\) and \(\beta'\), otherwise the two will be equal. So assume without loss of generality that \(\beta_1 = \beta'_1\), but \(a_1 \neq b_1\), moreover since one of them must be nonzero we can assume \(a_1 \neq 0\). Now denote \(\beta_1 = e_{i_i}\wedge\cdots\wedge e_{i_{k-p}}\), and once again define \(\set{j_1,\hdots,j_p} = \set{1,\hdots,k} \setminus \set{i_1,\hdots,i_{k-p}}\) with \(j_1 < \cdots < j_p\), it follows that for \(\alpha = e_{j_1}\wedge\cdots\wedge e_{j_p}\) we have \(\alpha \wedge \beta_\ell = 0\) for any \(\ell \neq 1\), and same for \(\beta'_\ell\), since some \(j_z\) must appear in the wedge terms of \(\beta_\ell\) (or respectively \(\beta_\ell'\)) by virtue of \(\beta_\ell\) (resp. \(\beta'_\ell\)) not being identical to \(\beta_1 = \beta'_1\). Moreover, we get \(\alpha \wedge \beta_1 = (-1)^r \omega\) for some \(r\). It follows that
+        \begin{align*}
+            \gen{\alpha\wedge (\beta - \beta'), \omega}_k &= \gen{\alpha \wedge \beta, \omega}_k - \gen{\alpha \wedge \beta', \omega}_k = \sum a_i \gen{\alpha \wedge \beta_i, \omega}_k - \sum b_i \gen{\alpha \wedge \beta',\omega}_k \\
+            &= a_1 \gen{\alpha \wedge \beta_1, \omega}_k - b_1 \gen{\alpha \wedge \beta'_1, \omega}_k = (a_1 - b_1)\gen{\alpha \wedge \beta_1, \omega}_k \\ 
+            &= (-1)^r(a_1 - b_1) \gen{\omega, \omega}_k = (-1)^r(a_1 - b_1) \neq 0
+        \end{align*}
+        Which contradicts \(\star \beta = \star \beta'\), so this suffices to show uniqueness.
+
+        Now that we have existence and uniqueness, linearity is quite easy. Let \(\beta, \gamma \in \Lambda^{k-p}(V)\), then for any \(\alpha\) we have
+        \begin{align*}
+            \gen{\alpha,\star (a \beta + b\gamma)}_p &= \gen{\alpha\wedge (a\beta + b\gamma),\omega}_k = \gen{a \alpha \wedge \beta + b \alpha \wedge \gamma,\omega}_k = a\gen{\alpha \wedge \beta, \omega}_k + b\gen{\alpha \wedge \gamma, \omega}_k \\
+            &= a \gen{\alpha, \star \beta}_p + b \gen{\alpha, \star \gamma}_p = \gen{\alpha, a\star \beta + b\star\gamma}
+        \end{align*}
+        Uniqueness then tells us that \(\star (a \beta + b\gamma) = a\star \beta + b\star\gamma\). \qed
+
+        \textbf{(d)} We would like to use (a)-(c) to produce a fiber-wise definition of \(\star\), in such a way that we ensure gluing together these fiberwise maps gives a smooth map on \textcolor{red}{TODO}
+
+        \textbf{(e)} We can use that \(\star\) agrees fiberwise with the original fiberwise definition, and in this case identify \(dx,dy,dz \leftrightarrow e_1,e_2,e_3\). This in particular means our proof from part (c) shows that if \(h \in C^{\infty}(M, \mathbb{R})\), we get
+        \begin{align*}
+            \star h dx &= h \star dx = h dy \wedge dz \\
+            \star h dy &= h \star dy = -h dx \wedge dz \\
+            \star h dz &= h \star dz = h dx \wedge dy
+        \end{align*}
+        Now applying this to \(df\), we get
+        \begin{align*}
+            d\star df &= d\star \px fdx + \py fdy + \pz fdz = d(\px f dy \wedge dz - \py f dx\wedge dz + \pz f dx \wedge dy) \\
+            &= \ppx f dx \wedge dy \wedge dz  - \ppy fdy\wedge dx \wedge dz + \ppz fdz\wedge dx\wedge dy \\ &= (\ppx f + \ppy f + \ppz f)dx \wedge dy \wedge dz
+        \end{align*} \qed
     \end{pb}
 \end{document}

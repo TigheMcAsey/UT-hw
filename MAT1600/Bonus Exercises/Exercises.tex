@@ -619,6 +619,85 @@
         \end{align*} \qed
     \end{pb}
     \begin{pb} \textbf{(Durrett 3.7.3)}
+        The two identities follow directly from the previous exercise (Durrett 3.7.2) by induction (take \(\lambda = \lambda_i\) and \(\mu = \sum_{j \neq i} \lambda_j\)) since \(V\) is exponential \(\mu\) inductively we are done. The interesting portion of the question is showing independence, if \(\mu, \nu\) denote the probability measures associated to \(T_i\) and \(\min_{j \neq i} T_j\), then we can use independence and Tolleni's theorem to write
+        \begin{align*}
+            P(V > t, I = i) &= P(T_i > t, \min_{j \neq i}T_j \geq T_i) = \int\int 1_{s > t}1_{r \geq s} d\nu(r) d\mu(s) = \int P(\min_{j \neq i}T_j \geq s)1_{s > t}d\mu(s)\\ 
+            & = \int_t^\infty P(\min_{j \neq i}T_j \geq s) d\mu(s)
+            = \int_t^\infty P(\min_{j \neq i}T_j \geq s)\lambda_i e^{-\lambda_i s}ds
+        \end{align*}
+        Then since \(\min_{j \neq i}T_j\) has exponential distribution with parameter \(\sum_{j\neq i}\lambda_j\), its distribution function is continuous which gives us \(P(\min_{j \neq i}T_j \geq s) = P(\min_{j \neq i}T_j > s) = e^{-s\sum_{j \neq i}\lambda_j}\), this rewrites our integral as
+        \begin{align*}
+            \int_t^\infty P(\min_{j \neq i}T_j \geq s)\lambda_i e^{-\lambda_i s}ds &= \int_t^\infty \lambda_i e^{-s\sum_1^n \lambda_j}ds = \frac{\lambda_i e^{-t\sum_1^n \lambda_j}}{\sum_1^n \lambda_j} = P(I = i)P(V > t)
+        \end{align*}
+        Since h-intervals and singletons are \(\pi\)-systems generating their respective \(\sigma\)-algebras independence is now a consequence of the \(\pi-\lambda\) theorem. \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.7.4)}
         
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.7.5)}
+        Let \(X\) be the number of people attending the basketball game, then \(N \sim \text{poisson}(2190)\), now let \(Y_j\) be the \(j\)-th persons birthday, so that \(P(Y_j) = k = \frac{1}{365}\) for \(k = 1,\hdots, 365\), and the \(Y_j\) are iid. Now let \(N_j = \# \set{Y_i \mid i \leq N \tand Y_i = j}\), then by Durrett theorem 3.7.4 we get that the \(N_j\) are independent and poisson distributed with rate \(2190P(Y_i = j) =  \frac{2190}{365} = 6\). The probability of every birthday having a representative is
+        \begin{align*}
+            P(N_1 \geq 1 , \hdots, N_{365} \geq 1) = \prod_1^{365}P(N_j \geq 1) = \prod_1^{365}1-P(N_j=0) = (1-e^{-6})^{365} \approx 0.404
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.7.6)}
+        By Durrett theorem 2.1.8 \(T_k\) is a sum of exponential random variables with parameter \(1\), hence has density given by \(\frac{x^{k-1}}{(k-1)!}e^{-x}\), it will suffice to show that the density \(f_n\) of \(nV_k^n\) satisfies \(f_n(x) \to \frac{x^{k-1}}{(k-1)!}e^{-x}\) pointwise by Scheffe's theorem (I'll provide a quick proof after the problem). Now we can rewrite \(P(nV_k^n \leq x)\), by summing over all possibilities where atleast \(k\) of the \(V_j\) are less than or equal to \(x\). This gives us
+        \begin{align*}
+            \sum_{j=k}^n \sum_{A \subset n, \# A = j} P(U_\alpha \leq x/n \text{ for } \alpha \in A, U_{\beta} > x/n \text{ for } \beta \in A^c)
+        \end{align*}
+        Now we can use independence and the fact that they are identically distributed to rewrite as
+        \begin{align*}
+            \sum_{j=k}^n \binom{n}{j}(x/n\wedge 1)^j (1 - x/n\wedge 1)^j
+        \end{align*}
+        For sufficiently large \(n\), we have \(x/n < 1\), so that we can remove the minimums, since the above is differentiable almost everywhere for every \(n\), each distribution gives rise to a probability density so our application of Scheffe's theorem is fine. This lets us write the distribution as
+        \begin{align*}
+            \sum_{j=k}^n \binom{n}{j}(x/n)^j (1 - x/n)^j
+        \end{align*}
+        so that the density function is given by
+        \begin{align*}
+            \frac{d}{dx}\sum_{j=k}^n \binom{n}{j}(x/n)^j (1 - x/n)^j = \sum_{j=k}^n \frac{j}{n}\binom{n}{j}(\frac{x}{n})^{j-1}(1-\frac{x}{n})^{n-j} - \sum_{j=k}^n \frac{n-j}{n}\binom{n}{j}(\frac{x}{n})^{j}(1-\frac{x}{n})^{n-j-1}
+        \end{align*}
+        Now we can rewrite \(\frac{j}{n}\binom{n}{j} = \binom{n-1}{j-1}\), and \(\frac{n-j}{n}\binom{n}{j} = \binom{n-1}{j}\), using this and reindexing the first summation by replacing \(j\) with \(j+1\), we get
+        \begin{align*}
+            \sum_{j=k-1}^{n-1} \binom{n-1}{j}(\frac{x}{n})^j(1 - \frac{x}{n})^{n-j-1} - \sum_{j=k}^n \binom{n-1}{j}(\frac{x}{n})^j(1-\frac{x}{n})^{n-j-1}
+        \end{align*}
+        Now all the terms cancel apart from the \(j = k-1\) term and the \(j=n\) term, \(\binom{n-1}{n} = 0\), so the \(j=n\) term is zero. This leaves us with
+        \begin{align*}
+            f_n(x) = \binom{n-1}{k-1}\left(\frac{x}{n}\right)^{k-1}\left(1 - \frac{x}{n}\right)^{n-k}
+        \end{align*}
+        We can break this up into terms and compute their limits, so long as the limits exist the limit of the product exists and is equal to the product of the limits.
+        \begin{align*}
+            \lim_{n \to \infty} \frac{n-k}{n} = \lim_{n\to\infty}1 - k/n = 1
+        \end{align*}
+        we can also compute
+        \begin{align*}
+            \binom{n-1}{k-1}n^{-(k-1)} = \frac{1}{(k-1)!}\prod_{j=1}^{k-1} \frac{n-j}{n}
+        \end{align*}
+        So we can use the squeeze theorem to conclude, 
+        \begin{align*}
+            \frac{1}{k!} \geq \lim_{n\to\infty}\binom{n-1}{k-1}n^{-(k-1)} \geq \lim_{n\to\infty}\frac{1}{k!}\prod_1^{k-1}\frac{n-k}{n} = \frac{1}{k!}\prod_1^{k-1} \lim_{n \to \infty}\frac{n-k}{n} = \frac{1}{k!}
+        \end{align*}
+        we also get that
+        \begin{align*}
+            \lim_{n\to\infty}\left(1 - \frac{x}{n}\right)^{n-k} = \lim_{n\to\infty}\left(1 - \frac{x}{n}\right)^{n}\left(1 - \frac{x}{n}\right)^{-k} = e^{-x}\lim_{n\to\infty}\left(1 - \frac{x}{n}\right)^{-k} = e^{-x}
+        \end{align*}
+        Finaly we can conclude that
+        \begin{align*}
+            \lim_{n\to\infty}f_n(x) = x^{k-1}\lim_{n\to\infty}\binom{n-1}{k-1}n^{-(k-1)}\lim_{n\to\infty}\left(1 - \frac{x}{n}\right)^{n-k} = \frac{x^{k-1}}{(k-1)!}e^{-x}
+        \end{align*}
+        So that \(f_n\) converges pointwise to tthe density of \(T_k\) as desired. \qed
+        
+
+        \textbf{Scheffe's Theorem} Suppose probability densities \(f_n \to f\), then \(\int \abs{f(x) - f_n(x)} \to 0\), in particular this tells us that \(F_n(x) \to F(x)\), since \[\abs{F(x) - F_n(x)} = \abs{\int_{-\infty}^x f(x) - \int_{-\infty}^xf_n(x)} \leq \int_{-\infty}^x\abs{f - f_n} \leq \int \abs{f-f_n} \to 0\]
+        \begin{proof}
+            \begin{align*}
+                \abs{f(x) - f_n(x)} = f_n(x) - f(x) + 2\max\set{f(x) - f_n(x),0}
+            \end{align*}
+            so that
+            \begin{align*}
+                \int \abs{f(x) - f_n(x)} = \int f_n(x) - \int f(x) + 2\int \max\set{f(x) - f_n(x),0} = 2\int \max\set{f(x) - f_n(x),0}
+            \end{align*}
+            since \(\int f = \int f_n =1\), finally \(\abs{\max\set{f(x) - f_n(x),0}} \leq \abs{f(x)}\), so we can apply dct.
+        \end{proof}
     \end{pb}
 \end{document}
