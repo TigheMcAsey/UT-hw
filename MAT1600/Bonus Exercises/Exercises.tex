@@ -669,7 +669,11 @@
         \begin{align*}
             \mu = E D_i = \int_0^\infty P(D_i > x)dx = \int_{0}^\infty 1 - G(x)dx
         \end{align*}
-        So to show that \(\lim_{t\to\infty}N_1(t)\) is poisson distributed with mean \(\lambda\mu\), it suffices to show that the distribution functions converge pointwise to Poisson \(\lambda\mu\).
+        So to show that \(\lim_{t\to\infty}N_1(t)\) is poisson distributed with mean \(\lambda\mu\), it suffices to show that the distribution functions converge pointwise to Poisson \(\lambda\mu\). So let \(F\) be the distribution function for \(\text{Poisson}(\lambda\mu)\), and \(F_t\) be the distribution function for \(\text{Poisson}(\lambda\mu_t)\) where \(\mu_t = \int_0^t 1-G(x)dx\) (by definition we have \(\mu_t \to \mu\)). Then
+        \begin{align*}
+            \abs{F(k) - F_t(k)} = \abs{\sum_0^k e^{-\lambda\mu}\frac{(\lambda\mu)^j}{j!} - \sum_0^k e^{-\lambda\mu_t}\frac{(\lambda\mu_t)^j}{j!}} \leq k \max_{ 0 \leq j \leq k}\frac{\lambda^j}{j!}\abs{e^{-\lambda \mu}\mu^j - e^{-\lambda \mu_t}\mu_t^j}
+        \end{align*}
+        But since \(x \mapsto e^{-\lambda x}x^j\) is continuous, the term \(\abs{e^{-\lambda \mu}\mu^j - e^{-\lambda \mu_t}\mu_t^j} \to 0\) as \(t \to \infty\) for each \(0 \leq j \leq k\), since we need only consider finitely many terms we find that \(k \max_{ 0 \leq j \leq k}\frac{\lambda^j}{j!}\abs{e^{-\lambda \mu}\mu^j - e^{-\lambda \mu_t}\mu_t^j} \to 0\), so that \(F_t \to F\) pointwise, which is exactly the statement \(N_1(t) \overset{t \to \infty}{\implies} \text{Poisson}(\lambda\mu)\). \qed
     \end{pb}
     \begin{pb}\textbf{(Durrett 3.7.5)}
         Let \(X\) be the number of people attending the basketball game, then \(N \sim \text{poisson}(2190)\), now let \(Y_j\) be the \(j\)-th persons birthday, so that \(P(Y_j) = k = \frac{1}{365}\) for \(k = 1,\hdots, 365\), and the \(Y_j\) are iid. Now let \(N_j = \# \set{Y_i \mid i \leq N \tand Y_i = j}\), then by Durrett theorem 3.7.4 we get that the \(N_j\) are independent and poisson distributed with rate \(2190P(Y_i = j) =  \frac{2190}{365} = 6\). The probability of every birthday having a representative is
