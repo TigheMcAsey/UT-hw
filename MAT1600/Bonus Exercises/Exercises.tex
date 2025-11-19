@@ -632,7 +632,44 @@
         Since h-intervals and singletons are \(\pi\)-systems generating their respective \(\sigma\)-algebras independence is now a consequence of the \(\pi-\lambda\) theorem. \qed
     \end{pb}
     \begin{pb}\textbf{(Durrett 3.7.4)}
-        
+        The start times of calls follow. a Poisson process \(N\) with parameter \(\lambda\), we want to consider the compound Poisson process \(\sum_1^{N(t)} Y_j\), where the \(Y_j\) represent calls, we will consider this for a fixed time \(t\),
+        \begin{align*}
+            Y_j = \begin{cases}
+                1 & \text{Call ongoing} \\
+                0 & \text{Call ended}
+            \end{cases}
+        \end{align*}
+        Then if \(s\) is the start time of call, \(Y_i\), we get \(P(Y_i = 1) = 1 - G(t-s)\) and \(P(Y_i = 0) = G(t-s)\). In this notation the number of active calls is \(N_1(t) = \#\set{Y_j \mid j \leq N(t) \tand Y_j = 1}\) (\(N_0\) is defined similarly but for \(Y_j = 0\)). To find this out, we compute the joint distribution a number of calls have arrived, suppose that \(j+k\) calls have arrived by time \(t\), we can denote these calls as \(Y_1,\hdots, Y_{j+k}\), these \(Y_i\) are iid and moreover for each \(Y_i\), we can assign random variables \(D_i\) representing the duration, and \(Z_i\) representing the start time. These are also all independent. We want to check that the \(Z_i\) are uniformly distributed conditioning on \(Y_i\) having arrived,
+        \begin{align*}
+            P(Z_i \leq x \mid Y_i \text{ Arrived}) = \frac{P(N(0,x) = 1, N(x,t) = 0)}{P(N(0,t) = 1)} = \frac{e^{-\lambda x}\lambda x e^{-\lambda(t-x)}}{e^{-\lambda t}\lambda t} = x/t
+        \end{align*}
+        Knowing the distribution of \(Z_i\) (lets call it \(F\)) allows us to compute (since \(D_i + Z_i\) is the time call \(Y_i\) ends):
+        \begin{align*}
+            P(Y_i = 1 \mid Y_i \text{ Arrived}) &= P(D_i+Z_i > t) = 1 - P(D_i + Z_i \leq t) = 1 - \int 1_{D_i+Z_i \leq t} dG dF\\
+            &= 1 - \int G(t - Z_i) dF
+            = 1 - \int_0^t G(t - s) \frac{ds}{t} = \frac{1}{t}\int_0^t 1 - G(t-s)ds \\ 
+            &= \frac{1}{t}\int_0^t 1 - G(r)dr
+        \end{align*}
+        Now we can copy the proof of Poisson thinning to find that (in order to take care of the \(t\) in the exponential I use that since \(1- G(x) + G(x) = 1\) we get \(\frac{1}{t}\int_0^t 1-G(x) + \frac{1}{t}\int_0^tG(x) = t\))
+        \begin{align*}
+            P(N_1(t) = k, N_0(t) = j) &= P(k \text{ calls ongoing}, j+k \text{ calls arrived}) \\
+             &= P(N(t) = j + k)P(k \text{ of } Y_i = 1, j \text{ of } Y_i = 0 \mid Y_1,\hdots,Y_{j+k} \text{ arrived}) \\
+            &= e^{-\lambda t}\frac{(\lambda t)^{j+k}}{(j+k)!}\binom{j+k}{k}P(Y_1 = 1 \mid Y_1 \text{ arrived})^kP(Y_1 = 0 \mid Y_1 \text{ arrived})^j \\
+            &= e^{-\lambda t}\frac{(\lambda t)^{j+k}}{(j+k)!}\frac{(j+k)!}{j!k!}\left(\frac{1}{t}\int_0^t1-G(r)dr\right)^k\left(1 - \frac{1}{t}\int_0^t1-G(r)dr\right)^j \\
+            &= e^{-\lambda t} \frac{\lambda^{j+k}}{j!k!}\left(\int_0^t 1 - G(r)dr\right)^k\left(\int_0^t G(r)dr\right)^j \\
+            &= e^{-\lambda \int_0^t 1-G(r)dr} \frac{\left(\lambda\int_0^t 1 - G(r)dr\right)^k}{k!} e^{-\lambda \int_0^t G(r)dr} \frac{\left(\lambda\int_0^t G(r)dr\right)^j}{j!}
+        \end{align*}
+        Then we have that \(\sum_0^\infty e^{-\lambda \int_0^t G(r)dr} \frac{\left(\lambda\int_0^t G(r)dr\right)^j}{j!} = 1\), so we can compute using the joint distribution
+        \begin{align*}
+            P(N_1(t) = k) &= \sum_{j=0}^\infty P(N_1(t)=k, N_0(t)=j) \\
+            &= e^{-\lambda \int_0^t 1-G(r)dr} \frac{\left(\lambda\int_0^t 1 - G(r)dr\right)^k}{k!}\sum_0^\infty e^{-\lambda \int_0^t G(r)dr} \frac{\left(\lambda\int_0^t G(r)dr\right)^j}{j!} \\
+            &= e^{-\lambda \int_0^t 1-G(r)dr} \frac{\left(\lambda\int_0^t 1 - G(r)dr\right)^k}{k!}
+        \end{align*}
+        So \(N_1(t)\) is poisson mean \(\lambda\int_0^t 1-G(r)dr\), now for \(D_i\) (or any random variable with distribution \(G\)), we get
+        \begin{align*}
+            \mu = E D_i = \int_0^\infty P(D_i > x)dx = \int_{0}^\infty 1 - G(x)dx
+        \end{align*}
+        So to show that \(\lim_{t\to\infty}N_1(t)\) is poisson distributed with mean \(\lambda\mu\), it suffices to show that the distribution functions converge pointwise to Poisson \(\lambda\mu\).
     \end{pb}
     \begin{pb}\textbf{(Durrett 3.7.5)}
         Let \(X\) be the number of people attending the basketball game, then \(N \sim \text{poisson}(2190)\), now let \(Y_j\) be the \(j\)-th persons birthday, so that \(P(Y_j) = k = \frac{1}{365}\) for \(k = 1,\hdots, 365\), and the \(Y_j\) are iid. Now let \(N_j = \# \set{Y_i \mid i \leq N \tand Y_i = j}\), then by Durrett theorem 3.7.4 we get that the \(N_j\) are independent and poisson distributed with rate \(2190P(Y_i = j) =  \frac{2190}{365} = 6\). The probability of every birthday having a representative is
@@ -649,7 +686,7 @@
         \begin{align*}
             \sum_{j=k}^n \binom{n}{j}(x/n\wedge 1)^j (1 - x/n\wedge 1)^j
         \end{align*}
-        For sufficiently large \(n\), we have \(x/n < 1\), so that we can remove the minimums, since the above is differentiable almost everywhere for every \(n\), each distribution gives rise to a probability density so our application of Scheffe's theorem is fine. This lets us write the distribution as
+        For sufficiently large \(n\), we have \(x/n < 1\), so that we can remove the minimums, since the above is clearly absolutely continuous for every \(n\), each distribution gives rise to a probability density so our application of Scheffe's theorem is fine. This lets us write the distribution as
         \begin{align*}
             \sum_{j=k}^n \binom{n}{j}(x/n)^j (1 - x/n)^j
         \end{align*}
