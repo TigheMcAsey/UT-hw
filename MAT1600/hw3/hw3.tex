@@ -1,0 +1,324 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{xcolor}
+
+\fancyhf{}
+\lhead{MAT1600 Exercises}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\var}{\text{Var}}
+
+\begin{document}
+    \begin{pb}\textbf{(Durrett 3.3.17)}
+        One direction is obvious from the continuity theorem (i.e. since \(Y_n \implies 0\) the characteristic functions converge pointwise to \(1\) the characteristic function of \(0\)). In the other direction \(\varphi_n \to \varphi\) where \(\varphi\) is continuous on \((-\delta,\delta)\) so once again by the continuity theorem, \(Y_n \implies Y\), where \(Y\) has characteristic function \(\varphi\), we want to show that \(\varphi = 1\), so we will be done by the inversion formula. This is straightforward since we can compute
+        \begin{align*}
+            E[Y^2] &\overset{\text{Fatou}}{\leq} 2\liminf_{h\to 0}E\left[\frac{1-\cos(hY)}{h^2}\right] = 2\liminf_{h\to0}E\left[\frac{1}{h^2} - \frac{e^{ihY} + e^{-ihY}}{2h^2}\right] = \liminf_{h\to 0}\frac{2 - \varphi(h) - \varphi(-h)}{h^2} \\
+            &= - \limsup_{h\to 0} \frac{\varphi(h) + \varphi(-h) - 2}{h^2} = -2\limsup_{h \to 0}\frac{\varphi(h)-1}{h^2} = 0
+        \end{align*}
+        The last equality following by the assumption that \(\varphi(h) = 1\) on \((-\delta,\delta)\), it follows that \(Y = 0\) in \(L^2\), and hence almost surely.
+        \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.3.18)}
+        As in the problem statement, it suffices to check that \(S_n \to S_\infty\) in probability, since exercise (2.5.10) shows that CIP implies almost sure convergence in this case.
+
+        We first would like to show that \((\varphi_n)_n\) is equicontinuous at \(0\), so let \(\epsilon > 0\), writing \(\mu_n \sim \varphi_n\), equicontinuity of \((\mu_n)_n\) gives some compact set \(K\) such that \(\mu_n(K^c) < \epsilon\) for all \(n\), morover since \(t \mapsto e^{it}\) is continuous at \(0\), we can choose \(\delta\), so that \(\abs{t} < \delta\) implies that \(\abs{1 - e^{it}} < \epsilon\) now letting \(M = \sup \abs{K}\), we get for \(\abs{t} < \delta/M\)
+        \begin{align*}
+            \abs{\varphi_n(0) - \varphi_n(t)} \leq \int_K \abs{1 - e^{itX}}d\mu_n + \int_{K^c} \abs{1 - e^{itX}}d\mu_n \leq \epsilon + 2\mu_n(K^c) = 3 \epsilon
+        \end{align*}
+        establishing equicontinuity.
+        
+        Now suppose \(S_n \implies S_\infty\), then we get \(\varphi_n \to \varphi_\infty\), using equicontinuity, we can choose \(\delta\) such that \(t \in N_\delta(0)\) implies \(\varphi(t) \geq \frac12\), on this neighborhood
+        \begin{align*}
+            \lim_{m,n\to\infty}\varphi_{S_n - S_m}(t) = \lim_{m,n \to \infty}\varphi_n(t)/\varphi_m(t) = \varphi_\infty(t)/\varphi_\infty(t) = 1
+        \end{align*}
+        And therefore by exercise (3.3.17) we have \(S_n - S_m \implies 0\), to see that it converges to zero in probability it suffices to check it converges to zero in probability along every subsequence \(\tilde{S}_k := S_{n_k} - S_{m_k}\). The fact that \(\tilde{S}_k \overset{P}{\to} 0\) follows from \(\tilde{S}_k \implies 0\) and the fact that zero is constant (c.f. exercise (3.2.12)). \qed
+
+        If required I include my proof of exercise (3.2.12) here, feel free to ignore:
+
+        One direction is much easier, so first suppose that \(X_n \implies c\), then for any \(\epsilon > 0\), we have \(P(X_n \leq c - \epsilon) \to P(c \leq c - \epsilon) = 0\), and \(P(X_n > c + \epsilon) = 1 - P(X_n \leq c + \epsilon) \to 1 - P(c \leq c + \epsilon) = 0\), so that \[P(\abs{X_n - c} > \epsilon) \leq P(X_n > c + \epsilon) + P(X_n \leq c - \epsilon) \to 0\]
+
+        For the (more general) converse, I should first mention that the DCT applies to convergence in probability (every subsequence has a subsequence converging almost surely which will have the same DCT limit) we can use the Portmanteau lemma, which gives equivalence to weak-* convergence on bounded continuous functions. Namely, we want to show that \(\int f d\mu_n \to \int f d\mu\) for all bounded continuous \(f\). Now letting \(f\) be bounded and continuous, we have that \(E\abs{f} < \infty\) so we can apply DCT, observe from the change of variables formula,
+        \begin{align*}
+            \int fd\mu_n = E[f\circ X_n] \overset{\text{DCT}}{\longrightarrow} E[f\circ X] = \int fd\mu
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.4.4)}
+        We may apply the central limit theorem to conclude that \(\frac{S_n - n}{\sigma\sqrt{n}} \implies \chi\). Now we consider \(B_n = \sqrt{\frac{S_n}{n}} + 1\), then we can apply the Cauchy Schwartz inequality,
+        \begin{align*}
+            E\abs{X_i} \leq \left(EX_i^2\right)^{\frac12}P(\Omega) = \sigma < \infty
+        \end{align*}
+        so that we may apply the strong law of large numbers to \(\frac{S_n}{n} \overset{\text{a.s.}}{\longrightarrow} 1\), it follows that \(B_n \to 2\) a.s. and \(\frac{1}{B_n} \to \frac12\) a.s. which of course implies \(\frac{1}{B_n} \implies \frac12\), by the converging together lemma for products we get that
+        \begin{align*}
+            \frac{S_n - n}{\sigma\sqrt{n}}\frac{1}{B_n} \implies \frac{1}{2}\chi
+        \end{align*}
+        rewriting the left side gives us
+        \begin{align*}
+            \frac{(\sqrt{S_n}-\sqrt{n})(\sqrt{S_n}+\sqrt{n})}{\sigma\sqrt{n}}\frac{\sqrt{n}}{(\sqrt{S_n}+\sqrt{n})} \implies \frac12 \chi
+        \end{align*}
+        Cancelling and multiplying constants gives
+        \begin{align*}
+            2(\sqrt{S_n}-\sqrt{n}) \implies \sigma \chi
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb} \textbf{(Durrett 3.4.5)}
+        Let \(L_n = \frac{\sigma\sqrt{n}}{\sqrt{\sum_1^n X_k^2}} \tand R_n = \frac{\sum_1^n X_k}{\sigma\sqrt{n}}\), then \(\frac{1}{L_n} \to 1\) a.s. by the strong law, which gives us \(L_n \to 1\) a.s. whence \(L_n \implies 1\) we also have \(R_n \implies \chi\) by the CLT, so by the converging together lemma \(L_n R_n \implies \chi\). We are done since
+        \begin{align*}
+            T_n = T_n \frac{\sigma\sqrt{n}}{\sigma\sqrt{n}} = L_nR_n
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb} \textbf{(Durrett 3.4.6)}
+        Define \(Y_n = \frac{S_{N_n}}{\sigma\sqrt{a_n}}, Z_n = \frac{S_{a_n}}{\sigma\sqrt{a_n}}\), then since \(a_n \to \infty\), and \(\frac{S_n}{\sigma\sqrt{n}} \implies \chi\) by CLT, we get that \(Z_n \implies \chi\). We check now that \(Y_n - Z_n \overset{P}{\longrightarrow} 0\), since this will imply they also converge weakly to zero, then we can use the converging together lemma to get
+        \begin{align*}
+            Y_n = Z_n + Y_n - Z_n \implies \chi + 0 = \chi
+        \end{align*}
+        It remains to show convergence in probability, letting \(\epsilon > 0\), and choosing \(\delta = \frac{\epsilon^3}{2}\), we find that
+        \begin{align*}
+            P(\abs{Y_n - Z_n} > \epsilon) &= P(\abs{Y_n - Z_n} > \epsilon,\abs{1-\frac{N_n}{a_n}} < \delta) + P(\abs{Y_n - Z_n} > \epsilon,\abs{1-\frac{N_n}{a_n}} \geq \delta) \\
+            &\leq P(\abs{Y_n - Z_n} > \epsilon,\abs{1-\frac{N_n}{a_n}} < \delta) + P(\abs{1-\frac{N_n}{a_n}} \geq \delta)
+        \end{align*}
+        The second term goes to zero by assumption, so it remains to bound the first term.
+        \begin{align*}
+            P(\abs{Y_n - Z_n} > \epsilon,\abs{1-\frac{N_n}{a_n}} < \delta) &\leq P\left(\max_{a_n - \delta \leq m \leq a_n + \delta}\abs{\frac{\sum_{\min\set{m,a_n}}^{\max\set{m,a_n}}X_k}{\sigma\sqrt{a_n}}} > \epsilon\right) \\
+            &= P\left(\max_{a_n - \delta \leq m \leq a_n + \delta}\abs{\sum_{\min\set{m,a_n}}^{\max\set{m,a_n}}X_k} > \epsilon\sigma\sqrt{a_n}\right) \\
+            &\overset{\text{max. ineq.}}{\leq} \frac{1}{\sigma^2 a_n \epsilon^2} \var\sum_{\lceil a_n(1-\delta)\rceil}^{\lfloor a_n(1+\delta)\rfloor} X_k \\
+            &= \frac{1}{\sigma^2 a_n \epsilon^2} \abs{\lfloor a_n(1+\delta)\rfloor - \lceil a_n(1-\delta)\rceil}\sigma^2 \\
+            &\leq \frac{a_n 2\delta \sigma^2}{\sigma^2 a_n \epsilon^2} = \epsilon
+        \end{align*}
+        So that \(\abs{X_n - Y_n} \overset{P}{\longrightarrow} 0\). \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.4.9)}
+        The example shows why the assumption \(\sum_1^nE[X_{n,k}^21_{\abs{X_{n,k}}>e}] \to 0\) is essential in the LF-CLT.
+        \begin{align*}
+            \var(X_k) = \frac{2k^2}{2} + 2(\frac{1 - k^{-2}}{2}) = 2 - k^{-2}
+        \end{align*}
+        It follows that \(\var\left(\frac{S_n}{\sqrt{n}}\right) = \frac{1}{n}\sum_1^n 2 - k^{-2} \geq 2 - \frac{1}{n}\sum_1^\infty k^{-2}\) so by the squeeze theorem the quantity converges to \(2\), this satisfies condition \((i)\) of the LF-CLT for \(X_{n,k} = \frac{X_k}{\sqrt{n}}\), intuitively condition (ii) fails because of the mass at \(X_k = \pm k\), however, we don't need to check this explicitly since failure of the LF-CLT confirms our suspicions. Let \(Y_k = X_k1_{\abs{X_k} \leq 1}\) and \(Y_{n,k} = \frac{1}{\sqrt{n}}Y_k\). Then \(P(X_k \neq Y_k) = \frac{1}{k^2}\), so that Borel-Cantelli tells us \(P(X_k \neq Y_k \text{ i.o.}) = 0\), now defining \(Z_n = \sum_1^n Y_k\), we find that if \(x\) is such that \(X_k(x) \neq Y_k(x)\) for only finitely many \(k\), then letting \(N\) be an index larger than the last occurence,
+        \begin{align*}
+            \frac{\abs{S_n - Z_n}(x)}{\sqrt{n}} \leq \frac{1}{\sqrt{n}} \sum_1^N k^2 \overset{n\to\infty}{\longrightarrow} 0
+        \end{align*}
+        So that \(n^{-\frac12}(S_n - Z_n) \to 0\) a.s. (weak convergence of course follows from this as well). Then if we can show \(Z_n \implies \chi\), we will be done by the converging together lemma. Finally, we check that we can apply the Lindenberg-Feller CLT to \(Y_{n,k}\), we first check that \(\sum_1^n E[Y_{n,k}^21_{\abs{Y_{n,k}}>\epsilon}] \to 0\), but this is straightforward since \(\abs{Y_k} \leq 1\), so for \(\sqrt{n} > 1/\epsilon\) we get \(\sum_1^n E[Y_{n,k}^21_{\abs{Y_{n,k}}>\epsilon}] =  0\). Finally we check that \(\sum_1^n E[Y_{n,k}^2] \to 1\), which allows us to conclude that \(Z_n \implies 1\) by the Lindenberg-Feller CLT.
+        \begin{align*}
+            \sum_1^n E[Y_{n,k}^2] = \frac{1}{n}\left(n - \sum_1^n k^{-2}\right) \geq 1 - \frac{1}{n}\sum_1^\infty k^{-2} \to 1
+        \end{align*}
+        This sum is also clearly less than or equal to \(1\) for all \(n\), so were done by the squeeze theorem.
+        \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.4.10)}
+        Define \(X_{n,k} = \frac{1}{\sqrt{\var S_n}}(X_k - EX_k)\), we simply check the conditions for Lindenberg-Feller CLT.
+        
+        \textbf{(i)}
+        \begin{align*}
+            \sum_1^n EX_{n,k}^2 = \frac{1}{\var S_n}\sum_1^n \var(X_k) = \frac{\var S_n}{\var S_n} = 1
+        \end{align*}
+
+        \textbf{(ii)}
+        Let \(\epsilon > 0\), since \(\lim_{n\to\infty}\var S_n = \infty\) we can choose \(N\) such that \(n \geq N\) implies that \(\var S_n \geq \left(\frac{2M}{\epsilon}\right)^2\), then for \(n \geq N\), we have
+        \begin{align*}
+            \abs{X_{n,k}} = \frac{1}{S_n^{\frac12}}\abs{X_k - E[X_k]} \leq \frac{1}{S_n^{1/2}}2M \leq \epsilon
+        \end{align*}
+        So that \(E[X_{n,k}^21_{\abs{X_{n,k}} > \epsilon}] = 0\). \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.4.12 - Lyapunov's Theorem)}
+        Once again, we check the conditions of the Lindenberg-Feller CLT with \(X_{n,k} = \frac{X_k - EX_k}{\alpha_n}\)
+
+        \textbf{(i)}
+        \begin{align*}
+            \sum_1^n EX_{n,k}^2 = \frac{1}{\alpha_n^2}\sum_1^n\var X_k = \alpha_n^2/\alpha_n^2 = 1
+        \end{align*}
+
+        \textbf{(ii)}
+        \begin{align*}
+            \sum_1^n E[X_{n,k}^21_{\abs{X_{n,k}} > \epsilon}] &\leq \sum_1^n E\left[\frac{\abs{X_{n,k}}^\delta}{\epsilon^\delta}X_{n,k}^21_{\abs{X_{n,k}} > \epsilon}\right] \leq \frac{1}{\epsilon^\delta}\sum_1^n E\left[\abs{X_{n,k}}^{2+\delta}\right] \\ &= \frac{1}{\epsilon^\delta} \alpha_n^{-2-\delta}\sum_1^n E[\abs{X_k - EX_k}^{2+\delta}] \to 0
+        \end{align*}
+        The convergence of the above sequence is by assumption. \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.6.1)}
+        I think the 2 is a mistake, taking any \(\delta \in (\frac12,1)\), we could simply take \(X = 1\) and \(Y = 0\), but then \(\norm{\mu - \nu} \leq 1 < 2\delta\) but \(P(X \neq Y) > \delta\). I will ignore the 2 and proceed,
+        \begin{align*}
+            \norm{\mu - \nu} &= \frac12 \sum_\omega \abs{\mu(\omega) - \nu(\omega)} = \frac12 \left(\sum_{\set{\omega\mid \mu(\omega) \geq \nu(\omega)}}\mu(\omega) - \nu(\omega) + \sum_{\set{\omega\mid \mu(\omega) < \nu(\omega)}}\nu(\omega) - \mu(\omega)\right) \\
+            &\leq \frac12 \left(\sum_{\set{\omega\mid \mu(\omega) \geq \nu(\omega)}}\mu(\omega) - \mu(\omega)\nu(\omega) + \sum_{\set{\omega\mid \mu(\omega) < \nu(\omega)}}\nu(\omega) - \mu(\omega)\nu(\omega)\right) \\
+            &\leq \frac12 \left(\sum \mu(\omega) - \mu(\omega)\nu(\omega) + \sum \nu(\omega) - \mu(\omega) \nu(\omega)\right) \\ 
+            &= \frac12 \left(\sum \mu(\omega) - \sum \mu(\omega)\nu(\omega) + \sum \nu(\omega) - \sum\mu(\omega)\nu(\omega)\right) \\
+            &= 1 - P(X = Y) = P(X \neq Y)
+        \end{align*}
+        Now in the converse direction, we can define \(X,Y\) independent such that they have joint distribution
+        \begin{align*}
+            P(X = x, Y = y) = \begin{cases}
+                \min\set{\mu(x),\nu(x)} & x=y \\
+                \frac{1}{\norm{\mu-\nu}}(\mu(x) - \nu(x))^+(\nu(y)-\mu(y))^+ & x\neq y
+            \end{cases}
+        \end{align*}
+        To check that this indeed satisfies our desideratum we simply compute (note here the condition is symmetric so computing for \(X\) should suffice), firstly suppose \(\mu(x) \leq \nu(x)\), then
+        \begin{align*}
+            P(X = x) = \mu(x) + \sum_{y \neq x} \frac{1}{\norm{\mu-\nu}}0(\nu(y)-\mu(y))^+ = \mu(x)
+        \end{align*}
+        If \(\mu(x) > \nu(x)\) then we can similarly compute
+        \begin{align*}
+            P(X = x) &= \nu(x) + \sum_{y\neq x}\frac{1}{\norm{\mu-\nu}}(\mu(x) - \nu(x))^+(\nu(y)-\mu(y))^+ \\
+            &= \nu(x) + \frac{\mu(x) - \nu(x)}{\norm{\mu - \nu}}\sum_y (\nu(y)-\mu(y))^+ = \nu(x) + (\mu(x) - \nu(x))\frac{\norm{\mu-\nu}}{\norm{\mu-\nu}} \\ &= \mu(x)
+        \end{align*}
+        Now finally we compute
+        \begin{align*}
+            P(X \neq Y) &= \sum_{x\neq y} \frac{1}{\norm{\mu-\nu}}(\mu(x) - \nu(x))^+(\nu(y)-\mu(y))^+ \\
+            &= \frac{1}{\norm{\mu-\nu}} \sum_x \left((\mu(x) - \nu(x))^+\sum_{y \neq x}(\nu(y)-\mu(y))^+\right)
+        \end{align*}
+        Now since one of the two terms \((\mu(x) - \nu(x))^+\) and \((\nu(y)-\mu(y))^+\) vanishes when \(x = y\), we can reindex the summation to a sum over all \(y\), but then we can recognize the inner sum as \(\norm{\mu - \nu}\), continuing the computation we find
+        \begin{align*}
+            P(X \neq Y) &= \frac{1}{\norm{\mu-\nu}} \sum_x (\mu(x) - \nu(x))^+\norm{\mu-\nu} = \sum_x (\mu(x) - \nu(x))^+ = \norm{\mu - \nu}
+        \end{align*}
+        So the specified \(X,Y\) give the desired conclusion.
+    \end{pb}
+    \begin{pb} \textbf{(Durrett 3.7.2)}
+        Let \(F,G\) be the respective distribution functions for \(S,T\), then we can use independence
+        \begin{align*}
+            P(V > t) = P(S > t, T > t) = P(S > t)P(T > t) = \begin{cases}
+            e^{-\lambda t}e^{- \mu t} = e^{-(\lambda + \mu)t} & t > 0 \\
+            1 & t \leq 0
+            \end{cases} 
+        \end{align*}
+        So \(V \sim \exp(\lambda+\mu)\). Now we can also compute
+        \begin{align*}
+            P(V = S) &= P(S \leq T) = \int P(S \leq T(y)) dG(y) = \int (1- e^{-\lambda T(y)})dG(y) = \int_0^\infty (1-e^{-\lambda y})e^{- \mu y}dy \\
+            &= \frac{1}{\mu} - \frac{1}{\lambda + \mu} = \frac{\lambda}{\lambda + \mu}
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb} \textbf{(Durrett 3.7.3)}
+        The two identities follow directly from the previous exercise (Durrett 3.7.2) by induction (take \(\lambda = \lambda_i\) and \(\mu = \sum_{j \neq i} \lambda_j\)) since \(V\) is exponential \(\mu\) inductively we are done. The interesting portion of the question is showing independence, if \(\mu, \nu\) denote the probability measures associated to \(T_i\) and \(\min_{j \neq i} T_j\), then we can use independence and Tolleni's theorem to write
+        \begin{align*}
+            P(V > t, I = i) &= P(T_i > t, \min_{j \neq i}T_j \geq T_i) = \int\int 1_{s > t}1_{r \geq s} d\nu(r) d\mu(s) = \int P(\min_{j \neq i}T_j \geq s)1_{s > t}d\mu(s)\\ 
+            & = \int_t^\infty P(\min_{j \neq i}T_j \geq s) d\mu(s)
+            = \int_t^\infty P(\min_{j \neq i}T_j \geq s)\lambda_i e^{-\lambda_i s}ds
+        \end{align*}
+        Then since \(\min_{j \neq i}T_j\) has exponential distribution with parameter \(\sum_{j\neq i}\lambda_j\), its distribution function is continuous which gives us \(P(\min_{j \neq i}T_j \geq s) = P(\min_{j \neq i}T_j > s) = e^{-s\sum_{j \neq i}\lambda_j}\), this rewrites our integral as
+        \begin{align*}
+            \int_t^\infty P(\min_{j \neq i}T_j \geq s)\lambda_i e^{-\lambda_i s}ds &= \int_t^\infty \lambda_i e^{-s\sum_1^n \lambda_j}ds = \frac{\lambda_i e^{-t\sum_1^n \lambda_j}}{\sum_1^n \lambda_j} = P(I = i)P(V > t)
+        \end{align*}
+        Since h-intervals and singletons are \(\pi\)-systems generating their respective \(\sigma\)-algebras independence is now a consequence of the \(\pi-\lambda\) theorem. \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.7.4)}
+        The start times of calls follow. a Poisson process \(N\) with parameter \(\lambda\), we want to consider the compound Poisson process \(\sum_1^{N(t)} Y_j\), where the \(Y_j\) represent calls, we will consider this for a fixed time \(t\),
+        \begin{align*}
+            Y_j = \begin{cases}
+                1 & \text{Call ongoing} \\
+                0 & \text{Call ended}
+            \end{cases}
+        \end{align*}
+        Then if \(s\) is the start time of call, \(Y_i\), we get \(P(Y_i = 1) = 1 - G(t-s)\) and \(P(Y_i = 0) = G(t-s)\). In this notation the number of active calls is \(N_1(t) = \#\set{Y_j \mid j \leq N(t) \tand Y_j = 1}\) (\(N_0\) is defined similarly but for \(Y_j = 0\)). To find this out, we compute the joint distribution a number of calls have arrived, suppose that \(j+k\) calls have arrived by time \(t\), we can denote these calls as \(Y_1,\hdots, Y_{j+k}\), these \(Y_i\) are iid and moreover for each \(Y_i\), we can assign random variables \(D_i\) representing the duration, and \(Z_i\) representing the start time. These are also all independent. We want to check that the \(Z_i\) are uniformly distributed conditioning on \(Y_i\) having arrived,
+        \begin{align*}
+            P(Z_i \leq x \mid Y_i \text{ Arrived}) = \frac{P(N(0,x) = 1, N(x,t) = 0)}{P(N(0,t) = 1)} = \frac{e^{-\lambda x}\lambda x e^{-\lambda(t-x)}}{e^{-\lambda t}\lambda t} = x/t
+        \end{align*}
+        Knowing the distribution of \(Z_i\) (lets call it \(F\)) allows us to compute (since \(D_i + Z_i\) is the time call \(Y_i\) ends):
+        \begin{align*}
+            P(Y_i = 1 \mid Y_i \text{ Arrived}) &= P(D_i+Z_i > t) = 1 - P(D_i + Z_i \leq t) = 1 - \int 1_{D_i+Z_i \leq t} dG dF\\
+            &= 1 - \int G(t - Z_i) dF
+            = 1 - \int_0^t G(t - s) \frac{ds}{t} = \frac{1}{t}\int_0^t 1 - G(t-s)ds \\ 
+            &= \frac{1}{t}\int_0^t 1 - G(r)dr
+        \end{align*}
+        Now we can copy the proof of Poisson thinning to find that (in order to take care of the \(t\) in the exponential I use that since \(1- G(x) + G(x) = 1\) we get \(\frac{1}{t}\int_0^t 1-G(x) + \frac{1}{t}\int_0^tG(x) = t\))
+        \begin{align*}
+            P(N_1(t) = k, N_0(t) = j) &= P(k \text{ calls ongoing}, j+k \text{ calls arrived}) \\
+             &= P(N(t) = j + k)P(k \text{ of } Y_i = 1, j \text{ of } Y_i = 0 \mid Y_1,\hdots,Y_{j+k} \text{ arrived}) \\
+            &= e^{-\lambda t}\frac{(\lambda t)^{j+k}}{(j+k)!}\binom{j+k}{k}P(Y_1 = 1 \mid Y_1 \text{ arrived})^kP(Y_1 = 0 \mid Y_1 \text{ arrived})^j \\
+            &= e^{-\lambda t}\frac{(\lambda t)^{j+k}}{(j+k)!}\frac{(j+k)!}{j!k!}\left(\frac{1}{t}\int_0^t1-G(r)dr\right)^k\left(1 - \frac{1}{t}\int_0^t1-G(r)dr\right)^j \\
+            &= e^{-\lambda t} \frac{\lambda^{j+k}}{j!k!}\left(\int_0^t 1 - G(r)dr\right)^k\left(\int_0^t G(r)dr\right)^j \\
+            &= e^{-\lambda \int_0^t 1-G(r)dr} \frac{\left(\lambda\int_0^t 1 - G(r)dr\right)^k}{k!} e^{-\lambda \int_0^t G(r)dr} \frac{\left(\lambda\int_0^t G(r)dr\right)^j}{j!}
+        \end{align*}
+        Then we have that \(\sum_0^\infty e^{-\lambda \int_0^t G(r)dr} \frac{\left(\lambda\int_0^t G(r)dr\right)^j}{j!} = 1\), so we can compute using the joint distribution
+        \begin{align*}
+            P(N_1(t) = k) &= \sum_{j=0}^\infty P(N_1(t)=k, N_0(t)=j) \\
+            &= e^{-\lambda \int_0^t 1-G(r)dr} \frac{\left(\lambda\int_0^t 1 - G(r)dr\right)^k}{k!}\sum_0^\infty e^{-\lambda \int_0^t G(r)dr} \frac{\left(\lambda\int_0^t G(r)dr\right)^j}{j!} \\
+            &= e^{-\lambda \int_0^t 1-G(r)dr} \frac{\left(\lambda\int_0^t 1 - G(r)dr\right)^k}{k!}
+        \end{align*}
+        So \(N_1(t)\) is poisson mean \(\lambda\int_0^t 1-G(r)dr\), now for \(D_i\) (or any random variable with distribution \(G\)), we get
+        \begin{align*}
+            \mu = E D_i = \int_0^\infty P(D_i > x)dx = \int_{0}^\infty 1 - G(x)dx
+        \end{align*}
+        So to show that \(\lim_{t\to\infty}N_1(t)\) is poisson distributed with mean \(\lambda\mu\), it suffices to show that the distribution functions converge pointwise to Poisson \(\lambda\mu\). So let \(F\) be the distribution function for \(\text{Poisson}(\lambda\mu)\), and \(F_t\) be the distribution function for \(\text{Poisson}(\lambda\mu_t)\) where \(\mu_t = \int_0^t 1-G(x)dx\) (by definition we have \(\mu_t \to \mu\)). Then
+        \begin{align*}
+            \abs{F(k) - F_t(k)} = \abs{\sum_0^k e^{-\lambda\mu}\frac{(\lambda\mu)^j}{j!} - \sum_0^k e^{-\lambda\mu_t}\frac{(\lambda\mu_t)^j}{j!}} \leq k \max_{ 0 \leq j \leq k}\frac{\lambda^j}{j!}\abs{e^{-\lambda \mu}\mu^j - e^{-\lambda \mu_t}\mu_t^j}
+        \end{align*}
+        But since \(x \mapsto e^{-\lambda x}x^j\) is continuous, the term \(\abs{e^{-\lambda \mu}\mu^j - e^{-\lambda \mu_t}\mu_t^j} \to 0\) as \(t \to \infty\) for each \(0 \leq j \leq k\), since we need only consider finitely many terms we find that \(k \max_{ 0 \leq j \leq k}\frac{\lambda^j}{j!}\abs{e^{-\lambda \mu}\mu^j - e^{-\lambda \mu_t}\mu_t^j} \to 0\), so that \(F_t \to F\) pointwise, which is exactly the statement \(N_1(t) \overset{t \to \infty}{\implies} \text{Poisson}(\lambda\mu)\). \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.7.5)}
+        Let \(X\) be the number of people attending the basketball game, then \(N \sim \text{poisson}(2190)\), now let \(Y_j\) be the \(j\)-th persons birthday, so that \(P(Y_j) = k = \frac{1}{365}\) for \(k = 1,\hdots, 365\), and the \(Y_j\) are iid. Now let \(N_j = \# \set{Y_i \mid i \leq N \tand Y_i = j}\), then by Durrett theorem 3.7.4 we get that the \(N_j\) are independent and poisson distributed with rate \(2190P(Y_i = j) =  \frac{2190}{365} = 6\). The probability of every birthday having a representative is
+        \begin{align*}
+            P(N_1 \geq 1 , \hdots, N_{365} \geq 1) = \prod_1^{365}P(N_j \geq 1) = \prod_1^{365}1-P(N_j=0) = (1-e^{-6})^{365} \approx 0.404
+        \end{align*} \qed
+    \end{pb}
+    \begin{pb}\textbf{(Durrett 3.7.6)}
+        By Durrett theorem 2.1.8 \(T_k\) is a sum of exponential random variables with parameter \(1\), hence has density given by \(\frac{x^{k-1}}{(k-1)!}e^{-x}\), it will suffice to show that the density \(f_n\) of \(nV_k^n\) satisfies \(f_n(x) \to \frac{x^{k-1}}{(k-1)!}e^{-x}\) pointwise by Scheffe's theorem (I'll provide a quick proof after the problem). Now we can rewrite \(P(nV_k^n \leq x)\), by summing over all possibilities where atleast \(k\) of the \(V_j\) are less than or equal to \(x\). This gives us
+        \begin{align*}
+            \sum_{j=k}^n \sum_{A \subset n, \# A = j} P(U_\alpha \leq x/n \text{ for } \alpha \in A, U_{\beta} > x/n \text{ for } \beta \in A^c)
+        \end{align*}
+        Now we can use independence and the fact that they are identically distributed to rewrite as
+        \begin{align*}
+            \sum_{j=k}^n \binom{n}{j}(x/n\wedge 1)^j (1 - x/n\wedge 1)^j
+        \end{align*}
+        For sufficiently large \(n\), we have \(x/n < 1\), so that we can remove the minimums, since the above is clearly absolutely continuous for every \(n\), each distribution gives rise to a probability density so our application of Scheffe's theorem is fine. This lets us write the distribution as
+        \begin{align*}
+            \sum_{j=k}^n \binom{n}{j}(x/n)^j (1 - x/n)^j
+        \end{align*}
+        so that the density function is given by
+        \begin{align*}
+            \frac{d}{dx}\sum_{j=k}^n \binom{n}{j}(x/n)^j (1 - x/n)^j = \sum_{j=k}^n \frac{j}{n}\binom{n}{j}(\frac{x}{n})^{j-1}(1-\frac{x}{n})^{n-j} - \sum_{j=k}^n \frac{n-j}{n}\binom{n}{j}(\frac{x}{n})^{j}(1-\frac{x}{n})^{n-j-1}
+        \end{align*}
+        Now we can rewrite \(\frac{j}{n}\binom{n}{j} = \binom{n-1}{j-1}\), and \(\frac{n-j}{n}\binom{n}{j} = \binom{n-1}{j}\), using this and reindexing the first summation by replacing \(j\) with \(j+1\), we get
+        \begin{align*}
+            \sum_{j=k-1}^{n-1} \binom{n-1}{j}(\frac{x}{n})^j(1 - \frac{x}{n})^{n-j-1} - \sum_{j=k}^n \binom{n-1}{j}(\frac{x}{n})^j(1-\frac{x}{n})^{n-j-1}
+        \end{align*}
+        Now all the terms cancel apart from the \(j = k-1\) term and the \(j=n\) term, \(\binom{n-1}{n} = 0\), so the \(j=n\) term is zero. This leaves us with
+        \begin{align*}
+            f_n(x) = \binom{n-1}{k-1}\left(\frac{x}{n}\right)^{k-1}\left(1 - \frac{x}{n}\right)^{n-k}
+        \end{align*}
+        We can break this up into terms and compute their limits, so long as the limits exist the limit of the product exists and is equal to the product of the limits.
+        \begin{align*}
+            \lim_{n \to \infty} \frac{n-k}{n} = \lim_{n\to\infty}1 - k/n = 1
+        \end{align*}
+        we can also compute
+        \begin{align*}
+            \binom{n-1}{k-1}n^{-(k-1)} = \frac{1}{(k-1)!}\prod_{j=1}^{k-1} \frac{n-j}{n}
+        \end{align*}
+        So we can use the squeeze theorem to conclude, 
+        \begin{align*}
+            \frac{1}{k!} \geq \lim_{n\to\infty}\binom{n-1}{k-1}n^{-(k-1)} \geq \lim_{n\to\infty}\frac{1}{k!}\prod_1^{k-1}\frac{n-k}{n} = \frac{1}{k!}\prod_1^{k-1} \lim_{n \to \infty}\frac{n-k}{n} = \frac{1}{k!}
+        \end{align*}
+        we also get that
+        \begin{align*}
+            \lim_{n\to\infty}\left(1 - \frac{x}{n}\right)^{n-k} = \lim_{n\to\infty}\left(1 - \frac{x}{n}\right)^{n}\left(1 - \frac{x}{n}\right)^{-k} = e^{-x}\lim_{n\to\infty}\left(1 - \frac{x}{n}\right)^{-k} = e^{-x}
+        \end{align*}
+        Finaly we can conclude that
+        \begin{align*}
+            \lim_{n\to\infty}f_n(x) = x^{k-1}\lim_{n\to\infty}\binom{n-1}{k-1}n^{-(k-1)}\lim_{n\to\infty}\left(1 - \frac{x}{n}\right)^{n-k} = \frac{x^{k-1}}{(k-1)!}e^{-x}
+        \end{align*}
+        So that \(f_n\) converges pointwise to the density of \(T_k\) as desired. \qed
+        
+
+        \textbf{Scheffe's Theorem} Suppose probability densities \(f_n \to f\), then \(\int \abs{f(x) - f_n(x)} \to 0\), in particular this tells us that \(F_n(x) \to F(x)\), since \[\abs{F(x) - F_n(x)} = \abs{\int_{-\infty}^x f(x) - \int_{-\infty}^xf_n(x)} \leq \int_{-\infty}^x\abs{f - f_n} \leq \int \abs{f-f_n} \to 0\]
+        \begin{proof}
+            \begin{align*}
+                \abs{f(x) - f_n(x)} = f_n(x) - f(x) + 2\max\set{f(x) - f_n(x),0}
+            \end{align*}
+            so that
+            \begin{align*}
+                \int \abs{f(x) - f_n(x)} = \int f_n(x) - \int f(x) + 2\int \max\set{f(x) - f_n(x),0} = 2\int \max\set{f(x) - f_n(x),0}
+            \end{align*}
+            since \(\int f = \int f_n =1\), finally \(\abs{\max\set{f(x) - f_n(x),0}} \leq \abs{f(x)}\), so we can apply dct.
+        \end{proof}
+    \end{pb}
+\end{document}
