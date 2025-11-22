@@ -186,7 +186,11 @@
         \end{align*}
         Uniqueness then tells us that \(\star (a \beta + b\gamma) = a\star \beta + b\star\gamma\). \qed
 
-        \textbf{(d)} We would like to use (a)-(c) to produce a fiber-wise definition of \(\star\), in such a way that we ensure gluing together these fiberwise maps gives a smooth map on \textcolor{red}{TODO}
+        \textbf{(d)} To extend the \(\star\) operator to forms on \(M\), we would like to apply \(\star\) fiberwise. To make sense of this, we first require \(\gen{-,-}_p\) for each \(1\leq p \leq k\) on \(\Lambda^p T^*M \times \Lambda^p T^*M\). Since \(\gen{-,-}_p\) is defined using a metric on \(V\), we only need a metric on \(T^*M\), this is of course given by a Riemannian metric, since in order for \(\star\beta\) to be a smooth form, we will require the metric to be smoothly varying. Now in order to define \(\star\beta\) fiberwise as satisfying
+        \begin{align*}
+            \gen{\alpha\wedge\beta,\omega}_k = \gen{\alpha,\star\beta}_p
+        \end{align*}
+        we need a choice for \(\omega \in \Lambda^k T^*M\), since \(\omega\) must be the wedge of \(k\)-basis elements in each fiber, we require a nonvanishing element of \(\omega \in \Lambda^k T^*M\), this is of course an orientation (by identifying the cotangent bundle with the tangent bundle), so that in order to have this \(M\) must be orientable. Now if \(M\) is orientable, we can choose our orthonormal basis on each fiber (which will be smooth since our Riemannian metric is) to agree with our orientation, in order to get our element \(\omega\). Finally, since we have \(\omega\), restricting to the desired form in each fiber, our fiberwise construction of \(\star\beta\) is smooth using the orthonormal frame, so that the construction carries over fiberwise to manifolds. \qed
 
         \textbf{(e)} We can use that \(\star\) agrees fiberwise with the original fiberwise definition, and in this case identify \(dx,dy,dz \leftrightarrow e_1,e_2,e_3\). This in particular means our proof from part (c) shows that if \(h \in C^{\infty}(M, \mathbb{R})\), we get
         \begin{align*}

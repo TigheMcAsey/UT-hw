@@ -1,0 +1,51 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+
+\fancyhf{}
+\lhead{MAT1300 hw10}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\usepackage{tikz-cd, stackengine}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\newcommand{\px}{\frac{\partial}{\partial x}}
+\newcommand{\py}{\frac{\partial}{\partial y}}
+\newcommand{\pz}{\frac{\partial}{\partial z}}
+\newcommand{\ppx}{\frac{\partial^2}{\partial x^2}}
+\newcommand{\ppy}{\frac{\partial^2}{\partial y^2}}
+\newcommand{\ppz}{\frac{\partial^2}{\partial z^2}}
+\newcommand{\hess}{\operatorname{Hess}}
+\setcounter{MaxMatrixCols}{20}
+
+\begin{document}
+    \begin{pb} \textbf{(a)}
+        Define \(F(x) = (\det\operatorname{Hess}_x(f))^2 + \sum_1^k \left(\pd f(x)\right)^2\), its clear that both the hessian and sum terms are non-negative (since they are squares of real values). Now assume first that \(F > 0\) on \(U\), if \(f\) has no critical points on \(U\) we are done. Now if \(p\) is a critical point for \(f\), we have that \(d_pf: \mathbb{R}^k \to \mathbb{R}\) is not surjective, where \(d_pf = \begin{pmatrix}
+        \frac{\partial}{\partial x_1}f & \cdots & \frac{\partial}{\partial x_k}f
+        \end{pmatrix}\), this matrix is of course surjective so long as atleast one \(\pd f \neq 0\), so at a critical point we get \(\pd f = 0\) for all \(j\) whence \(\sum_1^k \left(\pd f(p)\right)^2 = 0\), by our assumption of \(F > 0\), this implies that \((\det\operatorname{Hess}_p(f))^2 > 0\), and since \(p\) was an arbitrary critical point we can conclude that \(f\) is morse. Conversely, if \(f\) is morse, then by the computation above, at any regular value, \(p\), we must have some \(\pd f \neq 0\), which implies that \(\sum_1^k \left(\pd f(p)\right)^2 > 0\), which implies \(F(p) > 0\) by non-negativity of the hessian term. In the case that \(p\) is a critical point, we know that \(\det \hess_pf \neq 0\), so that \((\det\hess_pf)^2 > 0\), and \(F(p) > 0\), since all points are either regular values or critical points we are done. \qed
+
+        \textbf{(b)} Let \(f\) be morse, and \(H\) a homotopy with \(H(x,0) = f(x)\), moreover we can denote \(f_t = H(-,t)\). Then since \(M\) is compact we can pick a finite covering by charts \((V_1,U_1,\phi_1),\hdots,(V_n,U_n,\phi_n)\). Now let \(\eta_i\) be a partition of unity suboordinate to these charts, we can define
+        \begin{align*}
+            F(x,t) = \sum_1^n \eta_i(x) \left((\det\hess_{\phi_i^{-1}(x)}f_t\circ\phi_i^{-1})^2 + \sum_{j=1}^k (\pd f_t\circ \phi_i^{-1}(x))^2\right)
+        \end{align*}
+        \(F\) is smooth, due to closure of smooth functions under sums, products and compositions as well as the fact that the hessian and partials vary smoothly with \(t\), this can be seen since the coordinates of these maps are a subset of the coordinates of \(H\circ (\phi^{-1},1_{[0,1]})\), which of course has smooth partials and hessian. To see that \(F(-,0) > 0\) on \(M\), note that since \(f_0\) is morse and \(\phi_i^{-1}\) are diffeomorphisms, each summand \(\left((\det\hess_{\phi_i^{-1}(x)}f_t\circ\phi_i^{-1})^2 + \sum_{j=1}^k (\pd f_t\circ \phi_i^{-1}(x))^2\right) > 0\) by part (a). Since \(M\) is compact, the function \(\hat{F}(t) = \inf_{x \in M}F(x,t)\) is continuous, and it has \(\hat{F}(0) > 0\), since \(F(-,0)\) is continuous and positive on a compact set (which implies it attains its infimum), then by continuity of \(\hat{F}\), there exists some \(\delta > 0\), such that \(t < \delta\) implies \(\hat{F}(t) > 0\). So to show that morse functions are generic, it will suffice to show that \(F(-,t) > 0\) implies that \(f_t\) is morse, since then we get for \(t < \delta\) each \(f_t = H(x,t)\) is morse. To check this, note that since the \(\phi_i^{-1}\) are diffeomorphisms, we have that \(\hess_xf_t\) is invertible iff \(\hess_{\phi_i^{-1}(x)}f_t\circ \phi_i^{-1}\) for each \(i\) (since we have a partition of unity we can always assume \(x \in V_i\)), moreover \(f_t\) is regular if and only if \(f_t \circ \phi_i\) is, so at critical points of \(f_t\), we get that for each \(i\), \(\sum_{j=1}^k (\pd f_t\circ \phi_i^{-1}(x))^2\) vanishes. It follows that \((\det\hess_{\phi_i^{-1}(x)}f_t\circ\phi_i^{-1})^2 > 0\) for all \(i\), when \(x\) is a critical value of \(f\), and since this Hessian is invertible iff the hessian of \(f_t\) is, we find that \(f_t\) has invertible Hessian at all its critical points, assuming \(F(-,t) > 0\) on \(M\) which completes the proof. \qed
+    \end{pb}
+\end{document}
