@@ -1,0 +1,491 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+\usepackage{times}
+
+\fancyhf{}
+\lhead{MAT1300 Exam Prep}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\newtheorem{pb}{problem}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\newcommand{\px}{\frac{\partial}{\partial x}}
+\newcommand{\py}{\frac{\partial}{\partial y}}
+\newcommand{\pz}{\frac{\partial}{\partial z}}
+\newcommand{\pt}{\frac{\partial}{\partial t}}
+\newcommand{\ppx}{\frac{\partial^2}{\partial x^2}}
+\newcommand{\ppy}{\frac{\partial^2}{\partial y^2}}
+\newcommand{\ppz}{\frac{\partial^2}{\partial z^2}}
+\newcommand{\hess}{\operatorname{Hess}}
+\newcommand{\codim}{\operatorname{codim}}
+
+\begin{document}
+    \section{Quotients and Coverings}
+        \begin{definition}
+            A map \(q: X \to M\) is a covering map if for each \(p \in M\) there is a neighborhood \(p \in U\) with some collection \(V_j\) with \(q^{-1}(U) = \bigsqcup V_j\), and \(q\vert_{V_j}:V_j \overset{\cong}{\longrightarrow} U\). This map \(q\) will be a submersion if the index is countable.
+        \end{definition}
+
+        \begin{theorem}
+            If a discrete group \(G\) acts smoothly, freely and properly on a manifold \(X\), then \(X \to X/G\) is a covering map.
+
+            If \(G\) is finite, then it always acts properly.
+        \end{theorem}
+
+        \begin{theorem}
+            If \(G\) is a lie group that acts smoothly, freely and properly on a manifold \(X\), then \(X \to X/G\) is a covering map and \(X/G\) has dimension \(\dim X - \dim G\).
+        \end{theorem}
+
+        \section{Whitney Embedding and Partitions of Unity}
+
+        \begin{definition}
+            A partition of unity \(\set{\eta_\alpha}\) subordinate to an open cover \(\set{U_\alpha}_\alpha\) of \(M\) satisfies
+            \begin{enumerate}
+                \item For each \(x \in M\), there is an open neighborhood \(U\) of \(X\) where only finitely many \(\eta_i\) are supported.
+                \item \(\operatorname{supp} \eta_\alpha \subset U_\alpha\), moreover if we allow for more indices the support can be taken to be compact.
+                \item \(\sum_\alpha \eta_\alpha \equiv 1\)
+            \end{enumerate}
+        \end{definition}
+
+        \begin{theorem}[Weak Whitney Embedding]
+            For any manifold \(M\), there exists an embedding \(e: M \to \mathbb{R}^N\) for some \(N\).
+        \end{theorem}
+        \begin{proof}
+            To prove the compact case, there is really only one logical thing to do. Take a partition of unity, and multiply it to the charts, however you will notice that this isn't necessarily injective so you also need to keep track of the data of the partition of unity. So let \((V_i,U_i,\phi_i)_1^n\) be charts covering \(M\)
+            \begin{align*}
+                e(x) = (\eta_1(x),\eta_1(x)\phi_1^{-1}(x),\hdots,\eta_n(x),\eta_n(x)\phi_n^{-1}(x))
+            \end{align*}
+            Injectivity is given by injectivity of \(\phi^{-1}_i\) and including the charts. Proper form compact domain and immersion from taking near any point \(p\), there is a neighborhood where \(\eta_i > 0\), in which case \(x \mapsto \frac{1}{\eta_i(x)}\eta_i(x)\phi_i^{-1}(x)\) composes as \(\pi\circ e\), this map is a local version of \(\phi^{-1}\), so is a diffeomorphism at \(p\), this implies \(e\) must have injective differential.
+        \end{proof}
+
+        \begin{theorem}
+            Every manifold has an exhaustion \(K_1 \subset U_1 \subset K_2 \subset \cdots\) for \(K_j\) compact and \(U_j\) open, such that \(\bigcup K_j = M\).
+        \end{theorem}
+
+        \begin{theorem}[Strong Whitney Embedding]
+            If \(\dim M = k\), then there is an embedding \(M \hookrightarrow \mathbb{R}^{2k+1}\)
+        \end{theorem}
+        \begin{proof}
+            First use weak Whitney Embedding, \(e: M \to \mathbb{R}^N\), now I will show inductively if \(N > 2n+1\), then I can reduce the degree. The idea is to construct maps that are regular exactly when projecting along a vector gives an immersion/is injective. Injectivity is a bit simpler
+            \begin{align*}
+                f^{\text{inj}}: &M \times M \setminus \Delta \to S^{N-1} \\
+                &(p,q) \mapsto \frac{e(p) - e(q)}{\norm{e(p) - e(q)}}
+            \end{align*}
+            so that the image is the set of \(x \in S^{2N-1}\) where the projection along \(x\) is not injective, similarly notice that \(\ker d\pi_x = T_p\gen{x} = \gen{x}\), so that \(\pi_x\) is an immersion so long as \(x \not \in f^{\text{tang}}\) for
+            \begin{align*}
+                f^{\text{tang}}: &TM \setminus M \times \set{0} \to S^{N-1} \\
+                &v \mapsto \frac{de(v)}{\norm{de(v)}}
+            \end{align*}
+            Then \((\operatorname{Im}f^{\text{inj}})^c \cap (\operatorname{Im}f^{\text{tang}})^c\) is the set of \(x\) we can project along to get an embedding, to see that this set is non-empty use Sard's theorem, since \(\dim M \times M \setminus \Delta = 2k = \dim TM \setminus M\), since \(N-1 > 2k\) the regular values are the compliments of the images.
+
+            We can actually restrict to the subset of \(TM\) with norm \(1\) for the map \(f^\text{tang}\), this allows for an immersion into \(\mathbb{R}^{2k}\).
+        \end{proof}
+
+        \begin{theorem}
+            For any manifold \(M\), there exists a smooth proper function \(\lambda: M \to [0,\infty)\) 
+        \end{theorem}
+        \begin{proof}
+            Take an exhaustion \(K_0 \subset U_0 \subset K_1 \subset \cdots\), then a partition of unity \(\eta_i\) subordinate to the \(U_i \setminus K_i\), then take \(p \mapsto \sum_j j \eta_j(p)\).
+        \end{proof}
+        \begin{theorem}[Strong Whitney Embedding (non-compact case)]
+            The whitney embedding theorem holds in the non-compact case
+        \end{theorem}
+        \begin{proof}
+            The proof will be motivated by the following reduction, take the proper map \(\lambda\), then if \(M \to \mathbb{R}^N\) is an injective immersion, we can reduce the dimension using the proof of strong whitney embedding in the compact case to dimension \(2k+1\), let \(e\) denote this map, then \(\lambda\times e\) is an embedding (since \((\lambda\times e)^{-1}(K) \subset \lambda^{-1}(K)\) is a closed subset of a compact set). This embeds into \(\mathbb{R}^{2k+2}\), in the book they project down an extra dimension but I won't.
+
+            Now we want the weak whitney embedding theorem for the noncompact case, using our exhaustion we get an open cover \(W_j\), each made up of finitely many charts, and \(W_i \cap W_j = \emptyset\) for \(\abs{i - j} > 2\) Now take an injective immersion \(e_i: W_i \to \mathbb{R}^{2k+1}\) for each \(W_i\), and a partition of unity suboordinate to the \(W_i\). Now to cycle indices take \(E_i: M \to \mathbb{R}^{9(2k+1)}, p\mapsto (\eta_i(p),\eta_i(p)e_i(p))\) in the \(i\) mod 9-th coordinate.
+            Take \(\left(\sum j \eta_j, \sum_j E_j\right)\) this gives an injective immersion for the same reasons as in the standard weak Whitney embedding, but now with the indices cycling to deal with compactness.
+        \end{proof}
+
+        \section{Transversality Galore}
+
+        \begin{definition}[Regular Value]
+            \(q\) is a regular value of \(f:M \to N\) is for all \(p \in f^{-1}(q)\), \(f\) is a submersion at \(p\).
+        \end{definition}
+        \begin{definition}[Critical Value]
+            \(q\) is a critical value of \(f\) if it is not a regular value of \(f\).
+        \end{definition}
+
+        \begin{theorem}[Regular Value Theorem]
+            If \(f: M \to N\) (dim \(k\) to dim \(\ell\)) has regular value \(q\), then \(f^{-1}(q) \subset M\) is a submanifold of dimension \(k - \ell\). Written in bundle language, \(TZ = \ker (df : TM\vert_Z \to TN) \subset TM\vert_Z\) is a subbundle.
+        \end{theorem}
+        \begin{proof}
+            Let \(p \in f^{-1}(q)\), consider charts \(U_M \supset \set{p}, U_N \supset \set{q}\), then using the chart maps we get some \(\tilde{f}\)
+            \begin{equation*}
+                \begin{tikzcd}
+                    M \arrow[r,"f"] & N \arrow[d] \\
+                    U_M \arrow[u] \arrow[r,"\tilde{f}"] &U_N
+                \end{tikzcd}
+            \end{equation*}
+            By the submersion theorem on \(\mathbb{R}^n\) we can apply some change of coordinates to \(U_M, U_N\) to get
+            \begin{equation*}
+                \begin{tikzcd}
+                    M \arrow[r,"f"] & N \arrow[d] \\
+                    U_M' \arrow[u] \arrow[r,"\pi"] &U_N'
+                \end{tikzcd}
+            \end{equation*}
+            by only changing the vertical arrows. This realizes \(U_M'\) and \(U_N'\) as charts around \(p\) giving \(f^{-1}(q)\) as a submanifold. Moreover we locally have \(\pi^{-1}\phi_N^{-1}(q) \cong \mathbb{R}^{k - \ell}\) as \(\pi\) is taken to project onto the first \(\ell\) coordinates. So that \(T_{\phi_M^{-1}(p)}\pi^{-1}(\phi_N^{-1}(q)) = \set{0} \times \mathbb{R}^{k - \ell} = \ker d_{\phi_M^{-1}(p)}\pi = \ker (d_q\phi_N^{-1})(d_pf)(d_{\phi_M^{-1}(p)}\phi_M)\), so that \(T_pf^{-1}(q) = (\phi_M)_* T_{\phi_M^{-1}(p)}\pi^{-1}(\phi_N^{-1}(q)) = \ker (d_q\phi_N^{-1})(d_pf) = \ker d_p f\).
+        \end{proof}
+
+        \begin{theorem}[Sard's Theorem]
+            If \(f: M \to N\) is smooth, then its critical values have measure zero. In particular its regular values are dense.
+        \end{theorem}
+
+        \begin{definition}[Transversality]
+            If \(Z \subset N\) is a submanfold, and \(f: M \to N\), then we say \(f \pitchfork Z\) when \(f \pitchfork_p Z\) for all \(p \in f^{-1}(Z)\), \(f \pitchfork_p Z\) when \(\operatorname{Im}d_pf + T_{f(p)}Z = T_{f(p)}N\).
+        \end{definition}
+        \begin{theorem}[Transverse Regular Value Theorem]
+            \(f:M \to N \supset Z\) a submanifold with dimensions \(k, \ell\) and \(s\) respectively and \(f \pitchfork Z\). Then \(f^{-1}(Z) \subset M\) is a submanifold of dimension \(k - \ell + s\).
+        \end{theorem}
+        \begin{proof}
+            Since being a submanifold is a local property, it suffices to work in charts, so let \((U,V,\phi)\) be a chart realizing \(Z\) as a submanifold of \(N\), we get the following
+            \begin{equation*}
+                \begin{tikzcd}
+                    M \arrow[ddr,dashed,"g"] \arrow[r,"f"] & N \arrow[d,"\phi^{-1}"] \\& U \arrow[d,"\pi"] \\ & \mathbb{R}^{\ell - s}
+                \end{tikzcd}
+            \end{equation*}
+            Where \(\pi\) projects onto the coordinates not in \(Z\), taking the composition to be \(g\), we want to check that \(d_p g\) is a submersion at \(p \in g^{-1}(0)\), \(dg = d\pi_rd\phi^{-1}df\), so this is surjective when \(d\phi^{-1}f + \ker d\pi = T_{\phi^{-1}f(p)}N\), but \(\ker d_\pi = T_{\phi^{-1}f(p)}Z\), thus by assumption we can apply the preimage theorem with \(g\).
+        \end{proof}
+        \begin{theorem}[Corollary of Transverse Regular Value Theorem]
+            When explicitly working with submanifolds the classification \(T_pf^{-1}(Z) = (d_pf)^{-1}T_{f(p)}Z\) is useful.
+        \end{theorem}
+        \begin{theorem}[Intersections of submanifolds]
+            Transversality gives a sufficient condition for intersections of submanifolds to be submanifolds. If \(X,Y \subset M\) are submanifolds with \(X \pitchfork Y\), then \(X \cap Y \subset M\) is a submanifold with codimension \(\codim X + \codim Y = \codim X \cap Y\).
+        \end{theorem}
+        \begin{proof}
+            Let \(e: X \to M\) realize \(X\) as an embedding, then \(e^{-1}(Y) \subset X\) is a submanifold of \(X\) of codimenson \(\codim Y\) by transversality. Then \(e\vert_{e^{-1} Y}\) gives \(X \cap Y \hookrightarrow M\) is a submanifold of codimension \(\codim X + \codim Y\).
+        \end{proof}
+
+        \subsection{Intersection Theory}
+
+
+
+
+
+
+
+
+        \section{Manifolds With Boundary}
+
+        \begin{definition}[Manifolds with Boundary]
+            Manifolds with boundary are defined the same way as manifolds, except with the charts \(U_\alpha \subset \mathbb{H}^k = R^{k-1} \times [0,\infty)\).
+        \end{definition}
+
+        \begin{definition}[Boundary of a Manifold and a Map]
+            \(\partial M = \set{x \mid \exists \phi \text{ chart such that }\phi^{-1}(x) \in \mathbb{R}^{k-1} \times \set{0}}\)
+
+            If \(f: M \to N\), then \(\partial f = f\vert_{\partial M}\)
+        \end{definition}
+
+        \begin{theorem}[Transverse Regular Value Theorem for Manifolds With Boundary]
+            \(M\) has boundary, and \(f: M \to N \supset Z\) a submanifold with boundary, then if \(f\pitchfork Z\) and \(\partial f \pitchfork Z\) we get \(f^{-1}(Z) \subset M\) is a submanifold with \(\partial (f^{-1}(Z)) = (\partial f)^{-1}Z\).
+        \end{theorem}
+
+        \begin{theorem}[Hirsch]
+            There does not exist a smooth map \(f: M \to \partial M\) with \(f \vert_{\partial M} = 1_{\partial M}\).
+        \end{theorem}
+        \begin{proof}
+            If such a map existed, then by Sard's theorem there exists \(p \in \partial M\) regular for both \(f\) and \(\partial f\), then \(p = (\partial f)^{-1}(p) = \partial(f^{-1}(p))\), but \(f^{-1}(p) \subset M\) is a one dimensional submanifold by the regular value theorem, by the classification of \(1\) manifolds it has an even number of boundary points, hence \(\set{p} = \set{\text{even number of pts.}}\).
+        \end{proof}
+
+
+        \section{Orientations, Forms and Integration}
+
+        \subsection{Orientations}
+
+        \begin{definition}[Exterior Powers]
+            The vectorspace \(\Lambda^r V\) is given by \(\bigotimes^k V/v_1\otimes\cdots\otimes v_k \sim \operatorname{sgn}\sigma v_{\sigma(1)} \otimes \cdots \otimes v_{\sigma(n)}\)
+        \end{definition}
+
+        \begin{theorem}[Maps on Exterior Powers]
+            If \(A: V \to W\), then there exists a unique multilinear map \(\Lambda^r A: \Lambda^r V \to \Lambda^r W\)
+            \begin{align*}
+                \Lambda^r A (v_1 \wedge \cdots \wedge v_r) = Av_1 \wedge\cdots \wedge Av_r
+            \end{align*}
+        \end{theorem}
+
+        \begin{definition}[Determinant]
+            If \(A:  \mathbb{R}^k \to \mathbb{R}^k\), the \(\Lambda^k \mathbb{R}^k\) is one dimensional and \(\det A = \Lambda^k A\) is the induced map on the exterior powers.
+        \end{definition}
+
+        \begin{definition}[Riemannian metric]
+            A Riemannian metric \(g\) is a section \(g: M \to (E \otimes E)^*\), that is fiberwise a symmetric positive definite bilinear form. All vector bundles admit a Riemannian metric.
+        \end{definition}
+        \begin{proof}
+            Let \(\psi\) be a local trivialization, then 
+        \end{proof}
+        
+
+        \section{Cohomology}
+        \begin{definition}[De Rahm Cohomology]
+            
+        \end{definition}
+        \begin{definition}[Compactly Supported Cohomology]
+            
+        \end{definition}
+        \begin{definition}[Vertically Compact Cohomology]
+            
+        \end{definition}
+        \begin{definition}[Relative Cohomology]
+            
+        \end{definition}
+
+        \begin{theorem}[Poincare Lemma for deRahm Cohomology]
+            
+        \end{theorem}
+        \begin{theorem}[Poincare Lemma for Compactly Supported Cohomology]
+            
+        \end{theorem}
+        \begin{theorem}[Mayer Vietoris]
+            
+        \end{theorem}
+        \begin{theorem}[Poincare Duality]
+            
+        \end{theorem}
+        \begin{definition}[Poincare Duals for Submanifolds]
+            Poincare duals of submanifolds \(X \subset M\) are defined to satisfy for any form \(\omega\), \(\int_M \eta_{X \subset M} \wedge \omega = \int_X \omega\)
+        \end{definition}
+        \begin{theorem}[Properties of Poincare Duals]
+            The following are true up to homology, letting \(f: M \to N\)
+            \begin{enumerate}
+                \item \(f^* \eta_{X \subset N} = \eta_{f^{-1}(X) \subset M}\)
+                \item If \(Z \pitchfork Y\), then \(\eta_{X \cap Y \subset M} = \eta_{X \subset M}\wedge \eta_{Y \subset M}\)
+                \item \(X = \partial W\) for \(W \subset M\) a submanifold, then \(\eta_{X \subset M} = d\eta_{W \subset M}\)
+            \end{enumerate}
+        \end{theorem}
+
+
+
+        \section{Stability and Genericity}
+
+
+        \section{Flows and Morse Theory}
+
+        \begin{definition}[Smooth Vector Field]
+            A smooth vector field \(\mathcal{X}\) on \(M\) is a smooth section of the tangent bundle.
+        \end{definition}
+        \begin{definition}[Pushforward of a Smooth Vector Field]
+            Given a diffeomorphism \(\varphi: M \to N\), and a smooth vector field \(\mathcal{X}\) on \(M\), we can define a smooth vector field on \(N\) as
+            \[\varphi_* \mathcal{X} :=  d \varphi (X \circ \varphi^{-1}(-))\]
+        \end{definition}
+        \begin{theorem}
+            If \(\mathcal{X}: M \to TM\) is a smooth vector field, then for some smooth \(\eta: M \to (0,\infty)\), there exists a unique \(g\) satisfying \(g: \set{(p,t) \in M \times \mathbb{R} \mid \abs{t} < \eta(p)} \to M\) with \(d_{(p,t)}g(\frac{\partial}{\partial t}) =: \frac{d}{dt}g(p,t) = \mathcal{X}(g(p,t))\), and \(g(p,0) = p\).
+        \end{theorem}
+        \begin{proof}[Proof Sketch]
+            The proof requires pushing forward solutions on charts, where existence and uniqueness are given on some open set containing each point by Picard's theorem. Defining it as the pushforward of the solution on each chart works since the solutions are unique on their domains of definition.
+        \end{proof}
+        \begin{definition}[Integral Curve]
+            An integral curve for \(\mathcal{X}\) though \(x\) is a map \(\gamma: (-\epsilon,\epsilon) \to M\) with \(\gamma(0) = x\), and \(\frac{d}{dt}\gamma(t) = \mathcal{X}(\gamma(t))\).
+
+            Integral curves exists and are unique by Picard's theorem for manifolds.
+        \end{definition}
+        \begin{definition}[Flow]
+            Let \(\mathcal{X}\) be a smooth vector field, by Picard's theorem for manifolds we get a unique \(g: U \subset M \times \mathbb{R} \to M\) with \(\frac{d}{dt}g(x,t) = \mathcal{X}(g(x,t))\) and \(g(x,0) = x\). Then a flow \(\psi_t\) is the smooth map \(\psi_t(x) = g(x,t)\), by uniqueness of solutions we get \(\psi_t\circ \psi_s = \psi_{t+s}\).
+        \end{definition}
+        \begin{theorem}[Maximal Domains of Flows]
+            Since all solutions to smooth vector fields agree on overlaps, we can pick one with maximal domain.
+
+            If \(g\) has maximal domain (at each \(p\) given by \((a_p,b_p)\)), then either \(b_p = \infty\) or \(g(p,-):[0,b_p) \to M\) is proper. And either \(a_p = -\infty\) or \(g(p,-): (-a_p,0] \to M\) is proper.
+        \end{theorem}
+        \begin{theorem}
+            If \(M\) is compact, then \(g\) has domain of definition \(M \times \mathbb{R}\).
+
+            Moreover if \(\mathcal{X}\vert_{K^c} = \mathcal{Y}\) for some compact \(K\), and \(\mathcal{Y}\) has maximal domain of definition \(M \times \mathbb{R}\), then so does \(\mathcal{X}\).
+        \end{theorem}
+        \begin{proof}
+            \(g(p,-):[0,b_p) \to M\) is proper, but \(g(p,-)^{-1}(M) = [0,b_p)\) is not compact.
+
+            Secondly, by uniqueness of solutions we have \(g = g_{\mathcal{Y}}\) on \(K^c\), so it suffices to check for maximal domain of definition on \(K\), which follows by compactness.
+        \end{proof}
+
+        \begin{theorem}[Isotopy Extension Theorem]
+            If \(M\) is a smooth manifold and \(X\) is a compact manifold, and the embeddings \(e_0: X \hookrightarrow M\) and \(e_1: X \hookrightarrow M\) are isotopic via \(e_t\), then there exists an isotopy of compactly supported (identity outside of a compact set) diffeomorphisms \(\varphi_t\) with \(\varphi_0 = 1_M\) and \(\varphi_t\circ e_0 = e_t\).
+        \end{theorem}
+        \begin{proof}
+            The outline of this proof is first notice that \(e_0\) and \(e_1\) being isotopic lets us flow between them by flowing in the direction parameterized by \([0,1]\). By pushing this flow forward to \(e(X \times [0,1]) \subset M \times \mathbb{R}\) for some embedding \(e\), we can flow between the two on \(M\), if we can extend this vector field to \(M \times \mathbb{R}\) in a way that respects \(\psi_t(M \times \set{s}) = M \times \set{s + t}\) with a full domain of definition, then we can flow the identity map along this new vector field.
+
+            Define \(e: X \times [0,1] \hookrightarrow M \times \mathbb{R}\) via \(e(x,t) = (e_t(x),t)\). Now let \(\mathcal{X} = \pt\), consider \(t \mapsto (e_t(p),t)\), this is an integral curve for \(e_* \mathcal{X}\) since
+            \begin{align*}
+                \frac{d}{dt}(t \mapsto (e_t(p),t)) = d_{(p,t)}e\left(\frac{d}{dt} (t \mapsto (p,t))\right) = d_{(p,t)}e(\pt(p,t))= e_* \mathcal{X}((p,t))
+            \end{align*}
+
+            Now if this vector field extends to a vector field \(\mathcal{X}'\) on \(M \times \mathbb{R}\) satisfying \(d\pi \mathcal{X}' = \pt\) where \(\pi: M \times \mathbb{R} \to \mathbb{R}\) is the projection, since this guarantees that
+            \begin{align*}
+                \frac{d}{dt}\pi\circ \psi_t(p,s) = d\pi \mathcal{X}'(\psi(p,s)) = \pt
+            \end{align*} so by satisfying the initial condition \(\pi\circ\psi_s = s\), we get \(\pi\circ \psi_t(p,s) = s + t\) from the DE this guarantees \(\psi_t(M\times\set{s}) = M\times\set{t+s}\). If we also get \(\mathcal{X}'\) has unrestricted domain of definition, we would get \(\psi_t(e_0(x),0) = (e_t(x),t)\), so the desired family of diffeomorphisms is \(\phi_t = \psi_t(-,0)\).
+
+            Thus it suffices to construct a vectorfield which outside of a compact set is \(\pt\), and on that compact set satisfies \(d\pi \mathcal{X}' = \pt\) with \(\mathcal{X}'\) extending \(e_* \mathcal{X}\). Since \(e(X \times [0,1])\) is compact, we can cover it with finitely many charts \(V_1,\hdots,V_n\) with \(\phi_i^{-1}(V_i \cap e(X \times [0,1])) = U_i \cap (\mathbb{R}^{\dim X} \times [0,\infty) \times \set{0}^{k - \dim X - 1})\) We get a vectorfield on each \(V_i\) by taking \((\phi_i^{-1})_* \mathcal{X}\), then extending constantly in the normal direction, then pushing forward again along \(\phi_i\). This gives \(\mathcal{X}_i'\) on \(V_i\) satisfying \(d\pi \mathcal{X}_i'\) as a positive multiple of \(\pt\) so we can rescale it. Then the desired vectorfield is given by taking \(\eta_j\) a partition of unity suboordiante to the \(V_j\), and \(\eta_0\) supported on \(e(X \times [0,1])\) to get
+            \begin{align*}
+                \mathcal{X}' = \eta_0 \pt + \sum \eta_j \mathcal{X}_j'
+            \end{align*}
+        \end{proof}
+
+        \subsection{Morse Theory}
+        
+        \begin{definition}[Hessian]
+            
+        \end{definition}
+
+        \begin{theorem}[Existence of Morse Functions]
+            
+        \end{theorem}
+
+        \begin{theorem}
+            \(TM \cong T^*M\)
+        \end{theorem}
+        \begin{proof}
+            Take a Riemannian Metric \(g\) on \(TM\), then fiberwise \(e_j \mapsto \gen{e_j,-}\).
+        \end{proof}
+
+        \begin{theorem}[First Theorem of Morse Theory]
+            
+        \end{theorem}
+
+        \begin{theorem}[Morse Lemma]
+            
+        \end{theorem}
+
+        \begin{definition}[Handle Decomposition]
+            
+        \end{definition}
+
+        \begin{theorem}[Second Theorem of Morse Theory]
+            
+        \end{theorem}
+
+        \begin{theorem}[Applications to De-Rahm Cohomology]
+            
+        \end{theorem}
+
+        \begin{theorem}[Handle Isotopy]
+            
+        \end{theorem}
+
+        \begin{theorem}[Handle Rearrangement]
+            
+        \end{theorem}
+
+        \begin{theorem}[Handle Cancellation]
+            
+        \end{theorem}
+
+        \begin{definition}[\(\Sigma_g\)]
+            
+        \end{definition}
+
+        \begin{theorem}[Classification of Orientable Surfaces]
+            
+        \end{theorem}
+
+        \begin{definition}[Connected Sum \(\#\)]
+            
+        \end{definition}
+
+        \begin{theorem}[Classification of Non-Orientable Surfaces]
+            
+        \end{theorem}
+
+        \section{Exotic Spheres and Cobordism}
+
+        \begin{theorem}[Reeb's Theorem]
+            
+        \end{theorem}
+
+        \section{The Zoo (examples)}
+
+        \subsection{Counter Examples}
+
+        \begin{example}
+        \(f: M \to N \supset Z\) a submanifold, then \(f^{-1}(Z) \subset M\) a submanifold does not imply \(f \pitchfork Z\).
+        \end{example}
+        \begin{proof}
+            Take \(f\) to be an embedding of \(Z\) having dimension less than \(N\), then \(\operatorname{Im} d_p f = T_{f(p)} Z\), so they cannot be transverse, but \(f^{-1}(Z) = Z = M\).
+        \end{proof}
+
+        \begin{example}
+            A simple example of a flow on a smooth vector field without maximal domain is given by the vector field \(\mathcal{X} = \px\) on \(\mathbb{R} \setminus \set{0}\), then \(g\) is given by \(g(x,t) = x + t\) by uniqueness of solutions, it follows that the domain of definition at \(x\) is given by \((-\infty, \abs{x})\) for \(x < 0\) and \((-x,\infty)\) for \(x > 0\).
+        \end{example}
+
+        \subsection{Examples of Manifolds}
+
+        \begin{example}[Orientable Surfaces]
+            \(\Sigma_0 = S^2\), and \(\Sigma_1 = \mathbb{T}^2\), the rest are \(\Sigma_g\), which are torus with \(g-1\) handles added.
+        \end{example}
+
+        \begin{example}[Non orientable surfaces]
+            \(\#^k \mathbb{RP}^2\) for \(k \in \mathbb{Z}_{> 0}\)
+        \end{example}
+
+        \begin{example}[Brieskorn Spheres]
+            
+        \end{example}
+
+        \begin{example}[Lens Spaces]
+            This is one example of a quotient by a free and smooth action of a finite group. \(S^{2n-1}/(\mathbb{Z}/p \mathbb{Z})\), here the action is take \(p\) prime with \(q_1,\hdots,q_n\) coprime to \(p\), the \(\mathbb{Z}/p \mathbb{Z}\) action is in complex coordinates \((z_1,\hdots,z_n) \mapsto (e^{2\pi i q_1/p}z_1,\hdots,e^{2\pi i q_n/p}z_n)\), in general we have \(L(p,(q_j)) \not \cong L(r,(\ell_j))\) for \(\ell \neq r\) both prime.
+        \end{example}
+
+        \begin{example}[The Dold Manifold]
+            
+        \end{example}
+        \begin{theorem}[Generator For Unoriented Cobordism Algebra]
+            The Dold manifold of dimension \(i\) is the generator for the unoriented cobordism algebra in that dimension.
+        \end{theorem}
+
+        \begin{example}[Projective Spaces]
+            
+        \end{example}
+        \begin{theorem}[Generator for Oriented Cobordism Algebra]
+            \(\mathbb{CP}^{2n}\) is the generator for the oriented cobordism algebra in dimension \(4n\).
+        \end{theorem}
+
+        \begin{example}[Exotic 7-Spheres]
+            
+        \end{example}
+
+        \subsection{Problems}
+        \begin{theorem}[Transitivity of Diffeomorphisms]
+            If \(M\) is a connected manifold, and \(p,q \in M\), then there exists a diffeomorphism \(M \to M\) with \(p \mapsto q\).
+        \end{theorem}
+        \begin{proof}
+            Connect \(p,q\) with a path, this path is an isotopy of embeddings \(\set{\text{pt.}} \hookrightarrow p\), and \(\set{\text{pt.}} \hookrightarrow q\), since \(\set{\text{pt.}}\) is compact, we can apply the isotopy extension theorem.
+        \end{proof}
+
+        \begin{theorem}[Flows on Lie Groups have Maximal Domain of Definition]
+            Let \(G\) be a connected Lie group. A left invariant vector field is one which satisfies \((L_g)_*\mathcal{X} = \mathcal{X}\), show that the flow of a left invariant vectorfield \(\mathcal{X}\) on \(G\) has maximal domain of definition all of \(\mathbb{R}\).
+        \end{theorem}
+        \begin{proof}
+            From the definition we get for \(h \in G\),
+            \begin{align*}
+                d_{g^{-1}h}L_g \mathcal{X}(g^{-1}h) = \mathcal{X}(h) \overset{h \rightsquigarrow gh}{\longrightarrow} d_hL_g \mathcal{X}(h) = \mathcal{X}(gh)
+            \end{align*}
+            Now let \(\gamma(t)\) be an integral curve for \(\mathcal{X}\) with domain of definition \((a,b)\), for simplicity take \(\gamma(0) = e\), then \(\gamma(b-\epsilon) = g\) for some \(g\). Then \(L_g \circ \gamma\) gives a path through \(g\), we want to check that it is an integral curve, and that it agrees with \(\gamma\) on the intersection of their domains, then this curve will extend the domain of \(\gamma\) by \(b - \epsilon\). This implies the maximal domain of definition cannot be a finite interval. First computing
+            \begin{align*}
+                \frac{d}{dt}L_g\circ \gamma = dL_g \frac{d}{dt}\gamma = dL_g \mathcal{X}(\gamma(t)) = \mathcal{X}(g\cdot(\gamma(t)))
+            \end{align*}
+            So it is an integral curve through \(g\), since \(\gamma(0) = e\). To check it agrees, it suffices to check that \(\gamma(s)\cdot\gamma(t) = \gamma(s+t)\), \(g = \gamma(b-\epsilon)\) so this will give \(L_g\gamma(t) = \gamma(b-\epsilon + t)\) for \(t \in (a - b - \epsilon,\epsilon)\) as desired. To check this property, we can check that \(\gamma(s + t)\) satisfies the same differential equation as \(\gamma(s)\cdot\gamma(t)\).
+            \begin{align*}
+                &\frac{d}{dt}\gamma(s+t) = \mathcal{X} &\frac{d}{dt}L_{\gamma(s)}\circ\gamma(t) = dL_{\gamma(s)}\frac{d}{dt}\gamma(t) = dL_{\gamma(s)} \mathcal{X} = \mathcal{X}
+            \end{align*}
+            So they agree on the overlap of their domains of definition.
+        \end{proof}
+
+\end{document}
