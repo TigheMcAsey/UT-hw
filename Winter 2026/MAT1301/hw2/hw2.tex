@@ -1,0 +1,130 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+
+\fancyhf{}
+\lhead{MAT1301 hw1}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\usepackage{tikz-cd, stackengine}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\newcommand{\px}{\frac{\partial}{\partial x}}
+\newcommand{\py}{\frac{\partial}{\partial y}}
+\newcommand{\pz}{\frac{\partial}{\partial z}}
+\newcommand{\ppx}{\frac{\partial^2}{\partial x^2}}
+\newcommand{\ppy}{\frac{\partial^2}{\partial y^2}}
+\newcommand{\ppz}{\frac{\partial^2}{\partial z^2}}
+\newcommand{\hess}{\operatorname{Hess}}
+
+\begin{document}
+    \begin{pb}
+        Since \(X\) is path connected, for any \(y \in X\), there is some path \(\gamma\) between \(x_0\) and \(y\), by the path lifting property, \(f \circ \gamma: ([0,1],0) \to (B,b_0)\) has a unique lift \(\widetilde{f\circ\gamma}: ([0,1],0) \to (E,e_0)\). Then define \(\tilde{f}(y) = \widetilde{f\circ\gamma}(1)\). To see this is well defined, suppose \(\alpha,\beta\) are two paths connecting \(x_0\) and \(y\), from homework 1, since \(X\) is simply connected there is a homotopy \(h\) such that \(h(t,0) = \alpha(t), h(t,1) = \beta(t)\) and \(h(0,s) = x_0, = h(1,s) = y\) for all \(s\). This gives a homotopy between \(f\circ \alpha\) and \(f\circ \beta\), namely \(f\circ h\). By the homotopy lifting property, there is a unique lift \(\widetilde{f\circ h}\) to \(E\), then since \(\rho \circ \widetilde{f\circ h} = f\circ h\) satisfies \(f\circ h\vert_{\set{1}\times [0,1]} = f(y)\), since \(\rho\) is a covering map it is necessarily the case that \(\widetilde{f\circ h}\vert_{\set{1}\times [0,1]} \subset \rho^{-1}(f(y)) = \bigsqcup\set{y_\alpha}_\alpha\), but since \(\widetilde{f\circ h}\) is continuous, and \(\set{1}\times [0,1]\) is connected \(\widetilde{f\circ h}(\set{1}\times [0,1])\) is connected, and hence must be a singleton, thus \(\widetilde{f\circ\beta}(1) = \widetilde{f\circ h}(1) = \widetilde{f\circ\alpha}(1)\) implying that the map \(\tilde{f}\) is well defined. To prove continuity, it suffices to check locally. I.e. we can check that for every \(y \in X\), there exists some open \(V_y \supset \set{y}\) such that \(\tilde{f}\vert_{V_y}\) is continuous, since we can write for \(U \subset E\) open,
+        \begin{align*}
+            \tilde{f}^{-1}(U) = \bigcup_{y \in \tilde{f}^{-1}(U)} \tilde{f}^{-1}(U) \cap V_y = \bigcup_{y \in \tilde{f}^{-1}(U)} \tilde{f}^{-1}\vert_{V_y}(U)
+        \end{align*}
+        So let \(y_0 \in X\), then by the covering property there is some open \(U\) with \(f(y_0) \subset U\) where \(\rho^{-1}(U) = \bigsqcup_I U_i\) with \(\rho\vert_{U_i}: U_i \cong U\). By local path connectivity there is some path connected \(V \subset f^{-1}(U)\). Now fixing some arbitrary path \(\gamma\) between \(x_0\), and \(y_0\), we can define a path to any \(y \in V\) by taking \(\gamma_y: [0,1] \to V\) connecting \(y_0\) to \(y\), and considering \(\gamma\cdot \gamma_y\). Now we can notice that \(\tilde{f}(y_0) \in U_i\) for some fixed index \(i\), hence since \([\frac12,1]\) is connected, and \(\gamma_y\) lies in \(V\), \(\widetilde{f\circ\gamma\cdot \gamma_y}^{-1}([\frac12,1])\) is connected and contained in \(\bigsqcup_I U_i\), therefore it must be contained in the same \(U_i\). Since \(\rho\circ \widetilde{f}(y) = \rho\circ \tilde{f\circ\gamma\cdot \gamma_y}(1) = f(y)\), this implies \(\tilde{f}(y) = \rho\vert_{U_i}^{-1}(f(y))\), now since \(y\) was arbitrary, this implies that \(\tilde{f}\vert_{V} = (\rho\vert_{U_i}^{-1}\circ f) \vert_V\), which is a composition of continuous functions restricted to an open set, hence continuous on that open set. \qed
+    \end{pb}
+    \begin{pb}
+        Define \(\pi_X: (x,y) \mapsto (x,y_0)\), and \(\pi_Y: (x,y) \mapsto (x_0,y)\), then we can define
+        \begin{align*}
+            \psi: \pi_1(X\times Y,(x_0,y_0)) &\to \pi_1(X,x_0) \times \pi_1(Y,y_0) \\
+            [\gamma] &\mapsto ((\pi_X)_*[\gamma],(\pi_Y)_*[\gamma])
+        \end{align*} 
+        Now taking \(\iota_X: X \to X \times Y, x \mapsto (x,y_0)\) and \(\iota_Y: Y \to X \times Y, y \mapsto (x_0,y)\) we get a second map 
+        \begin{align*}
+            \phi: \pi_1(X,x_0) \times \pi_1(Y,y_0) &\to  \pi_1(X\times Y,(x_0,y_0)) \\
+            ([\alpha],[\beta]) &\mapsto ((\iota_X)_* [\alpha]) \cdot ((\iota_Y)_* [\beta])
+        \end{align*}
+        It remains to check that these maps are indeed inverses. In the case of \(\psi\circ \phi\), we really only need to trace through the definitions of the maps
+        \begin{align*}
+            \psi\circ \phi([\alpha],[\beta]) = \psi [(\alpha,y_0)]\cdot [(x_0,\beta)] = ([\alpha]\cdot[1_X],[\beta]\cdot[1_Y]) = ([\alpha],[\beta])
+        \end{align*}
+        Now for the converse direction \(\phi\circ \psi\), we can consider \(\gamma: (S^1,0) \to (X\times Y,(x_0,y_0))\), and decompose it on coordinates as \((\gamma_X,\gamma_Y)\), i.e. \(\gamma_X = \pi_X\circ\gamma\) and \(\gamma_Y = \pi_Y\circ\gamma\) then
+        \begin{align*}
+            \phi\circ\psi ([\gamma]) = \phi([\gamma_X],[\gamma_Y]) = [\gamma_X]\cdot[\gamma_Y] = [\gamma_X\cdot\gamma_Y]
+        \end{align*}
+        which means that it suffices to show that \(\gamma_X\cdot\gamma_Y \sim \gamma\), this is a consequence of the following homotopy between \((\pi_X\circ \gamma) \cdot (\pi_Y \circ \gamma)\) and \(\gamma\cdot 1_{X \times Y}\)
+        \begin{align*}
+            h(t,s) = \begin{cases}
+                (\pi_X \circ \gamma(2t),y_0) & t \leq \frac12 s \\
+                (\pi_X \circ \gamma(2t),\pi_Y \circ \gamma(2(t-\frac12 s))) & t \in (\frac12 s,\frac12] \\
+                (x_0,\pi_Y \circ \gamma(2(t-\frac12 s))) & t \in (\frac12,\frac12 + \frac12 s]\\
+                (x_0,y_0) & t > \frac12 + \frac12 s
+            \end{cases}
+        \end{align*}
+    \end{pb}
+    \begin{pb}
+        Suppose that \(\gamma\) is an even function, then \(\gamma(\frac12) = 0 = \gamma(0)\), so that \([\gamma\vert_{[0,\frac12]}] \tand [\gamma\vert_{[\frac12,1]}] \in \pi_1(S^1,0)\). But since \(\gamma(x) = \gamma(-x) = \gamma(x + \frac12)\), we find that \(\gamma\vert_{[0,\frac12]} = \gamma\vert_{[\frac12,1]}\) (by identifying \([0,\frac12]\) with \([\frac12,1]\)), this gives us 
+        \begin{align*}
+            [\gamma] = [\gamma\vert_{[0,\frac12]}\cdot\gamma\vert_{[\frac12,1]}] = [\gamma\vert_{[0,\frac12]}]\cdot[\gamma\vert_{[\frac12,1]}] = 2[\gamma\vert_{[0,\frac12]}]
+        \end{align*}
+
+        Now suppose that \(\gamma\) is an odd function, and define \(\gamma': [0,1] \to S^1, t \mapsto \gamma(\frac{t}{2})\), another way to write \(\gamma\) being an odd function on \(S^1\) is that \(\gamma(x + \frac12) = \frac12 + \gamma(x)\) (since on \(S^1\) the antipode of \(x\) is \(\frac12 + x\)). So letting \(\tilde{\gamma'}: [0,1] \to \mathbb{R}\) be the unique lift of \(\gamma'\) based at \(0\) given by the unique path lifting property using this description of odd functions implies that \(\gamma = \gamma' \cdot (\frac12 + \gamma')\), if \(\rho\) denotes the standard covering map \(\mathbb{R} \to S^1\), then we can define
+        \begin{align*}
+            \tilde{\gamma}: t \mapsto \begin{cases}
+                \tilde{\gamma'}(2t) & t \in [0,\frac12] \\
+                \tilde{\gamma'}(1) + \tilde{\gamma'}(2(t-\frac12)) & t \in (\frac12,1]
+            \end{cases}
+        \end{align*}
+        Which is the lift of \(\gamma\) based at zero since \(\rho \circ \tilde{\gamma}(t) = \gamma(t)\) and lifts are unique, by the isomorphism used to identify \(\mathbb{Z} \cong \pi_1(S^1,0)\) we have \([\gamma] = \tilde{\gamma}(1) = 2\tilde{\gamma'}(1)\), then since \(\rho\tilde{\gamma'}(1) = \gamma'(1) = \gamma(\frac12) = \gamma(0) + \frac12 = \frac12\) we know that \(\tilde{\gamma'}(1) \in \mathbb{Z} + \frac12\), whence \([\gamma] = 2\tilde{\gamma'}(1) \in 2 \mathbb{Z} + 1\) is odd. \qed
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} In order to work explicitly with the Mobius strip, denote \(I = [-1,1]\), then write
+        \begin{align*}
+            M = \frac{I^2}{(-1,x) \sim (1,-x)}
+        \end{align*}
+        Now define \(\gamma: S^1 \to M\), writing \(\gamma(t) = (\gamma_1(t),\gamma_2(t))\) we can define the homotopy
+        \begin{align*}
+            h_{\gamma}(t,s) = (\gamma_1(t),(1-s)\gamma_2(t))`'
+        \end{align*}
+        so that \(h_{\gamma}(-,1): S^1 \to S^1 = \frac{I}{-1 \sim 1} \subset M\). We can define the map \(r: M \to S^1\) via \((x,y) \mapsto x\), it is immediate that \(\iota \circ r\circ \gamma = h_{\gamma}(-,1)\), this homotopy tells us that
+        \begin{equation*}
+            \begin{tikzcd}
+                \pi_1(S^1) \arrow[bend left = 20,rr,"1_*"] \arrow[r,"\iota_*"] &\pi_1(M) \arrow[bend right =20,rr,"1_*"'] \arrow[r,"r_*"] &\pi_1(S^1) \arrow[r,"\iota_*"] &\pi_1(M)
+            \end{tikzcd}
+        \end{equation*}
+        Which suffices to show that \(r_*: \pi_1(M) \to S^1 \cong \mathbb{Z}\) is an isomorphism with inverse \(\iota_*\).
+
+        \textbf{(b)} Assume such a retraction \(R\) exists. Notice that \(\partial M = S^1\), and consider
+        \begin{align*}
+            \gamma: S^1 \to \partial M, \quad t \mapsto \begin{cases}
+                (4t - 1,1) & t \in [0,\frac12] \\
+                (4(t - 2),-1) & t \in (\frac12,1]
+            \end{cases}
+        \end{align*}
+        Then under the identification of \(\pi_1(\partial M) \cong \mathbb{Z}\) we have \([\gamma] = 1\). Using \(r\) from part (a) and identifying \(\partial M \overset{j}{\hookrightarrow} M\), we get \(r_*[\gamma] = [r\circ \gamma] = 2\). Moreover since any \([\alpha] \in \pi_1(M)\) can be written as \(k[\gamma]\) for \(\gamma \in \mathbb{Z}\), and \(r_*\) is a group homomorphism we find that \[r_*[\alpha] = r_*[k\gamma] = kr_*[\gamma] = 2k\] Now by assumption of existence of \(R\), we have the following diagram
+        \begin{equation*}
+            \begin{tikzcd}
+                & \pi_1(S^1) \arrow[bend left = 10, d,"\iota_*"] \\
+                \pi_1(\partial M) \arrow[bend right = 20,rr,"1_*"'] \arrow[r, "j_*"] &\pi_1(M) \arrow[bend left = 10,u,"r_*"] \arrow[r,"R_*"] &\pi_1(\partial M)
+            \end{tikzcd}
+        \end{equation*}
+        Identifying up to isomorphism, and writing explicitly the compositions this diagram becomes
+        \begin{equation*}
+            \begin{tikzcd}
+                & \mathbb{Z} \arrow[bend left = 10, d,"\iota_*"] \arrow[rd,"R_*\iota_*"] \\
+                \mathbb{Z} \arrow[ur,"\cdot2"] \arrow[bend right = 30,rr,"\cdot 1"'] \arrow[r, "j_*"] &\mathbb{Z} \arrow[bend left = 10,u,"r_*"] \arrow[r,"R_*"] &\mathbb{Z}
+            \end{tikzcd}
+        \end{equation*}
+        Then if \(R_*\iota_*(1) = k\), then \(1 = R_*\iota_*(2) = 2R_*\iota_*(1) = 2k\), but \(1 = 2k\) has no integer solutions so this is a contradiction. \qed
+    \end{pb}
+\end{document}
