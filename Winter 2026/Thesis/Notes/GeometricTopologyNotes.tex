@@ -1,0 +1,179 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+
+\fancyhf{}
+\lhead{Notes On Geometric Topology}
+\rhead{Tighe McAsey}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{Exercise}[subsection]
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{example}{Example(s)}[section]
+\usepackage{tikz-cd, stackengine}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\newcommand{\px}{\frac{\partial}{\partial x}}
+\newcommand{\py}{\frac{\partial}{\partial y}}
+\newcommand{\pz}{\frac{\partial}{\partial z}}
+\newcommand{\ppx}{\frac{\partial^2}{\partial x^2}}
+\newcommand{\ppy}{\frac{\partial^2}{\partial y^2}}
+\newcommand{\ppz}{\frac{\partial^2}{\partial z^2}}
+\newcommand{\hess}{\operatorname{Hess}}
+
+\begin{document}
+    Here are some notes meant for reference for my studies in geometric topology. I will only supply proofs when I think doing so will be edifying, these notes are mostly based from Bruno Martelli's Book as well as Do Carmo's book so proofs can be found there.
+
+    As convention when writing \(C^\alpha(M)\) for a manifold \(M\), \(\alpha \geq 1\), but the \(\alpha = \infty\) case is most interesting. All manifolds are atleast differentiable.
+    \section{Riemannian Geometry}
+    \subsection{Vector Fields}
+    \begin{definition}
+        A vectorfield \(X: M \to TM\) can be thought of as a derivation, i.e. if \(X(p) = \sum_1^n a_j(p)\pd\) then \(X: C^\alpha(M) \to C^{\alpha - 1}(M)\) via
+        \begin{align*}
+            X(f)(p) = \sum_1^n a_j(p)\pd f
+        \end{align*}
+    \end{definition}
+    \begin{proposition}
+        If \(\varphi: M \to M\) is a diffeomorphism, and \(v \in T_pM\) with \(\gamma(0) = p \tand \gamma'(0) = v\), then
+        \begin{align*}
+            (d_p \varphi(v))(f) = v(f\circ \gamma)(p)
+        \end{align*}
+    \end{proposition}
+    \begin{definition}
+        The Lie bracket of two vector fields \(X,Y\) denoted \([X,Y]\) is the unique vectorfield \(Z\) satisfying \(Z(f) = (XY-YX)(f)\) for all \(f \in C^\alpha(M)\)
+    \end{definition}
+    \begin{proposition}
+        If \(X,Y\) are vectorfields on \(M\), with \(U \supset \set{p} \subset M\), and \(\varphi_t\) is a flow of \(X\) in \(U\), then
+        \begin{align*}
+            [X,Y](p) = \lim_{t\to0}\frac{1}{t}(Y - d \varphi_t Y)(\varphi_t(p))
+        \end{align*}
+    \end{proposition}
+    
+    \subsection{Riemannian Metrics}
+    \begin{definition}
+        A Riemannian metric is a positive definite, symmetric bilinear form \(g: TM \otimes TM \to \mathbb{R}\)
+    \end{definition}
+    \begin{definition}
+        A Riemannian Manifold is a pair \((M,g)\) where \(M\) is a manifold and \(g\) is a Riemannian metric.
+    \end{definition}
+    \begin{proposition}
+        A Riemannian metric can be represented in coordinates, given a local frame \((X_j)\), and coframe \((\sigma^j)\) we have
+        \begin{align*}
+            g(-,-) = \sum_{i \leq j} g(X_i,X_j)\sigma^i \sigma^j
+        \end{align*}
+    \end{proposition}
+    \begin{definition}
+        \(f: M \to N\) is a isometry between Riemannian manifolds if \(f\) is a diffeomorphism and \(df^*g_M = g_N\)
+    \end{definition}
+    \begin{definition}
+        \(M\) and \(N\) are said to be locally isometric if for any \(p \in M\) there is some neighborhood \(p \in U\), and some \(V \subset N\) with \(f: U \to V\) an isometry. Note this is not an equivalence relation.
+    \end{definition}
+    \begin{example}
+    \begin{itemize}
+            \item Euclidean, \(g_{\text{EUC}}\) has \(g_{ij} = \delta_{ij}\)
+            \item \(f: M \to N\), then we can define \(g_M(u,v) = g_N(df u, df v)\)
+            \item If a group \(G\) acts on \(M\) smoothly, freely, properly and isometrically then we can define for \(\pi: M \to M/G\)
+            \begin{align*}
+                g_{M/G}(u,v)_p = g_M(d_p\pi^{-1}(u),d_p\pi^{-1}(v))_{\pi^{-1}(p)}
+            \end{align*}
+            The case of \(U(1)\) acting on \(\mathbb{C}^{n+1} \setminus \set{0}\) is the Fubini-Study metric on \(\mathbb{P}^n\)
+            \item The product metric \(g_{X\times Y}(u,v)_{p,q} = g_X(d\pi_X u, d\pi_X v) + g_Y(d\pi_Y u, d\pi_Y v)\), analogous to dot product.
+        \end{itemize}
+    \end{example}
+    \begin{definition}
+        A Riemannian metric on a Lie group is Left (resp. Right) invariant if \(L_x\) (resp. \(R_x\)) is an isometry for all \(x \in G\). It is bi-invariant if it is both left adn right invariant.
+    \end{definition}
+    \begin{proposition}
+        All Lie groups have a left invariant Riemannian metric, namely take one on \(T_eG\) and define
+        \begin{align*}
+            g_{\text{inv}}(u,v)_x = g(dL_{x^{-1}}u,dL_{x^{-1}}v)_e
+        \end{align*}
+        Moreover, if \(G\) is compact it has a bi-invariant metric.
+    \end{proposition}
+    \begin{proposition}
+        \(g\) is bi-invariant if and only if for any \(U,V,X \in T_eG\) we have
+        \begin{align*}
+            g([U,X],V) = - g(U,[V,X])
+        \end{align*}
+    \end{proposition}
+    \begin{definition}
+        \(I \subset \mathbb{R}\), and \(\gamma: I \to M\), then for any closed interval \([a,b] \subset I\) we can define the length of the curve \(\gamma\), since \(g\) will give a norm. Namely
+        \begin{align*}
+            \ell_a^b(\gamma) = \int_a^b \sqrt{g(\gamma'(t),\gamma'(t))}dt
+        \end{align*}
+    \end{definition}
+    \begin{definition}
+        It may be desirable to define the volume form in terms of Riemannian metrics, in this case we can write locally \(x: U \subset M \to V \subset \mathbb{R}^N\) as coordinates and
+        \begin{align*}
+            dVol := \sqrt{\det(g_{ij})}dx_1\cdots dx_n
+        \end{align*}
+    \end{definition}
+    \subsubsection{Exercises}
+    \begin{pb}
+        Put a Riemannian metric on \(T^n\) so that \(R^n \supset (x_1,\hdots,x_n) \overset{f}{\mapsto} (e^{ix_1},\hdots,e^{ix_n})\) is a local isometry, show this is isometric to the flat torus.
+    \end{pb}
+    \begin{proof}
+        We use that the group action of \(\mathbb{Z}^n\) by translation has differential \(1\), so we can just use the metric given in the above examples. This makes \(f\) an isometry tautologically.
+    \end{proof}
+    \begin{pb}
+        Give an immersion \(f: T^n \to \mathbb{R}^{2n}\) which is isometric to the flat Torus.
+    \end{pb}
+    \begin{proof}
+        \begin{align*}
+            f: (\theta_1,\hdots,\theta_n) \mapsto (\cos\theta_1,\sin\theta_1,\hdots,\cos\theta_n,\sin\theta_n)
+        \end{align*}
+        Then we cna simply evaluate
+        \begin{align*}
+            df\vert_{(\theta_1,\hdots,\theta_n)} = \begin{pmatrix} -\sin \theta_1 & 0 & \cdots & 0 \\ \cos\theta_1 & 0 & \cdots & 0 \\ \vdots& \ddots & \vdots & \vdots \\ 0 & 0 & \cdots & -\sin\theta_n \\ 0 & 0 & \cdots & \cos\theta_n\end{pmatrix}
+        \end{align*}
+        The flat metric gives us
+        \begin{align*}
+            g_{ij}= \delta_{ij}
+        \end{align*}
+        And the immersion gives us
+        \begin{align*}
+            g \left(d_{\underline{\theta}}f(\frac{\partial}{\partial \theta_i}),d_{\underline{\theta}}f(\frac{\partial}{\partial \theta_j})\right)_{f(\underline{\theta})} = g_{\text{EUC}}(-\sin\theta_i e_{2i-1} + \cos\theta_i e_{2i},-\sin\theta_j e_{2j-1} + \cos\theta_j e_{2j}) = \delta_{ij}
+        \end{align*}
+    \end{proof}
+    \begin{pb}
+        The lie group of Affine transformations can be given by \(\mathbb{R}\times (0,\infty)\), with \(A(t) = yt + x\), then the lie group structure is composition. Show that \(g_{11} = g_{22} = \frac{1}{y^2}\) gives a left invariant metric. Note that using this metric, and identifying \((x,y) \sim x+iy = z\) we get that the \(SL(2,\mathbb{R})\) metric acts via isometry on \(G\).
+    \end{pb}
+    \begin{proof}
+        We simply compute \(d_{(x,y)}L_{(A,B)} = \begin{pmatrix} B & 0 \\ 0 & B \end{pmatrix}\), so that
+        \begin{align*}
+            &((L_{(A,B)})_*g_{(x,y)})_{11} = ((L_{(A,B)})_*g_{(x,y)})_{22} = B^2/(By)^2 = \frac{1}{y^2} \\
+            &((L_{(A,B)})_*g_{(x,y)})_{12} = g_{12} = 0
+        \end{align*}
+    \end{proof}
+    \begin{pb}
+        Show that "Locally isometric" is not an equivalence relation
+    \end{pb}
+    \begin{proof}
+        Let \(\eta\) be a bump function on \(U \subset \mathbb{R}^n\), the define \(g\) on \(\mathbb{R}^n\) as \(g_{\text{EUC}} + \eta g_{\text{EUC}}\), it is clear we can't have a local isometry with flat \(\mathbb{R}^n\) on \(\partial U\). Existence in the reverse direction is obvious, since we can just map diffeomorphically away from \(U\).
+    \end{proof}
+    \begin{pb}
+        Show that there exists a Bi-invariant Riemannian metric on any compact connected Lie Group.
+    \end{pb}
+    \begin{proof}
+        
+    \end{proof}
+
+\end{document}
