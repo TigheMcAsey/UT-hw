@@ -1,0 +1,94 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+
+\fancyhf{}
+\lhead{MAT1002 hw1}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\usepackage{tikz-cd, stackengine}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\newcommand{\px}{\frac{\partial}{\partial x}}
+\newcommand{\py}{\frac{\partial}{\partial y}}
+\newcommand{\pz}{\frac{\partial}{\partial z}}
+\newcommand{\ppx}{\frac{\partial^2}{\partial x^2}}
+\newcommand{\ppy}{\frac{\partial^2}{\partial y^2}}
+\newcommand{\ppz}{\frac{\partial^2}{\partial z^2}}
+\newcommand{\hess}{\operatorname{Hess}}
+
+\begin{document}
+    \begin{pb}
+        We first find an expression for \(\zeta(s)\Gamma(s)\) on \(\Re(s) > 1\), to do so we will do a substitution \(u = x/n\), valid for any \(n \in \mathbb{Z}_{>0}\)
+        \begin{align*}
+            \Gamma(s) = \int_0^\infty e^{-nu}(nu)^{s-1} ndu = n^s \int_0^\infty u^{s-1}(e^{-u})^n du
+        \end{align*}
+        Now since I don't like \(u\) I will switch back to \(x\); Multiplying \(n^{-s}\) on both sides and summing over \(n \in \mathbb{Z}_{>0}\) yields
+        \begin{align}
+            \zeta(s)\Gamma(s) = \sum_1^\infty \int_0^\infty x^{s-1}(e^{-x})^ndx \overset{\text{DCT}}{=} \int_0^\infty x^{s-1}\sum_1^\infty (e^{-x})^n dx = \int_0^\infty x^{s-1}\frac{1}{e^x - 1}dx
+        \end{align}
+        Where DCT is taken with respect to \(\abs{x^{s-1}}\sum_1^\infty e^{-nx}\). We can use \(\Gamma(s)\Gamma(1-s) = \frac{\pi}{\sin(\pi s)}\) to rewrite (1):
+        \begin{align}
+            \zeta(s) = \frac{\Gamma(1-s)\sin(\pi s)}{\pi}\int_0^\infty \frac{x^{s-1}}{e^x-1}dx
+        \end{align}
+        Now we deal with the contour integral, letting \(C(\epsilon)\) denote the curve described in the problem for fixed \(\epsilon \in \mathbb{R}_{> 0}\). The expression \(e^z-1\) has no poles away from \(\set{z \mid e^z = 1} = \set{2\pi ki \mid k \in \mathbb{Z}}\), whence if we take the branch cut of log away from the non-negative reals the integral is not dependent on \(\epsilon\) for \(\epsilon < 2\pi\), since (for \(\delta < \epsilon < 2\pi\)) we have the area enclosed between the two curves is a quotient of holomorphic functions with the denominator non-vanishing in between the curves. This independence is a result of taking seperating the curve \(C(\epsilon) - C(\delta)\) into two curves (see picture), the first of which has integral zero by Cauchy's theorem, and the second being arbitrarily small depending on where we take the cut.
+        \begin{align*}
+            \int_{C(\epsilon)}f - \int_{C(\delta)}f = \int_{C(\epsilon,\delta,M)} f + \int_{\gamma_1(\epsilon,\delta,M)} f + \int_{\gamma_2(\epsilon,\delta,M)} f
+        \end{align*}
+        \textcolor{red}{INSERT ILLUSTRATION HERE}
+        
+        Then for \(f\) holomorphic away from he real line, the \(C(\epsilon,\delta, M)\) term vanishes. Notice now that using the standard arclength inequality for large \(M\) we have
+        \begin{align*}
+            \abs{\int_{\gamma_j(\epsilon,\delta,M)} \frac{(-z)^{s-1}}{e^z - 1}dz} &\leq (\epsilon - \delta)\abs{\frac{M^{\Re(s)-1}}{e^M - 1}} + \abs{\int_M^\infty \frac{(-x- i\epsilon)^{s-1}}{e^{x+i \epsilon} - 1}dx - \int_M^\infty \frac{(-x - i\delta)^{s-1}}{e^{x+i \delta} - 1}dx} \\
+            &\leq (\epsilon - \delta)\abs{\frac{M^{\Re(s)-1}}{e^M - 1}} + 2\int_M^\infty\frac{\abs{x + i \epsilon}^{\Re(s) - 1}}{\abs{e^x} - 1}dx
+        \end{align*}
+        The right hand side clearly converges to zero. as \(M \to \infty\) using basic limits of exponentials and DCT. This gives the desired invariance.
+        \begin{align*}
+            \abs{\int_{C(\epsilon)} \frac{(-z)^{s-1}}{e^z - 1}dz - \int_{C(\delta)} \frac{(-z)^{s-1}}{e^z - 1}dz} \leq \abs{\int_{\gamma_1(\epsilon,\delta,M)} \frac{(-z)^{s-1}}{e^z - 1}dz} + \abs{\int_{\gamma_2(\epsilon,\delta,M)} \frac{(-z)^{s-1}}{e^z - 1}dz} = 0
+        \end{align*}
+        Now, we can compute the value of the integral along this curve by letting \(\epsilon \to 0\), to get \(C(0)\), a ray from \(\infty\) to 0 where \((-z)^{s-1} = x^{s-1}e^{-(s-1)\pi i}\), and a ray from \(0\) to \(\infty\) where \((-z)^{s-1} = x^{s-1}e^{(s-1)\pi i}\), to see that we can indeed pass to this limit, once again decompose \(C = C(\epsilon)\) into three curves, with \(C_1\) the ray in the upper half plane, \(C_2\) the ray in the lower half plane and \(C_3\) the circular portion, then once again using the arc length inequality and the fact that \(e^z - 1 = \mathcal{O}(z)\)
+        \begin{align*}
+            \abs{\int_{C_3}\frac{(-z)^{s-1}}{e^z-1}} \leq 2\pi \epsilon\sup_{\abs{z} = \epsilon}\frac{\abs{z^{s-1}}}{\abs{e^z - 1}} = 2\pi \epsilon \mathcal{O}(\epsilon^{\Re(s) - 2}) = 2\pi \mathcal{O}(\epsilon^{\Re(s) - 1}) \overset{\Re(s) > 1}{\longrightarrow} 0
+        \end{align*}
+        We can check convergence on \(C_1\) explicitly
+        \begin{align*}
+            &\abs{\int_0^\infty\frac{x^{s-1}e^{-(s-1)\pi i}}{e^x - 1}dx - \int_\epsilon^\infty \frac{(-x-i \epsilon)^{s-1}}{e^{x + i \epsilon} - 1}dx} \\ \leq &\abs{\int_0^\epsilon \frac{x^{s-1}e^{-(s-1)\pi i}}{e^x - 1}dx} + \abs{\int_\epsilon^\infty\frac{x^{s-1}e^{-(s-1)\pi i}}{e^x - 1}dx - \int_\epsilon^\infty \frac{(-x-i \epsilon)^{s-1}}{e^{x + i \epsilon} - 1}dx} \\
+            \leq &\abs{\int_0^\epsilon \frac{x^{s-1}e^{-(s-1)\pi i}}{e^x - 1}dx} + \abs{\int_\epsilon^\infty \frac{(e^{x + i \epsilon} - 1)x^{s-1}e^{-(s-1)\pi i} - (e^x - 1) (\sqrt{x^2 + \epsilon^2})^{(s-1)}e^{i(s-1)\arctan\frac{\epsilon}{x} - (s-1)\pi i}}{(e^{x} - 1)(e^{x + i \epsilon} - 1)}}
+        \end{align*}
+        Convergence as \(\epsilon \to 0\) of the big ugly term to zero is actually simple from convergence of each of the terms in the two expressions in the product. Convergence of the first term follows from \(\Re(s) > 1\), so writing the bounds of integration as \(\chi_{(0,\epsilon)}\) we can just apply DCT to the absolute value of the integrand. The proof of convergence for \(C_2\) is similar to \(C_1\).
+
+        Now we finally established that (due to taking the limit in \(\epsilon\) and invariance with respect to \(\epsilon\))
+        \begin{align}
+            \int_C \frac{(-z)^{s-1}}{e^z - 1}dz &= -\int_0^\infty \frac{x^{s-1}e^{-(s-1)\pi i}}{e^x - 1}dx + \int_0^\infty \frac{x^{s-1}e^{(s-1) \pi i}}{e^x - 1}dx \\
+            &= \int_0^\infty \frac{x^{s-1}}{e^x - 1}2i\sin((s-1)\pi) = -\int_0^\infty \frac{x^{s-1}}{e^x - 1}2i\sin(s\pi)
+        \end{align}
+        Multiplying (2) by \(1 = \frac{\int_C \frac{(-z)^{s-1}}{e^z - 1}dz}{-\int_0^\infty \frac{x^{s-1}}{e^x - 1}2i\sin(s\pi)}\) yields the desired equality
+        \begin{align}
+            \zeta(s) = -\frac{\Gamma(1-s)}{2\pi i}\int_C \frac{(-z)^{s-1}}{e^z - 1}dz
+        \end{align}
+        Now, using the right side of (5) as an analytic continuation, we first compute \((e^z - 1)^{-1} = \frac{1}{z} - \frac12 + \frac{z}{12} + \mathcal{O}(z^2)\), since we know it has a simple pole at zero, hence is meromorphic this expression just comes from evaluating the systems of equations given for the coefficients for \((a_{-1}z^{-1} + a_0 + a_1z + \cdots)(\sum_0^\infty \frac{z^n}{n!}) = 1\). This is everything we need to evaluate \(\zeta(0)\). First using a similar separation of curves into two parts as was used for invariance, we find that \(\int_C\frac{1}{z(e^z - 1)}dz = \int_{\gamma}\frac{1}{z(e^z - 1)}dz\) where \(\gamma\) is a piecewise \(C^1\) closed curve, this allows us to use the residue theorem
+        \begin{align}
+            \zeta(0) &= \frac{\Gamma(1)}{2\pi i}\int_\gamma \frac{1}{z(e^z - 1)}dz = \frac{1}{2\pi i}\int_\gamma\frac{1}{z}\left(\frac{1}{z} - \frac12 + \frac{z}{12} + \mathcal{O}(z^2)\right)dz \\
+            &= \text{Res}\left(\frac{1}{z}\left(\frac{1}{z} - \frac12 + \frac{z}{12} + \mathcal{O}(z^2)\right)\right) = -\frac12
+        \end{align}
+        \qed
+    \end{pb}
+\end{document}

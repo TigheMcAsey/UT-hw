@@ -42,7 +42,7 @@
 \begin{document}
     Here are some notes meant for reference for my studies in geometric topology. I will only supply proofs when I think doing so will be edifying, these notes are mostly based from Bruno Martelli's Book as well as Do Carmo's book so proofs can be found there.
 
-    As convention when writing \(C^\alpha(M)\) for a manifold \(M\), \(\alpha \geq 1\), but the \(\alpha = \infty\) case is most interesting. All manifolds are atleast differentiable.
+    As convention when writing \(C^\alpha(M)\) for a manifold \(M\), \(\alpha \geq 1\), but the \(\alpha = \infty\) case is most interesting. All manifolds are atleast differentiable. ANotehr convention is to denote \(\mathcal{X}(M)\) as the set of \(C^\infty\) vector fields on \(M\).
     \section{Riemannian Geometry}
     \subsection{Vector Fields}
     \begin{definition}
@@ -173,7 +173,45 @@
         Show that there exists a Bi-invariant Riemannian metric on any compact connected Lie Group.
     \end{pb}
     \begin{proof}
-        
+        First note that there is a bijection between left invariant \(n\)-forms and \((\Lambda^n T_eM)^*\), to see this write down the definition of left invariance:
+        \begin{align*}
+            L_x^* \omega = \omega \rightsquigarrow \omega_{L_x(y)}(dL_x v_1,\hdots, dL_x v_n) = \omega_y(v_1,\hdots,v_n)
+        \end{align*}
+        replacing \(y\) for \(e\) we find
+        \begin{align*}
+            \omega_x(dL_x v_1,\hdots,dL_x v_n) = \omega_e(v_1,\hdots,v_n)
+        \end{align*}
+        But since \(dL_x\) is invertible for all \(x\), this is a bijection between \(n\)-forms and \((\Lambda^n T_eM)^* \cong \mathbb{R}\), so that left invariant forms are unique up to scalar multiples, this also proves existence of left invariant forms. Now, given a left invariant form \(\omega\) we can observe that for any \(a \in G\) we have \(R_a^* \omega\) is left invariant, since \((R_a^* \circ R_b^*)(\omega) = R_{ab}(\omega)\), identifying \(a\) to the constant multiple given by this process is a continuous group homomorphism to \(\mathbb{R}^*\), whence the image is a compact connected subgroup of \(\mathbb{R}^*\), but this is only possible if the image is \(\set{1}\), so that \(\omega\) is right invariant.
+
+        Now letting \(\omega\) be a Bi-invariant metric on \(G\), and \(g\) a left invariant Riemannian metric, we can define 
+        \begin{align*}
+            g_{\text{inv}}(u,v)_y = \int_{x \in G} g(d_yR_x u, d_y R_x v)_{yx} \omega
+        \end{align*}
+        Linearity of the integral, along with \(\omega\) positive on an oriented basis of the identity ensures this is symmetric, bilinear and positive definite and left invariant, thus a left invariant Riemannian metric. The right invariance is simply the reindexing trick from Maschke's theorem.
     \end{proof}
+
+    \subsection{Affine Connections}
+
+    \begin{definition}
+        An affine connection \(\nabla\) on a \(C^\alpha\) manifold \(M\) is a map satisfying for \(f,g \in C^\infty(M)\)
+        \begin{align*}
+            \nabla: \mathcal{X}(M) \times \mathcal{X}(M) &\to \mathcal{X}(M) \\
+            (X,Y) &\mapsto \nabla_XY
+        \end{align*}
+        \begin{enumerate}
+            \item \(\nabla_{fX + gY}Z = f\nabla_X Z + g\nabla_Y Z\)
+            \item \(\nabla_X(Y+Z) = \nabla_X Y + \nabla_X Z\)
+            \item \(\nabla_X(fY) = f\nabla_X Y + X(f)Y\)
+        \end{enumerate}
+    \end{definition}
+    \begin{definition}
+        If \(M\) is a manifold with an affine connection and a curve \(\gamma: I \to M\), the covariant derivative is the unique correspondance taking a \(\mathcal{X}(I)\cap\set{V(t) \in \gen{\gamma'(t)}} \to \mathcal{X}(I)\cap\set{V(I) \in \gen{\gamma'(t)}}\) satisfying
+        \begin{enumerate}
+            \item \(D/dt(V+W) = D/dt V + D/dt W\)
+            \item \(D/dt fV = \frac{df}{dt}V + f \frac{DV}{dt}\)
+            \item \(V = Y\vert_{\gamma(I)}\) for \(Y \in \mathcal{X}(M)\), then \(\frac{DV}{dt} = \nabla_{\gamma'(t)}Y\)
+        \end{enumerate}
+        Intuitively the covariant derivative gives the acceleration of the curve, existence and uniqueness follow form writing \(DV/dt\) explicitly in local coordinates.
+    \end{definition}
 
 \end{document}
