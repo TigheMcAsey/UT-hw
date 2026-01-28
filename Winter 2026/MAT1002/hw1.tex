@@ -92,11 +92,36 @@
         \qed
     \end{pb}
     \begin{pb}
-        \textbf{(a)}
-
-        \textbf{(b)} Let \(z \in \mathbb{C}\), then by \textcolor{red}{Insert EQ number here ...}
+        \textbf{(a)} Let \(\epsilon\) be small enough so that \(B_{2 \epsilon}(z_0) \subset D\), then
         \begin{align*}
-            f'(z) = \frac{1}{2\pi i}\int_{\abs{w-z} = R}\frac{f(w)}{(w - z)^2}dz
+            \int_{\partial D} \frac{f(w)}{w-z_0}dw - \int_{\partial B_\epsilon(z_0)} \frac{f(w)}{w-z_0}dw \overset{\text{Stokes}}{=} \int_{D \setminus B_\epsilon(z_0)} \frac{\partial}{\partial \overline{w}}\frac{f(w)}{w-z_0}d \overline{w}\wedge dw = 0
+        \end{align*}
+        By Cauchy Riemann since \(\frac{f(w)}{w-z_0}\) is holomorphic in \(D \setminus B_\epsilon(z_0)\). From this, we cna prove the base case which is Cauchy's integral formula.
+        \begin{align*}
+            \int_{\partial D}\frac{f(w)}{w-z_0}dw = \int_{B_\epsilon(z_0)} \frac{f(w)}{w-z_0}dw = \int_0^{2\pi}f(z_0 + \epsilon e^{it})i dt
+        \end{align*}
+        Which holds for arbitrary \(\epsilon\), but since \(f\) is bounded (on \(D\)) and continuous we have
+        \begin{align*}
+            \int_{\partial D}\frac{f(w)}{w-z_0}dw &= \lim_{\epsilon \to 0}\int_0^{2\pi}f(z_0 + \epsilon e^{it})i dt = \int_0^{2\pi} \lim_{\epsilon \to 0}f(z_0 + \epsilon e^{it})i dt = 2\pi i f(z_0)
+        \end{align*}
+        Which proves the desired result in the case of \(n = 0\)
+        \begin{align}
+           f(z_0) = \frac{1}{2\pi i}\int_{\partial D}\frac{f(w)}{w-z_0}dw
+        \end{align}
+        Now, we can proceed by induction and simply take derivatives.
+        \begin{align*}
+            2\pi i\lim_{h \to 0} \frac{1}{h}(f^{(n)}(z_0 + h) - f^{(n)}(z_0)) &= \lim_{h \to 0} \frac{1}{h} \int_{\partial D} \frac{f(w)}{(w-z_0-h)^{n+1}} - \frac{f(w)}{(w-z_0)^{n+1}} dw\\
+            &= \lim_{h\to 0}\int_{\partial D} \frac{1}{h}\frac{f(w)(w-z_0)^{n+1} - f(w)(w-z_0-h)^{n+1}}{(w-z_0-h)^{n+1}(w-z_0)^{n+1}}dw \\
+            &= \lim_{h\to 0} \int_{\partial D}\frac{f(w)(w-z_0)^{n}}{(w-z_0-h)^{n+1}(w-z_0)^{n+1}} + \mathcal{O}(h)dw
+        \end{align*}
+        Then we can clearly apply DCT for \(\abs{h} < \frac12 \abs{w - z_0}\), which gives us
+        \begin{align}
+            \lim_{h \to 0} \frac{1}{h}(f^{(n)}(z_0 + h) - f^{(n)}(z_0)) = \frac{1}{2\pi i}\int_{\partial D}\frac{f(w)}{(w-z_0)^{n+2}}dw
+        \end{align}
+
+        \textbf{(b)} Let \(z \in \mathbb{C}\), then by equation (9) in part (a)
+        \begin{align*}
+            f'(z) = \frac{1}{2\pi i}\int_{\abs{w-z} = R}\frac{f(w)}{(w - z)^2}dw
         \end{align*}
         Applying the standard arc-length inequality yields
         \begin{align}
@@ -108,5 +133,35 @@
         \end{align*} \qed
 
         \textbf{(c)} Suppose a polynomial \(P\) does not have a root. Then \(\frac{1}{P}\) is entire, hence \(1/P\) is constant by Liouville's theorem. We conclude any polynomial without a root is of degree zero. \qed
+    \end{pb}
+    \begin{pb}
+        Assume for contradiction that \(f\) has an essential singularity at \(z_0\), but there exists some \(a \in \mathbb{C}\) and \(\delta > 0\) such that for some \(\epsilon > 0\) we have \(f(D^*_\epsilon)(z_0) \cap B_\delta(a) = \emptyset\). Now define a new function \(g(z) = \frac{1}{f(z) - a}\), since \(\abs{f(z) - a} \geq \delta\) on \(D_\epsilon^*(z_0)\) we find that \(g\) is holomorphic and nonvanishing on this punctured annulus with modulus bound above by \(\frac{1}{\delta}\). Then we can define on \(D_\epsilon(z_0)\)
+        \begin{align}
+        (z-z_0)^2g(z) = \begin{cases}
+            (z-z_0)^2g(z) & z \neq z_0 \\
+            0 & z = z_0
+        \end{cases}
+        \end{align}
+        This is holomorphic away from \(z_0\), thus is holomorphic since
+        \begin{align*}
+            \lim_{h\to 0} \frac{(z_0 + h-z_0)^2g(z_0 +h)}{h} = \lim_{h\to 0}hg(z_0 + h) = 0
+        \end{align*}
+        where the last equality is a consequence of \(g\) being bounded. Therefore we can write
+        \begin{align*}
+            g(z)(z-z_0)^2 = \sum_0^\infty a_k(z-z_0)^k
+        \end{align*}
+        which gives the following expression on \(D_\epsilon^*\) for \(b_k = a_{k+2}\)
+        \begin{align}
+            g(z) = \sum_{-2}^\infty b_k(z-z_0)^k = \sum_0^\infty b_k(z-z_0)^k
+        \end{align}
+        Where \(b_{-2} = b_{-1} = 0\) follows from \(g\) being bounded near \(z_0\). Moreover since \(g\) is nonvanishing, we must have some \(b_N \neq 0\), it follows that
+        \begin{align}
+            \lim_{z\to z_0}(z-z_0)^{N+1}(f(z) - a) = \lim_{z \to z_0}\frac{(z-z_0)^{N+1}}{g(z)} \overset{(12)}{=} \lim_{z\to z_0} \frac{z-z_0}{b_N + \mathcal{O}(z-z_0)} = 0
+        \end{align}
+        Now we can show directly from the definition that \(f\) has a pole
+        \begin{align*}
+            \lim_{z\to z_0}(z-z_0)^{N+1}f(z) = \lim_{z\to z_0}(z-z_0)^{N+1}(f(z) - a) \overset{(13)}{=} 0
+        \end{align*}
+        Which is the desired contradition. \qed
     \end{pb}
 \end{document}
