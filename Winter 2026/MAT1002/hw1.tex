@@ -91,4 +91,22 @@
         \end{align}
         \qed
     \end{pb}
+    \begin{pb}
+        \textbf{(a)}
+
+        \textbf{(b)} Let \(z \in \mathbb{C}\), then by \textcolor{red}{Insert EQ number here ...}
+        \begin{align*}
+            f'(z) = \frac{1}{2\pi i}\int_{\abs{w-z} = R}\frac{f(w)}{(w - z)^2}dz
+        \end{align*}
+        Applying the standard arc-length inequality yields
+        \begin{align}
+            \abs{f'(z)} \leq \frac{1}{2\pi}2\pi R \frac{\sup_\mathbb{C} \abs{f}}{R^2} = \frac{\sup_\mathbb{C}\abs{f}}{R} \overset{R \to \infty}{\longrightarrow} 0
+        \end{align}
+        Therefore \(f' \equiv 0\), for any two points in \(\mathbb{C}\), to see this implies \(f\) is constant we use the fundamental theorem of calculus, if \(z_0,z_1 \in \mathbb{C}\) take \(\gamma\) to be the straight line starting at \(z_0\) and ending at \(z_1\) so that
+        \begin{align*}
+            \abs{f(z_1) - f(z_0)} = \abs{\int_\gamma f'(z)dz} \leq \ell(\gamma)\sup_\mathbb{C}\abs{f'} = 0
+        \end{align*} \qed
+
+        \textbf{(c)} Suppose a polynomial \(P\) does not have a root. Then \(\frac{1}{P}\) is entire, hence \(1/P\) is constant by Liouville's theorem. We conclude any polynomial without a root is of degree zero. \qed
+    \end{pb}
 \end{document}
