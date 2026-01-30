@@ -252,6 +252,11 @@
          Which is indeed holomorphic on \(\mathbb{C}\setminus \set{0}\). \qed
     \end{pb}
     \begin{pb}
-        Note 
+        Note that the reason we only need to check on the charts \(\mathbb{P}^1 \setminus \set{[0:1]}\), and \(S^2 \setminus N\) are that away from \(S\) we have that \(f\) can be written in charts as \(\phi_{\tilde{S}}\circ f\circ\pi_S^{-1} = 1_{\mathbb{C}^\times}\). To begin with we compute \(\phi_{\tilde{N}}\circ f \circ \pi_N^{-1}\) we write \(z = x+iy\)
+        \begin{align}
+            \phi_{\tilde{N}}\circ f \circ \pi_N^{-1}(x+iy) &= \phi_{\tilde{N}}\circ\phi_{\tilde{S}}^{-1}\circ\pi_S\left(\frac{2x}{x^2+y^2+1},\frac{2y}{x^2+y^2+1},\frac{-2}{1+x^2+y^2}+1\right) \\
+            &= \phi_{\tilde{N}}\circ\phi_{\tilde{S}}^{-1}(1/z) = \phi_{\tilde{N}} [1/z:1] = z
+        \end{align}
+        This of course extends to the identity map from \(\mathbb{C} \to \mathbb{C}\), so if we take \(f(S) = [1:0]\), the extended map on \(S^2 \setminus N \to \mathbb{P}^1 \setminus\set{[1:0]}\) charts is just the identity map \(z \mapsto z\) which is holomorphic, so that every point in \(S^2\) is contained in an open set with (the extension of) \(f\) holomorphic in coordinates on that open set. Moreover, by the holomorphic inverse function theorem (the extension of) \(f\) is biholomorphic, since the derivative in either pair of charts is just given by \(1\) which is non-vanishing.
     \end{pb}
 \end{document}
