@@ -164,4 +164,94 @@
         \end{align*}
         Which is the desired contradition. \qed
     \end{pb}
+    \begin{pb}
+        Denote the annulus in question as \(A\), the outer disc as \(D_{r_2}\) and the inner disc as \(D_{r_1}\), then for \(z_0 \in A^\circ\), we can let \(\gamma\) be a ray from \(D_{r_1}\) to \(D_{r_2}\) not intersecting \(z_0\). It follows that \(\partial D_{r_2} - \gamma + \gamma - \partial D_{r_1}\) is a closed piecewise \(C^1\) curve in \(A\) around \(z_0\), so that by Cauchy's integral formula (8):
+        \begin{align}
+            f(z_0) = \int_{\partial D_{r_2} - \gamma + \gamma - \partial D_{r_1}} \frac{f(w)}{w-z_0}dw = \int_{\partial D_{r_2}}\frac{f(w)}{w-z_0}dw - \int_{\partial D_{r_1}} \frac{f(w)}{w-z_0}dw
+        \end{align}
+        Now we can apply algebraic manipulations, since on \(\partial D_{r_2}\) we have \(\abs{w} > \abs{z_0}\) we get the following uniformly convergent power series expansion
+        \begin{align}
+            \frac{f(w)}{w-z_0} = \frac{f(w)}{w}\left(\frac{1}{1 - \frac{z_0}{w}}\right) = \frac{f(w)}{w} \sum_0^\infty \left(\frac{z_0}{w}\right)^k
+        \end{align}
+        Similarly, on \(\partial D_{r_1}\) \(\abs{z_0} > \abs{w}\), so that there is a uniformly convergent power series expansion given by
+        \begin{align}
+            -\frac{f(w)}{w-z_0} = \frac{f(w)}{z_0}\left(\frac{1}{1-\frac{w}{z_0}}\right) = \frac{f(w)}{z_0}\sum_0^\infty\left(\frac{w}{z_0}\right)^k
+        \end{align}
+        Combining (14), (15) and (16) along with uniform convergence in (15) and (16) furnishes
+        \begin{align}
+            2\pi if(z_0) &= \int_{\partial D_2}\frac{f(w)}{w} \sum_0^\infty \left(\frac{z_0}{w}\right)^kdw + \int_{\partial D_1}\frac{f(w)}{z_0}\sum_0^\infty\left(\frac{w}{z_0}\right)^kdw \\
+            &= \sum_0^\infty z_0^k\int_{\partial D_{r_2}} \frac{f(w)}{w^{k+1}} dw + \sum_0^\infty \frac{1}{z_0^{k+1}}\int_{\partial D_{r_2}} f(w)w^kdw \\
+            &= \sum_0^\infty z_0^k \int_{\partial D_{r_2}} \frac{f(w)}{w^{k+1}}dw + \sum_{-\infty}^1 z_0^k \int_{\partial D_{r_1}} \frac{f(w)}{w^{k+1}}dw
+        \end{align}
+        Now letting \(r \in (r_1,r_2)\), we can use the same trick with a ray  \(\gamma\) used in (14) to apply Cauchy's theorem and find that
+        \begin{align}
+           &\sum_0^\infty z_0^k \int_{ \partial D_r} \frac{f(w)}{w^{k+1}}dw - \sum_0^\infty z_0^k \int_{\partial D_{r_2}} \frac{f(w)}{w^{k+1}}dw = 0 \\ \tand &\sum_{-\infty}^1 z_0^k \int_{\partial D_{r_1}} \frac{f(w)}{w^{k+1}}dw - \sum_{-\infty}^1 z_0^k \int_{\partial D_r} \frac{f(w)}{w^{k+1}}dw = 0
+        \end{align}
+        Where application of Cauchy's theorem follows by \(\sum_0^\infty z_0^k \int_{ \partial D_r} \frac{f(w)}{w^{k+1}}dw\) analytic on \(B_{r_2}(0)\) and similarly \(\sum_{-\infty}^1 z_0^k \int_{\partial D_r} \frac{f(w)}{w^{k+1}}dw\) analytic on \(\overline{B_{r_1}(0)}^c\). Now we can substitute into (19) using (20) and (21 to obtain
+        \begin{align}
+            f(z_0) = \sum_{-\infty}^\infty z_0^k \frac{1}{2\pi i}\int_{\partial D_r}\frac{f(w)}{w^{k+1}}dw
+        \end{align}
+        \qed
+    \end{pb}
+    \begin{pb}
+        From the chain rule we have \(f \circ (w \mapsto 1/w)\) is holomorphic on \(\mathbb{C} \setminus \set{0}\). Suppose for contradiction that \(f\circ (w \mapsto 1/w)\) has an essential singularity at zero, then by Casorati-Weierstrass
+        \(f(\overline{B_\epsilon(0)}^c) = f\circ(w\mapsto\frac{1}{w})(B_\frac{1}{\epsilon}(0) \setminus \set{0})\) is dense in \(\mathbb{C}\), this gives us a contradiction since \(f(B_\epsilon(0))\) is open by the open mapping principle, hence \(f(B_\epsilon(0)) \cap f(\overline{B_\epsilon(0)}^c) \neq \emptyset\) which contradicts injectivity of \(f\). It follows that \(f\circ (w\mapsto \frac{1}{w})\) has a pole at \(0\), and hence a Laurent series. Now write
+        \begin{align*}
+            f \circ (w\mapsto\frac{1}{w}) = \sum_{-N}^\infty a_kz^k \implies f(w) = \sum_{-N}^\infty a_kz^{-k}
+        \end{align*}
+        \(f\) being entire implies that \(a_j = 0\) for \(j \geq 1\), hence \(f = \sum_0^N a_{-k}z^k\), since \(f'(z) = \sum_1^n a_{-k}z^{k-1}\) is nonvanishing, by the fundamental theorem of algebra \(f'\) must be a constant nonzero polynomial, hence \(a_{-k} = 0\) for \(k > 1\) and \(f = a_{-1}z + a_0\) as desired. \qed
+    \end{pb}
+    \begin{pb}
+        \textbf{(i)} Let \([z_0:\cdots:z_n] \in \mathbb{P}^n\), then \((z_0,\hdots,z_n) \neq 0\), hence atleast one coordinate is nonzero, label that coordinate \(j\) to see that \([z_0:\cdots:z_n] \in U_j\) by definition. To check \(\varphi\) is a homeomorphism we can check it is a continuous and open bijection. Injectivity follows from the map \(\varphi_j\) choosing the unique equivalence class representative with \(j\)-th entry equal to one. To see surjectivity let \(z = (z_0,\hdots,1,\hdots,z_n) \in \mathbb{C}^n\), then \(z = \varphi_j([z_0:\cdots:1:\cdots:z_n])\). By definition of the quotient topology \(\varphi_j\) is continuous if and only if \(\varphi_j\circ \pi\) is, same for open. To check this simply write \(\varphi_j \circ \pi(z_0,\hdots,z_n) = \left(z_0/z_j,\hdots,z_n/z_j\right)\), since we are on \(\set{z_j \neq 0}\) this map is smooth, and its Jacobian has a copy of \(\frac{1}{z_j}1_{n\times n}\), thus this map is a submersion, since submersions are open maps this map is smooth, open and a bijection hence a homeomorphism.
+
+        \textbf{(ii)} On \(\varphi_j(U_i \cap U_j)\) we have
+        \begin{align}
+            \varphi_i \varphi_j^{-1}(z_0,\hdots,1,\hdots,z_n) = \left(\frac{z_0}{z_i},\hdots,\frac{1}{z_i},\hdots,\frac{z_n}{z_i}\right)
+        \end{align}
+        So each of the coordinate functions is of the form \(1\) (which is not actually considered in the image by identification with \(\mathbb{C}^n\)), \(\frac{1}{z_i}\) or \(z_k/z_i\) for \(k \neq i\). From here it is immediate, since \(\frac{1}{z_i}\) is holomorphic on \(\set{z_i \neq 0} \supset \varphi_i(U_i \cap U_j)\) we get for \(\ell \neq k,i\) that \[\frac{\partial}{\partial \overline{z_\ell}} \frac{1}{z_i} = \frac{1}{z_i} \frac{\partial}{\partial \overline{z_\ell}} 1 = 0 = z_k/z_i \frac{\partial}{\partial \overline{z_\ell}} 1 = \frac{\partial}{\partial \overline{z_\ell}} z_k/z_i\]
+        and by holomorphicity or \(\frac{1}{z_i}\), as well as \(z_k\)
+        \begin{align*}
+            \frac{\partial}{\partial \overline{z_k}} \frac{z_k}{z_i} = 1/z_i \frac{\partial}{\partial \overline{z_k}} z_k = 0 \tand \frac{\partial}{\partial \overline{z_i}} \frac{1}{z_i} = 0 = z_k \frac{\partial}{\partial \overline{z_i}} \frac{1}{z_i} = \frac{\partial}{\partial \overline{z_i}} \frac{z_k}{z_i}
+        \end{align*} \qed
+        
+        % , it suffices to check on the basis, so let \(z \in \mathbb{C}^n\) and consider \(B_\epsilon(z) \subset \mathbb{C}^n\), then
+        % \begin{align}
+        %     (\varphi_j\circ \pi)^{-1}(B_\epsilon(z)) = \bigcup_{\lambda \in \mathbb{C}^\times} \lambda \cdot B_\epsilon(z) \label{eq:projopen}
+        % \end{align}
+        % An arbitrary element \(w \in (\varphi_j\circ \pi)^{-1}(B_\epsilon(z))\) can be written in the form \(w = \lambda\cdot(z_0 + \delta_0,\hdots,1,\hdots, z_n + \delta_n)\) with \(\abs{\mathbf{\delta}} < \epsilon \) by \eqref{eq:projopen}, also note that for some \(r > 0\) we have \(B_r(z + \delta) \subset B_\epsilon(z)\) which of course entails \(\bigcup_{\lambda \in \mathbb{C}^\times}\lambda\cdot B_r(z + \delta) \subset (\varphi_j\circ \pi)^{-1}(B_\epsilon(z))\). Now for \(v \in \mathbb{C}^{n+1}\) we can write
+        % \begin{align}
+        %     w + v = C\left(\frac{z_0 + \delta_0}{1 + v_j/\lambda} + \frac{v_0}{\lambda + v_j},\hdots,1,\hdots,\frac{z_n + \delta_n}{1 + v_j/\lambda} + \frac{v_n}{\lambda + v_j}\right)
+        % \end{align}
+        % Where \(C = \frac{\lambda^2}{\lambda + v_j}\), from this formula it is immediately apparent that \(\lim_{v \to 0} (w + v) = C(z + \delta)\), and since the \(j\)-th entry is fixed at \(C\) for all \(v\), we have for sufficiently small \(v\) that \(w + v \in C\cdot B_r(z + \delta)\). Finally to check that the map is open, note that \(\varphi_j\circ\pi(z) = q(z/z_j)\), where \(q\) denotes the projection \(\mathbb{C}^{n+1} \to \mathbb{C}\), we once again check on basis elements, so consider \(z = (z_0,\hdots,z_n) \in \mathbb{C}^{n+1}\) with \(z_j \neq 0\) and take \(B_\epsilon(z)\). Then if \(w \in \varphi_j\circ \pi(B_\epsilon(z))\), we can write \(w = \frac{z + v}{(z + v)_j}\) for \(\abs{v} < \epsilon\), then for any \(u \in B_{\frac{\epsilon - \abs{v}}{\abs{(z-v)_j}}}(w)\)
+    \end{pb}
+    \begin{pb}
+        I will explain it for \(\pi_N\), \(\pi_S\) is clearly the same by symmetry (however we flip the convention \((x,y,0) \leftrightsquigarrow x - iy\) to ensure holomorphicity). Stereographic projection geometrically is embedding \(S^2 \hookrightarrow \mathbb{R}^3\) (i.e. defining \(S^2\) as the equation in question), where we identify \(\mathbb{R}^2\) with \(\mathbb{C}\) in the obvious way \((x,y,0) \leftrightsquigarrow x + iy\), then we associate to each point \((x_1,x_2,x_3)\) in \(S^2 \setminus N\) the unique point where the  \(\mathbb{C} \leftrightsquigarrow \mathbb{R}^2 \times \set{0}\) such that the line through \(N\) and \((x_1,x_2,x_3)\) intersects \(\mathbb{C}\). The equation for \(\pi_N\) is simply parameterizing in terms of \((x_1,x_2,x_3)\) the point where the line meets \(\mathbb{C}\). Concretely we have the following parameterization
+        \begin{align}
+            \ell(t) = t(x_1,x_2,x_3 - 1) + (0,0,1) \label{eq:stereo}
+        \end{align}
+         We get the point of projection by solving for \(t_0\) such that \(\ell(t_0) \in \mathbb{R}^2 \times\set{0}\), this is \(t_0 = \frac{1}{1-x_3}\), now plugging this into \eqref{eq:stereo} gives
+         \begin{align}
+            \ell(t_0) = \left(\frac{x_1}{1-x_3},\frac{x_2}{1-x_3},0\right) \leftrightsquigarrow \frac{x_1 + ix_2}{1-x_3} \overset{\text{def}}{=} \pi_N(x_1,x_2,x_3)
+         \end{align}
+         From this geometric realization we can also compute \(\pi_S^{-1}\) as being the unique point on \(S^2 \setminus S\) which intersects the line through \((x,-y,0) \leftrightsquigarrow x+iy\), this gives the parameterized line
+         \begin{align}
+            \ell'(t) = t(x,-y,1) + (0,0,-1)
+         \end{align}
+         so solving for \(t_0\) where \(\ell'(t_0) \in S^2\) we get
+         \begin{align}
+            t_0^2(x^2 + y^2 + 1) - 2t_0 = 0 \label{eq:inversester}
+         \end{align}
+         Where the zeroes of \eqref{eq:inversester} correspond to \(S\) and
+         \begin{align}
+            \pi_S^{-1}(x+iy) = \left(\frac{2x}{x^2 + y^2 + 1},\frac{-2y}{x^2+y^2+1},\frac{1-x^2-y^2}{x^2+y^2+1}\right)
+         \end{align}
+         Now we can apply \(\pi_N\) to get
+         \begin{align}
+            \pi_N\pi_S^{-1}(x+iy) = \frac{\frac{2(x-iy)}{x^2+y^2+1}}{1-\frac{1-x^2-y^2}{1+x^2+y^2}} = \frac{x-iy}{x^2+y^2} = \frac{\overline{z}}{\abs{z}^2} = \frac{1}{z}
+         \end{align}
+         Which is indeed holomorphic on \(\mathbb{C}\setminus \set{0}\). \qed
+    \end{pb}
+    \begin{pb}
+        Note 
+    \end{pb}
 \end{document}
