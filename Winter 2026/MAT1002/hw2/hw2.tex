@@ -1,0 +1,57 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+
+\fancyhf{}
+\lhead{MAT1002 hw2}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\usepackage{tikz-cd, stackengine}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\newcommand{\px}{\frac{\partial}{\partial x}}
+\newcommand{\py}{\frac{\partial}{\partial y}}
+\newcommand{\pz}{\frac{\partial}{\partial z}}
+\newcommand{\ppx}{\frac{\partial^2}{\partial x^2}}
+\newcommand{\ppy}{\frac{\partial^2}{\partial y^2}}
+\newcommand{\ppz}{\frac{\partial^2}{\partial z^2}}
+\newcommand{\hess}{\operatorname{Hess}}
+
+\begin{document}
+    \begin{pb}
+        \begin{align*}
+            \Im(\sigma) &= \Im\left(\frac{(a\tau + b)(c\overline{\tau}+d )}{\norm{c\tau + d}^2}\right) = \Im\left(\frac{ac\norm{\tau}^2 + bd + ad\tau + bc \overline{\tau}}{\norm{c\tau + d}^2}\right) \\ &= \frac{1}{\norm{c\tau + d}^2}\Im(ad\tau + bc \overline{\tau}) = \frac{1}{\norm{c\tau + d}^2} (ad-bc)\Im(\tau) = \frac{1}{\norm{c\tau + d}^2}\Im(\tau)
+        \end{align*}
+        Then since \(\norm{c\tau + d}^2 > 0\) and \(\Im(\tau) > 0\) we conclude that \(\Im(\sigma) > 0\).
+
+        Now define 
+        \begin{align*}
+            f: \mathbb{C} &\to \mathbb{C}/(\mathbb{Z}+\sigma \mathbb{Z}) \\
+            z &\mapsto \frac{z}{c\tau + d} + \mathbb{Z}+\sigma \mathbb{Z}
+        \end{align*}
+        To see this descends to a holomorphic map on the torus, we need to check it is periodic with respect to \(\mathbb{Z} + \tau \mathbb{Z}\), so we want to check that \(f(z + n \tau + m) = f(z)\) for any \(n,m \in \mathbb{Z}\). Since \(f\) is linear it will be sufficient to show that \(f(\tau)\) and \(f(1)\) both lie in the lattice \(\mathbb{Z} + \sigma \mathbb{Z}\). This is just a computation,
+        \begin{align}
+            \tau = (ad - bc)\tau + bd - bd = d(a \tau + b) - b(c\tau + d) \\
+            1 = (ad-bc) + ac \tau - ac \tau = -c(a \tau + b) + a(c \tau + d)
+        \end{align}
+        So that (1) gives us \(f(\tau) = d\sigma - b\) and (2) gives \(f(1) = -c \sigma + a\) both are in \(\mathbb{Z} + \sigma \mathbb{Z}\), so that \(f\) descends to the torus \(X_\tau\). To see that \(f\) is a biholomorphism just take \(\mathbb{C} \to X_\tau\) via \(z \mapsto (c \tau + d)z\), this descends to a holomorphic map on \(X_\sigma\) since \(\sigma \mapsto \tau\), and \(1 \mapsto c\tau + d\) are both in \(\mathbb{Z} + \tau \mathbb{Z}\), moreover this is clearly the inverse of \(f\). \qed
+    \end{pb}
+\end{document}

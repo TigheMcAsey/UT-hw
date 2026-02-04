@@ -36,6 +36,7 @@
 \newcommand{\hess}{\operatorname{Hess}}
 
 \begin{document}
+
     \begin{pb}
         We first find an expression for \(\zeta(s)\Gamma(s)\) on \(\Re(s) > 1\), to do so we will do a substitution \(u = x/n\), valid for any \(n \in \mathbb{Z}_{>0}\)
         \begin{align*}
@@ -53,7 +54,12 @@
         \begin{align*}
             \int_{C(\epsilon)}f - \int_{C(\delta)}f = \int_{C(\epsilon,\delta,M)} f + \int_{\gamma_1(\epsilon,\delta,M)} f + \int_{\gamma_2(\epsilon,\delta,M)} f
         \end{align*}
-        \textcolor{red}{INSERT ILLUSTRATION HERE}
+        
+        \begin{figure}[h]
+            \begin{center}
+                \includegraphics[width=0.8\linewidth]{Contourfig.pdf}
+            \end{center}
+        \end{figure}
         
         Then for \(f\) holomorphic away from he real line, the \(C(\epsilon,\delta, M)\) term vanishes. Notice now that using the standard arclength inequality for large \(M\) we have
         \begin{align*}
@@ -257,6 +263,6 @@
             \phi_{\tilde{N}}\circ f \circ \pi_N^{-1}(x+iy) &= \phi_{\tilde{N}}\circ\phi_{\tilde{S}}^{-1}\circ\pi_S\left(\frac{2x}{x^2+y^2+1},\frac{2y}{x^2+y^2+1},\frac{-2}{1+x^2+y^2}+1\right) \\
             &= \phi_{\tilde{N}}\circ\phi_{\tilde{S}}^{-1}(1/z) = \phi_{\tilde{N}} [1/z:1] = z
         \end{align}
-        This of course extends to the identity map from \(\mathbb{C} \to \mathbb{C}\), so if we take \(f(S) = [1:0]\), the extended map on \(S^2 \setminus N \to \mathbb{P}^1 \setminus\set{[1:0]}\) charts is just the identity map \(z \mapsto z\) which is holomorphic, so that every point in \(S^2\) is contained in an open set with (the extension of) \(f\) holomorphic in coordinates on that open set. Moreover, by the holomorphic inverse function theorem (the extension of) \(f\) is biholomorphic, since the derivative in either pair of charts is just given by \(1\) which is non-vanishing.
+        This of course extends to the identity map from \(\mathbb{C} \to \mathbb{C}\), so if we take \(f(S) = [1:0]\), the extended map on \(S^2 \setminus N \to \mathbb{P}^1 \setminus\set{[1:0]}\) charts is just the identity map \(z \mapsto z\) which is holomorphic, so that every point in \(S^2\) is contained in an open set with (the extension of) \(f\) holomorphic in coordinates on that open set. Moreover, by the holomorphic inverse function theorem (the extension of) \(f\) is biholomorphic, since the derivative in either pair of charts is just given by \(1\) which is non-vanishing. \qed
     \end{pb}
 \end{document}

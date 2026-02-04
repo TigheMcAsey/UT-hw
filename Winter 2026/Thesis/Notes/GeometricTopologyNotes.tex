@@ -214,4 +214,43 @@
         Intuitively the covariant derivative gives the acceleration of the curve, existence and uniqueness follow form writing \(DV/dt\) explicitly in local coordinates.
     \end{definition}
 
+    \section{Hyperbolic Space}
+    \subsection{Elementary Properties}
+    \begin{definition}[Hyperbolic Space 1]
+        Define the Lorentzian inner product on \(\mathbb{R}^{n+1}\) as \(\gen{x,y} = \sum_1^n x_iy_i  - x_{n+1}y_{n+1}\). Then \(I^n := \set{x \in \mathbb{H}^{n+1} \mid \norm{x} = -1}\)
+    \end{definition}
+    \begin{proposition}
+        if \(x \in I^n\), then \(\gen{-,-} \vert_{x^\perp}\) is positive definite.
+    \end{proposition}
+    \begin{proof}
+        Using the matrix of the bilinear form, the eigenvalues are \(1\) with multiplicity \(n\), and \(-1\) multiplicity \(1\).
+    \end{proof}
+    \begin{definition}[Subspaces]
+        An \(k\)-dimensional subspace of \(I^n\) is \(\mathbb{R}^{k+1} \cap I^n\) when the intersection is nonempty, so that a line is defined as an intersection of a plane through the origin with \(I^n\).
+    \end{definition}
+    \begin{thm}[Geodesics in \(I^n\)]\label{thm:Hyperbolic Geodesics}
+        The geodesics in \(I^n\) are lines, concretely the geodesic through \(p \in I^n\) with velocity \(v \in T_p I^n\) is given by
+        \begin{align*}
+            p \cosh(t) + v\sinh(t)
+        \end{align*}
+    \end{thm}
+    \begin{proof}
+        It is easy to check that this given formula parameterizes a line \(\ell\). To see that geodesics are lines, consider the reflection about the hyperplane at \(p\) determined by \(v\). This intersects \(I^n\) at a line, so that the fixed locus of reflection about this plane is the line \(\ell\) at \(p\) with initial velocity \(v\), since the reflection is an isometry it fixes the geodesic \(\gamma\) with \(\gamma(0) = p\) and \(\gamma'(0) = v\), but this is only possible if \(\gamma \subset \ell\) the fixed locus. Hence \(\gamma(t) \subset \ell\) for all \(t\), and the curve cut out by the geodesic is exactly \(\ell\).
+    \end{proof}
+    \begin{proposition}
+        \(I^n\) is complete
+    \end{proposition}
+    \begin{proof}
+        By Theorem \ref{thm:Hyperbolic Geodesics} the geodesics are lines, so have maximal domains of definition, the result follows from Hopf-Rinow.
+    \end{proof}
+    \begin{proposition}[Calculating distances]
+        \begin{align*}
+            \cosh(d(p,q)) = -\gen{p,q}
+        \end{align*}
+    \end{proposition}
+    \begin{proof}
+        Use the formula for geodesics in Theorem \ref{thm:Hyperbolic Geodesics}, and take the inner product with \(q\) on either side at \(t = d(p,q)\).
+    \end{proof}
+
+
 \end{document}
