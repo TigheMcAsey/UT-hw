@@ -54,4 +54,84 @@
         \end{align}
         So that (1) gives us \(f(\tau) = d\sigma - b\) and (2) gives \(f(1) = -c \sigma + a\) both are in \(\mathbb{Z} + \sigma \mathbb{Z}\), so that \(f\) descends to the torus \(X_\tau\). To see that \(f\) is a biholomorphism just take \(\mathbb{C} \to X_\tau\) via \(z \mapsto (c \tau + d)z\), this descends to a holomorphic map on \(X_\sigma\) since \(\sigma \mapsto \tau\), and \(1 \mapsto c\tau + d\) are both in \(\mathbb{Z} + \tau \mathbb{Z}\), moreover this is clearly the inverse of \(f\). \qed
     \end{pb}
+    \begin{pb}
+        I will use from class the identification of two copies of \(\mathbb{C}\), the first being labelled (I), and the second (II), so that \(X\) is defined by gluing (I) to (II) along the line segments from \(0\) to \(1\), and from \(\lambda\) to \(\infty\) along the line through \(1\) and \(\lambda\) as in lecture. Now on a neighborhood of infinity (more explicitly on \(U = \set{z \mid \abs{z} > \max\set{1,\abs{\lambda}}}\) in both (I) and (II)) we can take local coordinate \(t\), so that
+        \begin{align}
+            &t^2 = \frac{1}{z} &t = \begin{cases}
+                \sqrt{z} & z \in (I) \\
+                -\sqrt{z} & z \in (II)
+            \end{cases}
+        \end{align}
+        This allows us to compute 
+        \begin{align}
+            &2tdt = -\frac{1}{z^2}dz = -t^4 dz  \\ &dz = -2t^{-3}dt
+        \end{align}
+        Moreover we also have defined \(\omega^2 = z(z-1)(z-\lambda)\) with sign conventions
+        \begin{align}
+            \omega = \begin{cases}
+                \sqrt{z(z-1)(z-\lambda)} & z \in (I)\\
+                -\sqrt{z(z-1)(z-\lambda)} & z \in (II)
+            \end{cases}
+        \end{align}
+        Then using our local \(t\)-coordinates we have
+        \begin{align*}
+            \omega^2 = \frac{1}{t^2}\left(\frac{1}{t^2} - 1\right)\left(\frac{1}{t^2} - \lambda\right) = \frac{1}{t^6}(1-t^2)(1-\lambda t^2)
+        \end{align*}
+        Using the sign conventions for \(t\) and \(\omega\) in (3) and (6) this is consistent with
+        \begin{align}
+            \frac{1}{\omega} = \frac{t^3}{(1-t^2)(1-\lambda t^2)}
+        \end{align}
+        Substituting (5) into (7) yields the differential in local \(t\)-coordinates near infinity.
+        \begin{align}
+            \frac{dz}{\omega} = \frac{-2dt}{(1-t^2)(1-\lambda t^2)}
+        \end{align}
+        Since \(\abs{z} = \frac{1}{\abs{t^2}} > \max\set{\abs{1},\abs{\lambda}}\) this is a holomorphic form on \(U\), which is clearly non-vanishing. \qed
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} Consider an arbitrary meromorphic function \(f: X \to \mathbb{C}\), we may denote the poles of \(f\) as \(P_1,\hdots,P_r\) with multiplicities \(n_1,\hdots,n_r\). Away from its poles, \(f\) is holomorphic as a map to \(\mathbb{C}\), and hence to \(\mathbb{P}^1\), so we need only consider the behaviour of \(f\) near its poles, we should also note that \(f\) is well defined as a set map to \(\mathbb{P}^1\) by taking \(f(P_j) = \infty\) for each \(P_j\). Now let \((U,\psi)\) be a chart containing \(P_1\), by possibly shrinking \(U\) we may assume that \(0 \not \in f(U)\), so that \(f(U)\) is contained in the chart of \(\mathbb{P}^1\) containing \(\infty\), moreover for simplicity we may assume that \(0 \in U\) with \(\psi(0) = P_1\). Now since \(f\) is meromorphic on \(X\) with pole \(P_1\) of multiplicity \(n_1\) we have
+        \begin{align}
+            f\circ \psi(z) = \sum_{-n_1}^\infty a_k z^k
+        \end{align}
+        with \(a_{-n_1} \neq 0\). Now since the image lies entirely of the chart of \(\mathbb{P}^1\) containing \(\infty\), to consider this as a map to \(\mathbb{P}^1\) we compose with the coordinate chart \(\varphi\) taking \(\mathbb{C} \to (\mathbb{C}\setminus\set{0}) \cup \set{\infty}\) on \(\mathbb{P}^1\), which takes \(z \mapsto 1/z\), the point \(\infty\) corresponds to \(0\) in this coordinate chart. This gives the following expression for \(f\) around \(P_1\) in coordinates:
+        \begin{align}
+            \varphi^{-1}\circ f \circ \psi: z \mapsto \begin{cases}
+                (\sum_{-n_1}^\infty a_kz^k)^{-1} & z \neq 0 \\
+                \varphi^{-1}(f\circ\psi(0)) = \varphi^{-1}(f(P_j)) = \varphi^{-1}(\infty) = 0 & z = 0
+            \end{cases}
+        \end{align}
+        Now we may simplify \((\sum_{-n_1}^\infty a_kz^k)^{-1} = \frac{z^{n_1}}{\sum_0^\infty a_{k-n_1}z^k}\), which of course takes value \(0\) at \(z = 0\), which simplifies the piecewise expression for \(f\) in charts given by (10) to \(\frac{z^{n_1}}{\sum_0^\infty a_{k-n_1}z^k}\). Since the denomenator is a nonvanishing (near zero) holomorphic function convergent near zero, we find that \(\varphi^{-1}\circ f\circ \psi\) is a holomorphic map \(X \to \mathbb{P}^1\) in a chart around \(P_1\), the same argument works for charts around \(P_2,\hdots, P_n\) so that \(f\) is indeed a holomorphic function between \(X\) and \(\mathbb{P}^1\). \qed
+
+        \textbf{(b)} By compactness, it suffices to show that \(f^{-1}(p)\) is discrete to conclude that \(d\) is finite. Moreover, since a finite union of discrete sets is discrete, we may cover \(X\) in a finite number of charts \(\set{(U_j,\varphi_j)}_1^r\), and check that \(f\vert_{U_j}^{-1}(p)\) is discrete for each \(j\). Since coordinate charts are diffeomorphisms, we can once again reduce the problem to checking each \((\psi^{-1} \circ f\vert_{U_j}\circ \varphi_j)^{-1}\set{\psi^{-1}(p)}\) is discrete for some \(\psi\) correspodning to a coordinate chart containing \(p\), with \(\psi^{-1} \circ f\vert_{U_j}\circ \varphi_j\) simply being a holomorphic function \(\varphi^{-1}(U) \subset \mathbb{C} \to \mathbb{C}\), this reduces to the fact that the zeroes of a holomorphic function are discrete, and 
+        \begin{align*}
+            (\psi^{-1} \circ f\vert_{U_j}\circ \varphi_j)^{-1}(\psi^{-1}(p)) = \set{z \in \varphi^{-1}(U_j) \mid \psi^{-1} \circ f\vert_{U_j}\circ \varphi_j(z) - \psi^{-1}(p) = 0}
+        \end{align*}
+        is the set of zeroes of a holomorphic function. Thus by the reductions above, \(d = \# f^{-1}(p) < \infty\).
+
+        Now to see that \(d\) is constant, I will show that \(d\) is constant in some open set \(U\) containing \(p\), since this will hold for any \(p' \in X\) this implies that the degree of a point is a continuous map \(X \to \mathbb{Z}\), so that since \(X\) is connected it must be the constant map. To see that \(d\) is locally constant, take \(\set{p_0,\hdots,p_d} = f^{-1}(p)\), then around each \(p_j\) take an image of an open ball, \(\varphi_j(B_\epsilon) \supset \set{p_j}\) with \(\varphi_i(B_\epsilon) \cap \varphi_j(B_\epsilon) = \emptyset\) for \(i \neq j\). Letting \(\psi\) be a coordinate map of an open set containing \(p\), we get \(\psi^{-1} \circ f\circ \varphi_j: B_\epsilon \subset \mathbb{C} \to \mathbb{C}\) is holomorphic with \((\psi^{-1} \circ f\circ \varphi_j)^{-1}(\psi^{-1}(p)) = \set{p_j}\), since holomorphic functions on \(\mathbb{C}\) have locally constant degree, each of these maps has degree \(1\), from an open set in \(B_\epsilon\) to an open set \(V_j \supset \set{\psi^{-1}(p)}\), it follows that any \(p' \in \bigcap_1^d V_j\) has a single preimage in each of \(\varphi_j(B_\epsilon)\) for \(j=1,\hdots,d\). To see that these are all the possible preimages, we repeat the argument working locally for each \(x \in X\), to get a chart \((U_x,\varphi_x)\) around \(x\) such that \(\psi^{-1} \circ f\circ \varphi_x\) has degree zero, by replacing \(U_x\) with a possible smaller open set, this implies that \(f(U_x) \cap V_x = \emptyset\) for some open \(V_x \supset \set{p}\). Now we use compactness to refine the cover \(\set{U_x}_{x \in X} \cup \set{\varphi_j(B_\epsilon)}_1^d\) to a finite subcover, then for each element \(p' \in \bigcap_1^d V_j \bigcap_1^N V_{x_j}\), we have
+        \begin{align*}
+            f^{-1}(p') = \bigcup_1^d f\vert_{V_j}^{-1}(p') \bigcup_1^N f\vert_{V_{x_j}}^{-1}(p')
+        \end{align*}
+        Which is the union of \(d\) (distinct) singletons and \(N\) emptysets. Hence the degree is constant in the neighborhood \(\bigcap_1^d V_j \bigcap_1^N V_{x_j} \supset \set{p}\), therefore constant on \(X\). \qed
+
+        \textbf{(c)} \(z\) has degree 2, and \(w\) has degree 3. As proof, by parts (a) and (b) it suffices to compute the preimage for a single point in which it is convenient. For \(z\) this is very simple, since for any point \(x\) away from the identifications \(z^{-1}(x)\) consists of two copies of \(x\), one in each glued copy of \(\mathbb{C}\) (i.e. choose any value of \(x\) on the imaginary line distinct from \(\lambda\)). In the case of \(w\), we count its zeroes, \(w^2 = x(x-1)(x-\lambda)\) implies that \(w\) vanishes at each of \(0,1 \tand \lambda\), since these are glued points, we do not getting the same double counting as in the \(z\) case and this gives degree 3, this is also up to multiplicity, since \(w\) has vanishing of order \(1\) at each of these points, checking at zero (since \(1\) and \(\lambda\) are similar) we have the local coordinate \(t^2 = z\), defined via
+        \begin{align*}
+            t = \begin{cases}
+                \sqrt{z} & \text{on } (I) \\
+                -\sqrt{z} & \text{on } (II)
+            \end{cases}
+        \end{align*}
+        so that \(w = t\sqrt{(t^2 - 1)(t^2 - \lambda)}\) indeed has order one vanishing. \qed
+    \end{pb}
+    \begin{pb}
+        
+    \end{pb}
+    \begin{pb}
+        
+    \end{pb}
+    \begin{pb}
+        By Cauchy's integral theorem, we can take the limit of \(L\) as it approaches the path from one to zero from above and the path from zero to one from below, and get the same resulting integral. Since the function is continuous in the area of this deformation we can pass to this limiting path. In the limit \(\Omega\) takes value \textcolor{red}{HERE!!!} on the segment from one to zero, and \textcolor{red}{HERE!!!} on the segment from zero to one.
+    \end{pb}
+    \begin{pb}
+        
+    \end{pb}
 \end{document}

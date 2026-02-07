@@ -1,0 +1,125 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+
+\fancyhf{}
+\lhead{MAT1301 hw3}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\usepackage{tikz-cd, stackengine}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\newcommand{\px}{\frac{\partial}{\partial x}}
+\newcommand{\py}{\frac{\partial}{\partial y}}
+\newcommand{\pz}{\frac{\partial}{\partial z}}
+\newcommand{\ppx}{\frac{\partial^2}{\partial x^2}}
+\newcommand{\ppy}{\frac{\partial^2}{\partial y^2}}
+\newcommand{\ppz}{\frac{\partial^2}{\partial z^2}}
+\newcommand{\hess}{\operatorname{Hess}}
+
+\begin{document}
+    \begin{pb}
+        \textcolor{red}{TODO}
+    \end{pb}
+    \begin{pb}
+        Define \(f: G_2 \to G_1\) via \(\mu \mapsto \alpha \beta\), and \(\lambda \mapsto \alpha\beta \alpha\), to see that this map gives a well defined group homomorphism we need to check that the relation is satisfied, this simply follows from \(f(\lambda)^2 = (\alpha\beta\alpha)^2 = (\alpha\beta)^3 = f(\mu)^3\), so that \(f\) gives a well defined group homomorphism. Now we define \(g: G_1 \to G_2\) via \(g(\alpha) = \mu^2 \lambda^{-1}\), and \(g(\beta) = \lambda\mu^{-1}\), since \(\gamma\) can be written in terms of the relations from \(\alpha\), \(\beta\) the value of \(g(\gamma)\) is just defined as \(g(\alpha)g(\beta)g(\alpha)^{-1} = \mu\lambda\mu^{-2}\). To check that \(g\) gives a group homomorphism we just need to check it satisfies the relations of \(G_1\) as follows.
+        \begin{align*}
+            g(\alpha) = \mu^2 \lambda^{-1} = \mu^3 \mu^{-1}\lambda^{-1} = \lambda^2\mu^{-1}\lambda^{-1} = \lambda\mu^{-1}\mu\lambda\mu^{-2}\mu\lambda^{-1} = g(\beta)g(\gamma)g(\beta)^{-1}
+        \end{align*}
+        Where we use the relation \(\mu^3 = \lambda^2\) in the third equality.
+        \begin{align*}
+            g(\beta) = \lambda\mu^{-1} = \lambda^2 \lambda^{-1}\mu^{-1} = \mu^3 \lambda^{-1}\mu^{-1}= \mu \lambda \mu^{-2} \mu^2 \lambda^{-1}\mu^2 \lambda^{-1}\mu^{-1} = g(\gamma)g(\alpha)g(\gamma)^{-1}
+        \end{align*}
+        Where again the relation \(\mu^3 = \lambda^2\) is used in the third equality, moreover \(g\) is defined so as to define the third relation, thus \(g\) gives a well defined group homomorphism. To see \(G_1 \cong G_2\) it will now suffice to show that \(f\) and \(g\) are inverse isomorphisms, since they are homomorphisms it suffices to check on generators (note that since \(\gamma\) can be written in terms of \(\alpha\) and \(\beta\) we only need to check for these two generators)
+        \begin{align*}
+            gf(\mu) &= g(\alpha\beta) = g(\alpha)g(\beta) = \mu^2 \lambda^{-1} \lambda \mu^{-1} = \mu \\
+            gf(\lambda) &= g(\alpha\beta\alpha) = g(\alpha)g(\beta)g(\alpha) = \mu^2 \lambda^{-1} \lambda\mu^{-1} \mu^2 \lambda^{-1} = \mu^3 \lambda^{-1} = \lambda^2 \lambda^{-1} = \lambda \\
+            fg(\alpha) &= f(\mu^2 \lambda^{-1}) = f(\mu)^2f(\lambda)^{-1} = \alpha \beta \alpha \beta \alpha^{-1} \beta^{-1} \alpha^{-1} = \alpha \beta \gamma \beta^{-1} \alpha^{-1} = \alpha \alpha a^{-1} = \alpha \\
+            fg(\beta) &= f(\lambda\mu^{-1}) = f(\lambda)f(\mu)^{-1} = \alpha\beta\alpha\beta^{-1}\alpha^{-1}  = \alpha\beta (\alpha\beta \alpha^{-1})^{-1} = \alpha\beta\gamma^{-1} = \alpha\beta\alpha^{-1}\alpha\gamma^{-1} = \gamma \alpha \gamma^{-1} = \beta
+        \end{align*}
+        So that indeed \(fg = 1_{G_1}\) and \(gf = 1_{G_2}\) so that \(G_1 \cong G_2\). 
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} By counting lifts of the wedge point we find the \(G\) set has \(8\) elements, and by reading the space we find \(a\) acts via \((12)(3456)(78)\) and \(b\) acts via \((1432)(5876)\) \qed
+
+        \textbf{(b)} A set of generators is given by:
+        \begin{align*}
+            \set{ab,b^{-1}a,b^4,b^{-2}ab^{-1},ba^2ba^{-1}b^{-1},bab^{-1}ab^2,bab^4a^{-1}b^{-1},bab^{-2}ab^{-1}a^{-1}b^{-1},babab^2a^{-1}b^{-1}}
+        \end{align*}
+        Which corresponds to choosing generators with respect to the following spanning tree:
+        \textcolor{red}{DRAWING HERE} \qed
+
+        \textbf{(c)} No, because \(S\) is not a normal \(G\)-set and a covering space is normal exactly when the \(G\)-set is. To see the \(G\)-set is not normal note that there is no automorphism permuting \(1\) and \(4\) since \(a^2 \in \text{stab}(1)\), but \(a^2 \not \in \text{stab}(4)\). \qed
+    \end{pb}
+    \begin{pb}
+        We first check the condition for \(\text{Aut}(\rho^{-1}(b_0))\) as a right \(G\)-set. As a right \(G\)-set, \(\rho^{-1}(b_0) \cong \text{stab}(b_0)\setminus G\), where \(\text{stab}(b_0) = \rho_*\pi_1(X) = H\), since these are exactly the paths with action fixing \(b_0\). Now let \([\gamma] \in N_G(H)\), since \(X\) is connected, \(\rho^{-1}(b_0)\) is a transitive \(G\)-set so we can write any \(b \in \rho^{-1}(b_0)\) as \(b = b_0\cdot[\alpha]\) for some \([\alpha]\), this allows us to define the automorphism given by \([\gamma]\) as \(\varphi_{\gamma}(b_0\cdot [\alpha]) = b_0\cdot[\gamma][\alpha]\), we need to check this is well defined and indeed defines a right \(G\)-set automorphism. To see it is well defined, take another representative for \(b\), then \(b = b_0 [\beta]\), but \(b_0 [\beta][\alpha]^{-1} = b_0\), implying that \([\beta][\alpha]^{-1} \in \text{stab}(b_0) = H\), so that \([\beta] = [h][\alpha]\) for \([h] \in H\), then
+        \begin{align*}
+            \varphi_{[\gamma]}(b_0\cdot[\beta]) = \varphi_{[\gamma]}(b_0\cdot[h][\alpha]) = b_0\cdot[\gamma][h][\alpha] = b_0\cdot [\gamma][h][\gamma]^{-1}[\gamma][\alpha] = [b_0]\cdot[\gamma][\alpha]
+        \end{align*}
+        The last equality following from \([\gamma] \in N_G(H)\) implying that \([\gamma][h][\gamma]^{-1} \in H = \text{stab}(b_0)\) proving that \(\varphi_{\gamma}\) is well defined. Moreover let \([x] \in G\), then once again for any \(b \in \rho^{-1}(b_0)\) we write \(b = b_0[\alpha]\) for \([\alpha] \in G\)
+        \begin{align*}
+            \varphi_{[\gamma]}(b)\cdot [x] = b_0\cdot[\gamma][\alpha][x] = \varphi_{[\gamma]}(b_0\cdot[\alpha][x]) = \varphi_{[\gamma]}(b\cdot[x])
+        \end{align*}
+        So that \(\varphi_{[\gamma]}\) is a morphism of right \(G\)-sets. 
+
+        Now suppose that \(\varphi \in \text{Aut}(\rho^{-1}(b_0))\), then \(\varphi(b_0) = b_0\cdot[\gamma]\) for some \([\gamma] \in G\), it follows that since \(\varphi\) is a morphism of \(G\)-sets, for \(b = b_0\cdot[\alpha]\) it satisfies \(\varphi(b) = \varphi(b_0\cdot[\alpha]) = \varphi(b_0)\cdot [\alpha] = b_0\cdot[\gamma][\alpha]\), so that every automorphism is of the form above, now assuming that \(\gamma \not \in N_G(H)\), we can choose some \([h] \in H\) with \([\gamma][h][\gamma]^{-1} \not \in H\), so that for the map \(\varphi_{[\gamma]}: b_0\cdot[\alpha] \to b_0\cdot[\gamma][\alpha]\) we get
+        \begin{align*}
+            \varphi_{[\gamma]}(b_0)\cdot[h][\gamma]^{-1} =  b_0\cdot[\gamma][h][\gamma]^{-1} \neq b_0 = b_0[\gamma][\gamma]^{-1} = \varphi_{[\gamma]}(b_0\cdot h[\gamma]^{-1})
+        \end{align*}
+        i.e. such a \([\gamma]\) cannot define an automorphism of \(\rho^{-1}(b_0)\). Finally to conclude that \(\text{Aut}(\rho^{-1}(b_0)) \cong N_G(H)\), we note that \(\varphi_{[\alpha]}\circ \varphi_{[\beta]} = \varphi_{[\alpha][\beta]}\), so the bijection respects the group law.
+
+        Now that we have shown \(\text{Aut}(\rho^{-1}(b_0)) \cong N_G(H)\), it is straightforward to see that the group of deck transformations \(\text{Aut}(X) \cong N_G(H)\). To do so we apply the equivalence of categories of right \(\pi_1(B,b_0)\)-sets and covering spaces \(E \to G\).
+    \end{pb}
+    \begin{pb}
+        The following picture is the universal cover, where the coloring is used to denote the covering map. 
+        
+        \textcolor{red}{Image of X here}
+        
+        By looking locally, we can see that this is clearly a path connected covering space so all that is left to show is that it is simply connected, as proof note that since \(S^1\) is compact, any loop \(f: S^1 \to X\) must have image contained within finitely many of the spheres, so we can choose for some \(n\), the following space to contain the image of \(\gamma\)
+
+        \textcolor{red}{\(X_n\) = Image of finitely many copies here}
+
+        To see a space of this form is simply connected, we can use induction, and note the base case is already proven since \(S^2\) is simply connected, then by assuming \(X_{n-1}\) is simply connected we get the open cover given by:
+        \begin{align*}
+            &U = X_{n-1} \cup_{0 \sim x_0} [0,\epsilon) &V = S^2 \cup_{1 \sim y_0} (\epsilon/2,1]
+        \end{align*}
+        Then \(U \cap V = (\epsilon/2, \epsilon) \simeq \set{*}\), \(U \sim X_{n-1}\) and \(V \sim S^2\), so that
+        \[\pi_1(X_n) \cong \pi_1(X_{n-1})*_{0}\pi_1(S^2) = 0\]
+        SO that the image of gamma is contained in a simply connected subset of \(X\), and hence \([\gamma] = 0\) in \(\pi_1(X)\), since this holds for an arbitrary \(\gamma:S^1 \to X\) we conclude that \(\pi_1(X) = 0\), so that \(X\) is the universal cover of \(B\).
+    \end{pb}
+    \begin{pb}
+        In problem 1 of homework 2, we showed that if a space \(U\) is path connected, simply connected, and locally path connected then for any connected covering space \(X \overset{\rho}{\to} B\) and map \(f: U \to B\), there is a unique lift \(\tilde{f}\) such that the following diagram commutes:
+        \begin{equation*}
+            \begin{tikzcd}
+                & X \arrow[d,"\rho"] \\
+               U \arrow[,r,"f"] \arrow[dashed,ru,"\tilde{f}"] & B
+            \end{tikzcd}
+        \end{equation*}
+        We can apply this result directly to the following diagram, where \(\rho_U : U \to B\) and \(\rho_X : X \to B\) are covering maps, for an arbitrary covering space \(\rho_X: X \to B\). The justification of \(U\) being locally path connected is that \(B\) is locally path connected and \(U\) is locally diffeomorphic to \(B\).
+        \begin{equation*}
+            \begin{tikzcd}
+                & X \arrow[d,"\rho_X"] \\
+               U \arrow[r,"\rho_U"] \arrow[dashed,ru,"\widetilde{\rho_U}"] & B
+            \end{tikzcd}
+        \end{equation*}
+        Then commutativity of the diagram is exactly the statement that that the map we get as a result of homework 2 problem 1, \(\widetilde{\rho_U}\) is also a covering space morphism.
+    \end{pb}
+\end{document}
