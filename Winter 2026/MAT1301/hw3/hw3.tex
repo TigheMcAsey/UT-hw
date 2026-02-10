@@ -65,7 +65,12 @@
             \set{ab,b^{-1}a,b^4,b^{-2}ab^{-1},ba^2ba^{-1}b^{-1},bab^{-1}ab^2,bab^4a^{-1}b^{-1},bab^{-2}ab^{-1}a^{-1}b^{-1},babab^2a^{-1}b^{-1}}
         \end{align*}
         Which corresponds to choosing generators with respect to the following spanning tree:
-        \textcolor{red}{DRAWING HERE} \qed
+        \begin{figure}[h]
+            \begin{center}
+                \includegraphics[width = 0.7\linewidth]{figures/SpanningTree.png}
+            \end{center}
+        \end{figure}
+        \qed
 
         \textbf{(c)} No, because \(S\) is not a normal \(G\)-set and a covering space is normal exactly when the \(G\)-set is. To see the \(G\)-set is not normal note that there is no automorphism permuting \(1\) and \(4\) since \(a^2 \in \text{stab}(1)\), but \(a^2 \not \in \text{stab}(4)\). \qed
     \end{pb}
@@ -86,16 +91,24 @@
         \end{align*}
         i.e. such a \([\gamma]\) cannot define an automorphism of \(\rho^{-1}(b_0)\). Finally to conclude that \(\text{Aut}(\rho^{-1}(b_0)) \cong N_G(H)\), we note that \(\varphi_{[\alpha]}\circ \varphi_{[\beta]} = \varphi_{[\alpha][\beta]}\), so the bijection respects the group law.
 
-        Now that we have shown \(\text{Aut}(\rho^{-1}(b_0)) \cong N_G(H)\), it is straightforward to see that the group of deck transformations \(\text{Aut}(X) \cong N_G(H)\). To do so we apply the equivalence of categories of right \(\pi_1(B,b_0)\)-sets and covering spaces \(E \to G\).
+        Now that we have shown \(\text{Aut}(\rho^{-1}(b_0)) \cong N_G(H)\), it is straightforward to see that the group of deck transformations \(\text{Aut}(X) \cong N_G(H)\). To do so we apply the equivalence of categories of right \(\pi_1(B,b_0)\)-sets and covering spaces \(E \to G\). \textcolor{red}{TODO!!!!!!}
     \end{pb}
     \begin{pb}
         The following picture is the universal cover, where the coloring is used to denote the covering map. 
         
-        \textcolor{red}{Image of X here}
+        \begin{figure}[h]
+            \begin{center}
+                \includegraphics[width = \linewidth]{figures/UniversalCover.png}
+            \end{center}
+        \end{figure}
         
         By looking locally, we can see that this is clearly a path connected covering space so all that is left to show is that it is simply connected, as proof note that since \(S^1\) is compact, any loop \(f: S^1 \to X\) must have image contained within finitely many of the spheres, so we can choose for some \(n\), the following space to contain the image of \(\gamma\)
 
-        \textcolor{red}{\(X_n\) = Image of finitely many copies here}
+        \begin{figure}[h]
+            \begin{center}
+                \includegraphics[width = \linewidth]{figures/FiniteCover.png}
+            \end{center}
+        \end{figure}
 
         To see a space of this form is simply connected, we can use induction, and note the base case is already proven since \(S^2\) is simply connected, then by assuming \(X_{n-1}\) is simply connected we get the open cover given by:
         \begin{align*}
@@ -103,7 +116,7 @@
         \end{align*}
         Then \(U \cap V = (\epsilon/2, \epsilon) \simeq \set{*}\), \(U \sim X_{n-1}\) and \(V \sim S^2\), so that
         \[\pi_1(X_n) \cong \pi_1(X_{n-1})*_{0}\pi_1(S^2) = 0\]
-        SO that the image of gamma is contained in a simply connected subset of \(X\), and hence \([\gamma] = 0\) in \(\pi_1(X)\), since this holds for an arbitrary \(\gamma:S^1 \to X\) we conclude that \(\pi_1(X) = 0\), so that \(X\) is the universal cover of \(B\).
+        So that the image of gamma is contained in a simply connected subset of \(X\), and hence \([\gamma] = 0\) in \(\pi_1(X)\), since this holds for an arbitrary \(\gamma:S^1 \to X\) we conclude that \(\pi_1(X) = 0\), so that \(X\) is the universal cover of \(B\).
     \end{pb}
     \begin{pb}
         In problem 1 of homework 2, we showed that if a space \(U\) is path connected, simply connected, and locally path connected then for any connected covering space \(X \overset{\rho}{\to} B\) and map \(f: U \to B\), there is a unique lift \(\tilde{f}\) such that the following diagram commutes:
