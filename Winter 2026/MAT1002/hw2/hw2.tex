@@ -34,6 +34,8 @@
 \newcommand{\ppy}{\frac{\partial^2}{\partial y^2}}
 \newcommand{\ppz}{\frac{\partial^2}{\partial z^2}}
 \newcommand{\hess}{\operatorname{Hess}}
+\newcommand{\Log}{\operatorname{Log}}
+\newcommand{\Arg}{\operatorname{Arg}}
 
 \begin{document}
     \begin{pb}
@@ -101,17 +103,17 @@
         \end{align}
         Now we may simplify \((\sum_{-n_1}^\infty a_kz^k)^{-1} = \frac{z^{n_1}}{\sum_0^\infty a_{k-n_1}z^k}\), which of course takes value \(0\) at \(z = 0\), which simplifies the piecewise expression for \(f\) in charts given by (10) to \(\frac{z^{n_1}}{\sum_0^\infty a_{k-n_1}z^k}\). Since the denomenator is a nonvanishing (near zero) holomorphic function convergent near zero, we find that \(\varphi^{-1}\circ f\circ \psi\) is a holomorphic map \(X \to \mathbb{P}^1\) in a chart around \(P_1\), the same argument works for charts around \(P_2,\hdots, P_n\) so that \(f\) is indeed a holomorphic function between \(X\) and \(\mathbb{P}^1\). \qed
 
-        \textbf{(b)} By compactness, it suffices to show that \(f^{-1}(p)\) is discrete to conclude that \(d\) is finite. Moreover, since a finite union of discrete sets is discrete, we may cover \(X\) in a finite number of charts \(\set{(U_j,\varphi_j)}_1^r\), and check that \(f\vert_{U_j}^{-1}(p)\) is discrete for each \(j\). Since coordinate charts are diffeomorphisms, we can once again reduce the problem to checking each \((\psi^{-1} \circ f\vert_{U_j}\circ \varphi_j)^{-1}\set{\psi^{-1}(p)}\) is discrete for some \(\psi\) correspodning to a coordinate chart containing \(p\), with \(\psi^{-1} \circ f\vert_{U_j}\circ \varphi_j\) simply being a holomorphic function \(\varphi^{-1}(U) \subset \mathbb{C} \to \mathbb{C}\), this reduces to the fact that the zeroes of a holomorphic function are discrete, and 
+        \textbf{(b)} This question only works if \(d\) counts multiplicity and if \(f\) is nonconstant, so consider \(d\) counting \(f^{-1}(p)\) with multiplicity for a nonconstant holomorphic \(f: X \to \mathbb{P}^1\). By compactness, it suffices to show that \(f^{-1}(p)\) is discrete to conclude that \(d\) is finite (this follows since so long as \(f\) is not constant the degree of any single one of the preimages is finite). Moreover, since a finite union of discrete sets is discrete, we may cover \(X\) in a finite number of charts \(\set{(U_j,\varphi_j)}_1^r\) and check that \(f\vert_{U_j}^{-1}(p)\) is discrete for each \(j\). Since coordinate charts are diffeomorphisms, we can once again reduce the problem to checking each \((\psi^{-1} \circ f\vert_{U_j}\circ \varphi_j)^{-1}\set{\psi^{-1}(p)}\) is discrete for some \(\psi\) corresponding to a coordinate chart containing \(p\), with \(\psi^{-1} \circ f\vert_{U_j}\circ \varphi_j\) simply being a holomorphic function \(\varphi^{-1}(U) \subset \mathbb{C} \to \mathbb{C}\), this reduces to the fact that the zeroes of a holomorphic function are discrete, and 
         \begin{align*}
             (\psi^{-1} \circ f\vert_{U_j}\circ \varphi_j)^{-1}(\psi^{-1}(p)) = \set{z \in \varphi^{-1}(U_j) \mid \psi^{-1} \circ f\vert_{U_j}\circ \varphi_j(z) - \psi^{-1}(p) = 0}
         \end{align*}
-        is the set of zeroes of a holomorphic function. Thus by the reductions above, \(d = \# f^{-1}(p) < \infty\).
+        is the set of zeroes of a holomorphic function. Thus by the reductions above, \(d < \infty\).
 
-        Now to see that \(d\) is constant, I will show that \(d\) is constant in some open set \(U\) containing \(p\), since this will hold for any \(p' \in X\) this implies that the degree of a point is a continuous map \(X \to \mathbb{Z}\), so that since \(X\) is connected it must be the constant map. To see that \(d\) is locally constant, take \(\set{p_0,\hdots,p_d} = f^{-1}(p)\), then around each \(p_j\) take an image of an open ball, \(\varphi_j(B_\epsilon) \supset \set{p_j}\) with \(\varphi_i(B_\epsilon) \cap \varphi_j(B_\epsilon) = \emptyset\) for \(i \neq j\). Letting \(\psi\) be a coordinate map of an open set containing \(p\), we get \(\psi^{-1} \circ f\circ \varphi_j: B_\epsilon \subset \mathbb{C} \to \mathbb{C}\) is holomorphic with \((\psi^{-1} \circ f\circ \varphi_j)^{-1}(\psi^{-1}(p)) = \set{p_j}\), since holomorphic functions on \(\mathbb{C}\) have locally constant degree, each of these maps has degree \(1\), from an open set in \(B_\epsilon\) to an open set \(V_j \supset \set{\psi^{-1}(p)}\), it follows that any \(p' \in \bigcap_1^d V_j\) has a single preimage in each of \(\varphi_j(B_\epsilon)\) for \(j=1,\hdots,d\). To see that these are all the possible preimages, we repeat the argument working locally for each \(x \in X\), to get a chart \((U_x,\varphi_x)\) around \(x\) such that \(\psi^{-1} \circ f\circ \varphi_x\) has degree zero, by replacing \(U_x\) with a possible smaller open set, this implies that \(f(U_x) \cap V_x = \emptyset\) for some open \(V_x \supset \set{p}\). Now we use compactness to refine the cover \(\set{U_x}_{x \in X} \cup \set{\varphi_j(B_\epsilon)}_1^d\) to a finite subcover, then for each element \(p' \in \bigcap_1^d V_j \bigcap_1^N V_{x_j}\), we have
-        \begin{align*}
-            f^{-1}(p') = \bigcup_1^d f\vert_{V_j}^{-1}(p') \bigcup_1^N f\vert_{V_{x_j}}^{-1}(p')
-        \end{align*}
-        Which is the union of \(d\) (distinct) singletons and \(N\) emptysets. Hence the degree is constant in the neighborhood \(\bigcap_1^d V_j \bigcap_1^N V_{x_j} \supset \set{p}\), therefore constant on \(X\). \qed
+        Now to see that \(d\) is constant, I will show that \(d\) is constant in some open set \(U\) containing \(p\), since this will hold for any \(p' \in X\) this implies that the degree of a point is a continuous map \(X \to \mathbb{Z}\), so that since \(X\) is connected it must be the constant map. To see that \(d\) is locally constant, take \(\set{p_0,\hdots,p_r} = f^{-1}(p)\) (note that \(r\) is not necessarily equal to \(d\) due to multiplicity considerations)
+        % \begin{align*}
+        %     f^{-1}(p') = \bigcup_1^d f\vert_{V_j}^{-1}(p') \bigcup_1^N f\vert_{V_{x_j}}^{-1}(p')
+        % \end{align*}
+        % Which is the union of \(d\) (distinct) singletons and \(N\) emptysets. Hence the degree is constant in the neighborhood \(\bigcap_1^d V_j \bigcap_1^N V_{x_j} \supset \set{p}\), therefore constant on \(X\). \textcolor{red}{DEAL WITH MULTIPLICITY} \qed
 
         \textbf{(c)} \(z\) has degree 2, and \(w\) has degree 3. As proof, by parts (a) and (b) it suffices to compute the preimage for a single point in which it is convenient. For \(z\) this is very simple, since for any point \(x\) away from the identifications \(z^{-1}(x)\) consists of two copies of \(x\), one in each glued copy of \(\mathbb{C}\) (i.e. choose any value of \(x\) on the imaginary line distinct from \(\lambda\)). In the case of \(w\), we count its zeroes, \(w^2 = x(x-1)(x-\lambda)\) implies that \(w\) vanishes at each of \(0,1 \tand \lambda\), since these are glued points, we do not getting the same double counting as in the \(z\) case and this gives degree 3, this is also up to multiplicity, since \(w\) has vanishing of order \(1\) at each of these points, checking at zero (since \(1\) and \(\lambda\) are similar) we have the local coordinate \(t^2 = z\), defined via
         \begin{align*}
@@ -123,15 +125,150 @@
         so that \(w = t\sqrt{(t^2 - 1)(t^2 - \lambda)}\) indeed has order one vanishing. \qed
     \end{pb}
     \begin{pb}
-        
+        \(X\) is a surface of Genus 2. Define line segments \(L_1 = [0,1]\), \(L_2\) the component of the line determined by \(\lambda_1 \tand \lambda_2\) between \(\lambda_1\) and \(\lambda_2\), and \(L_3\) the component of the line segment between \(\lambda_2 \tand \lambda_3\) from \(\lambda_3\) to \(\infty\). Here we assume the points \(\set{0,1,\lambda_1,\lambda_2,\lambda_3}\) are arranged so that none of the line segments \(L_1,L_2 \tand L_3\) intersect. Since \(X\) is given as the analytic continuation of \(\sqrt{z(z-1)(z-\lambda_1)(z-\lambda_2)(z-\lambda_3)}\), we consider the monodromy of these square root functions around these points
+        \begin{itemize}
+            \item \(\gamma_1\) is a curve with winding number \(1\) around \(0\), and winding number zero around \(1,\lambda_1,\lambda_2,\lambda_3\)
+            \item \(\gamma_2\) is a curve with winding number \(1\) around \(0\) and 1, and winding number zero around \(\lambda_1,\lambda_2,\lambda_3\)
+            \item \(\gamma_3\) is a curve with winding number \(1\) around \(0,1\) and \(\lambda_1\) and winding number zero around \(\lambda_2 \tand \lambda_3\)
+            \item \(\gamma_4\) is a curve with winding number 1 around \(0,1,\lambda_1 \tand \lambda_2\) and winding number zero around \(\lambda_3\)
+            \item \(\gamma_5\) is a curve with winding number \(1\) around all points
+        \end{itemize}
+        \textcolor{red}{Include Graphics of \(\gamma_1,\hdots,\gamma_5\)}. We record the monodromy of each of the square root constituents around these curves:
+        \begin{itemize}
+            \item On \(\gamma_1\) we get monodromy \(\sqrt{z} \rightsquigarrow -\sqrt{z}\), with the \(\sqrt{z-1},\sqrt{z-\lambda_1},\sqrt{z-\lambda_2},\sqrt{z-\lambda_3}\) having no monodromy.
+            \item On \(\gamma_2\) we get monodromy \(\sqrt{z} \rightsquigarrow -\sqrt{z} \tand \sqrt{z-1} \rightsquigarrow -\sqrt{z-1}\) with no monodromy for the other factors.
+            \item On \(\gamma_3\) we get monodromy \(\sqrt{z} \rightsquigarrow -\sqrt{z}, \sqrt{z-1} \rightsquigarrow -\sqrt{z-1}, \tand \sqrt{z - \lambda_1} \rightsquigarrow -\sqrt{z - \lambda_1}\) with no monodromy for the other factors.
+            \item On \(\gamma_4\) we get monodromy:
+            \begin{align*}
+                \sqrt{z} \rightsquigarrow -\sqrt{z}, \sqrt{z-1} \rightsquigarrow -\sqrt{z-1}, \sqrt{z - \lambda_1} \rightsquigarrow -\sqrt{z - \lambda_1}, \tand \sqrt{z-\lambda_2} \rightsquigarrow -\sqrt{z-\lambda_2}
+            \end{align*}
+            fixing the last factor.
+            \item Finally, on \(\gamma_5\) we get monodromy on each of the components:
+            \begin{align*}
+                \sqrt{z} \rightsquigarrow -\sqrt{z}, \sqrt{z-1} \rightsquigarrow -\sqrt{z-1}, \sqrt{z - \lambda_1} \rightsquigarrow -\sqrt{z - \lambda_1}, \sqrt{z-\lambda_2} \rightsquigarrow -\sqrt{z-\lambda_2}, \sqrt{z-\lambda_3} \rightsquigarrow -\sqrt{z-\lambda_3}
+            \end{align*}
+            The monodromy's cancel travelling around \(\gamma_j\) for \(j\) even, but not for \(j\) odd, thus to analytically extend this branch of the square root we once agin take two copies of \(\mathbb{C}\), (I) and (II) and gluing along \(L_1,L_2,L_3\), and analytically continue \(\sqrt{z(z-1)(z-\lambda_1)(z-\lambda_2)(z-\lambda_3)}\) by defining function \(w\) with \(w^2 = z(z-1)(z-\lambda_1)(z-\lambda_2)(z-\lambda_3)\) and
+            \begin{align}
+                w = \begin{cases}
+                    \sqrt{z(z-1)(z-\lambda_1)(z-\lambda_2)(z-\lambda_3)} & \text{on (I)} \\
+                    -\sqrt{z(z-1)(z-\lambda_1)(z-\lambda_2)(z-\lambda_3)} &\text{on (II)}
+                \end{cases}
+            \end{align}
+        \end{itemize}
+        By sketching this glueing we see that \(X\) is a surface of genus 2.
+
+        \textcolor{red}{INCLUDE SKETCH HERE}
+
+        The meromorphic function \(z\) simply projects (I) and (II) coordinates to \(\mathbb{C}\), similarly to part (c) of problem (3), we can pick a point \(x \in \mathbb{C}\) away from \(L_1,L_2,L_3\) where the gluing occurs so that \(z^{-1}(x)\) is trivially 2 copies of \(x\), one in (I) and one in (II), using question \(3\) this degree is well defined so \(z\) has degree 2. Also similarly to problem (3c), we count calculate the degree of \(w\) as \(\#w^{-1}(0)\), which has points \(0,1,\lambda_1,\lambda_2\) and \(\lambda_3\), to check that each of these zeroes has multiplicity one we check in a local coordinate around 0, since the proof is the same for the other points. So take local coordinate \(t\) around zero (the chart being \(U = B_\epsilon(0)\) in (I) and (II) with \(\epsilon < \min\set{1,\abs{\lambda_1},\abs{\lambda_2},\abs{\lambda_3}}\)) with \(t^2 = z\), and \(t = \sqrt{z}\) on (I) and \(t = -\sqrt{z}\) on (II), it follows that on \(U\) we have \(w = t\sqrt{(t^2-1)(t^2-\lambda_1)(t^2-\lambda_2)(t^2-\lambda_3)}\), with \(\sqrt{(t^2-1)(t^2-\lambda_1)(t^2-\lambda_2)(t^2-\lambda_3)}\) holomorphic and nonvanishing on \(U\), so that indeed the vanishing of \(w\) at \(0\) is multiplicity one. \qed
     \end{pb}
     \begin{pb}
-        
+        There are four distinct cases, firstly we may have \(Q_1 \in \set{0,1,\lambda}\) and \(Q_2\) generic, secondly we may have \(Q_1 \tand Q_2 \in \set{0,1,\lambda}\), the other cases deal with the point infinity, namely \(Q_1 = \infty\) and \(Q_2\) generic, or \(Q_1 \in \set{0,1,\lambda}\) and \(Q_2 = \infty \).
+
+        \textbf{(Case 1)} Assume that \(Q_1 = 0\), and let \(Q_2 \in X\setminus \set{0,1,\lambda,\infty}\), then we define the meromorphic one form to be
+        \begin{align}
+            \omega_{0,Q} = \frac{\frac{w(Q)}{z(Q)}z + w}{z\cdot(z-z(Q))}\frac{dz}{w}\label{abdiff1}
+        \end{align}
+        Near \(Q\), we may work in \(z\) charts to get the expression
+        \begin{align}
+            \omega_{0,Q} = \frac{1}{z-z(Q)}\frac{\frac{w(Q)}{z(Q)}z + w}{z}\cdot\frac{dz}{w}
+        \end{align}
+        so that the residue is just
+        \begin{align}
+            \text{Res}(\omega_{0,Q},Q) = \left.\frac{\frac{w(Q)}{z(Q)}z + w}{z}\cdot\frac{1}{w}\right\vert_Q = \frac{2}{z(Q)}
+        \end{align}
+        To evaluate the reside at zero, we take charts near zero by taking \(t\) so that \(t^2 = z\) and \(t = \pm \sqrt{z}\) on (I) and (II) respectively. we can rewrite the form \(\omega_{0,Q}\) given by \eqref{abdiff1} in \(t\) coordinates, this gives the local expression
+        \begin{align}
+            \omega_{0,Q} &= \frac{\frac{w(Q)}{z(Q)}t^2 + t\sqrt{(t^2-1)(t^2-\lambda)}}{t^2(t^2-z(Q))}\cdot\frac{2dt}{\sqrt{(t^2-1)(t^2-\lambda)}}\\ &= \frac{1}{t}\left(\frac{\frac{w(Q)}{z(Q)}t + \sqrt{(t^2-1)(t^2-\lambda)}}{(t^2-z(Q))}\cdot\frac{2dt}{\sqrt{(t^2-1)(t^2-\lambda)}}\right)
+        \end{align}
+        From this we can calculate the residue,
+        \begin{align}
+            \text{Res}(\omega_{0,Q},0) = \frac{\sqrt{\lambda}}{-z(Q)}\frac{2}{\sqrt{\lambda}} = -\frac{2}{z(Q)}
+        \end{align}
+        Since \(\text{Res}(\omega_{0,Q},0) = - \text{Res}(\omega_{0,Q},Q)\) we can simply normalize to get \(\pm 1\). Finally we check these are indeed the only poles of our form, the only points of interest are \(\tilde{Q}\) and \(\infty\) where \(\tilde{Q}\) is the unique distinct point from \(Q\) with \(z(\tilde{Q}) = z(Q)\), but plugging in \(\tilde{Q}\) the numerator becomes \(\frac{w(Q)}{z(Q)}z(\tilde{Q}) + w(\tilde{Q}) = w(Q) - w(Q) = 0\), so that there is indeed no pole at \(\tilde{Q}\), to see there is no pole at infinity recall that \(dz/w\) is a nonvanishing holomorphic form, then the expression \(\frac{\frac{w(Q)}{z(Q)}z + w}{z(z-z(Q))}\) has denomenator \(\mathcal{O}(\abs{z}^2)\) and numerator \(\mathcal{O}(\abs{z}^{3/2})\) implying there is no pole at infinity.
+
+        \textbf{(Case 2)} This time take \(Q_1 = 0\) and \(Q_2 = 1\), we define 
+        \begin{align}
+            \omega_{0,1} = \frac{w}{2z(z-1)}\frac{dz}{w} \label{abdiff2}
+        \end{align}
+        Similar to the first case, this form only has candidate poles at 0, 1 and infinity, but it is trivial to rule out infinity thus we only need check the residues. Near zero we once again have local coordinates near zero \(t = \pm \sqrt{z}\) on (I) and (II) respectively, these local coordinates give the local expression
+        \begin{align}
+            \omega_{0,1} = \frac{2t dt}{2t^2(t^2-1)} = \frac{1}{t}\frac{1}{t^2-1}dt
+        \end{align}
+        from this we read off \(\text{Res}(\omega_{0,1},0) = -1\). Similarly we can take local coordinates near one, \(t = \pm \sqrt{z-1}\) on (I) and (II) respectively, in these local coordinates
+        \begin{align}
+            \omega_{0,1} = \frac{2tdt}{2(t^2+1)t^2} = \frac{1}{t}\frac{1}{1+t^2}dt
+        \end{align}
+        Which we can read off as having residue \(1\).
+
+        \textbf{(Case 3)} Take \(Q_1 = 0\), \(Q_2 = \infty\). We follow a similar procedure to the first two cases,
+        \begin{align}
+            \omega_{0,\infty} = \frac{w}{2z}\frac{dz}{w}
+        \end{align}
+        its clear the only candidates for poles are \(0 \tand \infty\), so we check that they are simple and take the residues. Taking local coordinates near infinity we have \(t = \pm 1/\sqrt{z}\) on (I) and (II) respectively, in these local coordinates we write
+        \begin{align}
+            \omega_{0,\infty} = \frac{t^2}{2} \frac{-2dt}{t^3} = -\frac{1}{t}dt
+        \end{align}
+        which is a simple pole with residue \(-1\). Taking the same coordinates near zero as in the prior cases we find the local expression
+        \begin{align}
+            \omega_{0,\infty} = \frac{1}{2t^2}2tdt =\frac{1}{t}dt
+        \end{align}
+        so that we have a simple pole with residue \(1\) at zero.
+
+        \textbf{(Case 4)} Take \(Q_1 \in X \setminus \set{0,1,\lambda,\infty}\) to be a generic point, and \(Q_2 = \infty\), then we can define
+        \begin{align}
+            \omega_{Q,\infty} = \frac{1}{2}\frac{w(Q) + w}{z-z(Q)}\frac{dz}{w}
+        \end{align}
+        The zero of \(w(Q) + w\) at \(\tilde{Q}\) removes the simple pole at \(\tilde{Q}\) (where once again \(\tilde{Q}\) is the other lift of \(z(Q)\) in the double cover), moreover the pole at \(Q\) is clearly simple so we need only check the pole at infinity is simple and compute the residues. To compute the residue at \(Q\), we can simply use \(z\) coordinates,
+        \begin{align}
+            \omega_{Q,\infty} = \frac{1}{2}\frac{w(Q) + w}{z-z(Q)}\frac{dz}{w} = \frac{1}{z-z(Q)}\frac{w(Q) + w}{2w}dz
+        \end{align}
+        So that \(\text{Res}(\omega_{Q,\infty},Q) = \frac{2w(Q)}{2w(Q)} = 1\), to compute the residue at infinity we work in the same local coordinates as in case 3, this gives us the following local expression
+        \begin{align}
+            w_{Q,\infty} = \frac{1}{2}\frac{t^2(w(Q) + w)}{1 - t^2z(Q)} \frac{-2dt}{t^3w} = \frac{-1}{t} \frac{w(Q)+w}{w(1-t^2z(Q))}
+        \end{align}
+        From this expression we get the desired value of the residue,
+        \begin{align}
+            \text{Res}(w_{Q,\infty},\infty) = -\left.\left(\frac{w(Q)+w}{w(1-t^2z(Q))}\right)\right\vert_{t = 0} = -\left.\left(\frac{w(Q)}{w} + 1\right)\right\vert_{t = 0} = 1
+        \end{align}
+        Since \(w(t)\vert_{t=0} = \infty\).
+
+        Thus for any distinct points \(Q_1,Q_2 \in X\) regardless of genericity there is an abelian differential of the third kind \(\omega_{Q_1,Q_2}\). \qed
     \end{pb}
     \begin{pb}
-        By Cauchy's integral theorem, we can take the limit of \(L\) as it approaches the path from one to zero from above and the path from zero to one from below, and get the same resulting integral. Since the function is continuous in the area of this deformation we can pass to this limiting path. In the limit \(\Omega\) takes value \textcolor{red}{HERE!!!} on the segment from one to zero, and \textcolor{red}{HERE!!!} on the segment from zero to one.
+        Since the branch of the square root function used to define \(\Omega\) is analytic on \(\mathbb{C} \setminus L\), we can use the following curve \(\gamma_\epsilon\) to define our contour integral (The value of the integral is independent of this choice of curve by Cauchy's integral theorem).
+
+        \textcolor{red}{INSERT IMAGE OF DUMBBELL CURVE HERE}
+
+        Since \(\Omega\) is holomorphic on \(\mathbb{C} \setminus L\) , the area enclosed by \(\gamma_\epsilon\) is independent of \(\epsilon\) so long as \(\epsilon\) is sufficiently small. Taking the limit \(\epsilon \to 0\), we can show that the circular component of the curve has no contribution using the standard arc length inequality, since near \(0\) and \(1\) on \(\gamma_e\) we have \(\frac{1}{w} \in \mathcal{O}(\epsilon^{-\frac12})\), and the arc length of the circular component is bound above by \(2 \pi \epsilon\), the integral over the circular component is bound above by \(2\pi \epsilon \mathcal{O}(\epsilon^{-\frac12}) \in \mathcal{O}(\epsilon^{\frac12})\). The horizontal components of the integral then approach the curve on the real line from \(1\) to \(0\) from above, and the curve from \(0\) to \(1\) from below. From this we get
+        \begin{align}
+            \int_\gamma \frac{dz}{w} &= \lim_{\epsilon \to 0} \int_{\gamma_\epsilon} \frac{dz}{w} = \lim_{\epsilon \downarrow 0} \int_{1-\epsilon}^\epsilon \frac{dx}{w(x + i \epsilon)} + \lim_{\epsilon \downarrow 0}\int_\epsilon^{1-\epsilon} \frac{dx}{w(x - i \epsilon)} \\
+            &= \lim_{\epsilon \downarrow 0}\int_{\epsilon}^{1-\epsilon} \frac{1}{w(x - i \epsilon)} - \frac{1}{w(x+i \epsilon)} dx
+            = -2\int_0^1 \frac{dx}{\lim_{\epsilon \downarrow 0}w(x + i \epsilon)}
+        \end{align}
+        Where passing to the limit is justified by \(\Omega = \frac{dz}{w}\) being a holomorphic differential on \(X\), hence uniformly continuous on a compact set in \(\mathbb{C} \setminus L\) containing \(\gamma\), and \(x + i \epsilon\), and \(x - i \epsilon\) converging uniformly to \(x\) from above and below, finally the sign convention on taking the limit \(\frac{1}{w(x-i \epsilon)}\) follows from \(\lim_{\epsilon \uparrow 0}w(x + i \epsilon) = - \lim_{\epsilon \downarrow 0}w(x + i \epsilon)\) by the monodromy of \(w\) around the branch cut at \(L\). Now if \(\lambda\) is real, then the result is trivial since in this case \(\lim_{\epsilon \downarrow 0}w(x+i \epsilon) = \sqrt{x(1-x)(x- \lambda)}\), so that \(\int_0^1 \frac{dx}{\sqrt{x(1-x)(x-\lambda)}} \neq 0\) since the integrand is either strictly positive real or strictly positive imaginary depending on \(\lambda < 0\) or \(\lambda > 1\). For the case of \(\lambda\) not real, I will address \(\Im(\lambda) > 0\), since the case of \(\lambda\) in the lower half plane is similar. Now for \(\lambda\) in the upper half plane, first note that explicitly the branch cut of \(\sqrt{z(z-1)(z-\lambda)}\) which is analytic away from \(L\) is given by \(\exp(\frac12 (\Log z + \Log (z-1) + \Log (z - \lambda)))\), so in order to see that \(\int_{\gamma}\frac{dz}{w} = -2\int_0^1 \frac{dx}{\lim_{\epsilon \downarrow 0}w(x+ i \epsilon)} \neq 0\), it suffices to check \(\lim_{\epsilon \downarrow 0}w(x+ i \epsilon)\) has strictly positive imaginary part for each \(x \in [0,1]\), since this will imply that \(\left(\lim_{\epsilon \downarrow 0}w(x+ i \epsilon)\right)^{-1}\) has strictly negative imaginary part, so that \(-2\left(\lim_{\epsilon \downarrow 0}w(x+ i \epsilon)\right)^{-1}\) will have strictly positive imaginary component, which implies that \(\Im(\int_\gamma \frac{dz}{w}) > 0\), so the integral is nonzero.
+
+        The verification follows from just computing the limit:
+        \begin{align}
+            \lim_{\epsilon \downarrow 0} \Im(w(x + i \epsilon)) &= \Im\left(\exp\left(\frac12 \lim_{\epsilon \downarrow 0} \Log(x + i \epsilon) + \Log(x - 1 + i \epsilon) + \Log(x- \lambda + i \epsilon)\right)\right) \\
+            &= \Im\left(\exp\left(\frac12 \lim_{\epsilon \downarrow 0} \Log(x + i \epsilon)\right)\exp\left(\frac12 \lim_{\epsilon \downarrow 0} \Log(x - 1 + i \epsilon)\right)\exp\left(\frac12 \lim_{\epsilon \downarrow 0} \Log(x - \lambda + i \epsilon)\right)\right) \\
+            &= \Im(\sqrt{x}(e^{\frac{i\pi}{2}}\sqrt{1-x})(\abs{x-\lambda}^{\frac12}e^{\frac{i}{2} \Arg(x-\lambda)})) \\ 
+            &= \sqrt{x(1-x)\abs{x-\lambda}}\Im(e^{\frac{i}{2}(\pi + \Arg(x-\lambda))}) \label{Gross}
+        \end{align}
+        But since \(\Im(\lambda) > 0\), \(x - \lambda\) lies strictly in the lower half plane giving us \(\Arg(x - \lambda) \in (-\pi,0)\), this implies that \(\frac12 (\pi + \arg(x - \lambda)) \in (0,\frac{\pi}{2})\), so that \(\Im(e^{\frac{i}{2}(\pi + \Arg(x-\lambda))}) > 0\). Combining this with \eqref{Gross} we find that
+        \begin{align}
+            \lim_{\epsilon \downarrow 0} \Im(w(x + i \epsilon)) > 0
+        \end{align}
+        for all \(x\), as desired. \qed
     \end{pb}
     \begin{pb}
-        
+       To see that \(\text{Res}(\Omega,p)\) is well defined, we need to check it is invariant under our choice of coordinate charts, this basically reduces to the compatibility assumptions for holomorphic differentials. Let \((U,z), (V,w)\) be charts for \(X\) containing \(p\), then we only need check the two coordinate expressions agree, we may take a loop \(\gamma\) around \(p\) with winding number \(1\), with image contained in \(U \cap V\), then \(\gamma\) may be parameterized by either \(z\) or \(w\), so that the residue in either chart is given by \(\frac{1}{2\pi i}\int_{\gamma(z)}f_U(z)dz\) and \(\frac{1}{2\pi i}\int_{\gamma(w)}f_V(w)dw\), we need only check these two expressions are equal.
+       \begin{align}
+        \frac{1}{2\pi i}\int_{\gamma(z)} f_U(z)dz = \frac{1}{2\pi i}\int_{\gamma(z)} f_V(w(z))w'(z)dz \label{resz}
+       \end{align}
+       Now we may apply the substitution \(w = w(z)\), so that \(dw = w'(z)dz\), applying the subsitiution gives us
+       \begin{align}
+            \frac{1}{2\pi i}\int_{\gamma(z)} f_V(w(z))w'(z)dz = \frac{1}{2\pi i}\int_{\gamma(w)} f_V(w)dw \label{resw}
+       \end{align}
+       Combining \eqref{resz} and \eqref{resw} gives the desired equality of residue in arbitrary coordinate charts so that \(\text{Res}(\Omega,p)\) is indeed well defined. \qed
     \end{pb}
 \end{document}
