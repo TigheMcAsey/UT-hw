@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  13 FEB 2026 01:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  13 FEB 2026 01:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -504,28 +504,23 @@ Package pdftex.def Info: figures/SpanningTree.png  used on input line 70.
 [1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
  <./figures/SpanningTree.png>]
-<figures/UniversalCover.png, id=20, 595.22375pt x 331.2375pt>
-File: figures/UniversalCover.png Graphic file (type png)
-<use figures/UniversalCover.png>
-Package pdftex.def Info: figures/UniversalCover.png  used on input line 101.
-(pdftex.def)             Requested size: 452.9679pt x 252.07162pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figures/FiniteCover.png, id=21, 589.20125pt x 165.61874pt>
-File: figures/FiniteCover.png Graphic file (type png)
-<use figures/FiniteCover.png>
-Package pdftex.def Info: figures/FiniteCover.png  used on input line 109.
-(pdftex.def)             Requested size: 452.9679pt x 127.32718pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
 
 [2]
+<figures/UniversalCover.png, id=24, 595.22375pt x 331.2375pt>
+File: figures/UniversalCover.png Graphic file (type png)
+<use figures/UniversalCover.png>
+Package pdftex.def Info: figures/UniversalCover.png  used on input line 104.
+(pdftex.def)             Requested size: 452.9679pt x 252.07162pt.
+<figures/FiniteCover.png, id=25, 589.20125pt x 165.61874pt>
+File: figures/FiniteCover.png Graphic file (type png)
+<use figures/FiniteCover.png>
+Package pdftex.def Info: figures/FiniteCover.png  used on input line 112.
+(pdftex.def)             Requested size: 452.9679pt x 127.32718pt.
 
-[3 <./figures/UniversalCover.png> <./figures/FiniteCover.png>] (./hw3.aux)
+
+[3 <./figures/UniversalCover.png> <./figures/FiniteCover.png>]
+
+[4] (./hw3.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -534,16 +529,16 @@ L3 programming layer <2025-01-18>
 Here is how much of TeX's memory you used:
  15739 strings out of 473190
  320927 string characters out of 5715801
- 708678 words of memory out of 5000000
+ 702678 words of memory out of 5000000
  38733 multiletter control sequences out of 15000+600000
  560844 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  116i,15n,121p,1117b,1053s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on hw3.pdf (3 pages, 303936 bytes).
+Output written on hw3.pdf (4 pages, 304435 bytes).
 PDF statistics:
- 84 PDF objects out of 1000 (max. 8388607)
- 48 compressed objects within 1 object stream
+ 87 PDF objects out of 1000 (max. 8388607)
+ 50 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  28 words of extra memory for PDF output out of 10000 (max. 10000000)
 
