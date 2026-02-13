@@ -95,9 +95,9 @@
     \end{pb}
 
     \newpage
-    
+
     \begin{pb}
-        The following picture is the universal cover, where the coloring is used to denote the covering map. 
+        The following picture is the universal cover, where the coloring is used to denote the covering map.
         
         \begin{figure}[h]
             \begin{center}
@@ -122,6 +122,8 @@
         So that the image of gamma is contained in a simply connected subset of \(X\), and hence \([\gamma] = 0\) in \(\pi_1(X)\), since this holds for an arbitrary \(\gamma:S^1 \to X\) we conclude that \(\pi_1(X) = 0\), so that \(X\) is the universal cover of \(B\).
     \end{pb}
     \begin{pb}
+        Firstly, assume that \(X \neq \emptyset\), otherwise the problem is trivial, now proceeding, I assume the definition of covering space as done in class that a covering map need not be surjective. If surjectivity is required I will prove after the problem that a covering space morphism is surjective since \(X\) is connected.
+
         In problem 1 of homework 2, we showed that if a space \(U\) is path connected, simply connected, and locally path connected then for any connected covering space \(X \overset{\rho}{\to} B\) and map \(f: U \to B\), there is a unique lift \(\tilde{f}\) such that the following diagram commutes:
         \begin{equation*}
             \begin{tikzcd}
@@ -137,5 +139,13 @@
             \end{tikzcd}
         \end{equation*}
         Then commutativity of the diagram is exactly the statement that that the map we get as a result of homework 2 problem 1, \(\widetilde{\rho_U}\) is also a covering space morphism.
+
+        Notice now, that \(\widetilde{\rho_U}\) is open, this follows since \(\rho_U\) and \(\rho_X\) are open since they are local homeomorphisms. \(\rho_U\) being open implies that \(\rho_X \circ \widetilde{\rho_U}\) is open by commutativity of the diagram. Now, since \(\rho_X\) is a local homeomorphism, we know that \(\rho_X(U)\) is open if and only if \(U\) is, whence \(\widetilde{\rho_U}\) must be open, otherwise there would be some open set \(U\) for which \(\widetilde{\rho_U}(U)\) is not open, and hence \(\rho_X\circ \widetilde{\rho_U}(U)\) is not open, contradicting commutativity of the diagram since \(\rho_U(U)\) is open. 
+        
+        
+        
+        Now, to see that this makes \(U\) a covering space of \(X\), for each point \(x \in X\), choose some neighborhood \(U_x\) of \(x\) so that both \(\rho_U^{-1}(U_x) = \bigsqcup_{\mathcal{A}} U_\alpha = U \times D\) for \(D\) discrete and \(\rho_X^{-1}(U_x) = \bigsqcup_I U_i = U' \times C\) for \(C\) discrete where \(\rho_U : U \cong U_x\) and \(\rho_{X}: U' \cong U_x\), we can always do this by choosing a neighborhood that works for one and shrinking it to one working for both. Now we can define for \(y \in X\), \(V_y\) to be the connected component of \(\rho_X^{-1}(U_{\rho_X(y)})\) containing \(y\) and can consider \(\widetilde{\rho_U}: U_y \times D \to V_y \times C\), where \(U_y \overset{\rho_U \cong}{\to} U_{\rho_X(y)} \overset{\cong \rho_X}{\leftarrow}V_y\). As a map between products, we may write \(\widetilde{\rho_U} = (f(x,d),g(x,d))\) for \(f:U_y\times D \to V_y\) continuous, and \(g: U_y \times D \to C\) continuous. Since \(C\) is discrete and \(g\) is continuous, \(g\) is independent of the \(U_y\) coordinate, thus \(\widetilde{\rho_U}\vert_{U_y \times \set{d}}: U_y\times \set{d} \to V_y \times \set{c}\) for some fixed \(c\). Now if \(\widetilde{\rho_U}^{-1}(V_y)\) is empty, then we are done, since the preimage is \(\emptyset = V_y \times \emptyset\), so we may assume not, in which case, for some subset \(D' \subset D\), that \(\widetilde{\rho_U}: U_y \times D' \to V_y\), since for any \(d \in D'\) we have \(\rho_U \vert_{U_y \times \set{d}}\) is bijective, by commutativity of the diagram \(\widetilde{\rho_U}\) must be injective, and since \(\rho_X \vert_{V_y}\) is also injective, commutativity of the diagram again implies thhat \(\rho_U \vert_{U_y \times \set{d}}\) is surjective. This suffices to show that \(\widetilde{\rho_U}^{-1} = \bigsqcup U_y \times D'\), for \(\widetilde{\rho_U}:U_y \times \set{d} \overset{\cong}{\to} V_y\) is a covering map.
+
+        Finally, if required we show that \(\widetilde{\rho_U}\) is surjective, since \(X\) is connected it suffices to show that \(\widetilde{\rho_U}(U)\) is closed, since we already established the map \(\widetilde{\rho_U}\) is open. To see that \(\widetilde{\rho_U}(U)\) is closed, suppose that \(y \in X \setminus \widetilde{\rho_U}(U)\), then once again take \(U_{\rho_X(y)} \subset X\) to be a neighborhood with lift a disjoint union of homeomorphic open sets under the covering map. Assume for contradiction that \(V_y\) being the connected component of \(\rho_X^{-1}(U_{\rho_X(y)})\) has \(\widetilde{\rho_U}(U) \cap V_y \supset \set{z}\), then since \(\rho_U\) is surjective, we get some copy of \(U_y \subset U\) mapping surjectively onto \(U_{\rho_X(y)}\), but then \(\widetilde{\rho_U}: U_y \to V_y\), since as above the image is contained in a single connected component, and following the proof above \(\widetilde{\rho_U}\) is surjective on this connected component by commutativity of the diagram. This gives the desired contradiction, so that \(\widetilde{\rho_U}(U)^c\) is open implying that \(\widetilde{\rho_U}(U)\) is closed, so that the map is surjective by the connected hypothesis on \(X\). \qed
     \end{pb}
 \end{document}
