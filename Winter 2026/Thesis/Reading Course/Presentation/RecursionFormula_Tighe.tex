@@ -1,0 +1,133 @@
+\documentclass[20pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+
+\fancyhf{}
+\lhead{Recursion Formula for Siegel Veech Constants}
+\rhead{Tighe McAsey}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{Exercise}[subsection]
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{example}{Example(s)}[section]
+\newtheorem{ques}{Question}[section]
+\newtheorem{ans}{Answer}[section]
+\newtheorem{recall}{\large{Recall}}[section]
+\newtheorem{goal}{\large{Goal}}[section]
+\newtheorem{detail}{\large{Detail(s)}}[section]
+\newtheorem{concept}{\large{Concept}}[section]
+\usepackage{tikz-cd, stackengine}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\newcommand{\px}{\frac{\partial}{\partial x}}
+\newcommand{\py}{\frac{\partial}{\partial y}}
+\newcommand{\pz}{\frac{\partial}{\partial z}}
+\newcommand{\ppx}{\frac{\partial^2}{\partial x^2}}
+\newcommand{\ppy}{\frac{\partial^2}{\partial y^2}}
+\newcommand{\ppz}{\frac{\partial^2}{\partial z^2}}
+\newcommand{\hess}{\operatorname{Hess}}
+
+\title{Recursion Formula for Siegel Veech Constants \\ \large Following Section 8 of Eskin, Masur, Zorich}
+\author{Tighe McAsey}
+
+\begin{document}
+    \maketitle
+    \section{Review and Vision}
+
+    \large{We begin by recalling the purpose of our investigations, namely the computation of Siegel Veech constants. Our approach following EMZ is to compute volumes of Strata. From which we can recover the Siegel Veech constants.}
+
+    \begin{recall}
+
+        \large{\emph{[Can either skip over this or go over quickly]}}
+        
+        
+        \large{\begin{itemize}
+            \item Given a surface (of genus \(g\)) with abelian differential \((S,\omega)\), \(S\) is given as a surface of translation with a finite number of conic singularities \(\set{z_1,\hdots,z_k}\), with multiplicities \(m_1,\hdots,m_k\)
+            \item \(\alpha\) (a partition of \(2g-2\)) is a vector recording the conic angles at the singularities.
+            \item A configuration \(\mathcal{C}\) of multiplicity \(p\) records the orders of two zeroes \(z_1 \tand z_2\) joined by \(p\) saddle connections (recall generically these are homologous since by definition they have the same holonomy), \(\mathcal{C} = (m_1,m_2,a_1,\hdots,a_{p-1},a_1',\hdots,a_{p-1}')\) where \(m_1\) is the cone angle at \(z_1\), \(m_2\) is the cone angle at \(z_2\) and the angle between \(\gamma_j \tand \gamma_{j+1}\) at \(z_1\) is \(2\pi(a_j + 1)\) and the angle between them at \(z_2\) is \(2\pi(a_j' + 1)\).
+            \item We are working in the strata of the form \(\mathcal{H}_1(\alpha)\) which is the subset of the space of abelian differentials \((S,\omega)\) such that the zeroes of \(\omega\) have configuration \(\alpha\), with \(S\) having unit surface area.
+            \item Local coordinates on \(\mathcal{H}^1(\alpha)\) are given by choosing a basis \(\gamma_1,\hdots,\gamma_n\) for the relative homology \(H_1(S,\set{z_1,\hdots,z_k};\mathbb{C})\) for which each basis element is the homology class of a saddle connection. Then coordinates are given by:
+            \begin{align*}
+                (S,\omega) \mapsto \left(\int_{\gamma_1}\omega, \hdots,\int_{\gamma_n}\omega\right) \in \mathbb{C}^n \leftrightsquigarrow \mathbb{R}^{2n}
+            \end{align*}
+            \item The measure \(\mu\) on \(\mathcal{H}_1(\alpha)\) is given by lebesgue measure in these coordinates, normalized so that \(\mu(I^{2n}) = 1\).
+            \item We are interested in counting the asymptotics of the number of saddle connections of generic surfaces in \(\mathcal{H}_1(\alpha)\). Namely the number of saddle connections having configuration \(\mathcal{C}\) and length less than \(L\), under the image of the developing map taking \(\gamma \mapsto \text{hol}(\gamma) \in \mathbb{R}^2\) this set is denoted as \(V_{\mathcal{C}}(S)\cap B_L\).
+        \end{itemize}}
+    \end{recall}
+    \begin{recall}
+        \large{
+        \begin{itemize}
+            \item Siegel Veech constants are defined as follows (existence of such a constant is a result of Eskin and Masur)
+            \begin{align*}
+                c(\alpha,\mathcal{C}) := \lim_{L\to\infty}\frac{\# \left(V_{\mathcal{C}}(S)\cap B_L\right)}{\pi L^2}
+            \end{align*}
+            \item Last time we saw Richard present the proof of the formula for connected components of stratum
+            \begin{align*}
+                c(\alpha,\mathcal{C}) = \lim_{\epsilon \to 0} \frac{1}{\pi \epsilon^2} \frac{\text{Vol}(\mathcal{H}_1^\epsilon(\alpha,\mathcal{C}))}{\text{Vol}(\mathcal{H}_1(\alpha))}
+            \end{align*}
+        \end{itemize}}
+    \end{recall}
+    \begin{goal}
+        \large{Further develop this methodology of computing Siegel-Veech constants, namely we would like to understand how to compute \(\text{Vol}(\mathcal{H}_1^\epsilon(\alpha,\mathcal{C}))\).}
+    \end{goal}
+
+    \section{Approach and Setup}
+
+    \begin{detail}
+        \begin{itemize}
+            \item Roughly I will be covering the simplest case for computing \(\text{Vol}(\mathcal{H}_1^\epsilon(\alpha,\mathcal{C}))\)
+            \item We continue to consider connected Strata
+            \item I am only considering saddle connections of multiplicity 1, i.e. \(\mathcal{C} = (m_1,m_2)\)
+            \item Later we will consider the picture for higher multiplicity?
+        \end{itemize}
+    \end{detail}
+
+    \begin{example}
+        Saddle connection of multiplicity 1:
+
+        \textcolor{red}{INSERT IMAGE HERE}
+
+        Saddle Connection of multiplicity \(> 1\):
+
+        \textcolor{red}{INSERT IMAGE HERE}
+    \end{example}
+
+    \begin{concept}[Principle Boundary] 
+        By shrinking a saddle connection \(\gamma\) (say between \(z_1\) and \(z_2\)) on a surface of type \(\alpha = (m_1,\hdots,m_k)\), we collapse to a surface of type \(\alpha' = (m_1 + m_2, m_3, m_4, \hdots, m_k)\), \(\mathcal{H}_1(\alpha')\) is called the principle boundary of \(\mathcal{H}_1(\alpha)\).
+    \end{concept}
+
+    \textcolor{red}{INSERT IMAGE HERE}
+
+    \begin{goal}
+        To understand the substance of \textbf{Lemma 8.1 (EMZ)} and its proof.
+
+        Roughly the idea is that given a surface with a short saddle connection, we can map it to its principle boundary. Assuming this saddle connection is short, the surface should not change too much, so that (given the data of the saddle connection) we could recover the original surface.
+
+        Assuming enough geometric information is preserved we hope to recover \(\text{Vol}(\mathcal{H}_1^\epsilon(\alpha,\mathcal{C}))\) in terms of \(\text{Vol}(\mathcal{H}_1(\alpha'))\).
+    \end{goal}
+
+    \begin{thm}[EMZ Lemma 8.1]
+        Yes, Enough information is preserved.
+
+        Namely, 
+    \end{thm}
+
+\end{document}

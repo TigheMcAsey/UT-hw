@@ -1,0 +1,104 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+
+\fancyhf{}
+\lhead{MAT1301 hw4}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\usepackage{tikz-cd, stackengine}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\newcommand{\px}{\frac{\partial}{\partial x}}
+\newcommand{\py}{\frac{\partial}{\partial y}}
+\newcommand{\pz}{\frac{\partial}{\partial z}}
+\newcommand{\ppx}{\frac{\partial^2}{\partial x^2}}
+\newcommand{\ppy}{\frac{\partial^2}{\partial y^2}}
+\newcommand{\ppz}{\frac{\partial^2}{\partial z^2}}
+\newcommand{\hess}{\operatorname{Hess}}
+
+\begin{document}
+    \begin{pb}
+        Define \(\alpha_{X,x_0}: [g: (S^1,0) \to (X,x_0)] \mapsto g_*(1)\). Where \(1\) is the generator for \(\mathbb{Z} = H_1(S^1)\). To check this is indeed natural, we just check that the following diagram commutes
+
+        \begin{equation*}
+            \begin{tikzcd}
+                \pi_1(X,x_0) \arrow[d,"f_*"] \arrow[r,"\alpha"] &H_1(X) \arrow[d,"f_*"] \\
+                \pi_1(Y,y_0) \arrow[r,"\alpha"] &H_1(Y)
+            \end{tikzcd}
+        \end{equation*}
+
+        Going first right then down we get \(f_*g_*(1)\), going first down we get \(\alpha(f_*[g]) = \alpha([fg]) = (fg)_*(1)\) so naturality follows by functoriality of \(H_1\). Well defined-ness of \(\alpha\) follows from homotopic maps inducing the same map of homology. 
+        
+        \textcolor{red}{Check if we prove this in class before deadline}
+
+        To see intuitively why this map is nonzero, we can examine the identity map \([1]: S^1 \to S^1\), this gets taken to the identity map on the first homology class by \(\alpha\), so since we don't expect \(H_1(S^1) = 0\), we should not expect \(\alpha \equiv 0\) (otherwise any map factoring through \(\pi_1\) would be zero anyways). A more coarse argument, is that we are mapping copies of \(S^1\) into our space nontrivially for nontrivial homotopy classes of paths, so that nontrivial homology classes in \(S^1\) are likely also mapped in nontrivially.
+    \end{pb}
+    \begin{pb}
+        Let \(e_k\) be the \(k\)-th standard basis vector in \(\mathbb{R}^n\), then let \(v_k = \sum_{n-k + 1}^n e_j\). From construction we get for any \((s_1,\hdots,s_n) \in \text{Im}([v_0,\hdots,v_n])\) satisfies \(0 \leq s_1 \leq \hdots, \leq s_n \leq 1\) since the coefficient of \(s_j\) is the coefficient of \(s_{j-1}\) plus some non-negative real number, and \(s_n = \sum_1^n t_j \leq \sum_0^n t_j = 1\). Continuity is immediate. Now suppose that \[(s_1,\hdots,s_n) = [v_0,\hdots,v_n](t_0,\hdots,t_n) = [v_0,\hdots,v_n](x_0,\hdots,x_n)= (y_1,\hdots,y_n)\] Then \(t_0 = s_1 = y_1 = x_0\), and inductively, \(t_{j+1} = s_{j+1} - s_j = y_{j+1} - y_j = x_{j+1}\) for \(j < n-1\). To see that \(t_n = x_n\) given that \(t_j = x_j\) for \(j \leq n-1\) simply note that \(\sum_0^n t_j = 1 = \sum_0^n x_j\) so that \(t_n = 1 - \sum_0^{n-1} t_j = 1 - \sum_0^{n-1} x_j = x_n\), which suffices to show injectivity. To see that the map is surjective, let \((s_1,\hdots,s_n) \in \Delta_n'\), then take \(t_0 = s_1, t_1 = s_2 - s_1, \hdots, t_{n-1} = s_n - s_{n-1}\). Then since \(\sum_0^{n-1} t_j = s_n \leq 1\) we can choose \(t_n = 1 - \sum_0^{n-1} t_j\) so that \((t_0,\hdots,t_n)\) lies in \(\Delta_n\). This suffices to show that \([v_0,\hdots,v_n]\) is a homeomorphism \(\Delta_n \to \Delta_n'\). Finally, to see the map is open, note that as in the proof of surjectivity, the set theoretic inverse is given by \((s_1,\hdots,s_n) \mapsto (s_1,s_2 - s_1, \hdots, s_{n-1} - s_n, 1 - s_n)\) which is clearly continuous, so that the map is open. \qed
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} The \(n\)-cube is given by \(\set{(s_1,\hdots,s_n)\mid 0 \leq s_j \leq 1 \text{ for all }j}\), thus we can write
+        \begin{align*}
+            I^n = \bigcup_{\sigma \in S_n} \set{(s_1,\hdots,s_n)\mid 0 \leq s_{\sigma(1)}\leq s_{\sigma(2)} \leq \hdots \leq s_{\sigma(n)} \leq 1}
+        \end{align*}
+        Since each point in the \(n\)-cube lies in one of these sets by ordering its coordinates from least to greatest, and \(\# S_n = n!\) \qed
+
+        \textbf{(b)} We can write \(\Delta_p \times \Delta_q\) as
+        \begin{align*}
+            \set{(t_1,\hdots,t_p,s_1,\hdots,s_q)\mid 0 \leq t_1 \leq \hdots \leq t_p \leq 1 \tand 0 \leq s_1 \leq \hdots \leq s_q \leq 1}
+        \end{align*}
+        Each point in the product once again lives in a sub \(p+q\) simplex, given by ordering each of its points, the number of such subsimplexes is then given by the number of ways to interleave two lists (of lengths \(p\) and \(q\)) which is \(\binom{p+q}{q}\). The way to see this enumeration is each simplex corresponds to choosing \(q\) of the \(p+q\) coordinates to be given by \(s_j\) coordinates, then the order of the \(s_j\) coordinates, and \(t_j\) coordinates is fixed given the specification. So we can write \(\Delta_p \times \Delta_q\) as a union over all of the interleaved \(p+q\) simplices. \qed
+    \end{pb}
+    \begin{pb}
+        Suppose that \(\alpha, \beta: C_* \to D_*\) are homotopic maps of chain complexes via the homotopy \(h\). First suppose that \(g: D_* \to E_*\) is a map of chain complexes, then considering the following two diagrams we get \(g \alpha \sim g \beta\) where the homotopy is given by \(gh: C_n \to E_{n+1}\).
+        \begin{equation*}
+            \begin{tikzcd}
+                \cdots \arrow[r] &C_{n+2} \arrow[dl,"h"] \arrow[d,"\alpha - \beta"] \arrow[r] &C_{n+1} \arrow[dl,"h"] \arrow[d,"\alpha - \beta"] \arrow[r] &C_n \arrow[dl,"h"] \arrow[d,"\alpha - \beta"] \arrow[r] &C_{n-1} \arrow[dl,"h"] \arrow[d,"\alpha - \beta"] \arrow[r] &\cdots \arrow[dl,"h"] \\
+                \cdots \arrow[r] &D_{n+2} \arrow[d,"g"] \arrow[r] &D_{n+1} \arrow[d,"g"] \arrow[r] &D_n \arrow[d,"g"] \arrow[r] &D_{n-1} \arrow[d,"g"] \arrow[r] &\cdots \\
+                \cdots \arrow[r] &E_{n+2} \arrow[r] &E_{n+1} \arrow[r] &E_n \arrow[r] &E_{n-1} \arrow[r] &\cdots
+            \end{tikzcd}
+        \end{equation*}
+        Composing and applying linearity (i.e. \(g(\alpha - \beta) = g \alpha - g \beta\)) we get the desired diagram indicating the homotopy between \(g\alpha\) and \(g \beta\)
+        \begin{equation*}
+            \begin{tikzcd}
+                \cdots \arrow[r] &C_{n+2} \arrow[dl,"gh"] \arrow[d,"g\alpha - g\beta"] \arrow[r] &C_{n+1} \arrow[dl,"gh"] \arrow[d,"g\alpha - g\beta"] \arrow[r] &C_n \arrow[dl,"gh"] \arrow[d,"g\alpha - g\beta"] \arrow[r] &C_{n-1} \arrow[dl,"gh"] \arrow[d,"g\alpha - g\beta"] \arrow[r] &\cdots \arrow[dl,"gh"] \\
+                \cdots \arrow[r] &E_{n+2} \arrow[r] &E_{n+1} \arrow[r] &E_n \arrow[r] &E_{n-1} \arrow[r] &\cdots
+            \end{tikzcd}
+        \end{equation*}
+        The argument for precomposition is similar, now supposing \(g: E_* \to C_*\) we get the diagram
+        \begin{equation*}
+            \begin{tikzcd}
+                \cdots \arrow[r] &E_{n+2} \arrow[d,"g"] \arrow[r] &E_{n+1} \arrow[d,"g"] \arrow[r] &E_n \arrow[d,"g"] \arrow[r] &E_{n-1} \arrow[d,"g"] \arrow[r] &\cdots \\
+                \cdots \arrow[r] &C_{n+2} \arrow[dl,"h"] \arrow[d,"\alpha - \beta"] \arrow[r] &C_{n+1} \arrow[dl,"h"] \arrow[d,"\alpha - \beta"] \arrow[r] &C_n \arrow[dl,"h"] \arrow[d,"\alpha - \beta"] \arrow[r] &C_{n-1} \arrow[dl,"h"] \arrow[d,"\alpha - \beta"] \arrow[r] &\cdots \arrow[dl,"h"] \\
+                \cdots \arrow[r] &D_{n+2} \arrow[r] &D_{n+1} \arrow[r] &D_n \arrow[r] &D_{n-1} \arrow[r] &\cdots \\
+            \end{tikzcd}
+        \end{equation*}
+        Once again we may compose and use linearity so that \((\alpha - \beta)g = \alpha g - \beta g\) to get the following homotopy via \(hg\)
+        \begin{equation*}
+            \begin{tikzcd}
+                \cdots \arrow[r] &E_{n+2} \arrow[dl,"hg"] \arrow[d,"\alpha g - \beta g"] \arrow[r] &E_{n+1} \arrow[dl,"hg"] \arrow[d,"\alpha g - \beta g"] \arrow[r] &E_n \arrow[dl,"hg"] \arrow[d,"\alpha g - \beta g"] \arrow[r] &E_{n-1} \arrow[dl,"hg"] \arrow[d,"\alpha g - \beta g"] \arrow[r] &\cdots \arrow[dl,"hg"] \\
+                \cdots \arrow[r] &D_{n+2} \arrow[r] &D_{n+1} \arrow[r] &D_n \arrow[r] &D_{n-1} \arrow[r] &\cdots
+            \end{tikzcd}
+        \end{equation*}
+        \qed
+    \end{pb}
+\end{document}
