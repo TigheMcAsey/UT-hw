@@ -70,6 +70,7 @@
             \end{align*}
             \item The measure \(\mu\) on \(\mathcal{H}_1(\alpha)\) is given by lebesgue measure in these coordinates, normalized so that \(\mu(I^{2n}) = 1\).
             \item We are interested in counting the asymptotics of the number of saddle connections of generic surfaces in \(\mathcal{H}_1(\alpha)\). Namely the number of saddle connections having configuration \(\mathcal{C}\) and length less than \(L\), under the image of the developing map taking \(\gamma \mapsto \text{hol}(\gamma) \in \mathbb{R}^2\) this set is denoted as \(V_{\mathcal{C}}(S)\cap B_L\).
+            \item \(\mathcal{H}_1^\epsilon(\alpha)\) is defined as \textcolor{red}{TODO ...}
         \end{itemize}}
     \end{recall}
     \begin{recall}
@@ -124,10 +125,72 @@
         Assuming enough geometric information is preserved we hope to recover \(\text{Vol}(\mathcal{H}_1^\epsilon(\alpha,\mathcal{C}))\) in terms of \(\text{Vol}(\mathcal{H}_1(\alpha'))\).
     \end{goal}
 
-    \begin{thm}[EMZ Lemma 8.1]
+    \begin{thm}[EMZ Lemma 8.1 --  Imprecise version]
         Yes, Enough information is preserved.
 
-        Namely, 
+        Namely, up to some error we have
+        \begin{align*}
+            \mathcal{H}_1^\epsilon(\alpha,\mathcal{C}) &\to \mathcal{H}_1(\alpha') \times B_\epsilon \\
+            (S,m_1,m_2) &\mapsto (S',m,\gamma)
+        \end{align*}
+        is a covering map (of degree \(m+1\)), and importantly the measure decomposes \(\mu = \mu' \times \text{Lebesgue}\)
     \end{thm}
+
+    \begin{detail}
+        The error corresponds to requiring all saddle connections other than the one being collapsed to have length atleast \(\epsilon\). This is essential for the covering map to be well defined, since otherwise two stratum could be mapped to the same boundary
+
+        \textcolor{red}{Include Image Here or Later}
+    \end{detail}
+
+    \section{Proof of Covering and Precise Restatement}
+
+    \begin{proof}
+        The covering map is given by collapsing a saddle connection, as previously specified, it is actually easier to understand through looking at the local inverse.
+
+        SETUP:
+        \begin{itemize}
+            \item the order of the zero \(x\) we are spliting is \(m \geq 2\) and \(m_1,m_2 \in \mathbb{Z}_{>0}\) with \(m = m_1 + m_2\)
+            \item \(\gamma \in B_{\epsilon} \subset \mathbb{R}^2\), with \(\abs{\text{hol}(\gamma)} = 2\delta\)
+            \item Assume that all other saddle connections and closed geodesics of \(S'\) have length atleast \(2 \epsilon\) [\emph{This corresponds to our assumption ensuring that the covering map is well defined, since the surface in our local inverse will have saddles of length atleast \(\epsilon\) due to this assumption}]
+            \item Let \(\set{x,z_1,\hdots,z_\ell}\) be the zeroes of \(\omega'\) the differential on \(S'\), since we will modify a small neighborhood of \(x\), we take saddle connections whos classes generate the base of our homology \(H_1(S,\set{x,z_1,\hdots,z_\ell};\mathbb{Z})\) avoiding \(B_\epsilon(x)\), if \(x\) is the only zero this can be done, if there are other zeroes then we require exactly one saddle (\(\beta\)) to have \(x\) as its endpoint
+            \item Q: Why can we/do we have to do this? A: Recall since \((S,\set{x,z_1,\hdots,z_\ell})\) is a good pair (Hatcher) the relative homology is equivalent to the homology of the quotient space, in which case each saddle has a nontrivial homology class (e.g. look at the holonomy), and if none of \(\gamma_1,\hdots,\gamma_n\) are saddle connections to \(x\), then \(\beta\) will have an independent homology class (once again e.g. the holonomy can be linearly independent). Conversely if we include \(\beta\), then any other saddle connection including \(x\) is homologous to a linear combination of saddle connections avoiding it (Proof - Just draw the 2-simplex).
+        \end{itemize}
+
+        Proof:
+
+        \textcolor{red}{Include Image From Paper}
+
+        Glue together \(2m+2\) half disks of radius \(\epsilon\), start by gluing the opposing discs along the new saddle connection \(\gamma\)
+
+        Considerations:
+
+        \begin{itemize}
+            \item This process is ambiguous up to choosing where \(\gamma\) is added, this depends on the choice of disks to be glued along gamma, of which there are \(m+1\) pairs, each pair corresponds to 2 gluings by mirroring, but by marking which point is \(x_1\) and \(x_2\), fixing the holonomy of \(\gamma\) gives one choice. This is where the covering index of \(m+1\) comes from.
+            \item Since we perform this construction locally, the rest of the surface i.e. \(B_\epsilon^c\) remains unchanged, namely the holonomy is unchanged on the homology basis of \(S'\) (which includes the homology basis of \(S\)) apart from \(\text{hol}(\beta)\) being changed by a factor of \(-\gamma/2\). By the triangle inequality all of the lifts lie in \(H^{\epsilon,\epsilon}_1(\alpha,m_1,m_2)\)
+        \end{itemize}
+
+        Now we consider the case of collapsing zeroes, here we clearly see the error in the above being a covering map, the cover is ramified and maps only to a ``large'' subset of \(\mathcal{H}^1(\alpha')\)
+
+        SETUP:
+
+        \begin{itemize}
+            \item Let \(S \in \mathcal{H}^{\epsilon,3 \epsilon}_1(\alpha)\) i.e. \(S\) has a saddle connection \(\gamma\) connecting zeroes \(x_1, x_2\) of orders \(m_1\) and \(m_2\), \(\text{hol}(\gamma) \in B_\epsilon\), and all other saddle connections of \(S\) have length atleast \(3 \epsilon\).
+            \item Considering the relative homology \(H_1(S,\set{x_1,x_2,z_1,\hdots,z_\ell})\), similarly to adding a saddle connection, we choose our basis for relative homology away from \(B_\epsilon(\text{midpoint of } \gamma)\), we furthermore take \(\gamma\) in this homology basis, similarly to last time if \(\ell > 0\) we will need to take a saddle conection \(\beta\) connecting one of the \(z_j\) to \(x_1\) in our basis.
+        \end{itemize}
+
+        Proof: We break up \(B_\epsilon(\text{midpoint of } \gamma)\) into \(2m+2\) half disks, in the exact same way as breaking up a zero. We then collapse the saddle connection, while leaving the manifold the same outside of the \(\epsilon\) ball, equivalently we are reversing the breaking up process.
+
+        \textcolor{red}{REFER BACK TO IMAGE}
+
+        Considerations:
+
+        \begin{itemize}
+            \item Since this construction is local, the holonomy of the basis vectors for \(H_1(S',x,z_1,\hdots,z_\ell)\) is unchanged apart from \(\beta\) which gets replaced by a curve to \(x\), hence the holonomy of \(\beta\) is changed by at most \(\frac12\text{hol}(\gamma)\)
+            \item From this we know that the every saddle connection on \(S'\) has length atleast \(2 \epsilon\)
+            \item 
+        \end{itemize}
+    \end{proof}
+
+    \section{Example: \(\Sigma_3\)}
 
 \end{document}

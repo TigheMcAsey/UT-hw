@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  23 FEB 2026 12:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 FEB 2026 02:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/Users/tighe/School_Work/UT-hw/Winter 2026/Thesis/Reading Course/Presentation/RecursionFormula_Tighe"
-(/Users/tighe/School_Work/UT-hw/Winter 2026/Thesis/Reading Course/Presentation/RecursionFormula_Tighe.tex
+**"/Users/tighe/School_Work/UT-hw/Winter 2026/MAT1120/homework/hw"
+(/Users/tighe/School_Work/UT-hw/Winter 2026/MAT1120/homework/hw.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
@@ -371,40 +371,30 @@ File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfarrowlinewidth=\dimen270
 )))
 \c@pb=\count306
-\c@thm=\count307
-\c@definition=\count308
-\c@proposition=\count309
-\c@example=\count310
-\c@ques=\count311
-\c@ans=\count312
-\c@recall=\count313
-\c@goal=\count314
-\c@detail=\count315
-\c@concept=\count316
  (/usr/local/texlive/2025/texmf-dist/tex/latex/stackengine/stackengine.sty
 Package: stackengine 2021/07/22 v4.11\ Stacking text and objects in convenient ways
  (/usr/local/texlive/2025/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count317
+\etb@tempcnta=\count307
 ) (/usr/local/texlive/2025/texmf-dist/tex/generic/listofitems/listofitems.sty (/usr/local/texlive/2025/texmf-dist/tex/generic/listofitems/listofitems.tex
-\loi_cnt_foreach_nest=\count318
-\loi_nestcnt=\count319
+\loi_cnt_foreach_nest=\count308
+\loi_nestcnt=\count309
 )
 Package: listofitems 2024/03/09 v1.65 Grab items in lists using user-specified sep char (CT)
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count320
-\calc@Bcount=\count321
+\calc@Acount=\count310
+\calc@Bcount=\count311
 \calc@Adimen=\dimen271
 \calc@Bdimen=\dimen272
 \calc@Askip=\skip71
 \calc@Bskip=\skip72
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count322
+\calc@Ccount=\count312
 \calc@Cskip=\skip73
 )
-\c@@stackindex=\count323
+\c@@stackindex=\count313
 \@boxshift=\skip74
 \stack@tmplength=\skip75
 \temp@stkl=\skip76
@@ -415,33 +405,33 @@ LaTeX Info: Redefining \addtolength on input line 81.
 \se@backgroundbox=\box68
 \stackedbox=\box69
 \@centerbox=\box70
-\c@ROWcellindex@=\count324
+\c@ROWcellindex@=\count314
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count325
+\l__color_backend_stack_int=\count315
 \l__pdf_internal_box=\box71
 )
 
 LaTeX Warning: Unused global option(s):
-    [20pt].
+    [10.5pt].
 
-(./RecursionFormula_Tighe.aux)
-\openout1 = `RecursionFormula_Tighe.aux'.
+(./hw.aux)
+\openout1 = `hw.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -479,16 +469,16 @@ LaTeX Font Info:    ... okay on input line 51.
 
 (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count326
+\scratchcounter=\count316
 \scratchdimen=\dimen273
 \scratchbox=\box72
-\nofMPsegments=\count327
-\nofMParguments=\count328
+\nofMPsegments=\count317
+\nofMParguments=\count318
 \everyMPshowfont=\toks44
-\MPscratchCnt=\count329
+\MPscratchCnt=\count319
 \MPscratchDim=\dimen274
-\MPnumerator=\count330
-\makeMPintoPDFobject=\count331
+\MPnumerator=\count320
+\makeMPintoPDFobject=\count321
 \everyMPtoPDFconversion=\toks45
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -496,62 +486,40 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/local/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 52.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 42.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 52.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 42.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+LaTeX Font Info:    Trying to load font information for U+euf on input line 45.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/ueuf.fd
+File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+)
 
-[1
+[1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
-{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-Overfull \hbox (0.85713pt too wide) in paragraph at lines 90--91
-[]\OT1/cmr/bx/n/12 Goal 1.1. []\OT1/cmr/m/n/12 Fur-ther de-velop this method-ol-ogy of com-put-ing Siegel-Veech con-stants, namely
- []
-
-
-Overfull \hbox (17.25772pt too wide) in paragraph at lines 97--98
-[]\OT1/cmr/m/n/12 Roughly I will be cov-er-ing the sim-plest case for com-put-ing $[](\OMS/cmsy/m/n/12 H[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 C\OT1/cmr/m/n/12 ))$ 
- []
-
-
-
-[2]
-
-[3]
-Overfull \hbox (25.93057pt too wide) in paragraph at lines 178--179
-\OT1/cmr/m/n/12 sad-dle con-nec-tion, we choose our ba-sis for rel-a-tive ho-mol-ogy away from $\OML/cmm/m/it/12 B[]\OT1/cmr/m/n/12 ([]\OML/cmm/m/it/12 ^^M\OT1/cmr/m/n/12 )$,
- []
-
-
-Overfull \hbox (11.9279pt too wide) in paragraph at lines 188--189
-[]\OT1/cmr/m/n/12 Since this con-struc-tion is lo-cal, the holon-omy of the ba-sis vec-tors for $\OML/cmm/m/it/12 H[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 S[]; x; z[]; [] ; z[]\OT1/cmr/m/n/12 )$
- []
-
-
-
-[4] (./RecursionFormula_Tighe.aux)
+] (./hw.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 15696 strings out of 473190
- 318465 string characters out of 5715801
- 699558 words of memory out of 5000000
- 38679 multiletter control sequences out of 15000+600000
- 567678 words of font info for 70 fonts, out of 8000000 for 9000
+ 15594 strings out of 473190
+ 317050 string characters out of 5715801
+ 704693 words of memory out of 5000000
+ 38581 multiletter control sequences out of 15000+600000
+ 561898 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 116i,11n,121p,799b,429s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on RecursionFormula_Tighe.pdf (4 pages, 186888 bytes).
+ 116i,14n,121p,895b,322s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on hw.pdf (1 page, 107896 bytes).
 PDF statistics:
- 101 PDF objects out of 1000 (max. 8388607)
- 62 compressed objects within 1 object stream
+ 66 PDF objects out of 1000 (max. 8388607)
+ 40 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

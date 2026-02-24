@@ -1,0 +1,87 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+
+\fancyhf{}
+\lhead{MAT1120 hw}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\usepackage{tikz-cd, stackengine}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\newcommand{\px}{\frac{\partial}{\partial x}}
+\newcommand{\py}{\frac{\partial}{\partial y}}
+\newcommand{\pz}{\frac{\partial}{\partial z}}
+\newcommand{\ppx}{\frac{\partial^2}{\partial x^2}}
+\newcommand{\ppy}{\frac{\partial^2}{\partial y^2}}
+\newcommand{\ppz}{\frac{\partial^2}{\partial z^2}}
+\newcommand{\hess}{\operatorname{Hess}}
+\newcommand{\inv}{\operatorname{inv}}
+\newcommand{\spl}{\operatorname{\mathfrak{sl}}}
+
+\begin{document}
+    \begin{pb}
+        Notation: let \(e_{ij}\) denote the elementary matrix with a \(1\) in the \(i,j\)-th position and zeroes elsewhere
+         \textbf{(a)} Show that the exponential map for \(SL(2,\mathbb{C})\) is not surjective.
+         \begin{proof}
+            Let \(A \in \exp(\spl(2,\mathbb{C}))\) so that \(A = \exp(B)\), then since we are working in \(\mathbb{C}\) we can conjugate \(B\) to its Jordan canonical form \(J = PBP^{-1}\), the jordan canonical form of a matrix with trace zero is one of
+            \begin{align*}
+                &J_1 = \begin{pmatrix}
+                    \lambda & 0 \\ 0 & -\lambda
+                \end{pmatrix} &J_2 = \begin{pmatrix}
+                    \lambda & 1 \\ 0 & -\lambda
+                \end{pmatrix}
+            \end{align*}
+            The exponential of either Jordan canonical form looks like:
+            \begin{align*}
+                \exp(J_1) &= \begin{pmatrix}
+                    e^{\lambda} & 0 \\ 0 & e^{-\lambda}
+                \end{pmatrix} \\
+                \exp(J_2) &= \exp(J_1 + e_{12}) = \exp(J_1)\exp(e_{12}) = \begin{pmatrix}
+                    e^{\lambda} & 0 \\ 0 & e^{-\lambda}
+                \end{pmatrix}(1 + e_{12}) = \begin{pmatrix}
+                    e^\lambda & e^\lambda \\ 0 & e^{- \lambda}
+                \end{pmatrix}
+            \end{align*}
+            So that \(\exp(J_2)\) has canonical form \(\begin{pmatrix} 1 & 1 \\ 0 & e^{-2 \lambda} \end{pmatrix}\). Now since \(A = \exp(B) = P\exp(J)P^{-1}\), \(A\) must have one of these two normal forms. It follows that
+            \begin{align*}
+                \begin{pmatrix} -1 & 1 \\ 0 & -1 \end{pmatrix}
+            \end{align*}
+            is not in the image of \(\exp\).
+         \end{proof}
+            \textbf{(b)} Show the exponential map for \(SL(2,\mathbb{R})\) is not surjective
+            \begin{proof}
+                Assume it were, then \(\begin{pmatrix} -1 & 1 \\ 0 & -1 \end{pmatrix}\) would be in the image of the exponential map on \(\spl(2,\mathbb{R})\), since the exponential map on \(\spl(2,\mathbb{R})\) is the restriction of the exponential map on \(\spl(2,\mathbb{C})\) to real matrices, this contradicts (a).
+            \end{proof}
+    \end{pb}
+    \begin{pb}
+        Let \(G\) be a connected Lie group, and \(U\) an open neighborhood of the group unit \(e\). Show that any \(g \in G\) can be written as a product of elements \(g_1\cdot g_2\cdots g_n\) with \(g_j \in U\).
+    \end{pb}
+    \begin{proof}
+        Denote \(\inv\) as the inverse map, and \(L_g\) as the map by left multiplication by a group element \(g \in G\). Since \(\inv\) is a diffeomorphism \(\inv(U)\) is an open subset of \(G\), moreover \(e \in U \cap \inv(U)\), so it will suffice to show that all elements of \(G\) can be written as products of elements in \(V := U \cap \inv(U)\).
+
+        Now, define \(S = \set{\prod_1^n g_j \mid n \in \mathbb{Z}_{>0} \tand g_j \in V}\), to see that \(S\) is a subgroup of \(G\), we note that \(e \in S\), \(S\) is closed under products by definition, and if \(g \in S\), then \(g = \prod_1^n g_j\) with \(g_j\) in \(V\), so that \(\prod_{1}^n g_{n+1 - j}^{-1} \in S\) since \(V = \inv(V)\). Moreover, \(S \subset G\) is open, this can easily be seen since \(S = \bigcup_{g \in S} L_g(V)\), where each \(L_g(V)\) is open since \(L_g\) is a diffeomorphism. Now, since \(S\) is open to see that \(S = G\) it will suffice to prove that \(S\) is also closed since \(G\) is connected. To see that \(S\) is closed, we prove that \(S^c\) is open. This is pretty much just an observation, since \(S\) is a subgroup its compliment is simply the union of its cosets
+        \begin{align*}
+            S^c = \bigcup_{g \in G \setminus S}L_g(S)
+        \end{align*}
+        which is a union of open sets since we have established \(S\) is open and \(L_g\) is a diffeomorphism.
+    \end{proof}
+\end{document}
