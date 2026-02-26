@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  23 FEB 2026 12:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  26 FEB 2026 14:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -517,41 +517,112 @@ Overfull \hbox (17.25772pt too wide) in paragraph at lines 97--98
 []\OT1/cmr/m/n/12 Roughly I will be cov-er-ing the sim-plest case for com-put-ing $[](\OMS/cmsy/m/n/12 H[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 C\OT1/cmr/m/n/12 ))$ 
  []
 
+<Figures/MultiplicityOneSaddleConnection.png, id=25, 371.3875pt x 235.88126pt>
+File: Figures/MultiplicityOneSaddleConnection.png Graphic file (type png)
+<use Figures/MultiplicityOneSaddleConnection.png>
+Package pdftex.def Info: Figures/MultiplicityOneSaddleConnection.png  used on input line 109.
+(pdftex.def)             Requested size: 371.38658pt x 235.88068pt.
+<Figures/Multiplicity5SaddleConnection.png, id=27, 1139.25626pt x 642.4pt>
+File: Figures/Multiplicity5SaddleConnection.png Graphic file (type png)
+<use Figures/Multiplicity5SaddleConnection.png>
+Package pdftex.def Info: Figures/Multiplicity5SaddleConnection.png  used on input line 117.
+(pdftex.def)             Requested size: 452.9679pt x 255.4165pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-[2]
 
-[3]
-Overfull \hbox (25.93057pt too wide) in paragraph at lines 178--179
+[2 <./Figures/MultiplicityOneSaddleConnection.png>]
+
+[3 <./Figures/Multiplicity5SaddleConnection.png>]
+<Figures/PrincipleBoundary.png, id=36, 347.2975pt x 384.43625pt>
+File: Figures/PrincipleBoundary.png Graphic file (type png)
+<use Figures/PrincipleBoundary.png>
+Package pdftex.def Info: Figures/PrincipleBoundary.png  used on input line 128.
+(pdftex.def)             Requested size: 347.29665pt x 384.4353pt.
+
+
+[4 <./Figures/PrincipleBoundary.png>]
+<Figures/SurfaceWith2Boundaries.png, id=41, 903.375pt x 689.57625pt>
+File: Figures/SurfaceWith2Boundaries.png Graphic file (type png)
+<use Figures/SurfaceWith2Boundaries.png>
+Package pdftex.def Info: Figures/SurfaceWith2Boundaries.png  used on input line 157.
+(pdftex.def)             Requested size: 452.9679pt x 345.77635pt.
+
+
+[5 <./Figures/SurfaceWith2Boundaries.png>]
+<Figures/BreakingUpAZero.png, id=46, 477.785pt x 388.45125pt>
+File: Figures/BreakingUpAZero.png Graphic file (type png)
+<use Figures/BreakingUpAZero.png>
+Package pdftex.def Info: Figures/BreakingUpAZero.png  used on input line 180.
+(pdftex.def)             Requested size: 477.78383pt x 388.45029pt.
+
+Overfull \hbox (24.81593pt too wide) in paragraph at lines 180--181
+ [] 
+ []
+
+
+
+[6 <./Figures/BreakingUpAZero.png>]
+<Figures/CoveringIndex.png, id=51, 499.8675pt x 300.12125pt>
+File: Figures/CoveringIndex.png Graphic file (type png)
+<use Figures/CoveringIndex.png>
+Package pdftex.def Info: Figures/CoveringIndex.png  used on input line 193.
+(pdftex.def)             Requested size: 499.86627pt x 300.12051pt.
+
+Overfull \hbox (46.89838pt too wide) in paragraph at lines 193--194
+ [] 
+ []
+
+
+Overfull \hbox (25.93057pt too wide) in paragraph at lines 206--207
 \OT1/cmr/m/n/12 sad-dle con-nec-tion, we choose our ba-sis for rel-a-tive ho-mol-ogy away from $\OML/cmm/m/it/12 B[]\OT1/cmr/m/n/12 ([]\OML/cmm/m/it/12 ^^M\OT1/cmr/m/n/12 )$,
  []
 
 
-Overfull \hbox (11.9279pt too wide) in paragraph at lines 188--189
+
+[7 <./Figures/CoveringIndex.png>]
+Overfull \hbox (11.9279pt too wide) in paragraph at lines 216--217
 []\OT1/cmr/m/n/12 Since this con-struc-tion is lo-cal, the holon-omy of the ba-sis vec-tors for $\OML/cmm/m/it/12 H[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 S[]; x; z[]; [] ; z[]\OT1/cmr/m/n/12 )$
  []
 
 
 
-[4] (./RecursionFormula_Tighe.aux)
+[8]
+Overfull \hbox (1.95473pt too wide) in paragraph at lines 232--233
+[]\OT1/cmr/m/n/12 Now we would like to cover $\OML/cmm/m/it/12 K$ \OT1/cmr/m/n/12 with finitely many dis-joint co-or-di-nate charts $\OML/cmm/m/it/12 U[]; [] ; U[]$\OT1/cmr/m/n/12 ,
+ []
+
+
+
+[9]
+Overfull \hbox (32.54068pt too wide) detected at line 264
+[]
+ []
+
+
+
+[10]
+
+[11] (./RecursionFormula_Tighe.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 15696 strings out of 473190
- 318465 string characters out of 5715801
- 699558 words of memory out of 5000000
- 38679 multiletter control sequences out of 15000+600000
+ 15742 strings out of 473190
+ 320264 string characters out of 5715801
+ 702560 words of memory out of 5000000
+ 38725 multiletter control sequences out of 15000+600000
  567678 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 116i,11n,121p,799b,429s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on RecursionFormula_Tighe.pdf (4 pages, 186888 bytes).
+ 116i,18n,121p,971b,430s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on RecursionFormula_Tighe.pdf (11 pages, 681363 bytes).
 PDF statistics:
- 101 PDF objects out of 1000 (max. 8388607)
- 62 compressed objects within 1 object stream
+ 142 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 43 words of extra memory for PDF output out of 10000 (max. 10000000)
 

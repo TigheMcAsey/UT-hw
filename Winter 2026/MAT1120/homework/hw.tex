@@ -20,7 +20,7 @@
 
 % Commands:
 
-\newcommand{\set}[1]{\{#1\}}
+\newcommand{\set}[1]{\left\{#1\right\}}
 \newcommand{\gen}[1]{\langle#1\rangle}
 \newcommand{\abs}[1]{\left\vert#1\right\vert}
 \newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
@@ -73,8 +73,60 @@
             \end{proof}
     \end{pb}
     \begin{pb}
-        Let \(G\) be a connected Lie group, and \(U\) an open neighborhood of the group unit \(e\). Show that any \(g \in G\) can be written as a product of elements \(g_1\cdot g_2\cdots g_n\) with \(g_j \in U\).
+        \textbf{(a)} Show that \(\text{Mat}_n(\mathbb{C}) \hookrightarrow \text{Mat}_{2n}(\mathbb{R})\) is a subalgebra.
+        \begin{proof}
+            by providing a map \(\phi: \mathbb{C} \hookrightarrow \text{Mat}_2(\mathbb{R})\) we can extend this to \(\text{Mat}_n(\mathbb{C})\) by taking a complex matrix to its block form pointwise. Explicitly the map on matrices is \(\psi: (z_{nm})_{n,m} \mapsto (\phi(z_{nm}))_{n,m}\).
+
+            Suppose \(z \in \mathbb{C}\), we can define \(\psi(z)\) by taking \(z\) to its multiplication action on \(\mathbb{R} \oplus i \mathbb{R}\), concretely 
+            \[\phi: a + bi \mapsto \begin{pmatrix} a & -b \\ b & a \end{pmatrix}\]
+            Injectivity, \(\mathbb{R}\)-linearity and \(1 \mapsto 1\) are immediate. To see that multiplication is preserved note that the matrix in the image is the action of multiplication on \(\mathbb{R} \oplus i \mathbb{R}\), so composition is equivalent to multiplication by the product.
+        \end{proof}
+
+        \textbf{(b)} Show that \(U(n) = GL(n,\mathbb{C}) \cap O(2n)\)
+        \begin{proof}
+            It suffices to show that the inclusion of algebras above maps \(U(n)\) into \(O(2n)\). We first note that \(\phi(\overline{z}) = \phi(z)^\text{T}\) for \(z \in \mathbb{C}\). Now let \(A \in U(n)\), then we work in block form and use the identity just stated relating transposition and conjugation to get \[\psi(A^\dagger) = (\phi(z_{mn})^\text{T})_{n,m} = \psi(A)^\text{T}\]
+            Now we apply the fact that \(\psi\) is an algebra morphism to cocnlude that
+            \begin{align*}
+                \psi(A)\psi(A)^T = \psi(A)\psi(A^\dagger) = \psi(AA^\dagger) = \psi(1) = 1
+            \end{align*}
+        \end{proof}
     \end{pb}
+    \begin{pb}
+        \textbf{(a)} Show the following map is an algebra morphism
+        \begin{align*}
+            \mathbb{H} &\to \text{Mat}_2(\mathbb{C}) \\
+            a + ib + jc + kd &\mapsto \begin{pmatrix} a + ib & c + id \\ -c + id & a - ib \end{pmatrix}
+        \end{align*}
+        \begin{proof}
+            \(1 \mapsto 1\) is immediate, moreover \(\mathbb{R}\)-linearity of the matrix entries ensures \(\mathbb{R}\)-linearity of the morphism, we are only left to check the multiplicative structure is preserved. Similar to the methodology of the previous problem, we can provide an interpretation of this map to avoid matrix pushing. To see this note that we can write \(\mathbb{H} = \mathbb{C} \oplus \mathbb{C} j\), then the map above takes an element \(x \in \mathbb{H}\) to its action by right multiplication on this vectorspace decomposition. Thus the multiplication being preserved simply follows from associativity since the composition of multiplication actions is the action of the product.
+        \end{proof}
+
+        \textbf{(b)} Show the image of the unit quaternions under this map is \(SU(2)\)
+        \begin{proof}
+            Lets call the algebra morphism \(\phi\), we notice that \(\phi(\overline{x}) = \phi(x)^\dagger\), so that if \(x \overline{x} = 1\), then \[\phi(x) \phi(x)^\dagger = \phi(x \overline{x}) = \phi(1) = 1\]
+            So that unit quaternions map into \(U(2)\), moreover \(\det(\phi(x)) = \norm{x}\), so that unit quaternions map to matrices of determinant one. We need only check the map is surjective, we use that \(SU(2)\), and \(S^3\) are both \(3\) dimensional manifolds, and that the map \(\phi\) is an embedding \(S^3 \hookrightarrow SU(2)\), hence also a local diffeomorphism. Since \(S^3\) is compact, \(\phi(S^3)\) is compact and hence closed so \(SU(2)\) being connected allows us to conclude that \(\phi\) is surjective.
+        \end{proof}
+
+        \textbf{(c)} Prove that \(Sp(1) \cong SU(2)\) as Lie groups.
+        \begin{proof}
+        \(Sp(1) \subset \mathbb{H}\) are the quaternions such that \(\norm{ax} = \norm{x}\) for all other quaternions \(x\). These are exactly the unit quaternions. \(\phi\) being a morphism of algebras from part (a) implies in particular it is a group homomorphism, and a diffeomorphism of manifolds from part (b) implies it is a Lie group isomorphism.
+        \end{proof}
+    \end{pb}
+    \begin{pb}
+        Give an explicit covering of \(SO(4)\) by \(SU(2) \times SU(2)\).
+        \begin{proof}
+            \(SO(4)\) are the linear maps which map \(S^3 \to S^3\), moreover by linearity each element of \(SO(4)\) is determined by its values on \(S^3\). Using this identification we may define maps in \(SO(4)\) as maps on the unit quaternions, namely define
+            \begin{align*}
+                F: SU(2) \times SU(2) &\to SO(4) \\
+                (A,B) &\mapsto (X \mapsto AXB^\dagger)
+            \end{align*}
+            where we are identifying unit quaternions to matrices in \(SU(2)\) as in the previous question.
+
+            This map is smooth since it can be written as a composition of multilinear maps \(X \mapsto AX \mapsto AXB^\dagger\). The image of this map indeed lies in \(SO(4)\), to see this, the action preserves norm since \(A,B\) are unitary, and to see that the image lies in the connected component \(\det(X) = 1\), we use that the idenitity map is the image of \((1,1)\), and that \(SU(2)\times SU(2)\) is connected, so its image lies in a single connected component.
+        \end{proof}
+    \end{pb}
+    \begin{pb}
+        Let \(G\) be a connected Lie group, and \(U\) an open neighborhood of the group unit \(e\). Show that any \(g \in G\) can be written as a product of elements \(g_1\cdot g_2\cdots g_n\) with \(g_j \in U\).
     \begin{proof}
         Denote \(\inv\) as the inverse map, and \(L_g\) as the map by left multiplication by a group element \(g \in G\). Since \(\inv\) is a diffeomorphism \(\inv(U)\) is an open subset of \(G\), moreover \(e \in U \cap \inv(U)\), so it will suffice to show that all elements of \(G\) can be written as products of elements in \(V := U \cap \inv(U)\).
 
@@ -84,4 +136,5 @@
         \end{align*}
         which is a union of open sets since we have established \(S\) is open and \(L_g\) is a diffeomorphism.
     \end{proof}
+    \end{pb}
 \end{document}
