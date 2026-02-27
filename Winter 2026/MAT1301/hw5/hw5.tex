@@ -7,7 +7,7 @@
 \usepackage{graphicx}
 
 \fancyhf{}
-\lhead{MAT1301 hw4}
+\lhead{MAT1301 hw5}
 \rhead{Tighe McAsey - 1008309420}
 \pagestyle{fancy}
 
@@ -19,6 +19,16 @@
 \usepackage{tikz-cd, stackengine}
 
 % Commands:
+\tikzset{
+  curarrow/.style={
+  rounded corners=8pt,
+  execute at begin to={every node/.style={fill=red}},
+    to path={-- ([xshift=-50pt]\tikztostart.center)
+    |- (#1) node[fill=white] {$\scriptstyle \delta$}
+    -| ([xshift=50pt]\tikztotarget.center)
+    -- (\tikztotarget)}
+    }
+}
 
 \newcommand{\set}[1]{\{#1\}}
 \newcommand{\gen}[1]{\langle#1\rangle}
@@ -56,6 +66,92 @@
         \end{equation*}
         For the squares other than the one with \(\delta\), this follows directly from the commutativity conditions on \(f\) and functoriality of homology. For the square with the \(\delta\)-s we need to check. Consider \([c] \in H_n(C)\), then we use the proof of snake lemma to show that \([x] = f_*\delta([c])\) is equal to \(\delta(f_*[c])\).
 
-        Recall from the proof that \(\delta([c])\) is defined by \([a]\) where for (an arbitrary) \(b\) such that \(q(b) = c\) we have \(a = \iota^{-1}(d(b))\). Now considering such a \(b\), by 
+        Recall from the proof that \(\delta([c])\) is defined by \([a]\) where for (an arbitrary) \(b\) such that \(q(b) = c\) we have \(a = \iota^{-1}(d(b))\). Now considering such a \(b\), since the diagram for the short exact sequences commutes, we have that \(qf(b) = f(c)\), and hence \(f(b)\) is a valid choice to define the image of \(\delta\) on \(f_*[c] = [f(c)]\). Thus it follows that \(\delta(f_*(c)) = [\iota^{-1}(d(f(b)))]\). From this we have reduced showing commutativity of the diagram to now we want to show:
+        \begin{align*}
+            f_*\delta([c]) \overset{\text{def.}}{=} [f\iota^{-1}d(b)] = [\iota^{-1}df(b)] \overset{\text{def.}}{=} \delta f_*([c])
+        \end{align*}
+        We show this by first invoking that due to commutativity, \(f\iota = \iota f\), and since on both top and bottom of the diagram, the map into the image of \(\iota\), \(\iota\) is invertible on the image so we get \(\iota^{-1}f\iota = f\), composing with \(\iota^{-1}\) (this is actually an inverse function on \(\text{Im}(\iota)\)) we get \(\iota^{-1}f = f\iota^{-1}\) on \(\text{Im}(\iota)\). This is sufficient for our case since \(d(b)\) is in the image of \(\iota\). Hence \(f\iota^{-1}d(b) = \iota^{-1}fd(b)\), now since \(f\) is a morphism of chain complexes, it commutes with \(d\), so that \(\iota^{-1}fd(b) = \iota^{-1}df(b)\). Thus we have shown that \(f\iota^{-1}d(b) = \iota^{-1}df(b)\), so that
+        \begin{align*}
+            f_*\delta([c]) \overset{\text{def.}}{=} [f\iota^{-1}d(b)] = [\iota^{-1}df(b)] \overset{\text{def.}}{=} \delta f_*([c])
+        \end{align*}
+        as desired. \qed
+    \end{pb}
+    \begin{pb}
+        Since \(f\) is a map of pairs, it maps \(A \to B\), it follows that for any \(x \in A\) we have \(f\circ \iota_A (x) = f(x) = \iota_B(f(x))\). This implies that we get the following commutes for all \(n\):
+        \begin{equation*}
+            \begin{tikzcd}
+                C_n(A) \arrow[r,"\iota_{A*}"] \arrow[d,"f_*"] &C_n(X) \arrow[d,"f_*"] \\
+                C_n(B) \arrow[r,"\iota_{B*}"] &C_n(Y)
+            \end{tikzcd}
+        \end{equation*}
+        And since \(f_* (C_n(A)) \subset f_*(C_n(B))\), we get the induced map on equivalence classes \(f_*: C_n(X)/C_n(A) \to C_n(Y)/C_n(B)\), so that the following diagram commutes:
+        \begin{equation*}
+            \begin{tikzcd}
+                C_n(A) \arrow[r,"\iota_{A*}"] \arrow[d,"f_*"] &C_n(X) \arrow[r,"q"] \arrow[d,"f_*"] &C_n(X)/C_n(A) \arrow[d,"f_*"] \\
+                C_n(B) \arrow[r,"\iota_{B*}"] &C_n(Y) \arrow[r,"q"] &C_n(Y)/C_n(B)
+            \end{tikzcd}
+        \end{equation*}
+        This of course means that we have a short exact sequence of chain complexes, and recalling the definition \(H_n(C_n(X)/C_n(A))\) as \(H_n(X,A)\) likewise for \((Y,B)\) implies that by problem 1 we get a long exact sequence of chain complexes,
+        \begin{equation*}
+            \begin{tikzcd}
+            \cdots H_n(A) \arrow[d,"f_*"] \arrow[r, "\iota_*"] &H_n(X) \arrow[d,"f_*"] \arrow[r,"q_*"] &H_n(X,A) \arrow[d,"f_*"] \arrow[r,"\delta"] & H_{n-1}(A) \arrow[d,"f_*"] \cdots \\
+            \cdots H_n(B) \arrow[r,"\iota_*"] &H_n(Y) \arrow[r,"q_*"] &H_n(Y,B) \arrow[r,"\delta"] &H_{n-1}(B)
+            \end{tikzcd}
+        \end{equation*}
+        commutativity of the diagram in question of course follows from commutativity of this diagram which is proven by problem (1). \qed
+    \end{pb}
+    \begin{pb}
+        It suffices to show that \(0 \to C(A)/C(B) \to C(X)/C(B) \to C(X)/C(A) \to 0\) is exact then apply snake lemma. It is sufficient to check in degre \(n\), The maps here are the obvious ones namely the inclusion and quotient maps. Thus, it suffices to check that
+        \begin{align*}
+            \frac{C_n(X)/C_n(B)}{C_n(A)/C_n(B)} \cong C_n(X)/C_n(A)
+        \end{align*}
+        but this is just the third isomorphism theorem. Thus the snake lemma applies and the desired L.E.S. is
+        \begin{equation*}
+            \begin{tikzcd}[arrow style=math font,cells={nodes={text height=2ex,text depth=0.75ex}}]
+       \cdots & H_{n-1}(X,B) \arrow[l] \arrow[draw=none]{d}[name=Y, shape=coordinate]{} & \arrow[l] H_{n-1}(A,B) \\
+       H_{n}(X,A) \arrow[curarrow=Y]{urr}{} & H_n(X,B) \arrow[l] \arrow[draw=none]{d}[name=Z,shape=coordinate]{} & H_{n}(A,B) \arrow[l] \\
+       H_{n+1}(X,A) \arrow[curarrow=Z]{urr}{} & H_{n+1}(X,B) \arrow[l] & \cdots \arrow[l]
+   \end{tikzcd}
+        \end{equation*} \qed
+    \end{pb}
+    \begin{pb}
+        Note that in any case the following is a S.E.S. of chain complexes.
+        \begin{equation*}
+            \begin{tikzcd}
+                0 \arrow{r} &\mathcal{C}' \arrow{r} &\mathcal{C} \arrow{r} &\mathcal{C}/\mathcal{C}' \arrow{r} &0
+            \end{tikzcd}
+        \end{equation*}
+        So we may apply the snake lemma to get the following long exact sequence
+        \begin{equation*}
+            \begin{tikzcd}[arrow style=math font,cells={nodes={text height=2ex,text depth=0.75ex}}]
+       \cdots & H_{n-1}(\mathcal{C}) \arrow[l] \arrow[draw=none]{d}[name=Y, shape=coordinate]{} & \arrow[l] H_{n-1}(\mathcal{C}') \\
+       H_{n}(\mathcal{C}/\mathcal{C}') \arrow[curarrow=Y]{urr}{} & H_n(\mathcal{C}) \arrow[l] \arrow[draw=none]{d}[name=Z,shape=coordinate]{} & H_{n}(\mathcal{C}') \arrow[l] \\
+       H_{n+1}(\mathcal{C}/\mathcal{C}') \arrow[curarrow=Z]{urr}{} & H_{n+1}(\mathcal{C}) \arrow[l] & \cdots \arrow[l]
+   \end{tikzcd}
+        \end{equation*}
+
+        \textbf{(a)} \(\mathcal{C}'\) being acyclic implies that each \(H_n(\mathcal{C}') = 0\), writing this into the above and using exactness, we get in each \(n\) the following sequence is exact.
+        \begin{equation*}
+            \begin{tikzcd}
+                \underbrace{0}_{H_{n}(\mathcal{C}')} \arrow{r} & H_n(\mathcal{C}) \arrow{r} &H_n(\mathcal{C}/\mathcal{C}') \arrow{r} & \underbrace{0}_{H_{n-1}(\mathcal{C}')}
+            \end{tikzcd}
+        \end{equation*}
+        And thus \(H_n(\mathcal{C}) \cong H_n(\mathcal{C}/\mathcal{C}')\).
+
+        \textbf{(b)} Once again using the long exact sequence, but now using that \(H_n(\mathcal{C}/\mathcal{C}') = 0\), we get that in each \(n\) the following is exact:
+        \begin{equation*}
+            \begin{tikzcd}
+                \underbrace{0}_{H_{n+1}(\mathcal{C}/\mathcal{C}')} \arrow{r} & H_n(\mathcal{C}') \arrow{r} &H_n(\mathcal{C}) \arrow{r} & \underbrace{0}_{H_n(\mathcal{C}/\mathcal{C}')}
+            \end{tikzcd}
+        \end{equation*}
+        And thus \(H_n(\mathcal{C}) \cong H_n(\mathcal{C}')\).
+
+        \textbf{(c)} The third theorem says that if \(\mathcal{C}\) is acyclic, then any subcomplex \(\mathcal{C}'\) has homology isomorphic to the homology of the quotient \(\mathcal{C}/\mathcal{C}'\). This is the exact same argument using the exactness of the above sequence, so the following is exact in each \(n\).
+        \begin{equation*}
+            \begin{tikzcd}
+                \underbrace{0}_{H_{n+1}(\mathcal{C})} \arrow{r} & H_{n+1}(\mathcal{C}/\mathcal{C}') \arrow{r} &H_n(\mathcal{C}') \arrow{r} & \underbrace{0}_{H_n(\mathcal{C})}
+            \end{tikzcd}
+        \end{equation*}
+        So that \(H_n(\mathcal{C}') \cong H_n(\mathcal{C}/\mathcal{C}')\).\qed
     \end{pb}
 \end{document}
