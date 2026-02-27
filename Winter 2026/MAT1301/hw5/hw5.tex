@@ -1,0 +1,61 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+
+\fancyhf{}
+\lhead{MAT1301 hw4}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\usepackage{tikz-cd, stackengine}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\newcommand{\px}{\frac{\partial}{\partial x}}
+\newcommand{\py}{\frac{\partial}{\partial y}}
+\newcommand{\pz}{\frac{\partial}{\partial z}}
+\newcommand{\ppx}{\frac{\partial^2}{\partial x^2}}
+\newcommand{\ppy}{\frac{\partial^2}{\partial y^2}}
+\newcommand{\ppz}{\frac{\partial^2}{\partial z^2}}
+\newcommand{\hess}{\operatorname{Hess}}
+
+\begin{document}
+    \begin{pb}
+        \textbf{(1)} It goes without saying what the objects are. As per morphisms if \(0 \to A_* \to B_* \to C_* \to 0\) and \(0 \to X_* \to Y_* \to Z_* \to 0\) are two short exact sequences of chain complexes, define a morphism \(f\) to be morphisms of chain complexes \((f^{\alpha})^{\alpha = A,B,C}_n\) so that \(f^A: A_* \to X_*\) and analogously for \(B,C\). Moreover we require commutativity of the following:
+        \begin{equation*}
+            \begin{tikzcd}
+            A_* \arrow[d,"f"] \arrow[r,"\iota"] &B_* \arrow[d,"f"] \arrow[r,"q"] &C_* \arrow[d,"f"] \\
+            X_* \arrow[r,"\iota"] &Y_* \arrow[r,"q"] &Z_*
+            \end{tikzcd}
+        \end{equation*}
+
+        \textbf{(2)} Since long exact sequences are chain complexes, we can simply view them as a subcategory.
+
+        \textbf{(3)} As mentioned in the problem statement the functor on objects has been constructed, namely it is the snake lemma. We need to define the action on morphisms and functoriality. Simply take \(f \mapsto f_*: H_n(A) \to H_n(X)\) for all \(n\), and likewise for \(H_n(B),H_n(C)\). Since homology is functorial our construction satisfies identity and inverse properties, but we still need to show that the following commutes
+        \begin{equation*}
+            \begin{tikzcd}
+            \cdots H_n(A) \arrow[d,"f_*"] \arrow[r, "\iota_*"] &H_n(B) \arrow[d,"f_*"] \arrow[r,"q_*"] &H_n(C) \arrow[d,"f_*"] \arrow[r,"\delta"] & H_{n-1}(A) \arrow[d,"f_*"] \cdots \\
+            \cdots H_n(X) \arrow[r,"\iota_*"] &H_n(Y) \arrow[r,"q_*"] &H_n(Z) \arrow[r,"\delta"] &H_{n-1}(X)
+            \end{tikzcd}
+        \end{equation*}
+        For the squares other than the one with \(\delta\), this follows directly from the commutativity conditions on \(f\) and functoriality of homology. For the square with the \(\delta\)-s we need to check. Consider \([c] \in H_n(C)\), then we use the proof of snake lemma to show that \([x] = f_*\delta([c])\) is equal to \(\delta(f_*[c])\).
+
+        Recall from the proof that \(\delta([c])\) is defined by \([a]\) where for (an arbitrary) \(b\) such that \(q(b) = c\) we have \(a = \iota^{-1}(d(b))\). Now considering such a \(b\), by 
+    \end{pb}
+\end{document}
