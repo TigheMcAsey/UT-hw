@@ -1,0 +1,143 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+
+\fancyhf{}
+\lhead{MAT1002 hw3}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\usepackage{tikz-cd, stackengine}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\newcommand{\px}{\frac{\partial}{\partial x}}
+\newcommand{\py}{\frac{\partial}{\partial y}}
+\newcommand{\pz}{\frac{\partial}{\partial z}}
+\newcommand{\ppx}{\frac{\partial^2}{\partial x^2}}
+\newcommand{\ppy}{\frac{\partial^2}{\partial y^2}}
+\newcommand{\ppz}{\frac{\partial^2}{\partial z^2}}
+\newcommand{\hess}{\operatorname{Hess}}
+\newcommand{\Log}{\operatorname{Log}}
+\newcommand{\Arg}{\operatorname{Arg}}
+
+\begin{document}
+    \emph{``Everyone is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid."} - \textbf{Albert Einstein}
+    \begin{pb}
+        \textbf{(i)} Recall that we may identify meromorphic functions on \(\mathbb{C}\) with holomorphic functions \(\mathbb{C} \to \mathbb{P}^1\). Then \(\phi(z)\) is meromorphic in both coordinates \(z\) and \(1/z\), thus defines a holomorphic function \(\mathbb{P}^1 \to \mathbb{P}^1\). It suffices to provide an inverse which is also meromorphic in charts. Consider
+        \begin{align*}
+            \psi(z) = \frac{dz - b}{-cz + a}
+        \end{align*}
+        It suffices to show that \(\phi\psi(z) = z\), since \(\psi\) is a function of the same form as \(\phi\), with the same transformations to the coefficients giving us \(\phi\) from the definition of \(\psi\). Now we compute
+        \begin{align*}
+            \phi\circ\psi(z) = \phi\left(\frac{dz - b}{-cz + a}\right) = \frac{adz-ab -bcz + ab}{cdz - bc - cdz + ad}\cdot\frac{-cz+a}{-cz+a} = \frac{(ad-bc)z}{ad-bc} = z
+        \end{align*}
+        and morover, \(\phi\circ\psi(\infty) = \phi(-d/c) = \infty\).
+
+        \textbf{(ii)} For existence, since Mobius transforms are invertible, it suffices to define for any three points \(z_1,z_2,z_3\) a transform taking \(z_1 \mapsto 0, z_2 \mapsto 1, z_3 \mapsto \infty\), then take the inverse of the mobius transform doing the same to the \(w_j\) and compose them. Such a Mobius transform is given by expanding the expression
+        \begin{align*}
+            \frac{(z-z_1)(z_2-z_3)}{(z-z_3)(z_2-z_1)}
+        \end{align*}
+        To see that such Mobius transforms are unique, first note that from part (iv), compositions of Mobius transforms are Mobius transforms, and if the composition has its values uniquely determined on each of the \(z_j \mapsto w_j\) then the intermediate mobius transforms must also be uniquly determined. Thus it suffices to only consider the case where \(z_j, w_j \in \mathbb{P}^1 \setminus \infty\). Then since the \(z_j\) and \(w_j\) are unique, the following equations satisfied by the mobius transform are linearly independent
+        \begin{align*}
+            az_j + b - cz_jw_j - dw_j = 0
+        \end{align*}
+        So that \(b,c,d\) may be written in terms of \(a\) the only free parameter. The equation \(ad-bc = 1\) has a solution since the mobius transform exists, and this solution determines the value of \(a\), and thus \(b,c,d\) uniquely.
+
+        \textbf{(iii)} We showed that \(\psi\) was the inverse of \(\phi\) in part (a), \(\psi\) arises from the identification with \(A^{-1}\). Moreover, multiplication of \(A\) by a scalar does not change the identification, since the scalar will appear on the numerator and denomenator, in particular \(-A\) is still in \(SL(2,\mathbb{C})\) and has the same identification as \(A\).
+
+        \textbf{(iv)} We just compute the composition, for \(A\) as prior and \(B = \begin{pmatrix} e & f \\ g & h \end{pmatrix}\).
+        \begin{align*}
+            \phi_A\circ\phi_B(z) = \phi_A\left(\frac{ez + f}{gz + h}\right) = \frac{aez + af + bgz + bh}{cez + cf + dgz + dh} = \frac{(ae + bg)z + (af + bh)}{(ce + dg)z + (cf + dh)} = \phi_{AB}(z)
+        \end{align*}
+
+        \textbf{(v)} Since in the chart on \(\mathbb{C} = \mathbb{P}^1\setminus\set{\infty}\) we have \(f\) is meromorphic (meromorphic functions on \(\mathbb{C}\) are equivalent to holomorphic functions to \(\mathbb{P}^1\)). Thus we may write \(f\) as
+        \begin{align*}
+            f(z) = \frac{p(z)}{q(z)}
+        \end{align*}
+        for \(p\) holomorphic and \(q\) a polonomial. Moreover, applying the change of coordinates, \(f(1/z)\) is meromorphic implying that \(p\) is a polonomial. We may assume that the zeroes of \(p\) are distinct from those of \(q\), otherwise cancel the superflous terms. By surjectivity, one of \(p,q\) have positive degree, in the case where one is constant, moreover we may assume that \(p,q\) are coprime otherwise cancel the superflous terms. Now \(p,q\) both must have only one distinct zero (or be constant we assume that both \(p,q\) are not constant since the argument for one being constant is a simplified version of the following), having distinct zeroes contradicts injectivity by mapping multiple points to \(\infty\) or \(0\), to see this zero has degree \(1\), in a neighborhood of the zero \(a\) of \(p\), \(q\) is holomorphic, so that \(f(z) \overset{\text{loc}}{=} p(z)f'(z)\) for \(f'\) holomorphic, if \(a\) is a zero of degree \(2\) or greater, then \(f = p(z)f'\) has \(a\) as a degree zero of the same degree, hence is many to one on a small neighborhood of \(a\), contradicting injectivity. Thus \(p(z) = az + b\), similarly if \(q\) has a zero of degree \(m \geq 2\), then
+        \begin{align*}
+            f(\frac{1}{z}) = \frac{az^{m+1} + bz^m}{(c + dz)^m}
+        \end{align*}
+        Which by the same argument would not be injective near zero. So \(q = cz + d\), and \(f\) is a Mobius transform. \qed
+    \end{pb}
+
+    \emph{``A good quote from Alex Kroiter is ``REDACTED""} - \textbf{Derek Wu}
+
+    \begin{pb}
+        There is a small typo in the definition of \(\mathcal{R}\) in the problem statement, namely the second set in the union \(\set{z \in \mathbb{H} \mid \Re(z) = \frac12}\) should instead read \(\set{z \in \mathbb{H} \mid \Re(z) = \frac12 \tand \abs{z} > 1}\).
+
+        \textbf{(i)} 
+        \begin{align}
+            \Im(\phi_A(z)) = \frac{1}{\abs{cz+d}^2}\Im((az+b)\overline{(cz+d)}) = \frac{1}{\abs{cz+d}^2} ad\Im(z) - bc\Im(z) = \frac{\Im(z)}{\abs{cz+d}^2}
+        \end{align}
+        The action takes \(\mathbb{R} \to \mathbb{R} \cup \set{\infty}\)
+
+        \textbf{(ii)} I will make use of \(\gen{S,T} \cdot\mathcal{R} = \mathbb{H}\), the proof of this is the first half of part (iii) below. Let \(A \in PSL(2,\mathbb{R})\), then for some \(g \in \gen{S,T}\), we have \(\phi_g\phi_A(2i) \in \mathcal{R}\), writing
+        \begin{align}
+            \phi_g\phi_A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}
+        \end{align}
+        Noting that for any \(z \in \mathcal{R}\) we have \(\abs{z} > 1\) and \(\Re(z) \in \left[-\frac12,\frac12\right]\) which implies \(\Im(z) \geq \frac{\sqrt{3}}{2}\) thus by equation (1), we have \(\frac{2}{4c^2 + d^2} \geq \frac{\sqrt{3}}{2}\), whence \(c = 0\). This implies that \(ad = 1\) so both are either \(+1\) or \(-1\). Finally once again since \(\phi_g\phi_A(2i) \in \mathcal{R}\) we have \(\Re(\phi_g\phi_A(2i)) = \Re\left(\frac{a2i + b}{d}\right) = b/d \in [-\frac12,\frac12]\) so that \(b = 0\) since \(d \in \set{\pm 1}\). This implies that \(gA = \pm 1\), but since \(S^2 = -1\) we can possibly change \(g\) by a factor of \(S\) to get \(gA = 1\), and hence \(A = g^{-1}\), since \(S^4 = 1\), and \(S^2 STSTS = T^{-1}\) (this can be most easily seen since \((ST)^3 = -1\)) we know that \(\gen{S,T}\) is closed under inverses so that \(A \in \gen{S,T}\).
+
+        \textbf{(iii)} We first check that \(\gen{S,T} \cdot\mathcal{R} = \mathbb{H}\), this is sufficient for the proof of (ii) used above, then by (ii) it will suffice to show that \(S \cdot \mathcal{R} \cap \mathcal{R} = \set{i} \tand T \cdot \mathcal{R} \cap \mathcal{R} = \emptyset\), since \(i\) is a fixed point for \(S\).
+
+        To see that \(\gen{S,T} \cdot\mathcal{R} = \mathbb{H}\), we use as above that \(\gen{S,T}\) is closed under inverses so it suffices to show that for \(g \in \gen{S,T}\) there is some \(\phi_g\) such that \(\phi_g(z) \in \mathcal{R}\), so the inverse map takes \(\phi_g(z)\) to \(z\). Moreover, it suffices to show that there is some \(\phi_g\), such that \(\Re(\phi_g(z)) \in \left[-\frac12,\frac12\right]\) with \(\abs{\phi_g(z)} \geq 1\), then we are done since then either \(\Re(\phi_g(z)) = -\frac12\) in which case \(\phi_{T}\phi_g(z) \in \mathcal{R}\), or \(\Re(\phi_g(z)) \in \left(-\frac12,0\right)\) and \(\abs{\phi_g(z)} = 1\), in which case \(\phi_S\phi_g(z) \in \mathcal{R}\). Note that \(\Im(-\frac{1}{z}) = \Im(z)/\abs{z}^2\). So suppose \(z \in \mathbb{H}\), we may use integer translations to get \(\Re(\phi_g(z)) \in (-\frac12,\frac12]\), if after these translations \(\abs{\phi_g(z)} \geq 1\), then we are done, if \(\abs{\phi_g(z)} < 1\), then \(\phi_S\phi_g(z)\) has strictly larger imaginary part than \(\phi_g(z)\), thus if we continue applying \(\phi_S\) and translating back into the strip, we get a sequence of points \(z_1,z_2,\hdots \in \set{z \in \mathbb{H} \mid \Re(z) \in \left(-\frac12,\frac12\right]}\) with \(\Im(z_j) < \Im(z_{j+1})\), we will be done if the number of points in \(\gen{S,T}\cdot z \cap \set{z \in \mathbb{H} \mid \Re(z) \in \left(-\frac12,\frac12\right] \tand \Im(z) < 1}\) is finite. This can be seen since \(\gen{S,T} \subset PSL(2,\mathbb{Z})\), and the number of \((c,d) \in \mathbb{Z}^2\) such that \(\frac{\Im(z)}{\abs{cz+d}^2} < 1\) is finite, for each of these finitely many pairs \((c,d)\) there are only finitely many \(a,b\) such that the action of \(\begin{pmatrix} a&b\\c&d \end{pmatrix}\) on \(z\) has real part lying in \((-\frac12,\frac12]\), thus there are only finitely many points in \(\gen{S,T}\cdot z \cap \set{z \in \mathbb{H} \mid \Re(z) \in \left(-\frac12,\frac12\right] \tand \Im(z) < 1}\), so that eventually \(z_j \in \mathcal{R}\) and we are done.
+
+        Finally, \(T\cdot \mathcal{R} \cap \mathcal{R} = \emptyset\) is obvious, since \(T\) is a right shift by one unit. \(S\cdot \mathcal{R} \cap \mathcal{R} = \set{i}\) follows from \(S: \set{\abs{z} > 1} \to \set{\abs{z} < 1}\), and on \(\set{\abs{z = 1}}\), \(S\) takes \(\set{\Re(z) > 0}\) to \(\set{\Re(z) < 0}\) with fixed point \(\phi_S(i) = i\).
+
+        \textbf{(iv)} Given a point \(\tau \in \mathcal{R}\), we get the complex Torus \(\mathbb{C}/(\mathbb{Z} + \tau \mathbb{Z})\). We want to show this correspondence is unique on \(\mathcal{R}\). We have already established on problem (1) of the previous homework that two Tori (corresponding to \(\lambda \tand \tau\)) with \(\tau\) related to \(\lambda\) by a Mobius transform are biholomorphic, we want to see that these are the only biholomorphisms. A biholomorphism \(\mathbb{C}/ (\mathbb{Z} + \tau \mathbb{Z}) \to \mathbb{C}/ (\mathbb{Z} + \lambda \mathbb{Z})\) extends to a biholomorphism \(f: \mathbb{C} \to \mathbb{C}\) with \(f(\mathbb{Z} + \tau \mathbb{Z}) = \mathbb{Z} + \lambda \mathbb{Z}\), since the only biholomorphisms \(\mathbb{C} \to \mathbb{C}\) are of the form \(z \mapsto \alpha z + \beta\), we find that \(\alpha \tau + \beta = f(\tau) = a \lambda + b\) and \(\alpha + \beta = f(1) = c \lambda + d\), replacing \(b\) with \(b - \beta\) and \(d\) with \(d - \beta\) we get \(\alpha \tau = a \lambda + b\) and \(\alpha = c \lambda + d\), dividing the first equation by \(\alpha\) gives us \(\tau = \frac{a \lambda + b}{c \lambda + d}\), thus the two are related by an element of \(GL(2,\mathbb{C}) \cap \text{Mat}(2,\mathbb{Z})\), to see that \(ad - bc = 1\), note that \(\lambda\) may be written similarly in terms of \(\tau\) so that \(\begin{pmatrix} a & b \\ c & d \end{pmatrix}\) is invertible in \(\text{Mat}(2,\mathbb{Z})\) (thus has determinant \(\pm 1\)), and both \(\tau, \lambda \in \mathcal{H}\) implies that \(\det\begin{pmatrix} a & b \\ c & d \end{pmatrix} > 0\), so that indeed they are related by an element of \(SL(2,\mathbb{Z})\). Note that the action of \(SL(2,\mathbb{Z})\) factors through that of \(PSL(2,\mathbb{Z})\).
+    \end{pb}
+
+    \emph{``You do not really understand something unless you can explain it to your grandmother."} - \textbf{Albert Einstein}
+
+    \begin{pb}
+        \textbf{(i)} We apply the fundamental theorem of calculus and chain rule to derive
+        \begin{align}
+            \frac{d}{dz}\int_{\wp(z_0)}^{\wp(z)} \frac{dt}{\sqrt{4t^3-g_2t-g_3}} = \wp'(z)\frac{1}{\sqrt{4\wp(z)^3 - g_2\wp(z) - g_3}} = \wp'(z)/\wp'(z) = 1
+        \end{align}
+        Where the second to last equality follows by assumption on the branch of the square root. This implies that \(\int_{\wp(z_0)}^{\wp(z)} \frac{dt}{\sqrt{4t^3-g_2t-g_3}} = z + C\), to solve for \(C\), note that evaluating the integral from \(\wp(z_0)\) to \(\wp(z_0)\) results in zero so that \(z_0 + C = 0\), and thus
+        \begin{align}
+            z-z_0 = \int_{\wp(z_0)}^{\wp(z)} \frac{dt}{\sqrt{4t^3-g_2t-g_3}}
+        \end{align}
+        as desired.
+
+        \textbf{(ii)} Since \(\wp\) satisfies the differential equation \((\wp')^2 = 4\wp^3- g_2\wp - g_3\), the stated map does indeed map into the algebraic torus with \(w^2 = 4z^3 - g_2z - g_3\). Now denoting the Abel Jacobi map (with basepoint zero) as \(F\), and \(\varphi: z \mapsto (\wp(z),\wp'(z))\), then noting that \(\infty = \wp(0)\), we find that on some open neighborhood of \(0\),
+        \begin{align*}
+            F\circ \varphi(z) = \int_{\infty}^{\wp(z)} \frac{dt}{\sqrt{4t^3-g_2t-g_3}} = z
+        \end{align*}
+        But then \(F\circ \varphi\) agrees with the identity on an open neighborhood of zero, and since \(\varphi\) maps holomorphically to \(\Sigma\) and \(F\) is holomorphic on \(\Sigma\), they must be equal. To see that being the one sided inverse implies it is the inverse, note that since \(\varphi\) is left invertible, it is injective. But we also know that \(\mathbb{C}/(\mathbb{Z} + \tau \mathbb{Z})\) is compact, so that \(\varphi(\mathbb{C}/(\mathbb{Z} + \tau \mathbb{Z}))\) is a compact and thus closed subset of \(\Sigma\), moreover, by the open mapping theorem it is also open and since \(\Sigma\) is connected, we conclude that \(\varphi\) is a biholomorphism, now since \(F\) is the left inverse, it must be the inverse so that \(\varphi\) indeed inverts the Abel Jacobi map.
+
+        \textbf{(iii)} We prove it for a formal series. The only convergence consideration that will appear is changing the order of summation, but in any case the Eisenstein series is only well defined when this operation is valid.
+
+        Suppose that \(A = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in SL(2,\mathbb{Z})\), then \(A^{\text{T}}\) also lies in \(SL(2,\mathbb{Z})\) and \(a \tau + b, c \tau + d\) are the image of the basis \(1,\tau\) under \(A^{\text{T}}\), thus since \((A^\text{T})^{-1} \in SL(2,\mathbb{Z})\) we find that \begin{align}(a\tau + b)\mathbb{Z} + (c\tau + d)\mathbb{Z} = \mathbb{Z} +  \tau \mathbb{Z}\end{align} This implies that
+        \begin{align}
+            G_k(\tau) = \sum_{\mathbb{Z}^2 \setminus \set{(0,0)}} (m+n\tau)^{-2k} = \sum_{\mathbb{Z}^2 \setminus \set{(0,0)}} (m(c\tau + d)+n(a\tau + b))^{-2k}
+        \end{align}
+        This observation of being able to reindex the sum is all we need to prove the identity,
+        \begin{align}
+            G_k(\gamma\tau) &= \sum_{\mathbb{Z}^2\setminus\set{(0,0)}}\frac{(c\tau + d)^{2k}}{(m(c\tau + d) + n(a\tau + b))^{2k}} = (c\tau + d)^{2k} \sum_{\mathbb{Z}^2 \setminus \set{(0,0)}} (m(c\tau + d)+n(a\tau + b))^{-2k} \\
+            &\overset{(6)}{=} (c\tau + d)^{2k} G_k(\tau)
+        \end{align}
+
+        \textbf{(iv)} We use the calculation from part (iii), and denote \(\gamma\) silimarly. Then \(g_2(\gamma\tau) = (c\tau + d)^4g_2(\tau)\) and \(g_3(\gamma\tau) = (c\tau + d)^6g_3(\tau)\). Using these we also find that \(\Delta(\gamma\tau) = (c\tau + d)^{12}\Delta(\tau)\), using these expansions we find that:
+        \begin{align}
+            j(\gamma\tau) = 1728\frac{(c\tau + d)^{12}(g_2(\tau))^3}{(c\tau + d)^{12}\Delta(\tau)} = j(\tau)
+        \end{align}
+    \end{pb}
+\end{document}

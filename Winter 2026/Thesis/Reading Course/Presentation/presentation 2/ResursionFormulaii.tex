@@ -1,0 +1,183 @@
+\documentclass[20pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+
+\fancyhf{}
+\lhead{Recursion Formula for Siegel Veech Constants}
+\rhead{Tighe McAsey}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{Exercise}[subsection]
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{example}{Example(s)}[section]
+\newtheorem{ques}{Question}[section]
+\newtheorem{ans}{Answer}[section]
+\newtheorem{recall}{\large{Recall}}[section]
+\newtheorem{goal}{\large{Goal}}[section]
+\newtheorem{detail}{\large{Detail(s)}}[section]
+\newtheorem{concept}{\large{Concept}}[section]
+\usepackage{tikz-cd, stackengine}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\newcommand{\px}{\frac{\partial}{\partial x}}
+\newcommand{\py}{\frac{\partial}{\partial y}}
+\newcommand{\pz}{\frac{\partial}{\partial z}}
+\newcommand{\ppx}{\frac{\partial^2}{\partial x^2}}
+\newcommand{\ppy}{\frac{\partial^2}{\partial y^2}}
+\newcommand{\ppz}{\frac{\partial^2}{\partial z^2}}
+\newcommand{\hess}{\operatorname{Hess}}
+\newcommand{\hol}{\operatorname{hol}}
+
+\title{Recursion Formula for Siegel Veech Constants \\ in Higher Multiplicity \\ \large Following Section 9 of Eskin, Masur, Zorich}
+\author{Tighe McAsey}
+
+\begin{document}
+    \maketitle
+
+    \section{Recall}
+
+    \begin{itemize}
+        \item Last time we proved the recursion formula in multiplicity \(1\), recall the multiplicity of a configuration is the number of homologous saddle connections between two marked points.
+        \item Today I will be continuing with multiplicity \(p \geq 2\), there are more complex combinatorial considerations in this case.
+        \item The basic idea is simply to reduce to the \(p = 1\) case using similar methodology.
+        \item We recall the major results of last time
+        \begin{align*}
+            &\mathcal{H}^{\epsilon,3 \epsilon}_1(\alpha) \to \mathcal{F}' \times B_\epsilon & \mathcal{F}' \subset \mathcal{H}_1^{>2 \epsilon}(\alpha')
+        \end{align*}
+        is a covering map of degree \(m+1\), and the measure decomposes. From this we derived
+        \begin{align*}
+            c(\alpha,\mathcal{C}) = \lim_{\epsilon \to 0} \frac{\mu(\mathcal{H}_1^\epsilon(\alpha,\mathcal{C}))}{\pi \epsilon^2 \mu(\mathcal{H}_1(\alpha))} = \frac{(m+1)\mu'(\mathcal{H}_1(\alpha'))}{\mu(\mathcal{H}_1(\alpha))}
+        \end{align*}
+        \item We recall our examples from last time of the Identified Decagon and Slit Torus as multiplicity 1 and 2 saddle connections.
+        
+        \textcolor{red}{Include Images of Decagon/ Cut Tori from last time as examples of multiplicity}
+        \item The slit Torus actually gives us a simple example of the slit construction we will be talkinf about today
+        
+        \textcolor{red}{3D drawing of slit construction on Torus}
+    \end{itemize}
+
+    \section{The Slit Construction, Reducing \(p\) to a bunch of \(1\)-s}
+
+    \begin{itemize}
+        \item Lets start with a rough sketch of the reduction (slit construction)
+        \item Given a configuration of \(p\) homologous saddle connections, and assuming our surface has no other short saddle connections (shorter than \(3 \epsilon\)), we may cut our surface \(S\) along these saddles.
+        \item The result of cutting is \(p\) surfaces, here surface \(j\) has boundary \(\gamma_j \cdot \gamma_{j+1}\) (where \(j+1\) is taken mod \(p\))
+        \item If the zeroes joined together are \(z'\) and \(z''\), then we can glue \(\gamma_j\) to \(\gamma_{j+1}\), gluing the points with distance \(d\) from \(z'\) to eachother we get a closed surface. Moreover we may now shrink the saddle \(\gamma_j = \gamma_{j+1}\) to get a single zero \(z'\), this is exactly the map from last week.
+        
+        \textcolor{red}{Include Image of Slit Construction Here}
+    \end{itemize}
+
+    \section{Conventions and Symmetries}
+    \begin{itemize}
+        \item The slit construction defines a map \((S,\omega) \mapsto ((S_1', \alpha_1') \sqcup \hdots \sqcup (S_p', \alpha_p'),\hol{\gamma})\), thus we work with \(\alpha' = \alpha_1' \sqcup \cdots \sqcup \alpha_p'\)
+        \item Recall that when studying surfaces, we differentiate \((S,e^{i\theta}\omega)\) from \((S,\omega)\), to be more easily consistent with this convention on \((S,\omega)\) we introduce the following convention on \(\alpha'\)
+        \item \(\alpha'\) is ordered
+        \begin{align*}
+            \alpha_1' \prec \alpha_2' \prec \cdots \prec \alpha_p'
+        \end{align*}
+        Thus even if \(\alpha'_1 = \alpha'_2 = \bigsqcup_1^p \alpha_j'\) we may differentiate them based on ordering.
+        \item This makes sense, since by swapping the ordering we can get clearly distinct surfaces types after gluing
+        
+        \textcolor{red}{Include Image of Distinct Surfaces With Same \(\alpha'\) vector but different order}
+
+        \item Moreover the convention is to implicitly label the surfaces, so that all possible reorderings actually correspond to distinct surfaces
+        
+        \textcolor{red}{Include Image of two "equal" surfaces that are distinct due to labelling}
+
+        \item However, an automorphism of the partial order (action of the cyclic group) clearly induces an isomorphism of surfaces after gluing
+        
+        \textcolor{red}{Include rotationally symmetric surface}
+
+        \item The paper adopts the convention that each of the symmetrically rotated configurations of surfaces are distinct in the disjoint union
+        
+        \item Since the information of cutting the surface \(S,\omega\) can only differentiate these orders up to this rotational symmetry, the map is defined as mapping into the quotient of these possibly ordered surfaces by the symmetry.
+        \item Apart from the cyclic order of the cutting, there is one more possible symmetry in \(\alpha'\) we need to consider to talk about the covering. Namely, if reversing the order of the \(\alpha_j\) is a symmetry, this must also be quotiented from the cover since the covering only maps to one of these surfaces for a given \(\gamma\) (the other ordering corresponds to the slit construction on \(-\gamma\)).
+        \item The paper calls the subgroup of the cyclic group inducing rotational symmetries \(\Gamma\), and the reversal symmetry \(\Gamma_{-}\), the total symmetry group is thus called \(\Gamma_{\pm}\)
+        \item Important to remark here is the data of the number of distinct labelled surfaces and \(\Gamma_\pm\) is purely combinatorial and in terms of \(\alpha'\).
+    \end{itemize}
+
+    \section{The Covering Map For \(p \geq 2\)}
+
+    The primary Geometric goal for today is to prove Lemma 9.8 of EMZ, which roughly corresponds to Lemma 8.1 from last time.
+
+    \begin{thm}
+        Up to some error (on a small set in the measure theoretic sense) the slit construction \(\rho\) is
+        \begin{align*}
+            \rho: \mathcal{H}_1^{\epsilon, \epsilon}(\alpha, \mathcal{C}) &\to \mathcal{H}(\alpha')/\Gamma_{\pm} \times B(\epsilon) \\
+            (S,\omega) &\mapsto \left[(S_1',\omega_1') \sqcup \cdots \sqcup (S_p',\omega_p'), \hol\gamma\right]
+        \end{align*}
+        Where the cover is has degree \(\frac{\prod_1^p a_j + 1}{\#\Gamma_\pm}\)
+    \end{thm}
+
+    \begin{itemize}
+        \item We first note that the quotient here is measure theoretically a do nothing, it is just grouping all the surfaces with the same geometry and different labels
+        \item To formalize this, see that \(\Gamma_{\pm}\) permutes geometrically equivalent sets in the different connected components. Thus quotienting is equivalent to choosing one of these components.
+        \item Recall that the angle between \(\gamma_j\) and \(\gamma_{j+1}\) is \(2\pi(a_j + 1)\)
+        \item Also note that we only get one copy of \(\hol\gamma\) in the image, since the \(p\) saddle connections are homologous thus contribute the same coordinate.
+    \end{itemize}
+
+    Now we wish to go back into the weeds, and define \(\rho\) more carefully.
+    
+    \begin{itemize}
+        \item Similarly to last time, we want to be able to define the local inverse \(\rho^{-1}\) on the image, this allows us to more easily determine the covering index.
+        \item The inverse slit construction can readily be seen by first applying the inverse saddle contraction (i.e. inverse map from last time), then cutting along the new saddle on each of the surfaces and gluing in the cyclic order.
+        \item To define this inverse map, we want to restrict our range, then work in the preimage of this restricted range.
+        \item Our restricted range will be the set \(\mathcal{F}'\) defined similarly to last time to be a set of (arbitrarily close to) full volume contained in \(\mathcal{H}^{>2 \epsilon}_1(\alpha')/\Gamma_{\pm}\), we can take this set by taking the disjoint union over each the \(\mathcal{F}\) on each component before quotienting
+        \item Similar to last time, the measure decomposes nicely over the map \(d\mu \to d\mu' \otimes \text{Lebesgue}\), this is pretty much immediate from the coordinates remaining unchanged. Then, we saw the measure decomposes nicely in the case of the collapsing the saddle, so that the coordinates decompose nicely over the composition of cutting, gluing and collapsing.
+        \item By composing the cutting and shrinking maps, we can see the map in coordinates decomposes as a linear map, which is upper triangular with \(1\)-s on the diagonal thus volume preserving.
+        
+        \textcolor{red}{Draw example for case of Torus and \(\Sigma_2\)}
+        \item Moreover, the preimage \(\mathcal{U}\) of the slit construction contains \(\mathcal{H}^{\epsilon,3 \epsilon}_1(\alpha)\), since the holonomy of a single vector is modified by at most \(\epsilon / 2\) in the collapsing part of the composition, this of course implies that \(\rho: \mathcal{H}^{\epsilon,3 \epsilon}_1(\alpha) \to \mathcal{H}^{> 2 \epsilon}_1(\alpha')\), and since the measure decomposes nicely and the index is finite, the preimage \(\mathcal{U}\) has arbitrarily close volume to that of \(\mathcal{H}_1^{\epsilon,3 \epsilon}(\alpha)\).
+    \end{itemize}
+
+    It just remains to check the degree and ramification considerations (note that these were asserted when discussing the measure-theoretic considerations)
+
+    \begin{itemize}
+        \item The surfaces which arise as a product of the slit construction map are uniquely determined before we apply the collapsing map, thus the entire contribution to the ramification index is the collapsing map.
+        \item Each of these collapsing maps have \(a_j + 1\) preimages
+        \item Moreover, since the slit map is a do nothing on coordinates, the ramification points also just correspond to the ramification points of the saddle collapsing maps so are still measure zero. 
+    \end{itemize}
+
+    Similar to last time, we can use the covering map to relate the volume of \(\mathcal{H}^\epsilon_1(\alpha,\mathcal{C})\) to that of \(\mathcal{H}_1^{>2 \epsilon}(\alpha')\), this would be the same relation of multiplying by \(\prod_{j}(a_j+1)\), however also recall that we quotiented by the group action \(\Gamma_{\pm}\), effectively choosing one copy of the labelling, thus we must divide our constant by the number of labellings. Thus the covering index must be divided by the size of the group to give the volume coefficient:
+    \begin{align*}
+        M = \frac{\prod_1^p a_j + 1}{\# \Gamma_{\pm}}
+    \end{align*}
+    
+    \begin{itemize}
+        \item Whence from all of the above considerations, we find that
+        \begin{align*}
+            c(\alpha,\mathcal{C}) = \lim_{\epsilon \to 0} \frac{\mu(\mathcal{H}_1^\epsilon(\alpha,\mathcal{C}))}{\pi \epsilon^2 \mu(\mathcal{H}_1(\alpha))} = \frac{M \mu(\mathcal{H}_1(\alpha'))}{\mathcal\mu({H}_1(\alpha))}
+        \end{align*}
+    \end{itemize}
+
+    Intuitively the strata \(\mathcal{H}(\alpha')\) is made up of many copies of smaller strata, we may write its volume in terms of these. The reason why its note just the product is due to the normalization of the measure on the unit cube.
+
+    \begin{itemize}
+        \item Let me just state the formula from section 6: Here we write \(d = \dim \mathcal{H}_1(\alpha')\) and \(d_j = \dim \mathcal{H}_1(\alpha_j')\)
+        \begin{align*}
+            \mu(\mathcal{H}_1(\alpha')) = \frac{1}{2^{p-1} (\frac{d}{2} - 1)!}\prod_1^p (\frac{d_j}{2} - 1)! \prod_1^p\mu(\mathcal{H}(\alpha_j'))
+        \end{align*}
+        \item Substituting everything we get
+        \begin{align*}
+            c(\alpha, \mathcal{C}) = \frac{\prod_1^p a_j + 1}{\# \Gamma_{\pm}}\frac{1}{2^{p-1} (\frac{d}{2} - 1)!}\prod_1^p (\frac{d_j}{2} - 1)! \prod_1^p\mu(\mathcal{H}(\alpha_j')) \cdot \frac{1}{\mu(\mathcal{H}_1(\alpha))}
+        \end{align*}
+    \end{itemize}
+\end{document}
