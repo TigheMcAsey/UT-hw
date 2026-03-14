@@ -1,0 +1,146 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+
+\fancyhf{}
+\lhead{MAT1301 hw5}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\usepackage{tikz-cd, stackengine}
+
+% Commands:
+\tikzset{
+  curarrow/.style={
+  rounded corners=8pt,
+  execute at begin to={every node/.style={fill=red}},
+    to path={-- ([xshift=-50pt]\tikztostart.center)
+    |- (#1) node[fill=white] {$\scriptstyle \delta$}
+    -| ([xshift=50pt]\tikztotarget.center)
+    -- (\tikztotarget)}
+    }
+}
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\newcommand{\px}{\frac{\partial}{\partial x}}
+\newcommand{\py}{\frac{\partial}{\partial y}}
+\newcommand{\pz}{\frac{\partial}{\partial z}}
+\newcommand{\ppx}{\frac{\partial^2}{\partial x^2}}
+\newcommand{\ppy}{\frac{\partial^2}{\partial y^2}}
+\newcommand{\ppz}{\frac{\partial^2}{\partial z^2}}
+\newcommand{\hess}{\operatorname{Hess}}
+
+\begin{document}
+    \begin{pb}[Hatcher p.133, 24]
+        We introduce the notation \(b_{i_1,\hdots,i_k}\) to be the barycenter of \([u_0,\hdots,u_{n-k}]\) where \(\set{u_0,\hdots,u_{n-k}} = \set{v_0,\hdots,v_n}\setminus \set{v_{i_1},\hdots,v_{i_k}}\), taken in the same order, \(b\) will refer to \(b_\emptyset\) the barycenter of the entire simplex.
+
+        From the formula in the following question (or by induction) we may see that each simplex in the image of the subdivision operator on \(\sigma = [v_0,v_1,\hdots,v_n]\) is of the form \([b,b_{i_1},b_{i_1,i_2},\hdots,b_{i_1,\hdots,i_n}]\), where \(b_{i_1,\hdots,i_k} = [t^k_0v_0,\hdots,t^k_n v_n]\) by definition has \(t^k_{i_1} = t^k_{i_2} =\cdots = t^k_{i_k} = 0\), and \(t^k_j = \frac{1}{n+1-k}\) for \(j \not \in \set{i_1,\hdots,i_k}\), so that if \(i_0\) refers to the index in \(\set{0,\hdots,n} \setminus \set{i_1,\hdots,i_n}\), then \(t^k_{i_0} \geq t^k_{i_n} \geq t^k_{i_{n-1}} \geq \cdots \geq t^k_{i_1}\), thus every vertex of the simplex from subdivision has the coefficient of \(v_{i_0}\) greater or equal to the coefficient of \(v_{i_n}\) greater than the coefficient of \(v_{i_{n-1}}\) and so on. These inequalities of coefficients are preserved over convex combinations, but every point in the simplex \([b,b_{i_1},\hdots,b_{i_1,\hdots,i_n}]\) is a convex combination in \(\set{b,b_{i_1},\hdots,b_{i_1,\hdots,i_n}}\), thus every point in the simplex written in the form \(x = (t_0v_0,\hdots,t_nv_n)\) satisfies \(t_{i_0} \geq t_{i_n} \geq t_{i_{n-1}} \cdots \geq t_{i_1}\).
+    \end{pb}
+    \begin{pb}[Hatcher p.133, 25]
+        We introduce the notation \(b_{i_1,\hdots,i_k}\) to be the barycenter of \([u_0,\hdots,u_{n-k}]\) where \(\set{u_0,\hdots,u_{n-k}} = \set{v_0,\hdots,v_n}\setminus \set{v_{i_1},\hdots,v_{i_k}}\), taken in the same order, \(b\) will refer to \(b_\emptyset\) the barycenter of the entire simplex. Now I will prove by induction that for \(\sigma = [v_0,\hdots,v_n]\) that
+        \begin{align*}
+            S(\sigma) = \sum_{i_j \neq i_k \text{ for } j \neq k}\left(\prod_{j=1}^n (-1)^{i_j}(-1)^{\#\set{k < j \mid i_k < i_j}}\right)[b,b_{i_1},b_{i_1,i_2},\hdots,b_{i_1,i_2,\hdots,i_n}]
+        \end{align*}
+        For \(n = 1\) this is true since
+        \begin{align*}
+            S(\sigma) = [b,v_1] - [b,v_0] = [b,b_0] - [b,b_1]
+        \end{align*}
+        Now, we do the induction step using the recursion formula for \(\sigma = [v_0,\hdots,v_n]\) that \(S(\sigma) = \begin{cases}
+            C_{b(\sigma)}S(d \sigma) & n \neq 0 \\
+            \sigma & n = 0
+        \end{cases}\)
+        where \(b(\sigma)\) is the barycenter of \(\sigma\) and \(C_b([v_0,\hdots,v_n]) = [b,v_0,\hdots,v_n]\). The recursion formula gives us for \(n > 1\)
+        \begin{align*}
+            S(\sigma) = \sum_{0}^n (-1)^\ell C_b(S([v_0,\hdots,\widehat{v_\ell},\hdots,v_n]))
+        \end{align*}
+        TO apply the inductive hypothesis to each of the summands, we need to first notice that the sign convention in the inductive hypothesis is changed by a factor of \(-1\) for each \(k\) such that \(i_k > \ell\), and moreover that since we are excluding \(\ell\) before applying \(S\), each of the barycenters are reindexed by prepending a \(\ell\) to the index this gives us the following:
+        \begin{align*}
+            \sum_{\ell = 0}^n (-1)^{\ell} \sum_{i_j \neq i_k \text{ for } j \neq k, i_j \neq \ell}\left(\prod_{j=1}^n (-1)^{i_j}(-1)^{\#\set{k < j \mid i_k < i_j}}(-1)^{\tau(j,\ell)}\right)[b,b_{\ell},b_{\ell,i_1},\hdots,b_{\ell,i_1,\hdots,i_{n-1}}]
+        \end{align*}
+        where \(\tau(j,l) = \begin{cases}
+            1 & \ell < j \\
+            0 & \text{else}
+        \end{cases}\)
+        We can immediately see from this that reindexing \(\ell = i_1\) and \(i_j\) as \(i_{j+1}\) that this gives the inductive formula for \(S(\sigma)\).
+    \end{pb}
+    \begin{pb}[Hatcher p.133, 26]
+        I'll show that \(\tilde{H}_1(X/A)\) surjects onto \(\prod_1^\infty \set{0,1}\) and is thus uncountable, this will be conclusive since we will see by a simple Mayer Vietoris argument that \(H_1(X,A)\) is countable. Consider \(a = (a_1,a_2,\hdots) \in \prod_1^\infty \set{0,1}\) the map \(\gamma_a: S^1 = \set{0}\bigcup_0^\infty [2^{-k-1},2^{-k}]/0 \sim 1 \to X/A\) so that
+        \begin{align*}
+            \gamma_a\vert_{[2^{-k-1},2^{-k}]}(x) = \begin{cases}
+                0 & a_k = 0 \\
+                \frac{1}{k+1} + \frac{2^{k+1}}{k(k+1)}(x - 2^{-k-1}) & a_k = 1
+            \end{cases}
+        \end{align*}
+        I.E. if we think about \(X/A\) as a converging bouqet of circles, \(\gamma_a\) can be specified to loop around the \(k-th\) circle \(a_k\) times. To see that using such \(\gamma_a\) we can surject onto \(\prod_1^\infty \set{0,1}\) consider the projection maps \(\pi_k: X/A \to S^1\) identifying all points outside of \((\frac{1}{k+1},\frac{1}{k})\). We consider \(a \in \prod_1^\infty \set{0,1} \subset \prod_1^\infty \mathbb{Z} \cong \prod_1^\infty H_1(S^1)\), then
+        \begin{align*}
+            ((\pi_1)_*,(\pi_2)_*,\hdots)(\gamma_a)_*: \mathbb{Z} &\to \prod_1^\infty \mathbb{Z}\\ 1 &\mapsto (a_1,a_2, \hdots)
+        \end{align*}
+        and thus we find that
+        \begin{align*}
+            ((\pi_1)_*,(\pi_2)_*,\hdots): \underbrace{\set{(\gamma_a)_*(1)}_{a \in \prod_1^\infty \mathbb{Z}}}_{\subset \tilde{H}_1(X/A)} \to \prod_1^\infty \set{0,1}
+        \end{align*}
+        is surjective, implying that \(\tilde{H}_1(X/A)\) is uncountable.
+
+        Finally, to see that \(H_1(X,A)\) is countable, we use Mayer-Vietoris to see that the following is exact
+        \begin{equation*}
+            \begin{tikzcd}
+                H_1(X) \arrow{r} &H_1(X,A) \arrow{r} &H_0(A)
+            \end{tikzcd}
+        \end{equation*}
+        Using that \(X = I \simeq \set{0}\), we get the sequence
+        \begin{equation*}
+            \begin{tikzcd}
+                0 \arrow{r} &H_1(X,A) \arrow{r} &H_0(A)
+            \end{tikzcd}
+        \end{equation*}
+        So that \(H_1(X,A)\) injects into \(H_0(A)\), but \(H_0(A) = \bigoplus_0^\infty \mathbb{Z}\) is countable so that \(H_1(X,A)\) must also be countable.
+    \end{pb}
+    \begin{pb}[Hatcher p.133, 27]
+        \textbf{(a)} We apply Mayer Vietoris and the 5-lemma, by functoriality of Mayer-Vietoris, we find that \(f_*\) descends to a chain map
+        \begin{equation*}
+            \begin{tikzcd}
+                {}\arrow[d,"f_*"] &H_n(A) \arrow{r}\arrow[d,"\cong"] &H_{n}(X) \arrow{r}\arrow[d,"\cong"] &H_n(X,A) \arrow{r}\arrow[d] & H_{n-1}(A)\arrow[d,"\cong"] \arrow{r} &H_{n-1}(X)\arrow[d,"\cong"] \\
+                {} &H_n(B) \arrow{r} &H_n(Y) \arrow{r} &H_n(Y,B) \arrow{r} &H_{n-1}(B) \arrow{r} &H_{n-1}(Y)
+            \end{tikzcd}
+        \end{equation*}
+        Where the isomorphisms on homology follow since \(f\) induces a homotopy equivalence. By the five lemma, \(f_* : H_n(X,A) \overset{\cong}{\longrightarrow} H_n(Y,B)\) is also an isomorphism.
+
+        \textbf{(b)} Assume for contradiction such a \(g\) and such a homotopies exist, then since \(g: D^{n} \setminus \set{0} \to S^{n-1}\), by continuity we must have \(g: D^n \to S^{n-1}\), moreover by assumption there is a homotopy \(h: (D^n,S^{n-1}) \times I \to (D^n,S^{n-1})\) so that \(g \circ f = h\vert_{D^n \times \set{0}}\) and \(h\vert_{D^n\times\set{1}} = 1_{D^n}\), it follows that \(h\vert_{S^{n-1}\times \set{1}} = 1_{S^{n-1}}\) so that \(h\vert_{S^{n-1} \times I}\) gives a homotopy between \(g\circ f\vert_{S^{n-1}}\) and \(1_{S^{n-1}}\), it follows that \(g_*f_*: H_k(S^{n-1}) \overset{1_*}{\longrightarrow} H_k(S^{n-1})\), but this is impossible since this composition factors through the following
+        \begin{equation*}
+            \begin{tikzcd}
+                H_{n-1}(S^{n-1}) \arrow[rr,bend right = 25,"1_*"] \arrow[r,"f_*"] &H_{n-1}(D^n) \arrow[r,"g_*"] &H_{n-1}(S^{n-1})
+            \end{tikzcd}
+        \end{equation*}
+        Which identifying the homotopy groups up to isomorphism gives
+        \begin{equation*}
+            \begin{tikzcd}
+                \mathbb{Z} \arrow[rr,bend right = 45,"\cdot1"] \arrow[r,"f_*"] &0 \arrow[r,"g_*"] &\mathbb{Z}
+            \end{tikzcd}
+        \end{equation*}
+        Which is clearly a contradiction.
+    \end{pb}
+    \begin{pb}[Hatcher p.133, 31]
+        The following diagram has exact rows, satisfies the desiderata on vertical maps and is commutative. Note that the unlabeled arrows are forced to be zero, so there is no ambiguity, and there is only one isomorphism \(\mathbb{Z} \to \mathbb{Z}\), so this also gives no ambiguity.
+        \begin{equation*}
+            \begin{tikzcd}
+                0 \arrow[r] \arrow[d] &0 \arrow[r] \arrow[d] & \mathbb{Z} \arrow[r,"\cong"] \arrow[d,"\cong"] & \mathbb{Z} \arrow[r] \arrow[d] &0 \arrow[d] \\
+                0 \arrow[r] &\mathbb{Z} \arrow[r,"\cong"] & \mathbb{Z} \arrow[r] & 0 \arrow[r] &0
+            \end{tikzcd}
+        \end{equation*}
+    \end{pb}
+\end{document}
