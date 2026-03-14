@@ -38,6 +38,8 @@
 \newcommand{\spl}{\operatorname{\mathfrak{sl}}}
 \newcommand{\spg}{\mathfrak{g}}
 \newcommand{\sph}{\mathfrak{h}}
+\newcommand{\spu}{\operatorname{\mathfrak{su}}}
+\newcommand{\spo}{\operatorname{\mathfrak{so}}}
 
 \begin{document}
     \begin{pb}
@@ -87,7 +89,7 @@
         \textbf{(b)} Show that \(U(n) = GL(n,\mathbb{C}) \cap O(2n)\)
         \begin{proof}
             It suffices to show that the inclusion of algebras above maps \(U(n)\) into \(O(2n)\). We first note that \(\phi(\overline{z}) = \phi(z)^\text{T}\) for \(z \in \mathbb{C}\). Now let \(A \in U(n)\), then we work in block form and use the identity just stated relating transposition and conjugation to get \[\psi(A^\dagger) = (\phi(z_{mn})^\text{T})_{n,m} = \psi(A)^\text{T}\]
-            Now we apply the fact that \(\psi\) is an algebra morphism to cocnlude that
+            Now we apply the fact that \(\psi\) is an algebra morphism to conclude that
             \begin{align*}
                 \psi(A)\psi(A)^T = \psi(A)\psi(A^\dagger) = \psi(AA^\dagger) = \psi(1) = 1
             \end{align*}
@@ -124,11 +126,23 @@
             \end{align*}
             where we are identifying unit quaternions to matrices in \(SU(2)\) as in the previous question.
 
-            This map is smooth, and its image indeed lies in \(O(4)\), to see this, the action preserves norm since \(A,B\) are unitary, and to see that the image lies in the connected component \(\det(X) = 1\), we use that the idenitity map is the image of \((1,1)\), and that \(SU(2)\times SU(2)\) is connected, so its image lies in the connected component of the identity \(SO(4)\). To see that this defines a covering map, we first check that \(F\) is a morphism of lie groups, i.e. that \(F(A,B)F(C,D) = F(AC,BD)\), this is immediate since for any \(X \in S^3 \subset \mathbb{H} \subset \text{Mat}_2(\mathbb{C})\) we have
+            This map is smooth, and its image indeed lies in \(O(4)\), to see this, the action preserves norm since \(A,B\) are unitary,
+            \begin{align*}
+                AXB^\dagger (AXB^{\dagger})^\dagger = AXB^{\dagger}BX^{\dagger}A^{\dagger} = AX1X^{\dagger}A^\dagger = A1A^\dagger = 1
+            \end{align*} And to see that the image lies in the connected component \(\det(X) = 1\), we use that the idenitity map is the image of \((1,1)\), and that \(SU(2)\times SU(2)\) is connected, so its image lies in the connected component of the identity \(SO(4)\). To see that this defines a covering map, we first check that \(F\) is a morphism of lie groups, i.e. that \(F(A,B)F(C,D) = F(AC,BD)\), this is immediate since for any \(X \in S^3 \subset \mathbb{H} \subset \text{Mat}_2(\mathbb{C})\) we have
             \begin{align*}
                 A(CXD^\dagger)B^{\dagger} = ACX(BD)^\dagger
             \end{align*}
-            Moreover, \(\ker F = \set{(A,B)\mid AXB^\dagger = X, \forall X \in S^3} = \set{(1,1),(-1,-1)}\)
+            Whence we will be done by invoking (problem 7) so long as we can show \(d_{(1,1)}F: \spu(2) \oplus \spu(2) \to \spo(4)\) is bijective. To see this, we consider \((\exp(\xi),\exp(\eta)^\dagger)\) acting on \(X \in S^3\), but since \(\exp(t\eta) \in SU(2)\), we have \(\exp(t\eta)^\dagger = \exp(-t\eta)\), so that we may compute
+            \begin{align*}
+                d_{(1,1)}F: \spu(2) \oplus \spu(2) &\to \spo(4) \\
+                (\xi,\eta) &\mapsto \left(X \mapsto \left.\frac{d}{dt}\right\vert_{t=0} \exp(t\xi)X \exp(-t\eta)\right)
+            \end{align*}
+            We may compute this using the definition of the exponential map on matrix lie algebras \(\exp(tA) = 1 + tA + \mathcal{O}(t^2)\), plugginh in this expansion, we get
+            \begin{align*}
+                d_{(1,1)}F(\xi,\eta) = \left(X\mapsto \left.\frac{d}{dt}\right\vert_{t=0} \left(X + t\xi X - tX\eta + \mathcal{O}(t^2)\right)\right) = (X \mapsto \xi X - X \eta)
+            \end{align*}
+            By plugging in \(X = 1\), we see that for \((\xi,\eta)\) to be in the kernel, we require that \(\eta = \xi\), and thus \(\ker d_{(1,1)}F\) is a subset of the center of \(\spu(2)\), which is trivial. Thus \(d_{(1,1)}F(\xi,\eta)\) is injective, moreover \(\dim\spu(2) = 3\), and \(\dim \spo(4) = 6\), so that by counting dimensions \(d_{(1,1)}F\) is bijective. This suffices to show by (problem 7) that \(F\) is a covering map, to see that the index is \(2\), we compute the kernel. Suppose that \(AXB^{\dagger} = X\) for all \(X \in S^3 = SU(2)\), then plugging in \(X = 1\), we find \(AB^{\dagger} = 1\), so that \(A = B\), it follows that \(AXA^{\dagger} = XAA^{\dagger} = X\) for all \(X \in SU(2)\), so that \(A\) is in the center of \(SU(2)\), hence \(A = \pm 1\), and since both of the resulting elements are in the kernel from this we conclude that \(\ker \phi = \set{(1,1),(-1,-1)}\) and that the cover has degree 2.
         \end{proof}
     \end{pb}
     \begin{pb}
