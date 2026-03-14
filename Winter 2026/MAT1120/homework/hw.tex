@@ -36,6 +36,8 @@
 \newcommand{\hess}{\operatorname{Hess}}
 \newcommand{\inv}{\operatorname{inv}}
 \newcommand{\spl}{\operatorname{\mathfrak{sl}}}
+\newcommand{\spg}{\mathfrak{g}}
+\newcommand{\sph}{\mathfrak{h}}
 
 \begin{document}
     \begin{pb}
@@ -122,8 +124,15 @@
             \end{align*}
             where we are identifying unit quaternions to matrices in \(SU(2)\) as in the previous question.
 
-            This map is smooth since it can be written as a composition of multilinear maps \(X \mapsto AX \mapsto AXB^\dagger\). The image of this map indeed lies in \(SO(4)\), to see this, the action preserves norm since \(A,B\) are unitary, and to see that the image lies in the connected component \(\det(X) = 1\), we use that the idenitity map is the image of \((1,1)\), and that \(SU(2)\times SU(2)\) is connected, so its image lies in a single connected component.
+            This map is smooth, and its image indeed lies in \(O(4)\), to see this, the action preserves norm since \(A,B\) are unitary, and to see that the image lies in the connected component \(\det(X) = 1\), we use that the idenitity map is the image of \((1,1)\), and that \(SU(2)\times SU(2)\) is connected, so its image lies in the connected component of the identity \(SO(4)\). To see that this defines a covering map, we first check that \(F\) is a morphism of lie groups, i.e. that \(F(A,B)F(C,D) = F(AC,BD)\), this is immediate since for any \(X \in S^3 \subset \mathbb{H} \subset \text{Mat}_2(\mathbb{C})\) we have
+            \begin{align*}
+                A(CXD^\dagger)B^{\dagger} = ACX(BD)^\dagger
+            \end{align*}
+            Moreover, \(\ker F = \set{(A,B)\mid AXB^\dagger = X, \forall X \in S^3} = \set{(1,1),(-1,-1)}\)
         \end{proof}
+    \end{pb}
+    \begin{pb}
+        \textcolor{red}{OMIT}
     \end{pb}
     \begin{pb}
         Let \(G\) be a connected Lie group, and \(U\) an open neighborhood of the group unit \(e\). Show that any \(g \in G\) can be written as a product of elements \(g_1\cdot g_2\cdots g_n\) with \(g_j \in U\).
@@ -136,5 +145,37 @@
         \end{align*}
         which is a union of open sets since we have established \(S\) is open and \(L_g\) is a diffeomorphism.
     \end{proof}
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} Let \(\phi: G \to H\) be a morphism of connected Lie groups, and assume \(d_e \phi: \spg \to \sph\) is bijective (resp. surjective, injective), show that \(\phi\) is a covering (resp. surjective, an immersion).
+
+        \begin{proof}
+            I will first show that for \(\phi\) a morphism of lie groups, \(d\phi\) has constant rank. To see this let \(g \in G\), then
+            \begin{align*}
+                L_{\phi(g^{-1})} \circ \phi \circ L_g = \phi
+            \end{align*}
+            So that by the chain rule,
+            \begin{align*}
+                (d_{\phi(g^{-1})}L_{\phi(g)})(d_g\phi)(d_eL_g) = d_e\phi
+            \end{align*}
+            Since \(L_{\phi(g)}\) and \(L_g\) are diffeomorphisms, we have that \(\operatorname{rank}(d_{\phi(g^{-1})}L_{\phi(g)})(d_g\phi)(d_eL_g) = \operatorname{rank} d_g\phi\), and the above equation shows that \(\operatorname{rank}(d_{\phi(g^{-1})}L_{\phi(g)})(d_g\phi)(d_eL_g) = \operatorname{rank}d_e\phi\), taken together this gives us
+            \begin{align*}
+                \operatorname{rank}d_g\phi = \operatorname{rank} d_e\phi
+            \end{align*}
+            and since \(g \in G\) was arbitrary, \(\phi\) has constant rank as required.
+
+            Morphisms of Lie groups having constant rank suffices to show that \(d_e\phi\) being bijective (resp. surjective injective) implies that \(\phi\) is a local diffeomorphism (by the inverse function theorem) (resp. submersion, immersion by the submersion and immersion theorems). In the case where \(d_e\phi\) is surjective, \(\phi\) is a submersion, so that \(\phi(G) \subset H\) is an open subset, and since \(\phi(G) \subset H\) is a subgoup, by the same coset argument as in (problem 6), \(\phi(G)^c \subset H\) is also open, hence \(\phi(G) \subset H\) is closed. Since \(\phi(G) \subset H\) is clopen and \(H\) is connected \(\phi(G) = H\).
+            
+            It remains to show that \(\phi: G \to H\) being a local diffeomorphism implies that it is a covering map. Since \(H \cong G/\ker\phi\), it suffices to check that \(\ker\phi \subset G\) is a discrete group, and that it acts properly discontinuously, the fact it acts freely and smoothly simply follow from \(G\) being a Lie group. To see that \(\ker \phi\) is discrete, note that if it had a limit point p, then \(\phi\) would not be injective at \(p\), contradicting the fact it is a local diffeomorphism. Then to see that the action of \(\ker \phi\) is properly discontinuous, it suffices by translation to check at the identity. Let \(g \in \ker \phi \setminus \set{e}\), then let \(K \supset \set{e}\) be compact, we need to check that \(\set{s \in \ker \phi \mid sK \cap K} \subset \ker \phi\) is finite. To see this, note that \(\set{s \in \ker \phi \mid sK \cap K} \subset KK^{-1}\) by definition and is discrete, so we will be done if we can show that \(KK^{-1}\) is compact. Note that since \(K\) is compact, \(K^{-1} := \inv K\) is the continuous image of a compact set, hence also compact, and \(KK^{-1}\) is the image of the multiplication map \(m: K \times K^{-1} \to G\), since the product of compact sets is compact, and the continuous image of compact sets is compact we conclude that \(KK^{-1}\) is compact.
+        \end{proof}
+
+
+        \textbf{(b)} Give an example where \(d_e \phi\) is injective but \(\phi\) is not an embedding.
+
+        \begin{proof}
+            consider the double cover \(SU(2) \to SO(3)\) the derivative is bijective (in particular injective), but since the map is a double cover is is in particular not injective.
+
+            Another example is \(\phi: \mathbb{R} \to T^2 = R^2/\mathbb{Z}^2\) via \(x \mapsto (x,x\sqrt{2})\), then \(d_e \phi = (1,\sqrt{2})\) is injective, but since \(\set{1,\sqrt{2}}\) are rationally independent by Kroeneckers lemma, \(\overline{\phi(\mathbb{R})} = T^2\), and hence the submanifold topology on \(\phi(R)\) is not the topology on \(\mathbb{R}\).
+        \end{proof}
     \end{pb}
 \end{document}
