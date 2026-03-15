@@ -7,7 +7,7 @@
 \usepackage{graphicx}
 
 \fancyhf{}
-\lhead{MAT1002 hw3}
+\lhead{MAT1002 hw4}
 \rhead{Tighe McAsey - 1008309420}
 \pagestyle{fancy}
 
@@ -30,15 +30,53 @@
 \newcommand{\px}{\frac{\partial}{\partial x}}
 \newcommand{\py}{\frac{\partial}{\partial y}}
 \newcommand{\pz}{\frac{\partial}{\partial z}}
+\newcommand{\pzb}{\frac{\partial}{\partial \bar{z}}}
 \newcommand{\ppx}{\frac{\partial^2}{\partial x^2}}
 \newcommand{\ppy}{\frac{\partial^2}{\partial y^2}}
 \newcommand{\ppz}{\frac{\partial^2}{\partial z^2}}
 \newcommand{\hess}{\operatorname{Hess}}
 \newcommand{\Log}{\operatorname{Log}}
 \newcommand{\Arg}{\operatorname{Arg}}
+\newcommand{\dv}{dz\wedge d\bar{z}}
+\newcommand{\pzpz}{\frac{\partial^2}{\partial z \partial \bar{z}}}
 
 \begin{document}
     \begin{pb}
         
+    \end{pb}
+    \begin{pb}
+        
+    \end{pb}
+    \begin{pb}
+        Let \(\varphi \in C_c^\infty(D)\), and let \(w_1, \hdots, w_n\) be the zeroes and poles of \(f\), we define \(B_\epsilon^j := B_\epsilon(w_j)\), then for all \(\epsilon\) small enough so that each \(B_\epsilon^j\) is disjoint we get
+        \begin{align}
+            \int_D \pzpz \log\abs{f}^2 \varphi \dv &\overset{\text{def}}{=} \int_D \log\abs{f}^2 \pzpz \varphi \dv \\
+            &= \underbrace{\int_{D \setminus \sum B^j_\epsilon} \log\abs{f}^2 \pzpz \varphi \dv}_{(A)} + \underbrace{\int_{\sum B_\epsilon^j} \log\abs{f}^2 \pzpz \varphi \dv}_{(B)} \label{Weakder}
+        \end{align}
+        Then since \(f: D \to \mathbb{P}^1\), near any of the \(w_j\) we can write it as \(z^k g\) for \(k \in \mathbb{Z}\) and \(g\) nonvanishing and holomorphic on \(B_\epsilon^j\), moreover since \(\varphi\) is \(C^\infty\) and compactly supported, it is bounded on \(D\) along with all its derivatives. It follows that \((B) \in \mathcal{O}(\epsilon^2\log\abs{\epsilon^k g}^2) = \mathcal{O}(\epsilon^2\log(\epsilon))\). Now to evaluate (A), we use Stoke's theorem, we compute on \(D \setminus \sum_1^n B_\epsilon^j\) that \(d \log \abs{f}^2 \pzb \varphi d\bar{z} = \log\abs{f}^2 \pzpz \varphi \dv + \frac{f'}{f}\pzb \varphi \dv\), so that
+        \begin{align}
+            (A) &\overset{\text{Stoke's}}{=} \int_{\partial (D \setminus \sum B_\epsilon^j)}\log \abs{f}^2 \pzb \varphi d\bar{z} - \int_{D \setminus \sum B_\epsilon^j} \frac{f'}{f}\pzb \varphi \dv \\
+            &= -\underbrace{\int_{\sum\partial B_\epsilon^j}\log \abs{f}^2 \pzb \varphi d\bar{z}}_{\mathcal{O}(\epsilon\log \epsilon)} + \underbrace{\int_{\partial D}\log \abs{f}^2 \pzb \varphi d\bar{z}}_{\varphi \in C_c^\infty(D) \implies \pzb\varphi\vert_{\partial D} = 0} - \int_{D \setminus \sum B_\epsilon^j} \frac{f'}{f}\pzb \varphi \dv \\
+            &= - \int_{D \setminus \sum B_\epsilon^j} \frac{f'}{f}\pzb \varphi \dv + \mathcal{O}(\epsilon\log \epsilon)
+        \end{align}
+        Now, we recognize that \(d (-\frac{f'}{f}\varphi dz) = \frac{f'}{f}\pzb \varphi \dv\) on \(D \setminus \sum B_\epsilon^j\), since \(f'/f\) is holomorphic on this set. This gives us
+        \begin{align}
+            (A) &\overset{\text{Stoke's}}{=} \int_{\partial (D \setminus \sum B_\epsilon^j)}\frac{f'}{f}\varphi dz + \mathcal{O}(\epsilon\log \epsilon) = \underbrace{\int_{\partial D} \frac{f'}{f}\varphi dz}_{\varphi \in C^\infty_c(D) \implies \varphi\vert_{\partial D} = 0} - \int_{\sum \partial B_\epsilon^j} \frac{f'}{f}\varphi dz + \mathcal{O}(\epsilon\log \epsilon) \\
+            &= -\int_{\sum \partial B_\epsilon^j} \frac{f'}{f}\varphi + \mathcal{O}(\epsilon \log \epsilon) \label{Aformula}
+        \end{align}
+        Taken together, \eqref{Weakder} and \eqref{Aformula} give us
+        \begin{align}
+            \int_D \pzpz \log\abs{f}^2 \varphi \dv &= \lim_{\epsilon \to 0}\left(-\int_{\sum \partial B_\epsilon^j} \frac{f'}{f}\varphi + \mathcal{O}(\epsilon \log \epsilon)\right) \\
+            &= \lim_{\epsilon \to 0}-\int_{\sum \partial B_\epsilon^j} \frac{f'}{f}\varphi \\
+            &= -2\pi i\left(\sum_{w \in \set{f = 0}} (\operatorname{ord}_wf) \varphi(w) - \sum_{w \in \set{f = \infty}} (\operatorname{ord}_wf) \varphi(w)\right) \label{finalweakderRes}
+        \end{align}
+        Where the last equality follows since \(\int_{\partial B_\epsilon^j}f'/f = \pm \operatorname{ord}_{w_j}f\) where the sign depends on wether \(f(w_j) = 0\) or \(\infty\). Taken together with \(\varphi \in C^\infty\), we get for any \(\epsilon' > 0\), that for sufficiently small \(\epsilon\) we have \(\norm{\varphi\vert_{B_\epsilon^j} - \varphi(w_j)}_\infty < \epsilon'\), so that
+        \begin{align}
+            \abs{\int_{B_\epsilon^j} \frac{f'}{f} \varphi dz - \int_{B_\epsilon^j} \frac{f'}{f} \varphi(0)dz} = \abs{\int_{B_\epsilon^j} \frac{f'}{f} (\varphi - \varphi(0)) dz} \leq \epsilon' \int_{B_\epsilon^j} \abs{\frac{f'}{f}}
+        \end{align}
+        But \(f'/f\) has a simple pole at \(w_j\), so that \(\epsilon' \int_{B_\epsilon^j} \abs{\frac{f'}{f}} \in \mathcal{O}(\epsilon')\), thus goes to zero in the limit. Now since \(\varphi\) was arbitrary, (10) tells us exactly that
+        \begin{align}
+            \frac{i}{2\pi}\pzpz \log\abs{f}^2 \varphi \dv = \sum_{w \in \set{f = 0}}(\operatorname{ord}_wf) \varphi(w) - \sum_{w \in \set{f = \infty}} (\operatorname{ord}_wf) \varphi(w)
+        \end{align} \qed
     \end{pb}
 \end{document}
