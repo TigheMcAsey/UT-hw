@@ -192,4 +192,44 @@
             Another example is \(\phi: \mathbb{R} \to T^2 = R^2/\mathbb{Z}^2\) via \(x \mapsto (x,x\sqrt{2})\), then \(d_e \phi = (1,\sqrt{2})\) is injective, but since \(\set{1,\sqrt{2}}\) are rationally independent by Kroeneckers lemma, \(\overline{\phi(\mathbb{R})} = T^2\), and hence the submanifold topology on \(\phi(R)\) is not the topology on \(\mathbb{R}\).
         \end{proof}
     \end{pb}
+    \begin{pb} Prove that if \(H_1,H_2 \subset G\) are Lie subgroups, then so is \(H_1 \cap H_2\).
+        \begin{proof}
+        We know that \(H_1 \times H_2 \hookrightarrow G \times G\) is a Lie subgroup, since we can take its inclusion to the product to be the product of the inclusions into \(G\). Since \(G\) is a manifold it is Hausdorff, so the diagonal \(\Delta := \set{(g,g) \mid g \in G} \subset G \times G\) is closed, moreover it is a subgroup so it is a closed Lie subgroup by the closed subgroup theorem. It follows that \(\Delta \cap (H_1 \times H_2)\) is a closed subgroup of \(H_1 \times H_2\), but \(\Delta \cap (H_1 \times H_2) \) is the image of the diagonal map on \(H_1 \cap H_2\), then taking the projection map \(\pi_1: G \times G \to G, (g,h) \mapsto g\), we get
+        \begin{align*}
+            H_1 \cap H_2 \cong \Delta \cap (H_1 \times H_2) \overset{\iota}{\to} G \times G \overset{\pi_1}{\to} G
+        \end{align*}
+        and since \(\pi_1\) is an injective immersion on \(\Delta\), its an injective immersion of \(\iota\left(\Delta \cap (H_1 \times H_2)\right)\), hence this realizes \(H_1 \cap H_2\) as a Lie subgroup.
+        \end{proof}
+    \end{pb}
+    \begin{pb} Let \(G\) be the identity component of the affine group of the real line consisting of transformations \(x \mapsto xt + s, \text{ with } t > 0 \tand s \in \mathbb{R}\), identified with matrices of the form \(\begin{pmatrix} t & s \\ 0 & 1 \end{pmatrix}\), show that \(G\) is not unimodular.
+        \begin{proof}
+            To show that \(G\) is not unimodular, we simply need to provide some \(g \in G\) with \(\chi(g) \neq 1\). To do so, we first need to compute the lie algebra. As a manifold, \(G = \set{\begin{pmatrix} t & s \\ 0 & 1 \end{pmatrix}\mid t > 0, s \in \mathbb{R}}\) has coordinates \(s,t\), and whence the smooth one parameter paths through the origin are of the form for \(\gamma_j(0) = 1\) smooth paths in \(\mathbb{R}\)
+        \begin{align*}
+            \gamma(t) = \begin{pmatrix} \gamma_1(t) & \gamma_2(t) \\ 0 & 1 \end{pmatrix}
+        \end{align*}
+        Since the paths are smooth, we may write them as \(\gamma_1(t) = 1 + at + \mathcal{O}(t^2)\) and \(\gamma_2(t) = 1 + bt + \mathcal{O}(t^2)\), it follows that \(\frac{d}{dt}\vert_{t=0}\gamma(t) = \begin{pmatrix} a & b \\ 0 & 0 \end{pmatrix}\), so that \(\mathfrak{g} = \operatorname{span}\set{e_{11},e_{12}}\). So letting \(g = \begin{pmatrix} t & s \\ 0 & 1 \end{pmatrix}\), we compute
+        \begin{align*}
+            \operatorname{Ad}_g(e_{11}) &= e_{11} - se_{12} \\
+            \operatorname{Ad}_g(e_{12}) &= te_{12}
+        \end{align*}
+        So that
+        \begin{align*}
+            \chi(g) = \abs{\det \begin{pmatrix} 1 & 0 \\ -s & t \end{pmatrix}} = t
+        \end{align*}
+        So that for \(g = \begin{pmatrix} 2 & 0 \\ 0 & 1 \end{pmatrix}\) we have \(\chi(g) = 2 \neq 1\).
+        \end{proof}
+    \end{pb}
+    \begin{pb}
+        Prove that if \(G\) is a connected Lie group then every ad-invariant inner product on \(\mathfrak{g}\) is also Ad-invariant.
+    \end{pb}
+    \begin{pb}
+        \(T \subset SU(2)\), the subgroup of diagonal matrices is a maximal torus. So is \(T' = SO(2) \subset SU(2)\), find all \(a \in SU(2)\) such that \(\operatorname{Ad}_a(T) = T'\).
+    \end{pb}
+    \begin{pb}
+        Let \(H \subset SO(3)\) be the subgroup of diagonal matrices.
+
+        \textbf{(a)} Show that \(H \cong \mathbb{Z}/2 \mathbb{Z} \times \mathbb{Z}/ 2 \mathbb{Z}\).
+
+        \textbf{(b)} Show that \(H\) is maximal abelian.
+    \end{pb}
 \end{document}
