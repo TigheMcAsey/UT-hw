@@ -221,15 +221,70 @@
     \end{pb}
     \begin{pb}
         Prove that if \(G\) is a connected Lie group then every ad-invariant inner product on \(\mathfrak{g}\) is also Ad-invariant.
+
+        \begin{proof}
+            Let \(\gen{-,-}\) be an ad-invariant inner product, we first show that \(\set{g \in G \mid \gen{-,-} \text{ is } \operatorname{Ad}_g \text{ invariant}}\) is closed. To prove this, we use that \(\gen{-,-}\) is bilinear, hence we can take the limit in both arguments, and that \(g \mapsto \operatorname{Ad}_g\) is continuous, so that if \(\set{g_n} \subset \set{g \in G \mid \gen{-,-} \text{ is } \operatorname{Ad}_g \text{ invariant}}\) and \(g_n \to g \in G\), then
+            \begin{align*}
+                \gen{\xi,\eta} = \lim_{n\to\infty}\gen{\operatorname{Ad}_{g_n}\xi,\operatorname{Ad}_{g_n}\eta} = \gen{\lim_{n\to\infty}\operatorname{Ad}_{g_n}\xi,\lim_{n\to\infty}\operatorname{Ad}_{g_k}\eta} = \gen{\operatorname{Ad}_{g}\xi,\operatorname{Ad}_{g}\eta}
+            \end{align*}
+            Thus since \(G\) is connected, it will suffice to show that \(\gen{-,-}\) is Ad-invariant on the image of the exponential map, since this is an open neighborhood of the identity in \(G\). Let \(\xi \in \spg\), then
+            \begin{align*}
+                \gen{\operatorname{Ad}_{\exp\xi}\eta,\operatorname{Ad}_{\exp\xi}\zeta} = \gen{\exp(\operatorname{ad}_\xi)(\eta),\exp(\operatorname{ad}_\xi)(\zeta)}
+            \end{align*}
+            So it will suffice to show that using ad-invariance we can conclude \(\gen{\exp(\operatorname{ad}_\xi)(\eta),\exp(\operatorname{ad}_\xi)(\zeta)} = \gen{\eta,\zeta}\), ad invariance tells us that \(\gen{\operatorname{ad}_\xi\eta,\zeta} = -\gen{\eta,\operatorname{ad}_\xi \zeta}\), so that \(\operatorname{ad}_\xi^* = -\operatorname{ad}_\xi\), so that \(\exp(\operatorname{ad}_\xi)^* = \exp(-\operatorname{ad}_\xi)\). Applying this we get
+            \begin{align*}
+                \gen{\exp(\operatorname{ad}_\xi)(\eta),\exp(\operatorname{ad}_\xi)(\zeta)} = \gen{\eta,\exp(-\operatorname{ad}_\xi)\exp(\operatorname{ad}_\xi)(\zeta)} = \gen{\eta,\zeta}
+            \end{align*}
+        \end{proof}
     \end{pb}
     \begin{pb}
         \(T \subset SU(2)\), the subgroup of diagonal matrices is a maximal torus. So is \(T' = SO(2) \subset SU(2)\), find all \(a \in SU(2)\) such that \(\operatorname{Ad}_a(T) = T'\).
+        \begin{proof}
+            We can find such \(a \in SU(2)\) by diagonalizing rotation matrices, let \(R(\theta) = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}\), then \(\det(R(\theta) - \lambda) = \lambda^2 - 2\lambda\cos\theta + 1\), which using the quadratic formula has roots \(e^{i\theta},e^{-i\theta}\). We find the eigenvectors corresponding to these roots, we get \(e^{i\theta}\) has eigenvector \(e_1 = \frac{1}{\sqrt{2}}\begin{pmatrix} i  \\ 1 \end{pmatrix}\), and \(e^{-i\theta}\) has eigenvector \(e_2 = \frac{1}{\sqrt{2}}\begin{pmatrix} -1  \\ -i \end{pmatrix}\) so that
+            \begin{align*}
+                \begin{pmatrix} \mathbf{e_1} & \mathbf{e_2}\end{pmatrix}\begin{pmatrix} e^{i\theta} & 0 \\ 0 & e^{-i\theta} \end{pmatrix}\begin{pmatrix} \mathbf{e_1} & \mathbf{e_2} \end{pmatrix}^{-1} = R(\theta)
+            \end{align*}
+            Since these are the eigenvectors for any rotation matrix, the conjugating elements \(\operatorname{Ad}_a(T) = T'\) are exactly
+            \begin{align*}
+                &a \in \set{\begin{pmatrix}
+                    s\mathbf{e_1} & t\mathbf{e_2}
+                \end{pmatrix}, \begin{pmatrix}
+                    s\mathbf{e_2} & t\mathbf{e_1}
+                \end{pmatrix} \mid s,t \in \mathbb{C}} \cap SU(2)
+            \end{align*}
+            We parameterize this set a bit more nicely, by noticing that first off if \(a = \begin{pmatrix} \mathbf{f_1} & \mathbf{f_2}\end{pmatrix}\), then since \(a \in SU(2)\), we have \(\norm{f_j} = 1\), whence \(\abs{s} = \abs{t} = 1\), and that if we scale \(f_1\) by \(s \in \mathbb{R}\), then to preserve the determinant, we must multiply \(f_2\) by \(s^{-1}\). Thus we find that using the definitions for \(e_1, e_2\) from above:
+            \begin{align*}
+                \set{a \in SU(2) \mid \operatorname{Ad}_a(T) \subset T'} = \set{\begin{pmatrix}
+                    s\mathbf{e_1} & s^{-1}\mathbf{e_2}
+                \end{pmatrix}, \begin{pmatrix}
+                    s\mathbf{e_2} & s^{-1}\mathbf{e_1}
+                \end{pmatrix} \mid s \in \mathbb{C}, \abs{s} = 1}
+            \end{align*}
+        \end{proof}
     \end{pb}
     \begin{pb}
         Let \(H \subset SO(3)\) be the subgroup of diagonal matrices.
 
         \textbf{(a)} Show that \(H \cong \mathbb{Z}/2 \mathbb{Z} \times \mathbb{Z}/ 2 \mathbb{Z}\).
+        \begin{proof}
+            Since \(g \in H\), then since \(g^T = g\) is orthogonal, we have \(g = g^{-1}\) which implies the diagonal entries must either be \(\pm 1\), moreover since \(\det g = 1\), there must be an even number of \(-1\) entries. Such matrices can be enumerated
+            \begin{align*}
+                1, h_1 = \operatorname{diag}(-1,-1,1), h_2 = \operatorname{diag}(-1,1,-1), h_3 = \operatorname{diag}(1,-1,-1)
+            \end{align*}
+            To see \(H \cong \mathbb{Z}/ 2 \mathbb{Z} \times \mathbb{Z} / 2 \mathbb{Z}\), we use that \(H\) has order \(4\) and is a subgroup of \(SU(2)\), and that the only groups of order \(4\) are \(\mathbb{Z}/2 \mathbb{Z} \times \mathbb{Z}/ 2 \mathbb{Z}\) and \(\mathbb{Z}/ 4 \mathbb{Z}\), since every element of \(H\) has order 2, we have \(H \cong \mathbb{Z}/2 \mathbb{Z} \times \mathbb{Z}/ 2 \mathbb{Z}\).
+        \end{proof}
 
         \textbf{(b)} Show that \(H\) is maximal abelian.
+        \begin{proof}
+            It will suffice to show that there is no \(g \in SO(3)\) such that \(g\) commutes with all of \(H\), equivalently, that the only matrices commuting with \(H\) are diagonal, to see this let \(g \in SO(3)\), then we can write \(g\) in block diagonal form as \(g = \begin{pmatrix} A & \mathbf{b} \\ \mathbf{a}^T & c \end{pmatrix}\) for \(A\) a 2x2 matrix, \(c \in \mathbb{R}\), and \(a,b\) \(2\times 1\) column vectors. For \(g\) to commute with \(H\) we require
+            \begin{align*}
+               ( -h_1) g (-h_1) =  h_1 g h_1^{-1} = g
+            \end{align*}
+            We use the block form to easily compute this as
+            \begin{align*}
+                ( -h_1) g (-h_1) = \begin{pmatrix} A & \mathbf{b} \\ -\mathbf{a}^T & -c \end{pmatrix} (-h_1) = \begin{pmatrix} A & -\mathbf{b} \\ -\mathbf{a}^T & c \end{pmatrix}
+            \end{align*}
+            So that the vectors \(a = -a = 0\) and \(b= -b = 0\), we may similarly write \(g\) in block form \(g = \begin{pmatrix} c  & \mathbf{a^T} \\ \mathbf{b} & A \end{pmatrix}\) for \(A,b,a,c\) of the same form. The same calculation conjugating by \(h_3\) gives us again that \(a = b = 0\), taken together this tells us that all the off diagonal entries of \(g\) must be zero, hence the only matrices commuting with \(H\) are diagonal and \(H\) is maximal abelian.
+        \end{proof}
     \end{pb}
 \end{document}
