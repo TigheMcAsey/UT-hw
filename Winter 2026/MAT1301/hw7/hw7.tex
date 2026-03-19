@@ -1,0 +1,138 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+
+\fancyhf{}
+\lhead{MAT1301 hw7}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\usepackage{tikz-cd, stackengine}
+
+% Commands:
+\tikzset{
+  curarrow/.style={
+  rounded corners=8pt,
+  execute at begin to={every node/.style={fill=red}},
+    to path={-- ([xshift=-50pt]\tikztostart.center)
+    |- (#1) node[fill=white] {$\scriptstyle \delta$}
+    -| ([xshift=50pt]\tikztotarget.center)
+    -- (\tikztotarget)}
+    }
+}
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\newcommand{\px}{\frac{\partial}{\partial x}}
+\newcommand{\py}{\frac{\partial}{\partial y}}
+\newcommand{\pz}{\frac{\partial}{\partial z}}
+\newcommand{\ppx}{\frac{\partial^2}{\partial x^2}}
+\newcommand{\ppy}{\frac{\partial^2}{\partial y^2}}
+\newcommand{\ppz}{\frac{\partial^2}{\partial z^2}}
+\newcommand{\hess}{\operatorname{Hess}}
+
+\begin{document}
+    \begin{pb}
+        Choose a cylinder around \(\iota([0,\frac12])\) then add a cap at zero.
+    \end{pb}
+    \begin{pb}
+        I will prove that \(\tilde{H}_k(BM((X_j,x_j)^m_1)) \cong \tilde{H}_k(BM((X_j,x_j)_1^{m-1}))\oplus \tilde{H}_k(X_m)\), in which case by induction we get \(\tilde{H}_k(BM((X_j,x_j)^m_1)) \cong \bigoplus_{j=1}^m \tilde{H}_k(X_j)\). To prove this induction step, we use Mayer Vietoris, to specify the open sets denote the branches of the tree \(Y\) as \(y_j \in I_j\), and let \(U_0\) be a small open neighborhood of \(y_0\), i.e. \(U_0 = \bigcup_1^m[0,\epsilon)_j\)  where \([0,\epsilon_j) \subset I_j\) and \(\epsilon << 1\). for each \((X_j,x_j)\) let \(U_j = U_0 \cup I_j \cup X_j\), then clearly \(U_j \simeq X_j\) by a deformation retract. We define \(V = \bigcup_1^{m-1} U_j\), then \(V \simeq BM((X_j,x_j)_1^{m-1})\) by a deformation retract, and denote \(U = U_m\). Finally, we see that \(U \cap V \simeq \set{y_0}\) by a deformation retract, so that applying Mayer Vietoris (on reduced homology) yields the exact sequence
+        \begin{equation*}
+            \begin{tikzcd}[arrow style=math font,cells={nodes={text height=2ex,text depth=0.75ex}}]
+                \cdots & \tilde{H}_{k-1}(U) \oplus \tilde{H}_{k-1}(V) \arrow[l] \arrow[draw=none]{d}[name=Y, shape=coordinate]{} & \arrow[l] \tilde{H}_{k-1}(U \cap V) \\
+                \tilde{H}_{k}(BM) \arrow[curarrow=Y]{urr}{} & \tilde{H}_{k}(U) \oplus \tilde{H}_{k}(V) \arrow[l] \arrow[draw=none]{d}[name=Z,shape=coordinate]{} & \tilde{H}_{k}(U \cap V) \arrow[l] \\
+                \tilde{H}_{k+1}(BM) \arrow[curarrow=Z]{urr}{} & \tilde{H}_{k+1}(U) \oplus \tilde{H}_{k+1}(V) \arrow[l] & \cdots \arrow[l]
+            \end{tikzcd}
+        \end{equation*}
+        But since we are working with reduced homology, and and \(U \cap V\) is connected, we get \(\tilde{H}_k(U \cap V) = \tilde{H}_k(\set{y_0}) = 0\) for all \(k\), thus the above sequence simplifies to
+         \begin{equation*}
+            \begin{tikzcd}[arrow style=math font,cells={nodes={text height=2ex,text depth=0.75ex}}]
+                \cdots & \tilde{H}_{k-1}(U) \oplus \tilde{H}_{k-1}(V) \arrow[l] \arrow[draw=none]{d}[name=Y, shape=coordinate]{} & \arrow[l] 0 \\
+                \tilde{H}_{k}(BM) \arrow[curarrow=Y]{urr}{} & \tilde{H}_{k}(U) \oplus \tilde{H}_{k}(V) \arrow[l] \arrow[draw=none]{d}[name=Z,shape=coordinate]{} & 0 \arrow[l] \\
+                \tilde{H}_{k+1}(BM) \arrow[curarrow=Z]{urr}{} & \tilde{H}_{k+1}(U) \oplus \tilde{H}_{k+1}(V) \arrow[l] & \cdots \arrow[l]
+            \end{tikzcd}
+        \end{equation*}
+        So that by exactness we have for all \(k\), \[\tilde{H}_k(BM((X_{j},x_j)_1^m)) \cong \tilde{H}_k(U) \oplus \tilde{H}_k(V) \cong \tilde{H}_k(X_j) \oplus \tilde{H}_k(BM((X_{j},x_j)_1^{m-1}))\]
+        where we use homotopy invariance of homology for the second isomorphism. \qed
+    \end{pb}
+    \begin{pb}
+        
+    \end{pb}
+    \begin{pb} \textbf{(a)}
+        We use the following open sets and Mayer Vietoris
+
+        \textcolor{red}{Inssert Image Here}
+
+        Then \(U \simeq S^1 \vee S^1, V \simeq \set{\text{pt.}}\), and \(U \cap V \simeq S^1\), thus \(\tilde{H}_k(U) \cong \tilde{H}_k(S^1 \vee S^1),  0 = \tilde{H}_k(V)\) for all \(k\), and \(\tilde{H}_k(U \cap V) \cong \tilde{H}_k(S^1)\) for all \(k\). We first compute \(\tilde{H}_{k}(S^1 \vee S^1)\) also using Mayer Vietoris, for choosing \(U,V\) to be contractible neighborhoods of either copy of \(S^1\), so that \(U \cap V \simeq \set{\text{pt}}\) is a contractible neighborhood of the wedge point. Whence \(\tilde{H}_{k}(U \cap V) = 0\) for all \(k\), and \(\tilde{H}_{k}(U) \cong \tilde{H}_{k}(S^1) \cong \tilde{H}_{k}(V)\) for all \(k\). This gives the following long exact sequence using Mayer Vietoris:
+        \begin{equation*}
+            \begin{tikzcd}[arrow style=math font,cells={nodes={text height=2ex,text depth=0.75ex}}]
+                \cdots & \tilde{H}_{k-1}(S^1) \oplus \tilde{H}_{k-1}(S^1) \arrow[l] \arrow[draw=none]{d}[name=Y, shape=coordinate]{} & \arrow[l] 0 \\
+                \tilde{H}_{k}(S^1 \vee S^1) \arrow[curarrow=Y]{urr}{} & \tilde{H}_{k}(S^1) \oplus \tilde{H}_{k}(S^1) \arrow[l] \arrow[draw=none]{d}[name=Z,shape=coordinate]{} & 0 \arrow[l] \\
+                \tilde{H}_{k+1}(S^1 \vee S^1) \arrow[curarrow=Z]{urr}{} & \tilde{H}_{k+1}(S^1) \oplus \tilde{H}_{k+1}(S^1) \arrow[l] & \cdots \arrow[l]
+            \end{tikzcd}
+        \end{equation*}
+        So that \[\tilde{H}_k(S^1 \vee S^1) \cong \tilde{H}_{k}(S^1) \oplus \tilde{H}_{k}(S^1) \cong \begin{cases}
+            \mathbb{Z} \oplus \mathbb{Z} & k = 1 \\
+            0 & \text{else}
+        \end{cases}\]
+        The last key ingredient we need is to compute \(\iota_*: \tilde{H}_1(U \cap V) \to \tilde{H}_1(U) \oplus \tilde{H}_1(V)\). To do so, we use that \(\sigma: \Delta^1 = I \to S^1\) via \(x \mapsto e^{2\pi i x}\) has \([\sigma] = 1\). And moreover, by the above computation for \(S^1 \vee S^1\), we may identify the generators for \(\tilde{H}_1(S^1 \vee S^1)\) as this \(\sigma\) on either copy of \(S^1\). Now we may use that the map \(\sigma: I \to U \cap V\), which is the map with winding number one onto the copy of \(S^1\) we are deformation retracting onto, satisfies that its image under the retract identifying \(U\) with \(S^1 \vee S^1\) is \(\sigma_1 + \sigma_2 - \sigma_1 - \sigma_2 = 0\), as in the following picture
+
+        \textcolor{red}{Include Image Here}
+
+        This of course implies that \(\iota_*: \tilde{H}_1(S^1) \to \tilde{H}_1(S^1\vee S^1) \oplus 0\) is the zero map. Whence we get the following Mayer-Vietoris sequence for \(T^2\):
+        \begin{equation*}
+            \begin{tikzcd}[arrow style=math font,cells={nodes={text height=2ex,text depth=0.75ex}}]
+                \tilde{H}_0(T^2) & \tilde{H}_0(S^1 \vee S^1) \oplus 0 \arrow[l] \arrow[draw=none]{d}[name=Y, shape=coordinate]{} & \arrow[l] \tilde{H}_0(S^1) \\
+                \tilde{H}_1(T^2) \arrow[curarrow=Y]{urr}{} & \tilde{H}_{1}(S^1 \vee S^1) \oplus 0 \arrow[l] \arrow[draw=none]{d}[name=Z,shape=coordinate]{} & \tilde{H}_1(S^1) \arrow[l,"0"] \\
+                \tilde{H}_{2}(T^2) \arrow[curarrow=Z]{urr}{} & \tilde{H}_{2}(S^1 \vee S^1) \oplus 0 \arrow[l] & \cdots \arrow[l]
+            \end{tikzcd}
+        \end{equation*}
+        Cleaning things up further, we get all \(\tilde{H}_k(S^1 \vee S^1) = 0 = \tilde{H}_k(S^1)\) for \(k \geq 2\), so that \(\tilde{H}_k(T^2) \cong 0\) for \(k \geq 3\), and \(\tilde{H}_0(T^2) = 0\) by connectedness. Writing everything up to isomorphism now gives
+        \begin{equation*}
+            \begin{tikzcd}[arrow style=math font,cells={nodes={text height=2ex,text depth=0.75ex}}]
+                0 & 0 \arrow[l] \arrow[draw=none]{d}[name=Y, shape=coordinate]{} & \arrow[l] 0 \\
+                \tilde{H}_1(T^2) \arrow[curarrow=Y]{urr}{} & \mathbb{Z} \oplus \mathbb{Z} \arrow[l] \arrow[draw=none]{d}[name=Z,shape=coordinate]{} & \mathbb{Z} \arrow[l,"0"] \\
+                \tilde{H}_{2}(T^2) \arrow[curarrow=Z]{urr}{} & 0 \oplus 0 \arrow[l] & \cdots \arrow[l]
+            \end{tikzcd}
+        \end{equation*}
+        So that since the map \(\mathbb{Z} \to \mathbb{Z} \oplus \mathbb{Z}\) is zero, we find that \(\tilde{H}_2(T^2) \cong \mathbb{Z}\) and \(\tilde{H}_1(T^2) \cong \mathbb{Z} \oplus \mathbb{Z}\) by exactness. Combining everything we find that
+        \begin{align*}
+            \tilde{H}_k(T^2) \cong \begin{cases}
+                \mathbb{Z} & k = 2 \\
+                \mathbb{Z} \oplus \mathbb{Z} & k = 1 \\
+                0 & \text{else}
+            \end{cases}
+        \end{align*} \qed
+
+        \textbf{(b)} denote \(M \simeq S^1\) to be the mobius strip, then let \(U_0\) be a small neighborhood of \(\set{x_0} \times S^1\) in \(T^2\), which deformation retracts to \(\set{x_0} \times S^1\) in \(T^2\) and \(U = U_0 \cup M \simeq M\), by simply retracting \(U_0\) to \(\set{x_0} \times S^1\). Let \(V_0\) be a small neighborhood of \(\partial M\), which retracts to the boundary, then let \(V = V_0 \cup T^2 \simeq T^2\) by contracting \(V_0\), moreover \(U \cap V = U_0 \cup V_0 =\simeq\set{x_0} \times S^1\). This gives us the Mayer Vietoris sequence:
+         \begin{equation*}
+            \begin{tikzcd}[arrow style=math font,cells={nodes={text height=2ex,text depth=0.75ex}}]
+                \cdots & \tilde{H}_{k-1}(S^1) \oplus \tilde{H}_{k-1}(T^2) \arrow[l] \arrow[draw=none]{d}[name=Y, shape=coordinate]{} & \arrow[l] \tilde{H}_{k-1}(S^1) \\
+                \tilde{H}_{k}(X) \arrow[curarrow=Y]{urr}{} & \tilde{H}_{k}(S^1) \oplus \tilde{H}_{k}(T^2) \arrow[l] \arrow[draw=none]{d}[name=Z,shape=coordinate]{} & \tilde{H}_{k}(S^1) \arrow[l] \\
+                \tilde{H}_{k+1}(X) \arrow[curarrow=Z]{urr}{} & \tilde{H}_{k+1}(S^1) \oplus \tilde{H}_{k+1}(T^2) \arrow[l] & \cdots \arrow[l]
+            \end{tikzcd}
+        \end{equation*}
+        since \(\tilde{H}_k(S^1) = 0\), for \(k \geq 2\), and \(\tilde{H}_k(T^2) = 0\) for \(k \geq 3\), we find that \(\tilde{H}_k(X) = 0\) for \(k \geq 3\). Morover, \(X\) is connected, so that \(\tilde{H}_0(X) = 0\), we need only compute in degrees 1 and 2. By using the same standard generators for \(\tilde{H}_1(S^1)\) as part (a) and the corresponding induced generators on \(\tilde{H}_1(T^2)\), we have that \(\iota_*: \tilde{H}_1(S^1) \to \tilde{H}_1(S^1) \oplus \tilde{H}_1(T^2)\) is identified with \(\mathbb{Z} \to \mathbb{Z} \oplus (\mathbb{Z} \oplus \mathbb{Z}), 1 \mapsto (2,(0,1))\) where the multiplication by 2 is induced by including to the boundary of the mobius strip being the winding twice around map under the homotopy identifying \(M \simeq S^1\). This shows that \(\iota_*\) is injective so we find that \(\delta: \tilde{H}_2(X) \to \tilde{H}_1(S^1)\) is the zero map, and thus \(\tilde{H}_2(X) \cong \tilde{H}_2(T^2) \cong \mathbb{Z}\) by exactness. It remains to compute in degree 1. Now we use that \(j_*: \tilde{H}_1(S^1) \oplus \tilde{H}_1(T^2) \to \tilde{H}_1(X)\) satisfies \(\ker j_* = \operatorname{Im} \iota_* = \mathbb{Z}(2,0,1)\), it follows that \(j_* \mathbb{Z}^3 = \mathbb{Z}/2 \mathbb{Z} \oplus \mathbb{Z}\), but since \(\tilde{H}_0(S^1) = 0\), we have \(\delta: \tilde{H}_1(X) \to \tilde{H}_0(S^1)\) satisfies \(\ker \delta = \tilde{H}_1(X)\), so that by exactness \(\tilde{H}_1(X) = \operatorname{Im}j_* \cong \mathbb{Z}^3/\mathbb{Z}(2,0,1)\), since we can take the following as a basis for \(\mathbb{Z}^3\): \(\set{(2,0,1),(1,0,0),(0,1,0)}\), we find that written in this basis \(\tilde{H}_1(X) \cong \mathbb{Z}^3/\mathbb{Z} \oplus 0 \oplus 0 \cong \mathbb{Z}^2\). Everything taken together gives us
+        \begin{align*}
+            \tilde{H}_k(X) = \begin{cases}
+                \mathbb{Z} & k = 2 \\ \mathbb{Z} \oplus \mathbb{Z} & k = 1 \\ 0 & \text{else}
+            \end{cases}
+        \end{align*}
+        \qed
+    \end{pb}
+
+\end{document}
