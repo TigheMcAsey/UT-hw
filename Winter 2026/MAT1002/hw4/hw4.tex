@@ -50,7 +50,7 @@
         \end{align*}
         abbreviated as \(\sigma_0: ([z_0,z_1]) \mapsto (1,w_0)\), similarly for \(\sigma_1\) on \(U_1\). That these define a section is tautological, since \(\pi\circ \sigma_j = 1_{U_j}\), and \(w_j\) are the coordinate functions on \(U_j\), so that in coordinates \(\sigma_j\) is given by \(w_j \mapsto (w_j,w_j)\) is holomorphic. To identify \(U_j \times \mathbb{C}\) with \(\pi^{-1}(U_j)\), simply take \(([z_0,z_1],\lambda) \leftrightarrow \lambda\sigma_0([z_0,z_1]) := ([z_0,z_1],\lambda(1, w_0))\) and analogously on \(U_1\). These identifications are holomorphic since multiplication is and the \(\sigma_j\) are.
 
-        \textbf{(ii)} We define in \(U_0\) coordinates \(\rho_{01}: w_0 \mapsto w_0\), this is trivially holomorphic and since \(w_0\cdot w_1 = 1\), we get that
+        \textbf{(ii)} We define in \(U_0\) coordinates \(\rho_{01}: w_1 \mapsto w_0 = \frac{1}{w_1}\), this is trivially holomorphic on \(U_0 \cap U_1\) and since \(w_0\cdot w_1 = 1\), we get that
         \begin{align*}
             \rho_{01}\sigma_1 = \rho_{01}(1,w_1) = w_0\cdot(1,w_1) = (w_0,1) = \sigma_0
         \end{align*}
@@ -71,14 +71,14 @@
         \end{align*}
 
         \textbf{(v)}
-        \begin{align*}
-            -\pwpw \log(h_0) &= \pwpw \log(1 + \abs{w_0}^2) = \frac{\partial}{\partial \overline{w_0}}\frac{\overline{w_0}}{1 + \abs{w_0}^2} = \frac{1}{1 + \abs{w_0}^2} - \frac{\overline{w_0}w_0}{(1 + \abs{w_0}^2)^2} \\
-            &= \frac{1 + \abs{w_0}^2 - \abs{w_0}^2}{(1 + \abs{w_0}^2)^2} = \frac{1}{(1 + \abs{w_0}^2)^2}
-        \end{align*}
+        \begin{align}
+            -\pwpw \log(h_0) &= -\pwpw \log(1 + \abs{w_0}^2) = -\frac{\partial}{\partial \overline{w_0}}\frac{\overline{w_0}}{1 + \abs{w_0}^2} = -\frac{1}{1 + \abs{w_0}^2} + \frac{\overline{w_0}w_0}{(1 + \abs{w_0}^2)^2} \\
+            &= -\frac{1 + \abs{w_0}^2 - \abs{w_0}^2}{(1 + \abs{w_0}^2)^2} = \frac{-1}{(1 + \abs{w_0}^2)^2} \label{curvaturecalc}
+        \end{align}
 
         \textbf{(vi)}
         \begin{align}
-            \frac{i}{2\pi}\int_{\mathbb{P}^1} F_{h^{-1}_{FS}}dz \wedge d\bar{z} &=  \frac{i}{2\pi}\int_{\mathbb{P}^1 \setminus \set{[0:1]}} F_{h^{-1}_{FS}}dz \wedge d\bar{z} =  \frac{i}{2\pi}\int_{U_0} F_{h^{-1}_{FS}}dz \wedge d\bar{z} \\ &\overset{(v)}{=} \frac{i}{2\pi}\int_{\mathbb{C}} \frac{1}{(1 + \abs{w_0}^2)^2}dw_0 \wedge d\overline{w_0} \label{precoordchange}
+            \frac{i}{2\pi}\int_{\mathbb{P}^1} F_{h^{-1}_{FS}}dz \wedge d\bar{z} &=  \frac{i}{2\pi}\int_{\mathbb{P}^1 \setminus \set{[0:1]}} F_{h^{-1}_{FS}}dz \wedge d\bar{z} =  \frac{i}{2\pi}\int_{U_0} F_{h^{-1}_{FS}}dz \wedge d\bar{z} \\ &\overset{(v)}{=} \frac{i}{2\pi}\int_{\mathbb{C}} \frac{-1}{(1 + \abs{w_0}^2)^2}dw_0 \wedge d\overline{w_0} \label{precoordchange}
         \end{align}
         To evaluate the integral in \eqref{precoordchange}, we use polar coordinates, \(w_0 = re^{i\theta} \tand w_1 = re^{-i\theta}\) so that \(dw_0 \wedge dw_1\) is computed as
         \begin{align}
@@ -86,12 +86,25 @@
         \end{align}
         Applying this change of coordinates to \eqref{precoordchange} yields
         \begin{align}
-            \frac{i}{2\pi}\int_{\mathbb{P}^1} F_{h^{-1}_{FS}}dz \wedge d\bar{z} &= \frac{1}{\pi}\int_0^{2\pi}\int_0^\infty \frac{r}{(1 + r^2)^2}drd\theta = \frac{1}{\pi}\int_0^{2\pi} \int_1^\infty \frac{du}{u^2}d\theta = \frac{1}{\pi}\int_0^{2\pi} \frac12d\theta = 1
+            \frac{i}{2\pi}\int_{\mathbb{P}^1} F_{h^{-1}_{FS}}dz \wedge d\bar{z} &= \frac{1}{\pi}\int_0^{2\pi}\int_0^\infty \frac{-r}{(1 + r^2)^2}drd\theta = \frac{1}{\pi}\int_0^{2\pi} \int_1^\infty \frac{du}{u^2}d\theta = \frac{1}{\pi}\int_0^{2\pi} -\frac12d\theta = -1 \label{computeint}
         \end{align}
 
         \textbf{(vii)} Recall the dual of a bundle satisfies \(L \otimes L^{-1}\) is the trivial bundle. So the transition functions are given by the inverse transition functions, i.e. the transition functions are \(\set{t_{01}, t_{10}} = \set{\rho_{01}^{-1}, \rho_{10}^{-1}}\). To check that \(h_{\text{FS}}\) defines a hermitian metric on \(\mathcal{O}_{\mathbb{P}^1}(1)\), we simply need to check that \(h \in \Gamma(\mathbb{P}^1,\mathcal{O}_{\mathbb{P}^1}(-1)\otimes \overline{\mathcal{O}_{\mathbb{P}^1}(-1)})\), since \(h_{\text{FS}}\) is already defined to be real and positive globally. The transition functions on \(\mathcal{O}_{\mathbb{P}^1}(-1)\otimes \overline{\mathcal{O}_{\mathbb{P}^1}(-1)}\) are given by \(e_{01} = t_{01}\overline{t_{01}} = \abs{t_{01}}^2\) and \(e_{10} = t_{10} \overline{t_{10}} = \abs{t_{10}}^2\), so that from (iv), we have \(h_0 = \abs{t_{01}}^{-2}h_1\) on \(U_0 \cap U_1\) whence \(h_{\text{FS}} = h_0^{-1} = \abs{t_{01}}^2h_1^{-1}\) on \(U_1 \cap U_2\) satisfies the first transition law, and using that \(t_{10} = t_{01}^{-1}\), we readily see that \(h_{\text{FS}}\) satisfies both transition laws, so it is indeed a section of \(\mathcal{O}_{\mathbb{P}^1}(-1)\otimes \overline{\mathcal{O}_{\mathbb{P}^1}(-1)}\), and thus a hermitian metric.
 
-        \textbf{(viii)}
+        \textbf{(viii)} The \(\ell_j\) are smooth by definition in either chart, we need only show that the \(\ell_j\) satisfy the transition laws. It suffices to check for just \(t_{01}\), where we have \(t_{01}(w_1) = t_{01}(w_0^{-1}) = \rho_{01}(w_0^{-1})^{-1} = (w_0^{-1})^{-1} = w_0\), so that \(t_{01}\ell_1(w_1) = w_0\ell_1(w_1) = w_0\cdot w_1 = 1\). Similarly for \(\ell_2\), we get \(t_{01}\ell_2(w_1) = t_{01}\cdot 1 = w_0\).
+
+        \textbf{(ix)} \(F_{h_{\text{FS}}} \overset{\text{def}}{=} -\pzpz \log h_{\text{FS}}\), on \(U_0\) we have \(h_{\text{FS}} = h_0^{-1}\), so that on \(U_0\) we get locally
+        \begin{align}
+            F_{h_{\text{FS}}} = -\pzpz \log h_{\text{FS}} = -\pzpz \log h_0^{-1} = \pzpz \log h_0 \overset{\eqref{curvaturecalc}}{=} \frac{1}{(1 + \abs{w_0}^2)^2}
+        \end{align}
+        Using this expression, and that \(\mathbb{P}^1 \setminus U_0\) has measure zero, we use that the expression of \(F_{h_{\text{FS}}}\) differs from \(F_{h^{-1}_{\text{FS}}}\) to compute
+        \begin{align}
+            \frac{i}{2\pi}\int_{\mathbb{P}^1}F_{h_{\text{FS}}}dz\wedge d\bar{z} &= \frac{i}{2\pi}\int_{U_0}F_{h_{\text{FS}}}dz\wedge d\bar{z} = \frac{i}{2\pi}\int_{U_0}\frac{1}{(1 + \abs{w_0}^2)^2}dw_0\wedge d\overline{w_0} \\
+            &\overset{\eqref{computeint}}{=} 1
+        \end{align}
+
+        \textbf{(x)} Since the integral of \(\frac{i}{2\pi}\) times the curvature over a Riemann surface gives the number of zeroes - number of poles of an arbitrary nonzero meromorphic section of its line bundle, we know that the holomorphic sections of \(\mathcal{O}_{\mathbb{P}_1}(1)\) have exactly one zero. In order to vanish once, it must be linear in one of the charts \(\set{U_0,U_1}\), then on \(\mathbb{P}^1\), a holomorphic section is determined by its behaviour on one of the charts, since at \(w \not \in U_j\), we have \(\varphi(w) = \lim_{n \to \infty} \varphi(w_n)\) for \(w_n \in U_0 \cap U_1\). Thus letting \(\varphi\) be a holomorphic section of \(\mathcal{O}_{\mathbb{P}^1}(1)\), we find that \(\varphi\) on \(U_0\) is given by \(aw_0 + b \overset{\text{loc}}{=} a \ell_2 + b \ell_1\) but since this is equal to \(a \ell_2 + b\ell_1\) on \(U_0\), and \(\varphi\) satisfies the same transition functions, we find they are equal on \(U_1 \setminus \set{[1:0]}\) and thus equal on \(\mathbb{P}^1\) by the earlier discussion. This suffices to show that \(\ell_1,\ell_2\) span \(H^0(\mathbb{P}^1,\mathcal{O}_{\mathbb{P}^1}(1))\).
+
     \end{pb}
     \begin{pb}
         
