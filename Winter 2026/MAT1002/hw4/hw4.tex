@@ -142,7 +142,21 @@
         \end{align}
         Since the other transition laws are given by the cocycle condition with these transition laws we see that \(h\) is indeed a hermitian metric.
 
-        
+        Now, we compute the curvature to simplify things denote \(C = \frac{1}{\abs{\theta_1'(0)}^2}\) and \(D = -\pi/2\Im(\tau)\) so that \(h(z) = Ce^{D(z-\bar{z})^2}\), it follows we can compute the curvature of \(h\) as follows
+        \begin{align}
+            -\pzpz \log h &= -\pzpz \log Ce^{D(z-\bar{z})^2} = -\pzpz\left(\log C + D(z - \bar{z})^2\right) = -D\pzpz (z^2 - 2z\bar{z} + \bar{z}^2) \\
+            &= -D\pzb (2z - 2\bar{z}) = 2D \overset{\text{def}}{=} -\pi/\Im(\tau)
+        \end{align}
+        This curvature is special in that it corresponds to one of the key desired properties of the \(\theta_1\) function, namely having a single simple zero on the torus. To see this we let \(s\) be an arbitrary meromorphic section of \(L\), then
+        \begin{align}
+            \#\set{\text{zeroes of }s} - \#\set{\text{poles of }s} = \frac{i}{2\pi}\int_{\mathbb{C}/\mathbb{Z} + \tau \mathbb{Z}} F_{z\bar{z}}dzd\bar{z} \label{curvaturecounting}
+        \end{align}
+        Using that the curvature is constant we compute the right hand side of \eqref{curvaturecounting} to be 
+        \begin{align}
+            \frac{-i}{2\Im(\tau)}\int_{\mathbb{C}/\mathbb{Z} + \tau \mathbb{Z}}dzd\bar{z} &= \frac{-i}{2\Im(\tau)} \int_{\text{Fundamental Domain}} 2i dxdy = \frac{1}{\Im(\tau)}\cdot \text{Area of Fundamental Domain} \\
+            &= 1
+        \end{align}
+        Of course, we know this without carrying out the computation since \(\theta_1\) has a simple zero and no poles. In this sense, the metric corresponding to the Greens function on the torus encodes the information of a section of a line bundle on the torus with a simple pole.
     \end{pb}
 
 
@@ -176,6 +190,6 @@
         But \(f'/f\) has a simple pole at \(w_j\), so that \(\epsilon' \int_{B_\epsilon^j} \abs{\frac{f'}{f}} \in \mathcal{O}(\epsilon')\), thus goes to zero in the limit. Now since \(\varphi\) was arbitrary, (10) tells us exactly that
         \begin{align}
             \frac{i}{2\pi}\pzpz \log\abs{f}^2 \varphi \dv = \sum_{w \in \set{f = 0}}(\operatorname{ord}_wf) \varphi(w) - \sum_{w \in \set{f = \infty}} (\operatorname{ord}_wf) \varphi(w)
-        \end{align} \qed
+        \end{align}
     \end{pb}
 \end{document}
