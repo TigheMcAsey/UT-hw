@@ -107,7 +107,27 @@
 
     \end{pb}
     \begin{pb}
-        
+        \textbf{(i)} The covering map \(\rho: \mathbb{C} \to X\) induces coordinates, so long as it is injective, we define charts for which it is injective. Define the following charts projecting to an open cover.
+        \begin{align*}
+            U_1 &= \set{z \mid 0 < \Im(z) < \Im(\tau) \tand 0 < \Re(z) < 1} \\
+            U_2 &= \set{z \mid 0 < \Im(z) < \Im(\tau) \tand 1/2 < \Re(z) < 3/2} \\
+            U_3 &= \set{z \mid \Im(\tau)/2 < \Im(z) < 3\Im(\tau)/2 \tand 0 < \Re(z) < 1} \\
+            U_4 &= \set{z \mid \Im(\tau)/2 < \Im(z) < 3\Im(\tau)/2 \tand 1/2 < \Re(z) < 3/2}
+        \end{align*}
+        Then let \(s_j\) be the lift (equiv. coordinate chart) of \(\rho\) for each \(U_j\), \(\theta_1\) is well defined on the torus up to choice of section, so we get \(\theta_1(z_j) = \theta_1(s(z_j))\), all of the \(dz_j/dz_i = 1\), so it suffices to choose \(t_{ij}\) such that \(\theta_1(z_j) = t_{ji}\theta_1(z_i)\). Define
+        \begin{align*}
+            &t_{j+1,j}(z) = \begin{cases}
+                1 & \Re(z_j) \in (1/2,1) \\
+                -1 & \Re(z_j) \in (0,1/2)
+            \end{cases}, \quad j \in \set{1,3} \\
+            &t_{j+2,j}(z) = \begin{cases}
+                1 & \Im(z_j) \in (\Im(\tau)/2,\Im(\tau)) \\
+                \exp(-i\pi \tau - 2\pi i z) & \Im(z_j) \in (0,\frac12)
+            \end{cases}, \quad j \in \set{1,2}
+        \end{align*}
+        The remaining transitions can be defined to be given by the cocycle conditions on these transitions. To see that \(\theta_1\) defines a section, note that \(\theta_1(z + 1) = -\theta_1(z)\) and \(\theta_1(z + \tau) = \exp(-i\pi \tau - 2\pi i z)\theta_1(z)\), so that \(\theta_1\) is a section of the line bundle specified by the \(U_j, \tand t_{ij}\).
+
+        \textbf{(ii)} We have computed the Green's function on the torus is
     \end{pb}
     \begin{pb}
         Let \(\varphi \in C_c^\infty(D)\), and let \(w_1, \hdots, w_n\) be the zeroes and poles of \(f\), we define \(B_\epsilon^j := B_\epsilon(w_j)\), then for all \(\epsilon\) small enough so that each \(B_\epsilon^j\) is disjoint we get
