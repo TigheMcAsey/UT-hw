@@ -128,7 +128,24 @@
         The remaining transitions can be defined to be given by the cocycle conditions on these transitions. To see that \(\theta_1\) defines a section, note that \(\theta_1(z + 1) = -\theta_1(z)\) and \(\theta_1(z + \tau) = \exp(-i\pi \tau - 2\pi i z)\theta_1(z)\), so that \(\theta_1\) is a section of the line bundle specified by the \(U_j, \tand t_{ij}\).
 
         \textbf{(ii)} We have computed the Green's function on the torus is
+        \begin{align}
+            G(z-w) = \log\abs{\frac{\theta_1(z-w)}{\theta_1'(0)}}^2 - \frac{2\pi}{\Im(\tau)}(\Im(z))^2
+        \end{align}
+        In order to get that we choose \(h = \frac{1}{\abs{\theta'(0)}^2}\exp(-\frac{2\pi}{\Im \tau}(\Im z)^2)\), denoting the line bundle from part (i) as \(L\), we get the transition functions on \(L^{-1}\otimes \overline{L^{-1}}\) are \(1\) between \(U_1 \tand U_2\) and between \(U_3 \tand U_4\), and \(\frac{1}{\abs{e^{-i\pi \tau - 2\pi i z}}^2} = e^{-2\pi \Im(\tau) - 4\pi \Im(z)}\) between \(U_3\) and \(U_1\) and between \(U_4\) and \(U_2\), the rest of the transition laws are determined by the cocycle conditions. \(h\) is defined so that 
+        \begin{align}
+            \log\abs{\theta_1(z-w)}^2_h = \log\abs{\frac{\theta_1(z-w)}{\theta_1'(0)}}^2 + \log \exp(-\frac{2\pi}{\Im \tau}(\Im z)^2) = \log\abs{\frac{\theta_1(z-w)}{\theta_1'(0)}}^2 - \frac{2\pi}{\Im(\tau)}(\Im(z))^2 = G(z-w)
+        \end{align}
+        And moreover \(h\) is a hermitian metric since \(h(z) \in \mathbb{R}_{>0}\) for all \(z\), and denoting the transition laws for \(L^{-1}\otimes \overline{L^{-1}}\) as \(\widetilde{t_{ij}}\) we find that \(h(z+1) = h(z) = \widetilde{t}_{j+1,j}h(z)\) for \(j = 1,3\) and for \(j = 1,2\) we get
+        \begin{align}
+            h(z+\tau) &= \frac{1}{\abs{\theta_1'(0)}^2}\exp(-\frac{2\pi}{\Im \tau}(\Im (z + \tau))^2) = \frac{1}{\abs{\theta_1'(0)}^2}\exp(-\frac{2\pi}{\Im\tau}(\Im z)^2 - 4\pi \Im(z) - 2\pi \Im(\tau)) \\
+            &=\exp(-4\pi \Im(z) - 2\pi\Im(\tau))h(z) = \tilde{t}_{j+2,j}h(z)
+        \end{align}
+        Since the other transition laws are given by the cocycle condition with these transition laws we see that \(h\) is indeed a hermitian metric.
+
+        
     \end{pb}
+
+
     \begin{pb}
         Let \(\varphi \in C_c^\infty(D)\), and let \(w_1, \hdots, w_n\) be the zeroes and poles of \(f\), we define \(B_\epsilon^j := B_\epsilon(w_j)\), then for all \(\epsilon\) small enough so that each \(B_\epsilon^j\) is disjoint we get
         \begin{align}
