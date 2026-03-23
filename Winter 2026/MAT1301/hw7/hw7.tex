@@ -47,7 +47,7 @@
 
 \begin{document}
     \begin{pb}
-        Choose a cylinder around \(\iota([0,\frac12])\) then add a cap at zero.
+        
     \end{pb}
     \begin{pb}
         I will prove that \(\tilde{H}_k(BM((X_j,x_j)^m_1)) \cong \tilde{H}_k(BM((X_j,x_j)_1^{m-1}))\oplus \tilde{H}_k(X_m)\), in which case by induction we get \(\tilde{H}_k(BM((X_j,x_j)^m_1)) \cong \bigoplus_{j=1}^m \tilde{H}_k(X_j)\). To prove this induction step, we use Mayer Vietoris, to specify the open sets denote the branches of the tree \(Y\) as \(y_j \in I_j\), and let \(U_0\) be a small open neighborhood of \(y_0\), i.e. \(U_0 = \bigcup_1^m[0,\epsilon)_j\)  where \([0,\epsilon_j) \subset I_j\) and \(\epsilon << 1\). for each \((X_j,x_j)\) let \(U_j = U_0 \cup I_j \cup X_j\), then clearly \(U_j \simeq X_j\) by a deformation retract. We define \(V = \bigcup_1^{m-1} U_j\), then \(V \simeq BM((X_j,x_j)_1^{m-1})\) by a deformation retract, and denote \(U = U_m\). Finally, we see that \(U \cap V \simeq \set{y_0}\) by a deformation retract, so that applying Mayer Vietoris (on reduced homology) yields the exact sequence
@@ -70,7 +70,15 @@
         where we use homotopy invariance of homology for the second isomorphism. \qed
     \end{pb}
     \begin{pb}
-        
+        Let \(CX = X \times I/ X\times \set{1}\) denote the mapping cone of \(X\), then it is immediate that \((X,CX)\) is a good pair (\(X\) includes along the zero coordinate) implying we get \(\tilde{H}_k(CX,X) \cong \tilde{H}_k(\Sigma X)\), and that \(CX\) is contractible to \(\set{1}\). Using this, we get that \(\tilde{H}_k(CX) = 0\) for all \(k\), and the following LES of the pair
+        \begin{equation*}
+            \begin{tikzcd}[arrow style=math font,cells={nodes={text height=2ex,text depth=0.75ex}}]
+                \cdots & 0 \arrow[l] \arrow[draw=none]{d}[name=Y, shape=coordinate]{} & \arrow[l] \tilde{H}_{k-1}(X) \\
+                \tilde{H}_{k}(\Sigma X) \arrow[curarrow=Y]{urr}{} & 0 \arrow[l] \arrow[draw=none]{d}[name=Z,shape=coordinate]{} & \tilde{H}_k(X) \arrow[l] \\
+                \tilde{H}_{k+1}(\Sigma X) \arrow[curarrow=Z]{urr}{} & 0 \arrow[l] & \cdots \arrow[l]
+            \end{tikzcd}
+        \end{equation*}
+        Exactness gives us that \(\tilde{H}_{k+1}(\Sigma X) \cong \tilde{H}_k(X)\), and \(\tilde{H}_0(\Sigma X) = 0\). \qed
     \end{pb}
     \begin{pb} \textbf{(a)}
         We use the following open sets and Mayer Vietoris
@@ -134,5 +142,60 @@
         \end{align*}
         \qed
     \end{pb}
+    \begin{pb}
+        \textbf{(a)} We use homework 5 problem 1, that a map of short exact sequences of chain complexes descends on homology to a map of the long exact sequences given by the snake lemma. This is proven in homework 5. We need a new naturality property, i.e. naturality of the good pair, this means that suppose we have \((X,A)\) a good pair and \(f: (X,A) \to (X,A)\) satisfying that the following commutes, for \(f'\) the induces map on the quotient
+        \begin{equation*}
+            \begin{tikzcd}
+                A \arrow[d,"f"] \arrow[r,"\iota"] &X \arrow[d,"f"] \arrow[r,"\pi"] &X/A \arrow[d,"f'"] \\
+                A \arrow[r,"\iota"] &X \arrow[r,"\pi"] &X/A
+            \end{tikzcd}
+        \end{equation*}
+        Then given the following SES of short exact sequences, where once again \(\hat{f}\) is the induces map
+        \begin{equation*}
+            \begin{tikzcd}
+                0 \arrow[r,""] &C_*(A) \arrow[d,"f_*"] \arrow[r,"\iota_*"] &C_*(X) \arrow[d,"f_*"] \arrow[r,"q"] &C_*(X,A) \arrow[d,"\widehat{f}"] \arrow[r,""] &0 \\
+                0 \arrow[r,""] &C_*(A) \arrow[r,"\iota_*"] &C_*(X) \arrow[r,"q"] &C_*(X,A) \arrow[r,""] &0
+            \end{tikzcd}
+        \end{equation*}
+        The induced maps on homology from the functoriality of snake lemma satisfy \([\hat{f}] = [f']\) when \(\tilde{H}_*(X,A)\) is identified with \(\tilde{H}_*(X/A)\).
+        To prove this, it suffices to show that \(\pi: (X,A) \to (X/A,A/A)\) induces the isomorphism on homology, since then we get \(\pi_* [q] = \pi_*\), and thus \([\hat{f}] = \pi_*[q][f] = \pi_*[f] = [f']\). To see that \(\pi: (X,A) \to (X/A,A/A)\) induces the isomorphism on homology
 
+        \textbf{(b)} Let \(f: X \to X\), then we can define \(Cf: CX \to CX\) as \(\pi_{CX} \circ (f \times 1_I)\), and \(\Sigma f: \Sigma X \to \Sigma X\) as \(\pi_{\Sigma X} \circ (f \times 1)\) where \(\pi_{CX},\pi_{\Sigma X}\) are the quoients \(X \times I \to CX \tand \Sigma X\) respectively. This gives us the following commutative diagram:
+        \begin{equation*}
+            \begin{tikzcd}
+                X \arrow[d,"f"] \arrow[r,"\iota"] &CX \arrow[d,"Cf"] \arrow[r,"\pi"] &\Sigma X \arrow[d,"\Sigma f"] \\
+                X \arrow[r,"\iota"] &CX \arrow[r,"\pi"] &\Sigma X
+            \end{tikzcd}
+        \end{equation*}
+        Moreover, we get the following SES of chain complexes
+        \begin{equation*}
+            \begin{tikzcd}
+                0 \arrow[r,""] &C_*(X) \arrow[d,"f_*"] \arrow[r,"\iota_*"] &C_*(CX) \arrow[d,"Cf_*"] \arrow[r,"q"] &C_*(CX,X) \arrow[d,"\widehat{Cf}"] \arrow[r,""] &0 \\
+                0 \arrow[r,""] &C_*(X) \arrow[r,"\iota_*"] &C_*(CX) \arrow[r,"q"] &C_*(CX,X) \arrow[r,""] &0
+            \end{tikzcd}
+        \end{equation*}
+        Using the solution to (a) gives us
+        \begin{equation*}
+            \begin{tikzcd}
+                H_{n+1}(\Sigma X)
+            \end{tikzcd}
+        \end{equation*}
+    \end{pb}
+
+    \begin{pb}
+        \textbf{(a)} Assume for contradiction \(f(x) \neq \pm x\) for any \(x\), embed \(S^n\) into \(\mathbb{R}^{n+1}\), then define \(\pi(x,y)\) to be the projection of \(y\) onto \(T_xS^n = (\mathbb{R} x)^{\perp} \subset \mathbb{R}^{n+1}\), then \(\pi(x,y) : \mathbb{R}^{n+1} \times \mathbb{R}^{n+1} \to \mathbb{R}^{n+1}\) is continuous since it can be written as \((x,y) \mapsto y - \gen{x,y}x\), this implies the following is a composition of continuous functions and thus continuous
+        \begin{align*}
+            x \mapsto \pi(x,f(x) - x)
+        \end{align*}
+        This is nonvanishing since \(f(x) \neq \pm x\), so this map gives a nonvanishing continuous vectorfield on \(S^n\), this contradicts the hairy ball theorem since \(n\) is even. \qed
+
+        \textbf{(b)} Suppose \(f: \mathbb{RP}^n \to \mathbb{RP}^n\) for \(n\) even, then \(F: S^n \to \mathbb{RP}^n\) via \(x \mapsto f\circ\rho(x)\) where \(\rho\) is the projection is continuous by definition of the quotient topology. Now since \(S^n\) is a covering space of \(\mathbb{RP}^n\), the map \(F\) has a lift to \(\widehat{F}: S^n \to S^n\) satisfying \(\rho\circ \widehat{F} = F\), the construction of each of these maps gives commutativity of
+        \begin{equation*}
+            \begin{tikzcd}
+                S^n \arrow[d,"\rho"] \arrow[r,"\widehat{F}"] & S^n \arrow[d,"\rho"] \\
+                \mathbb{RP}^n \arrow[r,"f"] &\mathbb{RP}^n
+            \end{tikzcd}
+        \end{equation*}
+        Now, by part (a) \(\widehat{F}(x) = \pm x\) for some \(x \in S^n\), so that \(f([x]) = [\widehat{F}(x)] = [x]\). \qed
+    \end{pb}
 \end{document}
