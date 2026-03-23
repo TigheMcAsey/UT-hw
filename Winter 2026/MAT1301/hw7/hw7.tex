@@ -157,8 +157,15 @@
                 0 \arrow[r,""] &C_*(A) \arrow[r,"\iota_*"] &C_*(X) \arrow[r,"q"] &C_*(X,A) \arrow[r,""] &0
             \end{tikzcd}
         \end{equation*}
-        The induced maps on homology from the functoriality of snake lemma satisfy \([\hat{f}] = [f']\) when \(\tilde{H}_*(X,A)\) is identified with \(\tilde{H}_*(X/A)\).
-        To prove this, it suffices to show that \(\pi: (X,A) \to (X/A,A/A)\) induces the isomorphism on homology, since then we get \(\pi_* [q] = \pi_*\), and thus \([\hat{f}] = \pi_*[q][f] = \pi_*[f] = [f']\). To see that \(\pi: (X,A) \to (X/A,A/A)\) induces the isomorphism on homology
+        The induced maps on homology from the functoriality of snake lemma satisfy \([\hat{f}] = [f']\) when \(H_*(X,A)\) is identified with \(H_*(X/A)\).
+        To prove this, it suffices to show that \(\pi: (X,A) \to (X/A,A/A)\) induces the isomorphism on homology, since then we get \(\pi_* [q] = \pi_*\), and thus \([\hat{f}] = \pi_*[q][f] = \pi_*[f] = [f']\). To see that \(\pi: (X,A) \to (X/A,A/A)\) induces the isomorphism on homology, we use the following diagram, for \(U\) the open set containing \(A\) that retracts to \(A\)
+        \begin{equation*}
+            \begin{tikzcd}
+                H_n(X,A) \arrow[d,"\pi_*"] \arrow[r,""] &H_n(X,U) \arrow[d,"\pi_*"]  &H_n(X\setminus A, U \setminus A)\arrow[l,""] \arrow[d,"\pi_*"] \\
+                H_n(X/A,A/A) \arrow[r,""] &H_n(X/A,U/A)  &H_n(X/A\setminus A/A, U/A \setminus A/A)\arrow[l,""]
+            \end{tikzcd}
+        \end{equation*}
+        The upper left horizontal is an isomorphism by the LES of the triple \(X,U,A\) (proven also in hw 5), since \((U,A) \simeq (A,A)\), similarly for the lower left. The upper right and lower right horizontal are ismorphisms by excision. The right vertical map is an isomorphism since \(\pi\) is the identity map on \(X \setminus A\), the other two vertical maps follow from the 2-lemma. This gives the desired result. \qed
 
         \textbf{(b)} Let \(f: X \to X\), then we can define \(Cf: CX \to CX\) as \(\pi_{CX} \circ (f \times 1_I)\), and \(\Sigma f: \Sigma X \to \Sigma X\) as \(\pi_{\Sigma X} \circ (f \times 1)\) where \(\pi_{CX},\pi_{\Sigma X}\) are the quoients \(X \times I \to CX \tand \Sigma X\) respectively. This gives us the following commutative diagram:
         \begin{equation*}
@@ -177,9 +184,18 @@
         Using the solution to (a) gives us
         \begin{equation*}
             \begin{tikzcd}
-                H_{n+1}(\Sigma X)
+                \cdots H_{n+1}(\Sigma X) \arrow[d,"\Sigma f_*"] \arrow[r,""] &H_{n}(X) \arrow[r,""] \arrow[d,"f_*"] &H_{n}(CX) \arrow[r,""] \arrow[d,"Cf_*"] &H_n(\Sigma X) \arrow[r,""] \arrow[d,"\Sigma f_*"] & H_{n-1}(X) \arrow[d,"f_*"]\cdots \\
+                \cdots H_{n+1}(\Sigma X) \arrow[r,""] &H_{n}(X) \arrow[r,""] &H_{n}(CX) \arrow[r,""] &H_n(\Sigma X) \arrow[r,""] & H_{n-1}(X)\cdots
             \end{tikzcd}
         \end{equation*}
+        Substituting \(X = S^n\) and \(\Sigma X \cong S^{n+1}\) we get the square
+        \begin{equation*}
+            \begin{tikzcd}
+                H_{n+1}(S^{n+1})\arrow[d, "\Sigma f_*"] \arrow[r,"\cong"] &H_{n}(S^n) \arrow[d,"f_*"] \\
+                H_{n+1}(S^{n+1}) \arrow[r,"\cong"] &H_{n}(S^n)
+            \end{tikzcd}
+        \end{equation*}
+        Then \(\Sigma f_* \overset{\text{def.}}{=} \deg \Sigma f\) and \(f_* \overset{\text{def.}}{=} \deg f\), commutativity of the diagram gives us that these degrees are in fact equal. \qed
     \end{pb}
 
     \begin{pb}
