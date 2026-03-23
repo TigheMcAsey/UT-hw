@@ -48,6 +48,12 @@
 \begin{document}
     \begin{pb}
         
+        \begin{figure}[h]
+            \begin{center}
+                \includegraphics[width = \linewidth]{figures/Problem1.png}
+            \end{center}
+        \end{figure}
+        
     \end{pb}
     \begin{pb}
         I will prove that \(\tilde{H}_k(BM((X_j,x_j)^m_1)) \cong \tilde{H}_k(BM((X_j,x_j)_1^{m-1}))\oplus \tilde{H}_k(X_m)\), in which case by induction we get \(\tilde{H}_k(BM((X_j,x_j)^m_1)) \cong \bigoplus_{j=1}^m \tilde{H}_k(X_j)\). To prove this induction step, we use Mayer Vietoris, to specify the open sets denote the branches of the tree \(Y\) as \(y_j \in I_j\), and let \(U_0\) be a small open neighborhood of \(y_0\), i.e. \(U_0 = \bigcup_1^m[0,\epsilon)_j\)  where \([0,\epsilon_j) \subset I_j\) and \(\epsilon << 1\). for each \((X_j,x_j)\) let \(U_j = U_0 \cup I_j \cup X_j\), then clearly \(U_j \simeq X_j\) by a deformation retract. We define \(V = \bigcup_1^{m-1} U_j\), then \(V \simeq BM((X_j,x_j)_1^{m-1})\) by a deformation retract, and denote \(U = U_m\). Finally, we see that \(U \cap V \simeq \set{y_0}\) by a deformation retract, so that applying Mayer Vietoris (on reduced homology) yields the exact sequence
@@ -83,7 +89,11 @@
     \begin{pb} \textbf{(a)}
         We use the following open sets and Mayer Vietoris
 
-        \textcolor{red}{Inssert Image Here}
+        \begin{figure}[h]
+            \begin{center}
+                \includegraphics[width=\linewidth]{figures/OpenSets.png}
+            \end{center}
+        \end{figure}
 
         Then \(U \simeq S^1 \vee S^1, V \simeq \set{\text{pt.}}\), and \(U \cap V \simeq S^1\), thus \(\tilde{H}_k(U) \cong \tilde{H}_k(S^1 \vee S^1),  0 = \tilde{H}_k(V)\) for all \(k\), and \(\tilde{H}_k(U \cap V) \cong \tilde{H}_k(S^1)\) for all \(k\). We first compute \(\tilde{H}_{k}(S^1 \vee S^1)\) also using Mayer Vietoris, for choosing \(U,V\) to be contractible neighborhoods of either copy of \(S^1\), so that \(U \cap V \simeq \set{\text{pt}}\) is a contractible neighborhood of the wedge point. Whence \(\tilde{H}_{k}(U \cap V) = 0\) for all \(k\), and \(\tilde{H}_{k}(U) \cong \tilde{H}_{k}(S^1) \cong \tilde{H}_{k}(V)\) for all \(k\). This gives the following long exact sequence using Mayer Vietoris:
         \begin{equation*}
@@ -99,7 +109,11 @@
         \end{cases}\]
         The last key ingredient we need is to compute \(\iota_*: \tilde{H}_1(U \cap V) \to \tilde{H}_1(U) \oplus \tilde{H}_1(V)\). To do so, we use that \(\sigma: \Delta^1 = I \to S^1\) via \(x \mapsto e^{2\pi i x}\) has \([\sigma] = 1\). And moreover, by the above computation for \(S^1 \vee S^1\), we may identify the generators for \(\tilde{H}_1(S^1 \vee S^1)\) as this \(\sigma\) on either copy of \(S^1\). Now we may use that the map \(\sigma: I \to U \cap V\), which is the map with winding number one onto the copy of \(S^1\) we are deformation retracting onto, satisfies that its image under the retract identifying \(U\) with \(S^1 \vee S^1\) is \(\sigma_1 + \sigma_2 - \sigma_1 - \sigma_2 = 0\), as in the following picture
 
-        \textcolor{red}{Include Image Here}
+        \begin{figure}[h]
+            \begin{center}
+                \includegraphics[width=\linewidth]{figures/Inclusion.png}
+            \end{center}
+        \end{figure}
 
         This of course implies that \(\iota_*: \tilde{H}_1(S^1) \to \tilde{H}_1(S^1\vee S^1) \oplus 0\) is the zero map. Whence we get the following Mayer-Vietoris sequence for \(T^2\):
         \begin{equation*}
@@ -142,7 +156,7 @@
         \end{align*}
         \qed
     \end{pb}
-    \begin{pb}
+    \begin{pb}Assume That \(n \geq 1\), since the case for \(n = 0\) is trivial for degrees of spheres, and points are non trivial on homology.
         \textbf{(a)} We use homework 5 problem 1, that a map of short exact sequences of chain complexes descends on homology to a map of the long exact sequences given by the snake lemma. This is proven in homework 5. We need a new naturality property, i.e. naturality of the good pair, this means that suppose we have \((X,A)\) a good pair and \(f: (X,A) \to (X,A)\) satisfying that the following commutes, for \(f'\) the induces map on the quotient
         \begin{equation*}
             \begin{tikzcd}
@@ -158,7 +172,7 @@
             \end{tikzcd}
         \end{equation*}
         The induced maps on homology from the functoriality of snake lemma satisfy \([\hat{f}] = [f']\) when \(H_*(X,A)\) is identified with \(H_*(X/A)\).
-        To prove this, it suffices to show that \(\pi: (X,A) \to (X/A,A/A)\) induces the isomorphism on homology, since then we get \(\pi_* [q] = \pi_*\), and thus \([\hat{f}] = \pi_*[q][f] = \pi_*[f] = [f']\). To see that \(\pi: (X,A) \to (X/A,A/A)\) induces the isomorphism on homology, we use the following diagram, for \(U\) the open set containing \(A\) that retracts to \(A\)
+        To prove this, it suffices to show that \(\pi: (X,A) \to (X/A,A/A)\) induces the isomorphism on homology, since then we get (since \(n \neq 0\)) \(\pi_* [q] = \pi_*\), and thus \([\hat{f}] = \pi_*[q][f] = \pi_*[f] = [f']\). To see that \(\pi: (X,A) \to (X/A,A/A)\) induces the isomorphism on homology, we use the following diagram, for \(U\) the open set containing \(A\) that retracts to \(A\)
         \begin{equation*}
             \begin{tikzcd}
                 H_n(X,A) \arrow[d,"\pi_*"] \arrow[r,""] &H_n(X,U) \arrow[d,"\pi_*"]  &H_n(X\setminus A, U \setminus A)\arrow[l,""] \arrow[d,"\pi_*"] \\
