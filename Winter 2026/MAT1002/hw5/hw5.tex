@@ -1,0 +1,84 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+
+\fancyhf{}
+\lhead{MAT1002 hw4}
+\rhead{Tighe McAsey - 1008309420}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\usepackage{tikz-cd, stackengine}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\newcommand{\px}{\frac{\partial}{\partial x}}
+\newcommand{\py}{\frac{\partial}{\partial y}}
+\newcommand{\pz}{\frac{\partial}{\partial z}}
+\newcommand{\pzb}{\frac{\partial}{\partial \bar{z}}}
+\newcommand{\ppx}{\frac{\partial^2}{\partial x^2}}
+\newcommand{\ppy}{\frac{\partial^2}{\partial y^2}}
+\newcommand{\ppz}{\frac{\partial^2}{\partial z^2}}
+\newcommand{\hess}{\operatorname{Hess}}
+\newcommand{\Log}{\operatorname{Log}}
+\newcommand{\Arg}{\operatorname{Arg}}
+\newcommand{\dv}{dz\wedge d\bar{z}}
+\newcommand{\pzpz}{\frac{\partial^2}{\partial z \partial \bar{z}}}
+\newcommand{\pwpw}{\frac{\partial^2}{\partial w_0 \partial \bar{w_0}}}
+
+\begin{document}
+    \begin{pb}
+        \textbf{(i)} Suppose \(T^\dagger v = 0\), then for any \(w \in V_1\), we have \(0 = \gen{T^\dagger v, w} = \gen{v, Tw}\), so \(v \in (\operatorname{Im} T)^\perp\).  Conversely if \(v \in (\operatorname{Im} T)^\perp\), then \(\gen{T^\dagger v, -} \equiv 0\), and since \(\gen{-,-}\) is an inner product it is non-degenerate implying that \(T^\dagger v = 0\). The proof for \(S\) is identical.
+
+        \textbf{(ii)} Suppose \(u = T^\dagger v\), then for any \(w \in \ker T\) we find that \(\gen{u,w} = \gen{T^\dagger v,w} = \gen{v,Tw} = 0\) hence \(u \in (\ker T)^\perp\), this implies that \(\operatorname{Im}T^\dagger \subset (\ker T)^{\perp}\). Then to see they are equal it suffices to show their dimensions are equal, we first use rank nullity so that \(\dim (\ker T)^\perp = \dim V_1 - \dim \ker T = \operatorname{rank} T\), so we only need show that \(\operatorname{rank} T = \operatorname{rank} T^\perp\). To show this we write
+        \begin{align}
+            \dim V_2 &= \dim(\ker T^\dagger) + \operatorname{rank}T^\dagger \\
+            \dim V_2 &= \dim(\operatorname{Im} T)^\perp + \operatorname{rank} T
+        \end{align}
+        This gives us
+        \begin{align}
+            \dim(\ker T^\dagger) + \operatorname{rank}T^\dagger = \dim(\operatorname{Im} T)^\perp + \operatorname{rank} T
+        \end{align}
+        then applying part (i), we have \(\ker T^\dagger = (\operatorname{Im} T)^\perp\), so cancelling these terms we get \(\operatorname{rank} T^\dagger = \operatorname{rank} T\) allowing us to conclude that indeed \(\operatorname{Im}T^\dagger\), impling that \(\dim \operatorname{Im} T^\dagger = \dim (\ker T)^\perp\) so that the vectorspaces must be equal. The same argument applies to \(S\).
+
+        \textbf{(iii)} Let \(v \in \ker S \cap (\operatorname{Im} T)^\perp\), then for any \(w \in V^2\), we have
+        \begin{align}
+            \gen{\Delta v, w} &= \gen{TT^{\dagger}v,w} + \gen{S^\dagger S v, w} \overset{\ker S}{=} \gen{TT^{\dagger}v,w}\\ 
+            &= \overline{\gen{w,TT^{\dagger}v}} = \overline{\gen{T^\dagger w, T^\dagger v}} = \gen{T^\dagger v, T^\dagger w} = \gen{v,TT^\dagger w} \overset{(\operatorname{Im} T)^\perp}{=} 0
+        \end{align}
+        so that \(\gen{\Delta v,-} \equiv 0\) which implies \(\Delta v = 0\) by non-degeneracy.
+
+        Conversely, suppose that \(\Delta v = 0\), then
+        \begin{align}
+            0 = \norm{\Delta v}^2 = \norm{TT^\dagger v}^2 + \norm{S^\dagger S v}^2 + \gen{S^\dagger S v, TT^\dagger v} + \overline{\gen{S^\dagger S v, TT^\dagger v}}
+        \end{align}
+        but then \(\gen{S^\dagger S v, TT^\dagger v} = \gen{Sv,STT^{\dagger}v} = 0\) since \(ST = 0\), so that \(\norm{TT^\dagger v}^2 = 0 \tand \norm{S^\dagger S v}^2 = 0\). Now since \(\ker S^\dagger = (\operatorname{Im} S)^\perp\), and \(S^\dagger S v = 0\), we have \(Sv \in (\operatorname{Im} S)^\perp \cap \operatorname{Im} S = 0\), so that \(v \in \ker S\). Now since \(TT^\dagger v = 0\), we have 
+        \begin{align}
+            T^\dagger v \in \ker T \cap \operatorname{Im} T^\dagger \overset{(ii)}{=} \ker T \cap (\ker T)^\perp = 0
+        \end{align}
+        so that \(v \in \ker T^\dagger \overset{(i)}{=} (\operatorname{Im} T)^\perp\). Since \(v\) lies in both \((\operatorname{Im} T)^\perp\) and \(\ker S\), it lies in the intersection as desired.
+
+        \textbf{(iv)} We first note that
+        \begin{align}
+            \ker \Delta = \operatorname{Im} T^{\perp} \cap \ker S = \operatorname{Im} T^{\perp} \cap (\operatorname{Im} S^\dagger)^\perp = (\operatorname{Im} T + \operatorname{Im} S^\dagger)^\perp
+        \end{align}
+        so that the decomposition \(V_2 = \ker \delta \oplus (\operatorname{Im} T + \operatorname{Im} S^\dagger)\) is orthogonal, it remains to check that \(\operatorname{Im} T\) and \(\operatorname{Im} S^\dagger\) are orthogonal, this is simple since for any \(v \in V_1\) and \(w \in V_3\) we have \(\gen{S^\dagger w, Tv} = \gen{w,ST v} = 0\) since \(ST = 0\). Thus the decomposition is orthogonal.
+
+        Now we can define \(\ker \Delta \to \ker S/\operatorname{Im} T\) as \(v \mapsto [v]\), since \(\ker \Delta \subset \ker S\), to check this is an isomorphism assume that \(v \in \operatorname{ker} \Delta \cap \operatorname{Im} T\), then \(v = 0\), since \(\ker \Delta \subset (\operatorname{Im} T)^\perp\), so that this map is injective. Now, let \(w \in \ker S\), we want to show that \([w]\) is in the image of our map, so it suffices to show that for some \(u \in \operatorname{Im} T\) we have \(w - u \in \operatorname{Im} \Delta\). We take \(u\) to be the projection of \(w\) onto \(\operatorname{Im} T\), then \(w - u \in \ker S \cap (\operatorname{Im} T)^\perp = \ker \Delta\), so the map is onto and \(\ker \Delta \cong \ker S/ \operatorname{Im} T\)
+    \end{pb}
+\end{document}
