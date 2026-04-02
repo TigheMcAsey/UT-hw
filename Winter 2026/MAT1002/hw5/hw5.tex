@@ -81,7 +81,7 @@
         \end{align}
         so that the decomposition \(V_2 = \ker \delta \oplus (\operatorname{Im} T + \operatorname{Im} S^\dagger)\) is orthogonal, it remains to check that \(\operatorname{Im} T\) and \(\operatorname{Im} S^\dagger\) are orthogonal, this is simple since for any \(v \in V_1\) and \(w \in V_3\) we have \(\gen{S^\dagger w, Tv} = \gen{w,ST v} = 0\) since \(ST = 0\). Thus the decomposition is orthogonal.
 
-        Now we can define \(\ker \Delta \to \ker S/\operatorname{Im} T\) as \(v \mapsto [v]\), since \(\ker \Delta \subset \ker S\), to check this is an isomorphism assume that \(v \in \operatorname{ker} \Delta \cap \operatorname{Im} T\), then \(v = 0\), since \(\ker \Delta \subset (\operatorname{Im} T)^\perp\), so that this map is injective. Now, let \(w \in \ker S\), we want to show that \([w]\) is in the image of our map, so it suffices to show that for some \(u \in \operatorname{Im} T\) we have \(w - u \in \operatorname{Im} \Delta\). We take \(u\) to be the projection of \(w\) onto \(\operatorname{Im} T\), then \(w - u \in \ker S \cap (\operatorname{Im} T)^\perp = \ker \Delta\), so the map is onto and \(\ker \Delta \cong \ker S/ \operatorname{Im} T\)
+        Now we can define \(\ker \Delta \to \ker S/\operatorname{Im} T\) as \(v \mapsto [v]\), since \(\ker \Delta \subset \ker S\), to check this is an isomorphism assume that \(v \in \operatorname{ker} \Delta \cap \operatorname{Im} T\), then \(v = 0\), since \(\ker \Delta \subset (\operatorname{Im} T)^\perp\), so that this map is injective. Now, let \(w \in \ker S\), we want to show that \([w]\) is in the image of our map, so it suffices to show that for some \(u \in \operatorname{Im} T\) we have \(w - u \in \operatorname{Im} \Delta\). We take \(u\) to be the projection of \(w\) onto \(\operatorname{Im} T\), then \(w - u \in \ker S \cap (\operatorname{Im} T)^\perp = \ker \Delta\), so the map is onto and \(\ker \Delta \cong \ker S/ \operatorname{Im} T\) \qed
     \end{pb}
     \begin{pb}
         \textbf{(i)} We calculate the laplacian on \(\phi_{m,n}\)
@@ -163,9 +163,36 @@
         \begin{align}
             G(x,y) = \sum_{\mathbb{Z}^2 \setminus \set{(0,0)}} \frac{1}{4\pi ^2(m^2 + n^2)}\phi_{n,m}
         \end{align}
-        Now we finally compute that \(G\) satisfies \eqref{desiderata}, to do so we compute the weak derivative \(\Delta G\), since \(\phi_{n,m}\) are dense in \(C^\infty(T^2)\) we know that \(\Delta G\) is uniquely determined by its ``Fourier coefficients'', we can compute these as follows, (once again enumerating \(\mathbb{Z}^{2} \setminus \set{(0,0)}\)) we take \(S_N\) to be the \(N\)-th partial sum of Fourier coefficients, then \(S_N \to G\) in \(L^2\), so that by definition of weak derivative, \(\Delta G(1) = \gen{G,\Delta 1} = \gen{G,0} = 0\).
+        Now we finally compute that \(G\) satisfies \eqref{desiderata}, to do so we compute the weak derivative \(\Delta G\), since finite linear combinations of \(\phi_{n,m}\) are dense in \(C^\infty(T^2)\) we know that distributions are uniquely determined by their ``Fourier coefficients'' so we can check that \(\Delta G = \delta_{0,0}\) the dirac delta in the weak sense. We can compute this as follows, (once again enumerating \(\mathbb{Z}^{2} \setminus \set{(0,0)}\)) we take \(S_N\) to be the \(N\)-th partial sum of Fourier coefficients, then \(S_N \to G\) in \(L^2\), so that by definition of weak derivative, \(\Delta G(1) = \gen{G,\Delta 1} = \gen{G,0} = 0\), and for \((n,m) \neq (0,0)\)
+        \begin{align}
+            \Delta G(\phi_{n,m}) = \gen{G, \Delta \phi_{n,m}} = 4\pi^2(m^2 + n^2)\gen{\lim_{N\to\infty}S_N,\phi_{n,m}} = \lim_{N\to\infty} 4\pi^2(m^2 + n^2) \gen{S_N,\phi_{n,m}} = 1
+        \end{align}
+        So that \(\Delta G = \delta_{(0,0)} - 1\) as a weak derivative since they act the same way on \(\phi_{n,m}\) which are dense in \(C^\infty(T^2)\), we conclude that
+        \begin{align}
+            \Delta_{x_1,y_1} \int_{T^2} G(x_1-x_2,y_1-y_2)f(x_2,y_2)dx_2dy_2 = (\delta_{x_1,y_1} - 1)(f) = f(x_1,y_1)
+        \end{align} \qed
     \end{pb}
     \begin{pb}
-        \textcolor{red}{TODO}
+        Since Riemann surfaces are compact, any global holomorphic function must attain its maximum, thus by the open mapping principle must be constant in the chart it attains its maximum, since this chart is open the global holomorphic function must be constant by the identity principle. Now considering the divisor \(0\), the previous discussion tells us that \(H^0(X,\mathcal{O}_X(0)) = \mathbb{C}\) has complex dimension 1. We use Riemann Roch:
+        \begin{align}
+            \dim_\mathbb{C}H^0(X,\mathcal{O}_X(D)) - \dim_\mathbb{C}H^0(X,K_X(-D)) = \deg D + 1 - g
+        \end{align}
+        where \(g\) is the genus, now since \(D = 0\) has degree zero, and \(\dim_\mathbb{C}H^0(X,\mathcal{O}_X(D)) = 1\) the equation simplifies to
+        \begin{align}
+            \dim_\mathbb{C}H^0(X,K_X(0)) = g
+        \end{align}
+        Where by definition \(H^0(X,K_X(0))\) is the space of global holomorphic differentials. Rewriting \(k = 2j + 1\) for \(j \in \mathbb{Z}_{\geq 0}\) we can recall from the cut and paste construction that the genus of \(X\) is \(g = j+1\), this also gives us \(g = \frac{k+1}{2}\). This suffices to show the following holomorphic differentials form a basis for \(w = \sqrt{z(z-1)(z-\lambda_1)\cdots(z-\lambda_{k})}\)
+        \begin{align}
+            \frac{dz}{w}, \frac{zdz}{w}, \hdots, \frac{z^{g-1}dz}{{w}}
+        \end{align}
+        These are trivially holomorphic away from \(\set{0,1,\lambda_i,\infty}\), to check at these points we can just plug in local coordinates at \(z = 0\) (since \(z = 1\) and \(\lambda_i\) behave the same) and local coordinates at \(\infty\). Near zero we get coordinates \(t\) with \(z = t^2\), with the signs of \(t\) consistent with the gluing of \(X\), in which case we get
+        \begin{align}
+            z^i dz/w = t^{2i} \frac{2tdt}{t\sqrt{(t^2 - 1)\cdots(t^2 - \lambda_k)}} = t^{2i} \frac{dt}{\sqrt{(t^2 - 1)\cdots(t^2 - \lambda_k)}}
+        \end{align}
+        is holomorphic. And near \(t = \infty\) we have coordinates given by \(t^2 = \frac{1}{z}\) once again with the sign of \(t\) gluing across \(X\), so that we get
+        \begin{align}
+            z^i dz/w = t^{-2i}\frac{-2dt}{t^3} \frac{t^{k+2}}{\sqrt{(1-t^2)(1-\lambda_1t^2)\cdots(1-\lambda_k t^2)}} = t^{2g + 1 - 2i - 3} dt \cdot (\text{holomorphic})
+        \end{align}
+        Then \(i \leq g-1\) gives us that \(2i + 3 \leq 2g+1\) so this is indeed a holomorphic differential. \qed
     \end{pb}
 \end{document}
