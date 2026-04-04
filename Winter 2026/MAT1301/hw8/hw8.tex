@@ -84,9 +84,24 @@
         \end{equation*}
         since \(e_2 \otimes 1 \mapsto 3 e_2 \otimes 1 = e_2 \otimes 3 = 0\) in the first differential, then each term can be identified with \(\mathbb{Z}/3 \mathbb{Z}\), since each of the maps are zero, we get \(H_n(X;\mathbb{Z}/3 \mathbb{Z}) = C_n^{\text{CW}} \otimes \mathbb{Z}/3 \mathbb{Z} \cong \mathbb{Z}/3 \mathbb{Z}\), so that \(H_j(X; \mathbb{Z}/ 3 \mathbb{Z}) = \mathbb{Z}/3 \mathbb{Z}\) if \(j \leq 2\) or \(0\) if \(j > 2\). \qed
     \end{pb}
+    \newpage
+
     \begin{pb}
-        \textcolor{red}{TODO}
+        The idea is to realize the trefoil as a torus knot, then cutting it out of the solid torus with filled meridian, and enclosing the removed section can still be given a CW complex \(X\) similar to that of the solid torus with filled meridian. We can then deformation retract the interior of the tube enclosing the knot complement to the tube itself, and project the rest of \(\mathbb{R}^3\) in the \(z\) direction onto \(\mathbb{R}^2 \cup X\) where \(X\) is this modified solid torus CW complex, then we can simply project \(\mathbb{R}^2\) radially onto \(X\). To understand this construction I will first do it for \(S^1\) embedded in the torus, then construct the more complicated CW complex for the trefoil in the same way. The homotopy has already been described, here is the CW complex.
+
+        \begin{figure}[h]
+            \begin{center}
+                \includegraphics[width=0.9\linewidth]{figures/Figure1.png}
+            \end{center}
+        \end{figure}
+        \begin{figure}[h]
+            \begin{center}
+                \includegraphics[width=0.9\linewidth]{figures/Figure2.png}
+            \end{center}
+        \end{figure}
     \end{pb}
+    \newpage
+
     \begin{pb}
         \textbf{(a)} Begin by fixing an isomorphism \(H_2(T^2) \cong \mathbb{Z}\) and an isomorphism \(H_2(S^2) \cong \mathbb{Z}\), we define the degree of \(f: T^2 \to S^2\) to be the image of \(f_*(1)\) using these identifications with \(\mathbb{Z}\). We define the local degree using \(V \supset \set{y}\), and \(U\) such that \(x \in U \subset (f^{-1}(y) \setminus \set{x})^c\), then \(\deg_x f\) is defined to be the image of \(f_*(1): \mathbb{Z} \cong H_2(U,U\setminus \set{x}) \to \mathbb{Z} \cong H_2(S^2)\) using the identifications with \(\mathbb{Z}\) induced by \(H_2(T^2)\) and \(H_2(V,V\setminus \set{y}) \cong H_2(S^2) \cong \mathbb{Z}\) (this isomorphism is easily seen from excision and long exact sequence of the pair). To see that this identification makes sense for the torus, we consider the long exact sequence of the pair \(H_2(T^2,T^2 \setminus \set{x})\) to get
         \begin{equation*}
