@@ -146,7 +146,30 @@
         \end{proof}
     \end{pb}
     \begin{pb}
-        \textcolor{red}{OMIT}
+        Show that for matrices \(A,B\),
+        \begin{align*}
+            \log(\exp(tA)\exp(tB)\exp(-tA)\exp(-tB)) = t^2[A,B] + \mathcal{O}(t^3)
+        \end{align*}
+
+        \begin{proof}
+            \(\log\) and \(\exp\) are locally inverse, so we can rewrite the above as:
+            \begin{align*}
+                \log(\exp(tA)\exp(tB)\exp(-tA)\exp(-tB)) = \log(e^{\log(\exp(tA)\exp(tB))}e^{\log(\exp(-tA)\exp(-tB))})
+            \end{align*}
+            Then, the Baker-Campbell-Hausdorff formula tells us that the terms \(\eta := \log(\exp(tA)\exp(tB)) = tA + tB + \frac{t^2}{2}[A,B] + \mathcal{O}(t^3)\), and similarly \(\xi := \log(\exp(-tA)\exp(-tB)) = -tA - tB + \frac{t^2}{2}[A,B] + \mathcal{O}(t^3)\), then we can reapply the BCH formula to these expansions to get that 
+            \begin{align*}
+                \log(\exp(tA)\exp(tB)\exp(-tA)\exp(-tB)) &= \log(e^{\log(\exp(tA)\exp(tB))}e^{\log(\exp(-tA)\exp(-tB))}) \\
+                &= \log(\exp(\eta)\exp(\xi)) \\
+                &\overset{\text{BCH}}{=} (tA + tB + \frac{t^2}{2}[A,B] + \mathcal{O}(t^3)) + (-tA - tB + \frac{t^2}{2}[A,B] + \mathcal{O}(t^3)) \\
+                &+ \frac12 [\eta, \xi] + \mathcal{O}(t^3) \\
+                &= t^2[A,B] + \frac12 [\eta,\xi] + \mathcal{O}(t^3)
+            \end{align*}
+            So it only remains to check that \([\eta,\xi] \in \mathcal{O}(t^3)\). We check this explicitly:
+            \begin{align*}
+                [\eta,\xi] &= (tA + tB)(-tA - tB) + \mathcal{O}(t^3) - (-tA - tB)(tA + tB) + \mathcal{O}(t^3) \\ &= -(tA + tB)^2 + (tA + tB)^2 + \mathcal{O}(t^3) \\
+                &= \mathcal{O}(t^3)
+            \end{align*}
+        \end{proof}
     \end{pb}
     \begin{pb}
         Let \(G\) be a connected Lie group, and \(U\) an open neighborhood of the group unit \(e\). Show that any \(g \in G\) can be written as a product of elements \(g_1\cdot g_2\cdots g_n\) with \(g_j \in U\).
@@ -285,6 +308,34 @@
                 ( -h_1) g (-h_1) = \begin{pmatrix} A & \mathbf{b} \\ -\mathbf{a}^T & -c \end{pmatrix} (-h_1) = \begin{pmatrix} A & -\mathbf{b} \\ -\mathbf{a}^T & c \end{pmatrix}
             \end{align*}
             So that the vectors \(a = -a = 0\) and \(b= -b = 0\), we may similarly write \(g\) in block form \(g = \begin{pmatrix} c  & \mathbf{a^T} \\ \mathbf{b} & A \end{pmatrix}\) for \(A,b,a,c\) of the same form. The same calculation conjugating by \(h_3\) gives us again that \(a = b = 0\), taken together this tells us that all the off diagonal entries of \(g\) must be zero, hence the only matrices commuting with \(H\) are diagonal so that \(H\) is maximal abelian.
+        \end{proof}
+    \end{pb}
+    \begin{pb}
+        Let \(\pi: \mathfrak{sl}(2,\mathbb{C}) \to \text{End}(V)\) be the irreducible \(\mathfrak{sl}(2,\mathbb{C})\) representation of dimension \(n+1\), denote \(\tilde{V} := \text{End}(V)\), then define
+        \begin{align*}
+            \tilde{\pi}: \mathfrak{sl}(2,\mathbb{C}) \to \text{End}(\tilde{V}) \\
+            \xi \mapsto [\pi(\xi),-]
+        \end{align*}
+        determine the multiplicities of the irreps \(V(k)\) in \(\tilde{V}\)
+
+        \begin{proof}
+            We use the third method provided in the course notes, i.e. determining the eigenspace decomposition of \(\tilde{\pi}(h)\) on \(\ker \tilde{\pi}(e)\), so that the multiplicity of the eigenvalue \(k\) gives \(\frac{1}{k+1}\dim U\), where \(U\) is the direct sum of all \(V(k)\) type irreps, equivalently, the multiplicity of the eigenvalue counts the number of \(V(k)\) type irreps.
+
+            We first notice that \(\pi(e)^j \in \ker\tilde{\pi}(e)\) for all \(j\) (this gives us \(n+1\) linear independent elements \(\set{1,\pi(e),\hdots,\pi(e)^{n}}\)), we would like to check that we get equality. To do so it suffices to check that there are at most \(n+2\) distinct elements in \(\text{End}(V)\) commuting with \(\pi(e)\). Suppose that \(A\) were such an element, then since \(C\pi(e)^j(v_r) = v_{r-j}\) for some constant \(C\), we find that
+            \begin{align*}
+                A v_{n-j} = A C\pi(e)^j(v_n) = C\pi(e)^j A v_n
+            \end{align*}
+            so that \(A\) is determined by its action on \(v_n\), up to scaling there are only \(n+1\) such choices. Now, we can use the relation \([\pi(e),\pi(h)] = -2\pi(e)\) to compute \(\tilde{\pi}(h)\), by anticommutativity and recursion we find that
+            \begin{align*}
+                \tilde{\pi}(h)(\pi(e)^j) = [\pi(h),\pi(e)^j] = 2j\pi(e)^j
+            \end{align*}
+            Thus we find that the multiplicity of \(V(k)\), which is equal to the multiplicity of eigenvalue \(k\) is:
+            \begin{align*}
+                \text{multiplicity of } V(k) = \begin{cases}
+                    1 & 0 \leq k \leq 2 n \text{ is even} \\
+                    0 & \text{else}
+                \end{cases}
+            \end{align*}
         \end{proof}
     \end{pb}
 \end{document}

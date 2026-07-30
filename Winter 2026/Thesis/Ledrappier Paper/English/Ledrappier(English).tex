@@ -1,0 +1,294 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{remark}
+\newtheorem*{remarks}{Remarks}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\rd}{\mathrm{d}}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\PSL}{\mathrm{PSL}}
+\newcommand{\Id}{\mathrm{Id}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\card}{\operatorname{card}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Dirac}{\operatorname{Dirac}}
+\newcommand{\Impart}{\operatorname{Im}}
+
+\begin{document}
+
+\begin{center}
+{\small C. R. Acad. Sci. Paris, t. 329, S\'erie I, p. 61--64, 1999\\
+Dynamical Systems}
+
+\vspace{1.5cm}
+
+{\LARGE\bfseries Distribution of lattice orbits on the real plane}
+
+\vspace{0.5cm}
+
+{\large\bfseries Fran\c{c}ois LEDRAPPIER}
+
+\vspace{0.3cm}
+
+URA 169, Centre de math\'ematiques, \mbox{\'Ecole polytechnique}, 91128 Palaiseau cedex, France\\
+E-mail: ledrappi@math.polytechnique.fr
+
+\vspace{0.3cm}
+
+(Received and accepted April 19, 1999)
+\end{center}
+
+\vspace{0.8cm}
+
+\noindent\textbf{Abstract.}\quad
+We study the distribution of the images of a vector in $\R^2$ under the action of a lattice in
+$\SL(2,\R)$. \copyright{} Acad\'emie des Sciences/Elsevier, Paris
+
+\vspace{0.8cm}
+
+Let $\Gamma$ be a discrete subgroup of the group $\SL(2,\R)$. We shall say that $\Gamma$ is a lattice if the volume of the quotient space $\Gamma\backslash\SL(2,\R)$ is finite. We consider the linear action of $\Gamma$ on the real plane $\R^2$. A point of $\R^2$ has an orbit which is either discrete or dense. We propose to study the distribution of the orbit $\Gamma X$ for all points with dense orbit. We write $|X|$ for the Euclidean norm of $X\in\R^2$, and for
+$\gamma=\begin{pmatrix}a&b\\ c&d\end{pmatrix}$ we write
+\[
+\|\gamma\|=\sqrt{a^2+b^2+c^2+d^2}.
+\]
+Finally, as Haar measure on $\SL(2,\R)$ we take the measure
+\[
+\frac{2}{|a|}\, \rd a\, \rd b\, \rd c=\frac{2}{|d|}\, \rd b\, \rd c\, \rd d.
+\]
+
+\begin{theorem}
+Let $\Gamma$ be a lattice in $\SL(2,\R)$, let $X\in\R^2$ be a point such that $\Gamma X$ is not a discrete subset of $\R^2$, and let $f$ be a continuous even compactly supported function on $\R^2$. Then
+\begin{equation}\tag{$*$}
+\lim_{T\to\infty}\frac{1}{T}\sum_{\substack{\gamma\in\Gamma\\ \|\gamma\|\le T}} f(\gamma X)
+=\frac{1}{|X|\,c(\Gamma)}\int_{\R^2}\frac{f(Y)}{|Y|}\,\rd Y,
+\end{equation}
+where $c(\Gamma)=\frac14\vol(\Gamma\backslash\SL(2,\R))$ and $\rd Y$ is Lebesgue measure on $\R^2$.
+\end{theorem}
+
+\begin{remarks}
+\begin{enumerate}
+\item The constant $c(\Gamma)$ depends only on the group $\Gamma$. In particular,
+$c(\SL(2,\Z))=\frac{\pi^2}{6}$.
+\item The limiting measure is not invariant under the group $\Gamma$.
+\item The normalization of the sum on the left-hand side is $T$, not the cardinality of
+$\{\gamma\in\Gamma:\ \|\gamma\|\le T\}$, which is of order $cT^2$.
+\item If the group $\Gamma$ contains $-\Id$, then, for every compactly supported odd function on $\R^2$,
+\[
+\sum_{\substack{\gamma\in\Gamma\\ \|\gamma\|\le T}} f(\gamma X)=0.
+\]
+Hence:
+\end{enumerate}
+\end{remarks}
+
+\begin{corollary}
+If, in addition, the subgroup $\Gamma$ contains $-\Id$, then the limit $(*)$ is true for every continuous compactly supported function on $\R^2$.
+\end{corollary}
+
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item The result depends on the norm used on $2\times2$ matrices. For example, for $0<p\le\infty$ write
+\[
+\left\|\begin{pmatrix}a&b\\ c&d\end{pmatrix}\right\|_p
+=\bigl(|a|^p+|b|^p+|c|^p+|d|^p\bigr)^{1/p}.
+\]
+Then, by suitably modifying Lemma 3, one proves:
+\end{enumerate}
+
+\begin{theorem}
+Under the hypotheses of Theorem 1,
+\begin{equation}\tag{$*$$_p$}
+\lim_{T\to\infty}\frac{1}{T}\sum_{\substack{\gamma\in\Gamma\\ \|\gamma\|_p\le T}} f(\gamma X)
+=\frac{1}{|X|_p\,c(\Gamma)}\int_{\R^2}\frac{f(Y)}{|Y|_p}\,\rd Y,
+\end{equation}
+where $|X|_p=(|\alpha|^p+|\beta|^p)^{1/p}$ if $(\alpha,\beta)$ are the coordinates of $X$.
+\end{theorem}
+
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item It is enough to prove Theorems 1 and 2 for continuous functions $f$ with compact support in $\R^2\setminus\{0\}$. Indeed, let $X=(\alpha,\beta)$ be a point of $\R^2\setminus\{0\}$, and let $\varepsilon>0$. One can bound above the number of elements $\gamma\in\Gamma$ such that %$\|\gamma\|\le T$ and
+$|\gamma X|\le\varepsilon$ (by a constant times) the hyperbolic volume of the distance-one neighborhood of the intersection of the horoball bounded by the horocycle $\Phi(X/\varepsilon)$ with the ball centered at $i$ and of radius $\cosh^{-1}(T^2/2)$. Carrying out this calculation when $\beta=0$, one finds two constants $C_1$ and $C_2$ such that
+\[
+\card\bigl(\{\gamma\in\Gamma:\ \|\gamma\|\le T,\ |\gamma X|\le\varepsilon\}\bigr)
+\le C_1\frac{T\varepsilon}{|X|}+C_2.
+\]
+It follows that the measures
+\[
+\frac{1}{T}\sum_{\substack{\gamma\in\Gamma\\ \|\gamma\|\le T}}\Dirac(\gamma X),\qquad T\ge1,
+\]
+are indeed uniformly tight near $0$.
+
+\item There are many results on orbit counting in homogeneous spaces obtained by relying on the ergodic properties of unipotent flows \emph{(cf.} [2]). Our result nevertheless seems to be new. The closest one is Theorem 6.4 of [3], where the number of elements $\Gamma$ such that
+$e^{-R}\le |\gamma X|\le e^R$ is estimated, when $X$ is a point with discrete orbit under $\Gamma$.
+\end{enumerate}
+
+\noindent\emph{Proof of Theorem 1.}---
+Recall that the group $\PSL(2,\R)$ acts by isometries on the hyperbolic plane
+\[
+\mathbb H^2=\{z\in\C:\ \Impart z>0\}.
+\]
+The group $\PSL(2,\R)$ acts freely and transitively on the unit tangent bundle $U\mathbb H^2$. In what follows we identify $\PSL(2,\R)$ with $U\mathbb H^2$ by associating to each $\gamma\in\PSL(2,\R)$ the unit vector $\gamma Z_0$, where $Z_0$ is the unit vector $(0,1)$ at the point $i$. The horocycle flow $(h_s)_{s\in\R}$ is the right action of the group
+\[
+N=\left\{\begin{pmatrix}1&s\\0&1\end{pmatrix}:\ s\in\R\right\}
+\]
+defined by
+\[
+\gamma Z_0h_s=\gamma\begin{pmatrix}1&s\\0&1\end{pmatrix}Z_0.
+\]
+From this definition one sees that the orbits of the horocycle flow are the lifts to $U\mathbb H^2$ of the horocycles in $\mathbb H^2$, where at each point the unit vector is the initial velocity vector of the geodesic starting from that point and tending at infinity toward the point of tangency at infinity of the horocycle. To a point $X=(\alpha,\beta)\ne0$ we associate the horocycle $\Phi(X)\subset\mathbb H^2$ defined by
+\[
+\Phi(X)=\{z,\ z=x+iy:\ (\beta x-\alpha)^2+\beta^2y^2-y=0\}.
+\]
+Clearly, $\Phi(X)=\Phi(-X)$, and $\Phi$ is a bijection from $(\R^2\setminus\{0\})/\pm$ onto the space of horocycles in $\mathbb H^2$. One also checks that $\Phi(a\alpha+b\beta,c\alpha+d\beta)$ is the image of $\Phi(\alpha,\beta)$ under the isometry
+\[
+z\longmapsto \frac{az+b}{cz+d}.
+\]
+Let $\widetilde\Phi(X)$ be the lift of $\Phi(X)$ to $U\mathbb H^2$, and let $\Psi(X)$ be the unique unit vector in $\widetilde\Phi(X)$ such that the geodesic with initial vector $\Psi(X)$ passes through the point $i$ of $\mathbb H^2$. The map $\Psi$ defines a bicontinuous bijection between $(\R^2\setminus\{0\})/\pm$ and $\mathcal V$, the set of velocity vectors of geodesics passing through $i$. For all $X\in\R^2$ and $\gamma\in\PSL(2,\R)$, the vectors $\gamma\Psi(X)$ and $\Psi(\gamma X)$ both belong to $\widetilde\Phi(\gamma X)$; hence one can define the real number $s(\gamma,X)$ by
+\[
+\Psi(\gamma X)=\gamma\Psi(X)h_{s(\gamma,X)}.
+\]
+Finally, let $\varepsilon>0$ and let $\varphi_\varepsilon$ be the real-valued function on $\R$ defined by
+\[
+\varphi_\varepsilon(s)=\max\left(\frac{1}{\varepsilon}\left(1-\frac{|s|}{\varepsilon}\right),0\right).
+\]
+
+To every continuous compactly supported even function $f$ on $\R^2\setminus\{0\}$ we associate the function $\widetilde f$ on $U\mathbb H^2$ defined by
+\[
+\widetilde f(Z)=f\bigl(\Psi^{-1}(Zh_s)\bigr)\varphi_\varepsilon(s),
+\]
+where $s$ is chosen so that $Zh_s\in\mathcal V$. Then we have:
+
+\begin{lemma}
+For every $X\in(\R^2\setminus\{0\})/\pm$, every $\gamma\in\PSL(2,\R)$, and every continuous compactly supported even function $f$ on $\R^2\setminus\{0\}$,
+\[
+f(\gamma X)=\int_{s(\gamma,X)-\varepsilon}^{s(\gamma,X)+\varepsilon}
+\widetilde f(\gamma\Psi(X)h_s)\,\rd s
+=\int_{-\infty}^{+\infty}\widetilde f(\gamma\Psi(X)h_s)\,ds.
+\]
+\end{lemma}
+
+Let $dZ$ denote Liouville measure on $U\mathbb H^2$.
+
+\begin{lemma}
+With the preceding notation, for every continuous compactly supported even function $f$ on $\R^2\setminus\{0\}$,
+\[
+\int\widetilde f(Z)\,dZ=\int f(X)\,dX.
+\]
+\end{lemma}
+
+Now suppose that $\Gamma$ is a lattice containing $-\Id$. Writing
+$\Gamma=\bigcup_{i\in I}\gamma_i\Gamma'$ for some finite set $I$, where $\Gamma'$ is a subgroup of $\Gamma$ with no torsion element other than $-\Id$, we obtain
+\[
+\sum_{\substack{\gamma\in\Gamma\\ \|\gamma\|\le T}} f(\gamma X)
+=\sum_{i\in I}\sum_{\substack{\gamma\in\Gamma'\\ \|\gamma_i\gamma\|\le T}} f\circ\gamma_i(\gamma X).
+\]
+Moreover, the quotient $P\Gamma'\backslash\PSL(2,\R)$ is the unit tangent bundle $UM'$ of a finite-volume hyperbolic surface. We denote by $\pi':U\mathbb H^2\to UM'$ the corresponding projection, by $\mu'$ the normalized Liouville measure on $UM'$, and, to an even continuous compactly supported function $f$ on $\R^2\setminus\{0\}$, we associate the function $\overline f$ on $UM'$ given by
+\[
+\overline f(\pi' Z)=\sum_{\gamma\in\Gamma'}\widetilde f(\gamma Z).
+\]
+If the support $K$ of the function $f$ is sufficiently small, the sets $\gamma\Psi(K)$, $\gamma\in\Gamma$, are disjoint, and one can choose $\varepsilon$ small enough so that the supports of the functions $\widetilde f\circ\gamma$, $\gamma\in\Gamma$, are also disjoint. Thus, for every finite subset $J\subset\Gamma'$ and every $X\in\R^2\setminus\{0\}$, we can write
+\[
+\sum_{\gamma\in J}f(\gamma X)
+=\int_{-\infty}^{+\infty}\overline f(\pi'\Psi(X)h_s)
+\sum_{\gamma\in J}\mathbf 1_{[s(\gamma,X)-\varepsilon,\, \,s(\gamma,X)+\varepsilon]}(s)\,\rd s,
+\]
+and
+\[
+\int \overline f\,d\mu'
+=\frac{1}{\vol(UM')}\int f(X)\,dX
+=\frac{1}{4c(\Gamma')}\int f(X)\,\rd X,
+\]
+by the definition of $c(\Gamma')$.
+
+To use these formulas, we must determine the values of $s(\gamma,X)$ corresponding to $\|\gamma\|\le T$ or to $\|\gamma_i\gamma\|\le T$.
+
+\begin{lemma}
+With the preceding notation,
+\[
+|X|^2|\gamma X|^2s^2(\gamma,X)
+=\|\gamma\|^2-\frac{|X|^2}{|\gamma X|^2}-\frac{|\gamma X|^2}{|X|^2},
+\]
+and, for fixed $\gamma_0$, if $\frac1C\le |\gamma X|\le C$ for a fixed $C$, then
+\[
+\|\gamma_0\gamma\|^2=|X|^2|\gamma_0\gamma X|^2s^2(\gamma,X)+O(|s(\gamma,X)|).
+\]
+\end{lemma}
+
+Now choose a positive continuous even function $f$ with sufficiently small compact support in $\R^2\setminus\{0\}$. Setting $g_i=f\circ\gamma_i$, we have to compute
+$\sum_{\gamma\in\Gamma',\ \|\gamma_i\gamma\|\le T}g_i(\gamma X)$. But
+\[
+\sum_{\substack{\gamma\in\Gamma'\\ \|\gamma_i\gamma\|\le T}}g_i(\gamma X)
+=\int_{-\infty}^{+\infty}\overline{g_i}(\pi'\Psi(X)h_s)
+\sum_{\substack{\gamma\in\Gamma'\\ \|\gamma_i\gamma\|\le T}}
+\mathbf 1_{[s(\gamma,X)-\varepsilon,\,\,s(\gamma,X)+\varepsilon]}(s)\,\rd s.
+\]
+
+By Lemma 3, there exists a positive real number $D$, depending only on the support of $g_i$, such that, for $T$ large enough and for every $\gamma\in\Gamma'$ such that $\gamma X$ belongs to the support of $g_i$, we have
+\[
+|s(\gamma,X)|\le\frac{T-D}{|X|\,|\gamma_i\gamma X|}
+\Longrightarrow \|\gamma_i\gamma\|\le T
+\Longrightarrow
+|s(\gamma,X)|\le\frac{T+D}{|X|\,|\gamma_i\gamma X|}.
+\]
+Set
+\[
+k(g_i)=\inf_{Y\in\supp g_i}|\gamma_iY|,
+\qquad
+K(g_i)=\sup_{Y\in\supp g_i}|\gamma_iY|.
+\]
+Taking into account the fact that there are two matrices, $\gamma$ and $-\gamma$, sending $\pm X$ to $\pm\gamma X$, we can then write
+\[
+2\int_{-\frac{T-D}{|X|K(g_i)}}^{\frac{T-D}{|X|K(g_i)}}
+\overline{g_i}(\pi'\Psi(X)h_s)\,\rd s
+\le
+\sum_{\substack{\gamma\in\Gamma'\\ \|\gamma_i\gamma\|\le T}}g_i(\gamma X)
+\le
+2\int_{-\frac{T+D}{|X|k(g_i)}}^{\frac{T+D}{|X|k(g_i)}}
+\overline{g_i}(\pi'\Psi(X)h_s)\,\rd s.
+\]
+
+Since the orbit $\Gamma X$ is not discrete in $\R^2\setminus\{0\}$, the orbit $\Gamma'X$ is likewise not discrete in $\R^2\setminus\{0\}$. This means that the point $\pi'\Psi(X)$ is not on a closed orbit of the horocycle flow on $UM'$. By Dani's uniform distribution theorem, for every continuous compactly supported function $\overline g$ on $UM'$,
+\[
+\lim_{T\to\infty}\frac1T\int_{-T}^{T}\overline g(\pi'\Psi(X)h_s)\,ds
+=2\int \overline g\,d\mu'.
+\]
+We obtain, by taking $T\to\infty$ and decomposing $g_i$ into a finite sum of continuous even functions with compact supports made arbitrarily small,
+\[
+\lim_{T\to\infty}\frac1T
+\sum_{\substack{\gamma\in\Gamma'\\ \|\gamma_i\gamma\|\le T}}g_i(\gamma X)
+=\frac{1}{|X|c(\Gamma')}\int_{\R^2}\frac{g_i(Y)}{|\gamma_iY|}\,\rd Y
+=\frac{1}{|X|c(\Gamma')}\int_{\R^2}\frac{f(Y)}{|Y|}\,\rd Y,
+\]
+because $g_i=f\circ\gamma_i$ and the linear map $\gamma_i$ preserves Lebesgue measure on $\R^2$. Finally,
+\[
+\lim_{T\to\infty}\frac1T
+\sum_{\substack{\gamma\in\Gamma\\ \|\gamma\|\le T}}f(\gamma X)
+=\frac{\card I}{|X|c(\Gamma')}\int_{\R^2}\frac{f(Y)}{|Y|}\,dY
+=\frac{1}{|X|c(\Gamma)}\int_{\R^2}\frac{f(Y)}{|Y|}\,dY.
+\]
+This completes the proof of Theorem 1 if the group $\Gamma$ contains $-\Id$. Otherwise, one reduces to this case by introducing the group $\overline\Gamma=\pm\Gamma$.
+\hfill$\square$
+
+\begin{center}
+\textbf{Bibliographic references}
+\end{center}
+
+\begin{enumerate}
+\item Dani S. R., On uniformly distributed orbits of certain horocycle flows, \emph{Ergod. Th. \& Dynam. Sys.} \textbf{2} (1982), 139--158.
+\item Eskin A., Counting problems and semisimple groups, \emph{Proc. of the ICM Berlin 1998}, Docum. Math. II, 1998, pp. 539--552.
+\item Eskin A., McMullen C., Mixing, counting and equidistribution in Lie Groups, \emph{Duke Math. J.} \textbf{71} (1993), 143--180.
+\end{enumerate}
+
+\end{document}

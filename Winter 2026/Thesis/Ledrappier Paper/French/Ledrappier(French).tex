@@ -1,0 +1,303 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\newtheorem{theoreme}{Théorème}
+\newtheorem{corollaire}{Corollaire}
+\newtheorem{lemme}{Lemme}
+\theoremstyle{remark}
+\newtheorem*{remarques}{Remarques}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\PSL}{\mathrm{PSL}}
+\newcommand{\Id}{\mathrm{Id}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\card}{\operatorname{card}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Dirac}{\operatorname{Dirac}}
+\newcommand{\Impart}{\operatorname{Im}}
+
+\begin{document}
+
+\begin{center}
+{\small C. R. Acad. Sci. Paris, t. 329, Série I, p. 61--64, 1999\\
+Systèmes dynamiques/Dynamical Systems}
+
+\vspace{1.5cm}
+
+{\LARGE\bfseries Distribution des orbites des réseaux sur le plan réel}
+
+\vspace{0.5cm}
+
+{\large\bfseries François LEDRAPPIER}
+
+\vspace{0.3cm}
+
+URA 169, centre de mathématiques, École polytechnique, 91128 Palaiseau cedex, France\\
+Courriel : ledrappi@math.polytechnique.fr
+
+\vspace{0.3cm}
+
+(Reçu et accepté le 19 avril 1999)
+\end{center}
+
+\vspace{0.8cm}
+
+\noindent\textbf{Résumé.}\quad
+On étudie la répartition des images d'un vecteur de $\R^2$ par l'action d'un réseau de
+$\SL(2,\R)$. \copyright{} Académie des Sciences/Elsevier, Paris
+
+\vspace{0.6cm}
+
+\begin{center}
+\textbf{\emph{Distribution of lattice orbits on the real plane}}
+\end{center}
+
+\noindent\textbf{Abstract.}\quad
+\emph{We study the ergodic properties of the linear action of a discrete subgroup of $\SL(2,\R)$
+on the real plane, in the case when the group has finite covolume.}
+\copyright{} Académie des Sciences/Elsevier, Paris
+
+\vspace{0.8cm}
+
+Soit $\Gamma$ un sous-groupe discret du groupe $\SL(2,\R)$. Nous dirons que $\Gamma$ est un réseau si le volume de l'espace quotient $\Gamma\backslash\SL(2,\R)$ est fini. On considère l'action linéaire de $\Gamma$ sur le plan réel $\R^2$. Un point de $\R^2$ a une orbite soit discrète, soit dense. On se propose d'étudier la répartition de l'orbite $\Gamma X$ pour tous les points d'orbite dense. On note $|X|$ la norme euclidienne de $X\in\R^2$ et pour
+$\gamma=\begin{pmatrix}a&b\\ c&d\end{pmatrix}$, on note
+\[
+\|\gamma\|=\sqrt{a^2+b^2+c^2+d^2}.
+\]
+Enfin, on prend comme mesure de Haar sur $\SL(2,\R)$ la mesure
+\[
+\frac{2}{|a|}\,da\,db\,dc=\frac{2}{|d|}\,db\,dc\,dd.
+\]
+
+\begin{theoreme}
+Soient $\Gamma$ un réseau de $\SL(2,\R)$, $X\in\R^2$ un point tel que $\Gamma X$ n'est pas un sous-ensemble discret de $\R^2$ et $f$ une fonction paire continue à support compact sur $\R^2$. Alors :
+\begin{equation}\tag{$*$}
+\lim_{T\to\infty}\frac{1}{T}\sum_{\substack{\gamma\in\Gamma\\ \|\gamma\|\le T}} f(\gamma X)
+=\frac{1}{|X|\,c(\Gamma)}\int_{\R^2}\frac{f(Y)}{|Y|}\,dY,
+\end{equation}
+où $c(\Gamma)=\frac14\vol(\Gamma\backslash\SL(2,\R))$ et $dY$ est la mesure de Lebesgue sur $\R^2$.
+\end{theoreme}
+
+\begin{remarques}
+\begin{enumerate}
+\item La constante $c(\Gamma)$ ne dépend que du groupe $\Gamma$. En particulier,
+$c(\SL(2,\Z))=\frac{\pi^2}{6}$.
+\item La mesure limite n'est pas invariante par le groupe $\Gamma$.
+\item La normalisation de la somme dans le membre de gauche est $T$ et non pas le cardinal de
+$\{\gamma\in\Gamma,\ \|\gamma\|\le T\}$, qui est de l'ordre de $cT^2$.
+\item Si le groupe $\Gamma$ contient $-\Id$, nous avons, pour toute fonction impaire à support compact sur $\R^2$,
+\[
+\sum_{\substack{\gamma\in\Gamma\\ \|\gamma\|\le T}} f(\gamma X)=0.
+\]
+D'où :
+\end{enumerate}
+\end{remarques}
+
+\begin{corollaire}
+Si de plus le sous-groupe $\Gamma$ contient $-\Id$, la limite $(*)$ est vraie pour toute fonction continue à support compact sur $\R^2$.
+\end{corollaire}
+
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item Le résultat dépend de la norme utilisée sur les matrices $2\times2$. Par exemple, notons pour $0<p\le\infty$,
+\[
+\left\|\begin{pmatrix}a&b\\ c&d\end{pmatrix}\right\|_p
+=\bigl(|a|^p+|b|^p+|c|^p+|d|^p\bigr)^{1/p},
+\]
+alors, en modifiant convenablement le lemme 3, on prouve :
+\end{enumerate}
+
+\begin{theoreme}
+Avec les hypothèses du théorème 1,
+\begin{equation}\tag{$*$$_p$}
+\lim_{T\to\infty}\frac{1}{T}\sum_{\substack{\gamma\in\Gamma\\ \|\gamma\|_p\le T}} f(\gamma X)
+=\frac{1}{|X|_p\,c(\Gamma)}\int_{\R^2}\frac{f(Y)}{|Y|_p}\,dY,
+\end{equation}
+où $|X|_p=(|\alpha|^p+|\beta|^p)^{1/p}$, si $(\alpha,\beta)$ sont les coordonnées de $X$.
+\end{theoreme}
+
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item Il suffit de montrer les théorèmes 1 et 2 pour des fonctions $f$ continues à support compact dans $\R^2\setminus\{0\}$. Soient en effet $X=(\alpha,\beta)$ un point de $\R^2\setminus\{0\}$, et $\varepsilon>0$. On peut majorer le nombre d'éléments $\gamma\in\Gamma$ tels que $\|\gamma\|\le T$ et $|\gamma X|\le\varepsilon$ par une constante fois le volume hyperbolique d'un voisinage à distance $1$ de l'intersection de l'horoboule délimitée par l'horocycle $\Phi(X/\varepsilon)$ et de la boule de centre $i$ et de rayon $\cosh^{-1}(T^2/2)$. En faisant ce calcul quand $\beta=0$, on trouve deux constantes $C_1$ et $C_2$ telles que
+\[
+\card\bigl(\{\gamma\in\Gamma:\ \|\gamma\|\le T,\ |\gamma X|\le\varepsilon\}\bigr)
+\le C_1\frac{T\varepsilon}{|X|}+C_2.
+\]
+On voit que les mesures
+\[
+\frac{1}{T}\sum_{\substack{\gamma\in\Gamma\\ \|\gamma\|\le T}}\Dirac(\gamma X),\qquad T\ge1,
+\]
+sont bien équitendues au voisinage de $0$.
+
+\item Il y a de nombreux résultats de comptage d'orbites sur des espaces homogènes obtenus en s'appuyant sur les propriétés ergodiques des flots unipotents \emph{(cf.} [2]). Notre résultat semble toutefois nouveau. Le plus proche est le théorème 6.4 de [3] où est estimé le nombre d'éléments $\Gamma$ tels que
+$e^{-R}\le |\gamma X|\le e^R$, quand $X$ est un point d'orbite discrète sous $\Gamma$.
+\end{enumerate}
+
+\noindent\emph{Démonstration du théorème 1.}---
+On rappelle que le groupe $\PSL(2,\R)$ agit par isométries sur l'espace hyperbolique
+\[
+\mathbb H^2=\{z\in\C:\ \Impart z>0\}.
+\]
+Le groupe $\PSL(2,\R)$ agit librement et transitivement sur le fibré unitaire $U\mathbb H^2$. On identifiera dans la suite $\PSL(2,\R)$ et $U\mathbb H^2$ en associant à tout $\gamma\in\PSL(2,\R)$ le vecteur unitaire $\gamma Z_0$, où $Z_0$ est le vecteur unitaire $(0,1)$ au point $i$. Le flot horocyclique $(h_s)_{s\in\R}$ est l'action à droite du groupe
+\[
+N=\left\{\begin{pmatrix}1&s\\0&1\end{pmatrix};\ s\in\R\right\}
+\]
+définie par
+\[
+\gamma Z_0h_s=\gamma\begin{pmatrix}1&s\\0&1\end{pmatrix}Z_0.
+\]
+On voit sur cette définition que les orbites du flot horocyclique sont les relevés à $U\mathbb H^2$ des horocycles de $\mathbb H^2$ où en chaque point le vecteur unitaire est le vecteur vitesse initiale de la géodésique partant de ce point et se dirigeant à l'infini vers le point de tangence à l'infini de l'horocycle. À un point $X=(\alpha,\beta)\ne0$, on associe l'horocycle $\Phi(X)\subset\mathbb H^2$ défini par :
+\[
+\Phi(X)=\{z,\ z=x+iy;\ (\beta x-\alpha)^2+\beta^2y^2-y=0\}.
+\]
+Clairement, $\Phi(X)=\Phi(-X)$ et $\Phi$ est bijective de $(\R^2\setminus\{0\})/\pm$ sur l'espace des horocycles de $\mathbb H^2$. On vérifie aussi que $\Phi(a\alpha+b\beta,c\alpha+d\beta)$ est l'image de $\Phi(\alpha,\beta)$ par l'isométrie
+\[
+z\longmapsto \frac{az+b}{cz+d}.
+\]
+Notons $\widetilde\Phi(X)$ le relevé de $\Phi(X)$ à $U\mathbb H^2$ et $\Psi(X)$ le vecteur unitaire unique de $\widetilde\Phi(X)$ tel que la géodésique de vecteur initial $\Psi(X)$ passe par le point $i$ de $\mathbb H^2$. L'application $\Psi$ définit une bijection bicontinue entre $(\R^2\setminus\{0\})/\pm$ et $\mathcal V$, l'ensemble des vecteurs vitesse de géodésiques passant par $i$. Pour tous $X\in\R^2$, $\gamma\in\PSL(2,\R)$, les vecteurs $\gamma\Psi(X)$ et $\Psi(\gamma X)$ appartiennent tous les deux à $\widetilde\Phi(\gamma X)$ ; on peut donc définir le nombre réel $s(\gamma,X)$ par :
+\[
+\Psi(\gamma X)=\gamma\Psi(X)h_{s(\gamma,X)}.
+\]
+Enfin, soit $\varepsilon>0$ et notons $\varphi_\varepsilon$ la fonction réelle définie sur $\R$ par
+\[
+\varphi_\varepsilon(s)=\max\left(\frac{1}{\varepsilon}\left(1-\frac{|s|}{\varepsilon}\right),0\right).
+\]
+
+À toute fonction $f$ continue à support compact sur $\R^2\setminus\{0\}$ et paire, on associe la fonction $\widetilde f$ sur $U\mathbb H^2$ définie par
+\[
+\widetilde f(Z)=f\bigl(\Psi^{-1}(Zh_s)\bigr)\varphi_\varepsilon(s),
+\]
+où $s$ est choisi de manière que $Zh_s\in\mathcal V$. Nous avons alors :
+
+\begin{lemme}
+Pour tout $X\in(\R^2\setminus\{0\})/\pm$, tout $\gamma\in\PSL(2,\R)$ et toute fonction $f$ continue à support compact sur $\R^2\setminus\{0\}$ et paire,
+\[
+f(\gamma X)=\int_{s(\gamma,X)-\varepsilon}^{s(\gamma,X)+\varepsilon}
+\widetilde f(\gamma\Psi(X)h_s)\,ds
+=\int_{-\infty}^{+\infty}\widetilde f(\gamma\Psi(X)h_s)\,ds.
+\]
+\end{lemme}
+
+Notons d'autre part $dZ$ la mesure de Liouville sur $U\mathbb H^2$.
+
+\begin{lemme}
+Avec les notations précédentes, pour toute fonction $f$ continue à support compact sur $\R^2\setminus\{0\}$ et paire,
+\[
+\int\widetilde f(Z)\,dZ=\int f(X)\,dX.
+\]
+\end{lemme}
+
+Soit maintenant $\Gamma$ un réseau contenant $-\Id$. En écrivant
+$\Gamma=\bigcup_{i\in I}\gamma_i\Gamma'$ pour un certain ensemble fini $I$, avec $\Gamma'$ sous-groupe de $\Gamma$ sans autre élément de torsion que $-\Id$, il vient :
+\[
+\sum_{\substack{\gamma\in\Gamma\\ \|\gamma\|\le T}} f(\gamma X)
+=\sum_{i\in I}\sum_{\substack{\gamma\in\Gamma'\\ \|\gamma_i\gamma\|\le T}} f\circ\gamma_i(\gamma X).
+\]
+De plus, le quotient $P\Gamma'\backslash\PSL(2,\R)$ est le fibré unitaire tangent d'une surface hyperbolique de volume fini $UM'$. On note $\pi':U\mathbb H^2\to UM'$ la projection correspondante, $\mu'$ la mesure de Liouville normalisée sur $UM'$ et on associe à une fonction $f$ paire continue à support compact sur $\R^2\setminus\{0\}$ la fonction $\overline f$ sur $UM'$ donnée par
+\[
+\overline f(\pi' Z)=\sum_{\gamma\in\Gamma'}\widetilde f(\gamma Z).
+\]
+Si le support $K$ de la fonction $f$ est assez petit, les $\gamma\Psi(K)$, $\gamma\in\Gamma$, sont disjoints et on peut trouver $\varepsilon$ assez petit pour que les supports des fonctions $\widetilde f\circ\gamma$, $\gamma\in\Gamma$, soient aussi disjoints. Nous pouvons alors écrire, pour tout sous-ensemble fini $J\subset\Gamma'$, tout $X\in\R^2\setminus\{0\}$ :
+\[
+\sum_{\gamma\in J}f(\gamma X)
+=\int_{-\infty}^{+\infty}\overline f(\pi'\Psi(X)h_s)
+\sum_{\gamma\in J}\mathbf 1_{[s(\gamma,X)-\varepsilon,\,s(\gamma,X)+\varepsilon]}(s)\,ds,
+\]
+et
+\[
+\int \overline f\,d\mu'
+=\frac{1}{\vol(UM')}\int f(X)\,dX
+=\frac{1}{4c(\Gamma')}\int f(X)\,dX,
+\]
+d'après la définition de $c(\Gamma')$.
+
+Pour utiliser ces formules, nous devons trouver les valeurs de $s(\gamma,X)$ correspondant à $\|\gamma\|\le T$ ou à $\|\gamma_i\gamma\|\le T$.
+
+\begin{lemme}
+Avec les notations précédentes :
+\[
+|X|^2|\gamma X|^2s^2(\gamma,X)
+=\|\gamma\|^2-\frac{|X|^2}{|\gamma X|^2}-\frac{|\gamma X|^2}{|X|^2},
+\]
+et pour un $\gamma_0$ fixé, si $\frac1C\le |\gamma X|\le C$ pour un $C$ fixé :
+\[
+\|\gamma_0\gamma\|^2=|X|^2|\gamma_0\gamma X|^2s^2(\gamma,X)+O(|s(\gamma,X)|).
+\]
+\end{lemme}
+
+Choisissons alors une fonction $f$ continue positive, paire à support compact suffisamment petit sur $\R^2\setminus\{0\}$. En posant $g_i=f\circ\gamma_i$, nous avons à calculer
+$\sum_{\gamma\in\Gamma',\ \|\gamma_i\gamma\|\le T}g_i(\gamma X)$. Or :
+\[
+\sum_{\substack{\gamma\in\Gamma'\\ \|\gamma_i\gamma\|\le T}}g_i(\gamma X)
+=\int_{-\infty}^{+\infty}\overline{g_i}(\pi'\Psi(X)h_s)
+\sum_{\substack{\gamma\in\Gamma'\\ \|\gamma_i\gamma\|\le T}}
+\mathbf 1_{[s(\gamma,X)-\varepsilon,\,s(\gamma,X)+\varepsilon]}(s)\,ds.
+\]
+
+D'après le lemme 3, on peut trouver un réel positif $D$, dépendant uniquement du support de $g_i$, tel que pour $T$ assez grand, pour tout $\gamma\in\Gamma'$ tel que $\gamma X$ appartient au support de $g_i$, nous avons :
+\[
+|s(\gamma,X)|\le\frac{T-D}{|X|\,|\gamma_i\gamma X|}
+\Longrightarrow \|\gamma_i\gamma\|\le T
+\Longrightarrow
+|s(\gamma,X)|\le\frac{T+D}{|X|\,|\gamma_i\gamma X|}.
+\]
+Posons
+\[
+k(g_i)=\inf_{Y\in\supp g_i}|\gamma_iY|,
+\qquad
+K(g_i)=\sup_{Y\in\supp g_i}|\gamma_iY|.
+\]
+Nous pouvons alors écrire, en tenant compte du fait qu'il y a deux matrices, $\gamma$ et $-\gamma$, envoyant $\pm X$ sur $\pm\gamma X$ :
+\[
+2\int_{-\frac{T-D}{|X|K(g_i)}}^{\frac{T-D}{|X|K(g_i)}}
+\overline{g_i}(\pi'\Psi(X)h_s)\,ds
+\le
+\sum_{\substack{\gamma\in\Gamma'\\ \|\gamma_i\gamma\|\le T}}g_i(\gamma X)
+\le
+2\int_{-\frac{T+D}{|X|k(g_i)}}^{\frac{T+D}{|X|k(g_i)}}
+\overline{g_i}(\pi'\Psi(X)h_s)\,ds.
+\]
+
+Puisque l'orbite $\Gamma X$ n'est pas discrète dans $\R^2\setminus\{0\}$, l'orbite $\Gamma'X$ n'est pas non plus discrète dans $\R^2\setminus\{0\}$. Cela signifie que le point $\pi'\Psi(X)$ n'est pas sur une orbite fermée du flot horocyclique sur $UM'$. D'après le théorème de distribution uniforme de Dani, pour toute fonction continue $\overline g$ à support compact sur $UM'$,
+\[
+\lim_{T\to\infty}\frac1T\int_{-T}^{T}\overline g(\pi'\Psi(X)h_s)\,ds
+=2\int \overline g\,d\mu'.
+\]
+Nous obtenons, en prenant $T\to\infty$, et en décomposant $g_i$ en somme finie de fonctions continues paires de supports compacts de plus en plus petits,
+\[
+\lim_{T\to\infty}\frac1T
+\sum_{\substack{\gamma\in\Gamma'\\ \|\gamma_i\gamma\|\le T}}g_i(\gamma X)
+=\frac{1}{|X|c(\Gamma')}\int_{\R^2}\frac{g_i(Y)}{|\gamma_iY|}\,dY
+=\frac{1}{|X|c(\Gamma')}\int_{\R^2}\frac{f(Y)}{|Y|}\,dY,
+\]
+car $g_i=f\circ\gamma_i$ et l'application linéaire $\gamma_i$ préserve la mesure de Lebesgue sur $\R^2$. Finalement, nous avons :
+\[
+\lim_{T\to\infty}\frac1T
+\sum_{\substack{\gamma\in\Gamma\\ \|\gamma\|\le T}}f(\gamma X)
+=\frac{\card I}{|X|c(\Gamma')}\int_{\R^2}\frac{f(Y)}{|Y|}\,dY
+=\frac{1}{|X|c(\Gamma)}\int_{\R^2}\frac{f(Y)}{|Y|}\,dY.
+\]
+Ceci achève la démonstration du théorème 1 si le groupe $\Gamma$ contient $-\Id$. Sinon, on se ramène à ce cas en introduisant le groupe $\overline\Gamma=\pm\Gamma$.
+\hfill$\square$
+
+\begin{center}
+\textbf{Références bibliographiques}
+\end{center}
+
+\begin{enumerate}
+\item Dani S. R., On uniformly distributed orbits of certain horocycle flows, \emph{Ergod. Th. \& Dynam. Sys.} \textbf{2} (1982), 139--158.
+\item Eskin A., Counting problems and semisimple groups, \emph{Proc. of the ICM Berlin 1998}, Docum. Math. II, 1998, pp. 539--552.
+\item Eskin A., McMullen C., Mixing, counting and equidistribution in Lie Groups, \emph{Duke Math. J.} \textbf{71} (1993), 143--180.
+\end{enumerate}
+
+\end{document}
