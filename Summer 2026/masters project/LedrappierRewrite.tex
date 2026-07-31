@@ -1,0 +1,51 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb}
+\usepackage{tikz-cd, stackengine}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+% Commands:
+
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\pd}{\frac{\partial}{\partial x_j}}
+\newcommand{\px}{\frac{\partial}{\partial x}}
+\newcommand{\py}{\frac{\partial}{\partial y}}
+\newcommand{\pz}{\frac{\partial}{\partial z}}
+\newcommand{\pzb}{\frac{\partial}{\partial \bar{z}}}
+\newcommand{\cmt}[1]{\textcolor{blue}{[#1]}}
+\newcommand{\slr}{\operatorname{SL}(2,\mathbb{R})}
+\newcommand{\slz}{\operatorname{SL}(2,\mathbb{Z})}
+\newcommand{\uqd}{\mathcal{Q}^1}
+\newcommand{\vp}{\varphi}
+
+\begin{document}
+    \section{Introduction}
+    Ledrappier's 1999 paper \emph{Distribution des orbites des réseaux sur le plan réel} \cmt{ref} proves an ergodic theorem for averages of \(\slr\) orbits of real-valued functions. The goals of this document are twofold \emph{(i)} rewrite Ledrappier's paper in the language of Teichm\"uller theory, to better motivate and understand the result, and \emph{(ii)} to explicate terse elements of Ledrappier's proof.
+
+    The following notation will be used throughout
+    \begin{itemize}
+        \item \(\mathbb{T}^2\) will denote the (topological) torus
+        \item \(\mathbf{T_1}\) will denote the Teichm\"uller space of \(\mathbb{T}^2\) 
+        \item \(\Gamma\) will denote \(\slz\), the mapping class group of \(\mathbb{T}^2\)
+        \item \(\uqd\) will denote the space of unit quadratic differentials on \(\mathbb{T}^2\)
+        \item \(\mathcal{M}\) will denote the moduli space \(\mathbf{T_1}/\Gamma\)
+        \item Fix once and for all curves \(\alpha, \beta\) with homology classes giving a basis for \(\mathbb{T}^2\) and \(i(\alpha,\beta) = 1\).
+    \end{itemize}
+
+    \section{Teichm\"uller Theory for the Torus}
+    \begin{defn}
+        The Teichm\"uller space of the torus \(\mathbf{T_1}\) will be defined as the set of pairs \((S,\vp)\) where \(S\) is a Riemann surface, and \(\varphi: \mathbb{T}^2 \to S\) is an orientation preserving diffeomorphism, two pairs \((S_1,\vp_1),(S_2,\vp_2)\) will be identified if there is a biholomorphism \(I: S_1 \to S_2\), such that \(I\vp_1\) is homotopic to \(\vp_2\).
+    \end{defn}
+    In order to work with Teichmuller space, I will identify it with the space of abelian differentials of the form \(dx + \tau dy\) for \(\tau \in \mathbb{H}^2\). An abelian differential on \(S\) is a section of the holomorphic cotangent bundle \(K_S\), on the torus the transition functions are given by translation, \(z_\alpha = z_\beta + c\), thus the transition functions \(\frac{dz_\alpha}{dz_\beta}\) of \(K_S\) are constant, since the torus is compact any such section must be given by a constant function by the maximum principle. Now fix an abelian differential \(\omega\), we consider the period coordinates \((A,B) = \left(\int_{\varphi(\alpha)}\omega,\int_{\varphi(\beta)}\omega\right)\), the choice of \(\omega\) is only defined up to scaling, but we may normalize by replacing \(\omega\) with \(A^{-1}\omega\) to get period coordinates \(\left(1,\int_{\varphi(\beta)}\omega\right)\). Now considering the covering \(\mathbb{R}^2 \to S\), we get that up to homotopy \(\varphi(\alpha)\) corresponds to the deck transformation \((x,y) \mapsto (x+1,y)\), and similarly \(\varphi(\beta)\) to \((x,y) \mapsto (x,y+1)\), thus we get a unique representative \(\omega = dx + \tau dy\), for \(\tau = A^{-1}B\). To see that \(\tau \in \mathbb{H}^2\), we note that since \(\vp\) is orientation preserving the area form is taken to be positive so that
+    \begin{align*}
+        0 < \operatorname{Area}(S) = \int_{S} \frac{i}{2} \omega\wedge\bar{\omega} = \cmt{computation here}
+    \end{align*}
+\end{document}
