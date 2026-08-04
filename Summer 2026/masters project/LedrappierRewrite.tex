@@ -1,10 +1,9 @@
 \documentclass{article}
 
-\usepackage{amsmath, amssymb}
+\usepackage{amsmath, amssymb,mathrsfs}
 \usepackage{tikz-cd, stackengine}
 \usepackage{xcolor}
 \usepackage{enumitem}
-
 % Commands:
 
 \newtheorem{defn}{Definition}
@@ -27,6 +26,8 @@
 \newcommand{\vp}{\varphi}
 
 \begin{document}
+    \cmt{Dealt with the issue of how to identify eichmuller space with abelian differentials, and measured foliations with 1-forms by fixing once and for all a covering of the topological torus}
+
     \section{Introduction}
     Ledrappier's 1999 paper \emph{Distribution des orbites des réseaux sur le plan réel} \cmt{ref} proves an ergodic theorem for averages of \(\slr\) orbits of real-valued functions. The goals of this document are twofold \emph{(i)} rewrite Ledrappier's paper in the language of Teichm\"uller theory, to better motivate and understand the result, and \emph{(ii)} to explicate terse elements of Ledrappier's proof.
 
@@ -34,18 +35,88 @@
     \begin{itemize}
         \item \(\mathbb{T}^2\) will denote the (topological) torus
         \item \(\mathbf{T_1}\) will denote the Teichm\"uller space of \(\mathbb{T}^2\) 
-        \item \(\Gamma\) will denote \(\slz\), the mapping class group of \(\mathbb{T}^2\)
-        \item \(\uqd\) will denote the space of unit quadratic differentials on \(\mathbb{T}^2\)
+        \item \(\Gamma\) will denote the mapping class group of \(\mathbb{T}^2\)
+        \item \(\uqd\) will denote the space of unit quadratic differentials over \(\mathbf{T_1}\)
         \item \(\mathcal{M}\) will denote the moduli space \(\mathbf{T_1}/\Gamma\)
-        \item Fix once and for all curves \(\alpha, \beta\) with homology classes giving a basis for \(\mathbb{T}^2\) and \(i(\alpha,\beta) = 1\).
+        \item \(\mathscr{MF}\) will denote the space of measured foliations on \(\mathbb{T}^2\).
+        \item Fix once and for all curves \(\alpha, \beta\) with homology classes giving a basis for \(\mathbb{T}^2\) and \(i(\alpha,\beta) = 1\). Moreover, we may fix once and for all a covering map \(\mathbb{R}^2 \to \mathbb{T}^2\), with \((\alpha,\beta)\) corresponding to the ordered lattice generators \(((1,0),(0,1))\).
     \end{itemize}
 
     \section{Teichm\"uller Theory for the Torus}
     \begin{defn}
-        The Teichm\"uller space of the torus \(\mathbf{T_1}\) will be defined as the set of pairs \((S,\vp)\) where \(S\) is a Riemann surface, and \(\varphi: \mathbb{T}^2 \to S\) is an orientation preserving diffeomorphism, two pairs \((S_1,\vp_1),(S_2,\vp_2)\) will be identified if there is a biholomorphism \(I: S_1 \to S_2\), such that \(I\vp_1\) is homotopic to \(\vp_2\).
+        The Teichm\"uller space of the torus \(\mathbf{T_1}\) will be defined as the set of pairs \((S,\vp)\) where \(S\) is a torus with a flat metric, and \(\varphi: \mathbb{T}^2 \to S\) is an orientation preserving diffeomorphism, two pairs \((S_1,\vp_1),(S_2,\vp_2)\) will be identified if there is an isometry \(I: S_1 \to S_2\), such that \(I\vp_1\) is homotopic to \(\vp_2\). By the uniformization theorem we may equivelantly consider Riemann surfaces and markings associated by homotopically trivial biholomorphism.
     \end{defn}
-    In order to work with Teichmuller space, I will identify it with the space of abelian differentials of the form \(dx + \tau dy\) for \(\tau \in \mathbb{H}^2\). An abelian differential on \(S\) is a section of the holomorphic cotangent bundle \(K_S\), on the torus the transition functions are given by translation, \(z_\alpha = z_\beta + c\), thus the transition functions \(\frac{dz_\alpha}{dz_\beta}\) of \(K_S\) are constant, since the torus is compact any such section must be given by a constant function by the maximum principle. Now fix an abelian differential \(\omega\), we consider the period coordinates \((A,B) = \left(\int_{\varphi(\alpha)}\omega,\int_{\varphi(\beta)}\omega\right)\), the choice of \(\omega\) is only defined up to scaling, but we may normalize by replacing \(\omega\) with \(A^{-1}\omega\) to get period coordinates \(\left(1,\int_{\varphi(\beta)}\omega\right)\). Now considering the covering \(\mathbb{R}^2 \to S\), we get that up to homotopy \(\varphi(\alpha)\) corresponds to the deck transformation \((x,y) \mapsto (x+1,y)\), and similarly \(\varphi(\beta)\) to \((x,y) \mapsto (x,y+1)\), thus we get a unique representative \(\omega = dx + \tau dy\), for \(\tau = A^{-1}B\). To see that \(\tau \in \mathbb{H}^2\), we note that since \(\vp\) is orientation preserving the area form is taken to be positive so that
-    \begin{align*}
-        0 < \operatorname{Area}(S) = \int_{S} \frac{i}{2} \omega\wedge\bar{\omega} = \cmt{computation here}
-    \end{align*}
+    In order to work with Teichmuller space, I will identify it with the space of abelian differentials of the form \(dx + \tau dy\) for \(\tau \in \mathbb{H}\), I will do this by first identifying \(\mathbf{T_1}\) with representatives of the form \(\mathbb{C}/(\mathbb{Z} + \tau\mathbb{Z})\), then pulling back the flat structure on the torus, by using the fixed covering on \(\mathbb{T}\).
+    
+        Start with a point \((S,\varphi) \in \mathbf{T_1}\), then we get an ordered pair of \(\pi_1(S)\) generators from our marking \(\varphi_*(\alpha) \tand \varphi_*(\beta)\). Considering the covering map \(\mathbb{C} \to S\), we can consider \(A = 0\cdot \varphi_*(\alpha), B = 0\cdot \varphi_*(\beta)\) so that \(S\) is isometric to \(\mathbb{C}/(A\mathbb{Z} + B\mathbb{Z})\). Such an identification with lattices is only defined up to linear isometry in \(\mathbb{C}\), thus only up to rotation and dilation.
+        
+        Conversely, we may start with a flat torus \(S = \mathbb{C}/(A\mathbb{Z} + B\mathbb{Z})\), with \(\pi_1(S)\) generated by \(\alpha',\beta'\) with deck transformations giving \(A,B\) as above. There is a diffeomorphism \(\varphi: \mathbb{T}^2 \to S\) with \(\varphi_*: \alpha,\beta \mapsto \alpha',\beta'\), thus identifying \(\mathbb{C}/(A\mathbb{Z} + B\mathbb{Z})\) with a point in Teichm\"uller space. Isometries of lattices homotopic to the identity must be linear transformations acting trivially on \(H_1(S,\mathbb{Z})\), thus two marked lattices are identified with the same point in \(\mathbf{T_1}\) exactly when they differ by a rotation and dilation.
+
+        We can choose a unique representative of each set of lattices up to rotation and dilation by multiplying by complex number \(A^{-1}\), thus identifying our lattices with \(\mathbb{C}/(\mathbb{Z} + \tau \mathbb{Z})\), for \(\mathbb{Z} = A^{-1}B\). Since \(\pi_1(S)\) acts by translation it is orientation preserving, thus the orientation on the universal cover \(\mathbb{C}\) induces an orientation on \(S\), thus our marking \(\varphi\) is orientation preserving when the pair of homology classes \(\varphi_*[\alpha],\varphi_*[\beta]\) agrees with this induced orientation, this is exactly when \(A^{-1}B \in \mathbb{H}\).\footnote{The identification of \(\mathbf{T_1}\) with lattices follows roughly \cmt{ref FM}}
+
+        Given a point in \((S,\varphi) \in \mathbf{T_1}\), now identified with \((\mathbb{C}/(\mathbb{Z} + \tau \mathbb{Z}),\varphi')\), there is a canonical abelian differential given by \(dz\). Using our fixed covering \(\mathbb{R}^2 \to \mathbb{T}^2\), we find that \(\varphi'^*(dz) = dx + \tau dy\) our desired abelian differential. Moreover, this gives a natural identification \(\mathbf{T_1} \longleftrightarrow \mathbb{H}\).
+
+        \begin{defn}
+            A quadratic differential on a Riemann surface \(S\) is a section of the symmetric square of the holomorphic cotangent bundle \(T^{1,0} \otimes T^{1,0}\). For a quadratic differential \(q\), its norm is defined as \(\norm{q} = \int_S\abs{q}\), and the space of unit quadratic differentials on \(S\) is \(\mathcal{Q}^1(S)\) is the set of quadratic differentials with norm \(1\). We define \(\mathcal{Q}^1 = \set{(S,\varphi,q) \mid (S,\varphi) \in \mathbf{T_1}} \tand q \in \mathcal{Q}^1(S)\).
+        \end{defn}
+
+        Consider a point \((S,\varphi) \in \mathbf{T_1}\), the coordinate charts on \(S\) are given by translation, thus for any two coordinates we have some constant so that \(z_\alpha = z_\beta + c\). A holomorphic quadratic differential has a local expression \(\phi_\alpha(z_\alpha)(dz_\alpha)^2\), and the transition laws for \(T^{1,0} \otimes T^{1,0}\) are \(\phi_\beta(z_\beta) = \phi_\alpha(z_\alpha)\left(\frac{dz_\alpha}{dz_\beta}\right)^2\), thus \(\phi_\alpha(z_\alpha) = \phi_\beta(z_\beta)\) and since \(S\) is compact the maximum principle implies \(\phi \in \mathbb{C}\) is a constant. Now for \(\phi (dz)^2\) to be a unit quadratic differential, we require \(\abs{\phi} = \Im(\tau)^{-1}\) so that
+        \begin{align*}
+            1 = \int_S \abs{q} = \abs{\phi}\int_S \abs{dz}^2 = \abs{\phi}\operatorname{Area}(S) = \abs{\phi}\Im(\tau)
+        \end{align*}
+        Identifying \((S,\varphi)\) with its torus representative as above, and using our fixed covering for \(\mathbb{T}^2\), we can associate each quadratic differential \(q\) to \(\varphi^*(q) = \frac{e^{i\theta}}{\Im(\tau)}(dx + \tau dy)^2\), note that this gives a natural identification of \(\mathcal{Q}^1 \longleftrightarrow T^1 \mathbb{H}\) since each quadratic differential is uniquely determined by \((\theta,\varphi)\). Since quadratic differentials on the torus are nonvanishing, we may take a globally\footnote{A globally well defined square root is not necessary, see \cmt{ref FM} for a treatment generalizing to vanishing quadratic differentials and thus higher genus.} well defined square root function, which allows us to associate 1-forms to \(q\) by considering \(\Re(\sqrt{q}),\Im(\sqrt{q})\), where \(\sqrt{q} = \sqrt{\phi}dz\). These naturally give rise to a foliation of the torus by considering their level sets, as well as a isotopy invariant measure for transverse curves by integrating their variation.
+
+        \begin{defn}
+            A measured foliation of the torus is a foliation \(\mathcal{F}\) of \(\mathbb{T}^2\) into curves, equipped with a transverse measure \(\mu\) on curves transverse to \(\mathcal{F}\) satisfying \(\mu\) is a locally finite borel measure on transverse curves and if \(I\) is an isotopy of curves such that \(I([a,b],t)\) is transverse to \(\mathcal{F}\) for all \(t\), then \(\mu(I([a,b],-))\) is constant. We identify two measured foliations if they are related by a homotopy of the torus.
+        \end{defn}
+
+        Measured foliations on \(\mathbb{T}^2\) may be associated with \((H^1(\mathbb{T}^2;\mathbb{R}) \setminus \set{0}/\pm) \cong (\mathbb{R}^2 \setminus \set{0})/\pm\). To see this, we take a basis \(\eta, \xi\) for \(H^1(\mathbb{T}^2;\mathbb{R})\) satsfying
+        \begin{align*}
+            \int_\alpha \eta = 1 \quad \int_\beta \eta = 0 \quad \int_\alpha \xi = 0 \quad \int_\beta \xi = 1
+        \end{align*}
+        Then we associate \(\mathcal{F}\) to the unique (up to sign) cohomology class \(\omega\) satisfying 
+        \begin{align*}
+            i(\mathcal{F},n \alpha + m \beta) = \abs{\int_{n \alpha + m\beta}\omega}
+        \end{align*}
+        writing \(\omega\) in our basis, we associate \(\mathcal{F}\) to \(\abs{b\eta + a\xi}\) for some \(a,b \in \mathbb{R}\), similarly any nonzero cohomology class considered up to sign recovers a measured foliation \((\mathcal{F},\mu)\) since by definition the leaves of our foliation are given by \(\ker |\omega|\), with transverse measure \(\abs{\omega}\). Using our fixed covering \(\mathbb{R}^2 \to \mathbb{T}^2\), we identify \((\eta,\xi) \longleftrightarrow (dx,dy)\), so that compatible with our notion of pullback for abelian and quadratic differentials each measured foliation can be written as \(bdx + ady\) for some \(a,b \in \mathbb{R}\). We also fix an isomorphism of \(\mathscr{MF} = (H^1(\mathbb{T}^2;\mathbb{R}) \setminus \set{0}/\pm) \text{ with } (\mathbb{R}^2 \setminus \set{0})/\pm\), this is done by taking \((a,b) \mapsto b\eta + a\xi\), which we identify with \(bdx + ady\), we will see later that this convention gives \(\operatorname{SL}(2,\mathbb{R})\) equivariance and thus is the correct convention to agree with Ledrappier's paper \cmt{ref
+        }.
+
+        \begin{defn}
+            The mapping class group of the torus is the set of orientation preserving diffeomorphisms \(\mathbb{T}^2 \to \mathbb{T}^2\) with the relation \(\gamma \sim \gamma'\) when they are homotopic. We denote the mapping class group of the torus as \(\Gamma\).
+        \end{defn}
+
+        The mapping class group acts naturally on both \(\mathbf{T_1} \tand \mathscr{MF}\), the former can be described explicitly as \(\gamma: (S,\varphi) \mapsto (\gamma(S),\gamma \varphi)\) and the latter as \((\mathcal{F},\mu) \mapsto (\gamma(\mathcal{F}),\gamma_*\mu)\), where for a transverse curve \(c\), \(\gamma_*\mu(c) = \mu(\gamma^{-1}(c))\) is the pushforward measure. \cmt{Define the action on unit quadratic differentials here}. In order to work with measured foliations and relate them to unit quadratic differentials, we would like to use the cohomological description, thus we would like to compute explicitly the \(\Gamma\) action on \(H^1(\mathbb{T}^2;\mathbb{R})\).
+
+        Since mapping classes on the torus are defined up to homotopy, a mapping class may be written as a map on \(H_1(\mathbb{T}^2;\mathbb{Z})\), since these are invertible and orientation preserving, the resulting matrix lies in \(\slz\). Mapping class groups are in general generated by Dehn twists \cmt{ref Martelli 6.5.4}. A Dehn twist about a curve \(c\) is defined as taking a tubular neighborhood \(D\) with a (orientation preserving) diffeomorphism to \(r: D \to S^1 \times [-1,1]\), and a smooth bump function \(\chi: [-1,1] \mapsto [0,1]\) which is zero near \(-1\) and one near \(1\), then defining \(\gamma: \mathbb{T}^2 \to \mathbb{T}^2\) via \(x \mapsto r^{-1}(e^{2\pi i \chi} r(x))\) on \(D\) and identity elsewhere. This has the following pictoral description
+
+        \cmt{Insert image here}
+
+        From which we may identify the Dehn twist about \(\alpha\) as the matrix \(\begin{pmatrix}
+            
+        \end{pmatrix}\) and the dehn twist about \(\beta\) as \(\begin{pmatrix}
+            
+        \end{pmatrix}\), since these two matrices generate \(\slz\) we have thus identified \(\Gamma\) with \(\slz\).
+
+        Now, given a matrix \(g \in \slz\), which is associated to \(\gamma \in \Gamma\), then \(\gamma\) acts on \(H^1(\mathbb{T}^2;\mathbb{R})\) via \(g^{\operatorname{T}}\), which is seen from the following duality relation, which is well defined since integration is well defined on homology classes by Cauchy's theorem.
+        \begin{align*}
+            \int_c \gamma^*\omega = \int_{S^1} c^*\gamma^*\omega = \int_{S^1} (\gamma c)^*\omega = \int_{\gamma_* c}
+        \end{align*}
+
+        \section{Statement of Theorem}
+        
+
+        \section{Proof of Theorem}
+
+        \cmt{Possibly include a section for topological considerations?}
+
+        \section{References}
+
+
+
+    %     \item Now consider \((S,\varphi) \in \mathbf{T_1}\), an abelian differential on \(S\) is a section of the holomorphic cotangent bundle \(T^{1,0}\), on the torus the transition functions are given by translation, \(z_\alpha = z_\beta + c\), thus the transition functions \(\frac{dz_\alpha}{dz_\beta}\) of \(T^{1,0}\) are constant, since the torus is compact any such sections must differ by a constant multiple by the maximum principle. Now fix an abelian differential \(\omega\) consistent with the orientation of \(S\) (i.e. \(\frac{i}{2}\omega\wedge\overline{\omega}\) defines a positive area form), we consider the period coordinates \((A,B) = \left(\int_{\varphi_*(\alpha)}\omega,\int_{\varphi_*(\beta)}\omega\right)\), the choice of \(\omega\) is only defined up to scaling by a complex number, but we may normalize by replacing \(\omega\) with \(A^{-1}\omega\) to get period coordinates \(\left(1,\tau\right)\) for \(\tau = A^{-1}B\). Since we consider \(S\) as positively oriented we get \(\tau \in \mathbb{H}\) by the following computation:
+    %     \begin{align*}
+    %         0 < \operatorname{Area}(S) = \frac{i}{2}\int_S \omega\wedge \overline{\omega} = \cmt{computation here}
+    %     \end{align*}
+    %     Now we define \(F: S \to \mathbb{C}/(\mathbb{Z} + \tau \mathbb{Z})\) by fixing \(p \in S\) to be the basepoint of \(\pi_1(S)\), and defining \(F(q) = \int_p^q \omega\), then \(F\) is a local biholomorphism since \(dF = \omega\), and \(F_*(\varphi_*\alpha), F_*(\varphi_*\beta)\) are the lattice generators for the torus, thus \(F\) is a covering map of degree \(1\) and a biholomorphism.
+    % \end{enumerate}
 \end{document}
