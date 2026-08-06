@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1785872635.32943 "/Users/tighe/School_Work/UT-hw/Summer 2026/masters project/LedrappierRewrite.tex" "LedrappierRewrite.pdf" "LedrappierRewrite" 1785872635.80078 0
-  "/Users/tighe/School_Work/UT-hw/Summer 2026/masters project/LedrappierRewrite.tex" 1785872635.14618 15024 63a97c73c0579f0055dc5578595a7c09 ""
+["pdflatex"] 1786034951.02731 "/Users/tighe/School_Work/UT-hw/Summer 2026/masters project/LedrappierRewrite.tex" "LedrappierRewrite.pdf" "LedrappierRewrite" 1786034951.51753 0
+  "/Users/tighe/School_Work/UT-hw/Summer 2026/masters project/LedrappierRewrite.tex" 1786034950.49454 22244 50d57c289d094277e2e10dc96b286d16 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -154,8 +154,8 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1757546981 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "LedrappierRewrite.aux" 1785872635.74421 564 a72df451254c8ebae0fd109c35435b48 "pdflatex"
-  "LedrappierRewrite.tex" 1785872635.14618 15024 63a97c73c0579f0055dc5578595a7c09 ""
+  "LedrappierRewrite.aux" 1786034951.45616 684 87f6cb700e0c4edda8ff7af3ca3eb4cd "pdflatex"
+  "LedrappierRewrite.tex" 1786034950.49454 22244 50d57c289d094277e2e10dc96b286d16 ""
   (generated)
   "LedrappierRewrite.aux"
   "LedrappierRewrite.log"

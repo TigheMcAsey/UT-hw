@@ -64,13 +64,16 @@
         \begin{align*}
             1 = \int_S \abs{q} = \abs{\phi}\int_S \abs{dz}^2 = \abs{\phi}\operatorname{Area}(S) = \abs{\phi}\Im(\tau)
         \end{align*}
-        Identifying \((S,\varphi)\) with its torus representative as above, and using our fixed covering for \(\mathbb{T}^2\), we can associate each quadratic differential \(q\) to \(\varphi^*(q) = \frac{e^{i\theta}}{\Im(\tau)}(dx + \tau dy)^2\), note that this gives a natural identification of \(\mathcal{Q}^1 \longleftrightarrow T^1 \mathbb{H}\) since each quadratic differential is uniquely determined by \((\theta,\varphi)\). Since quadratic differentials on the torus are nonvanishing, we may take a globally\footnote{A globally well defined square root is not necessary, see \cmt{ref FM} for a treatment generalizing to vanishing quadratic differentials and thus higher genus.} well defined square root function, which allows us to associate 1-forms to \(q\) by considering \(\Re(\sqrt{q}),\Im(\sqrt{q})\), where \(\sqrt{q} = \sqrt{\phi}dz\). These naturally give rise to a foliation of the torus by considering their level sets, as well as a isotopy invariant measure for transverse curves by integrating their variation.
+        Identifying \((S,\varphi)\) with its torus representative as above, and using our fixed covering for \(\mathbb{T}^2\), we can associate each quadratic differential \(q\) to \(\varphi^*(q) = \frac{e^{i\theta}}{\Im(\tau)}(dx + \tau dy)^2\), note that this gives a natural identification of \(\mathcal{Q}^1 \longleftrightarrow T^1 \mathbb{H}\) since each quadratic differential is uniquely determined by \((\theta,\varphi)\). Since quadratic differentials on the torus are nonvanishing, we may take a locally well defined square root function, which allows us to associate 1-forms to \(q\) by considering \(\Re(\sqrt{q}),\Im(\sqrt{q})\), where \(\sqrt{q} = \sqrt{\phi}dz\). These naturally give rise to a foliation of the torus by considering their level sets, as well as a isotopy invariant measure for transverse curves by integrating their variation.
 
         \begin{defn}
             A measured foliation of the torus is a foliation \(\mathcal{F}\) of \(\mathbb{T}^2\) into curves, equipped with a transverse measure \(\mu\) on curves transverse to \(\mathcal{F}\) satisfying \(\mu\) is a locally finite borel measure on transverse curves and if \(I\) is an isotopy of curves such that \(I([a,b],t)\) is transverse to \(\mathcal{F}\) for all \(t\), then \(\mu(I([a,b],-))\) is constant. We identify two measured foliations if they are related by a homotopy of the torus.
         \end{defn}
+        \begin{defn}
+            We can define the space of projectivized measured foliations \(\mathbb{P}\mathscr{MF}\) as \(\mathscr{MF}/\mathbb{R}^\times\) where \(\mathbb{R}^\times\) acts via \(\lambda\cdot(\mathcal{F},\mu) = (\mathcal{F},\lambda\mu)\)
+        \end{defn}
 
-        Measured foliations on \(\mathbb{T}^2\) may be associated with \((H^1(\mathbb{T}^2;\mathbb{R}) \setminus \set{0}/\pm) \cong (\mathbb{R}^2 \setminus \set{0})/\pm\). To see this, we take a basis \(\eta, \xi\) for \(H^1(\mathbb{T}^2;\mathbb{R})\) satsfying
+        Measured foliations on \(\mathbb{T}^2\) may be associated with \((H^1(\mathbb{T}^2;\mathbb{R}) \setminus \set{0}/\pm) \cong \mathbb{RP}^1 \times \mathbb{R}_{>0}\). To see this, we take a basis \(\eta, \xi\) for \(H^1(\mathbb{T}^2;\mathbb{R})\) satsfying
         \begin{align*}
             \int_\alpha \eta = 1 \quad \int_\beta \eta = 0 \quad \int_\alpha \xi = 0 \quad \int_\beta \xi = 1
         \end{align*}
@@ -78,32 +81,81 @@
         \begin{align*}
             i(\mathcal{F},n \alpha + m \beta) = \abs{\int_{n \alpha + m\beta}\omega}
         \end{align*}
-        writing \(\omega\) in our basis, we associate \(\mathcal{F}\) to \(\abs{b\eta + a\xi}\) for some \(a,b \in \mathbb{R}\), similarly any nonzero cohomology class considered up to sign recovers a measured foliation \((\mathcal{F},\mu)\) since by definition the leaves of our foliation are given by \(\ker |\omega|\), with transverse measure \(\abs{\omega}\). Using our fixed covering \(\mathbb{R}^2 \to \mathbb{T}^2\), we identify \((\eta,\xi) \longleftrightarrow (dx,dy)\), so that compatible with our notion of pullback for abelian and quadratic differentials each measured foliation can be written as \(bdx + ady\) for some \(a,b \in \mathbb{R}\). We also fix an isomorphism of \(\mathscr{MF} = (H^1(\mathbb{T}^2;\mathbb{R}) \setminus \set{0}/\pm) \text{ with } (\mathbb{R}^2 \setminus \set{0})/\pm\), this is done by taking \((a,b) \mapsto b\eta + a\xi\), which we identify with \(bdx + ady\), we will see later that this convention gives \(\operatorname{SL}(2,\mathbb{R})\) equivariance and thus is the correct convention to agree with Ledrappier's paper \cmt{ref
-        }.
+        writing \(\omega\) in our basis, we associate \(\mathcal{F}\) to \(\abs{b\eta + a\xi}\) for some \(a,b \in \mathbb{R}\), similarly any nonzero cohomology class considered up to sign recovers a measured foliation \((\mathcal{F},\mu)\) since by definition the leaves of our foliation are given by \(\ker |\omega|\), with transverse measure \(\abs{\omega}\). Using our fixed covering \(\mathbb{R}^2 \to \mathbb{T}^2\), we identify \((\eta,\xi) \longleftrightarrow (dx,dy)\), so that compatible with our notion of pullback for abelian and quadratic differentials each measured foliation can be written as \(bdx + ady\) for some \(a,b \in \mathbb{R}\). We also fix an isomorphism of \(\mathscr{MF} = (H^1(\mathbb{T}^2;\mathbb{R}) \setminus \set{0}/\pm) \text{ with } (\mathbb{RP}^1 \times \mathbb{R}_{>0})\), this is done by taking \((a,b) \mapsto b\eta + a\xi\), which we identify with \(bdx + ady\), we will see later that this convention gives \(\operatorname{SL}(2,\mathbb{R})\) equivariance and thus is the correct convention to agree with Ledrappier's paper \cmt{ref
+        }. Under this identification for \(X \in \mathscr{MF}\) we find \([X] \in \mathbb{P}\mathscr{MF}\) is the projection to the \(\mathbb{RP}^1\) coordinate.
 
         \begin{defn}
             The mapping class group of the torus is the set of orientation preserving diffeomorphisms \(\mathbb{T}^2 \to \mathbb{T}^2\) with the relation \(\gamma \sim \gamma'\) when they are homotopic. We denote the mapping class group of the torus as \(\Gamma\).
         \end{defn}
 
-        The mapping class group acts naturally on both \(\mathbf{T_1} \tand \mathscr{MF}\), the former can be described explicitly as \(\gamma: (S,\varphi) \mapsto (\gamma(S),\gamma \varphi)\) and the latter as \((\mathcal{F},\mu) \mapsto (\gamma(\mathcal{F}),\gamma_*\mu)\), where for a transverse curve \(c\), \(\gamma_*\mu(c) = \mu(\gamma^{-1}(c))\) is the pushforward measure. \cmt{Define the action on unit quadratic differentials here}. In order to work with measured foliations and relate them to unit quadratic differentials, we would like to use the cohomological description, thus we would like to compute explicitly the \(\Gamma\) action on \(H^1(\mathbb{T}^2;\mathbb{R})\).
+        The mapping class group acts naturally on \(\mathbf{T_1}, \mathscr{MF}, \tand \mathcal{Q}^1\), these actions are respectively described as \(\gamma: (S,\varphi) \mapsto (\gamma(S),\gamma \varphi)\) and the latter as \((\mathcal{F},\mu) \mapsto (\gamma(\mathcal{F}),\gamma_*\mu)\), where for a transverse curve \(c\), \(\gamma_*\mu(c) = \mu(\gamma^{-1}(c))\) is the pushforward measure, and finally for a quadratic differential \(q = \phi(dz)^2\) over a surface \(S\in \mathbf{T_1}\) we simply pullback the differential \(((S,\varphi),q) \mapsto (\gamma\cdot (S,\varphi),\phi(\gamma^*dz)^2)\). In order to work with measured foliations and relate them to unit quadratic differentials, we would like to use the cohomological description, thus we would like to compute explicitly the \(\Gamma\) action on \(H^1(\mathbb{T}^2;\mathbb{R})\).
 
         Since mapping classes on the torus are defined up to homotopy, a mapping class may be written as a map on \(H_1(\mathbb{T}^2;\mathbb{Z})\), since these are invertible and orientation preserving, the resulting matrix lies in \(\slz\). Mapping class groups are in general generated by Dehn twists \cmt{ref Martelli 6.5.4}. A Dehn twist about a curve \(c\) is defined as taking a tubular neighborhood \(D\) with a (orientation preserving) diffeomorphism to \(r: D \to S^1 \times [-1,1]\), and a smooth bump function \(\chi: [-1,1] \mapsto [0,1]\) which is zero near \(-1\) and one near \(1\), then defining \(\gamma: \mathbb{T}^2 \to \mathbb{T}^2\) via \(x \mapsto r^{-1}(e^{2\pi i \chi} r(x))\) on \(D\) and identity elsewhere. This has the following pictoral description
 
         \cmt{Insert image here}
 
         From which we may identify the Dehn twist about \(\alpha\) as the matrix \(\begin{pmatrix}
-            
+            1 & -1 \\ 0 & 1
         \end{pmatrix}\) and the dehn twist about \(\beta\) as \(\begin{pmatrix}
-            
+            1 & 0 \\ 1 & 1
         \end{pmatrix}\), since these two matrices generate \(\slz\) we have thus identified \(\Gamma\) with \(\slz\).
 
-        Now, given a matrix \(g \in \slz\), which is associated to \(\gamma \in \Gamma\), then \(\gamma\) acts on \(H^1(\mathbb{T}^2;\mathbb{R})\) via \(g^{\operatorname{T}}\), which is seen from the following duality relation, which is well defined since integration is well defined on homology classes by Cauchy's theorem.
+        Now, given a matrix \(g \in \slz\), which is associated to \(\gamma \in \Gamma\), then \(\gamma\) acts on \(H^1(\mathbb{T}^2;\mathbb{R})\) via \(g^{\operatorname{T}}\), which is seen from the following duality relation, which is well defined since integration is defined up to homology classes by Cauchy's theorem.
         \begin{align*}
-            \int_c \gamma^*\omega = \int_{S^1} c^*\gamma^*\omega = \int_{S^1} (\gamma c)^*\omega = \int_{\gamma_* c}
+            \int_c \gamma^*\omega = \int_{S^1} c^*\gamma^*\omega = \int_{S^1} (\gamma c)^*\omega = \int_{\gamma_* c} \omega
         \end{align*}
+        Since we have associated both \(\mathbf{T_1}\) and \(\mathscr{MF}\) to cohomology classes, this definition suffices to describe both mapping class group actions since the \(\mathbf{T_1}\) action takes \(\varphi^*dz \mapsto \varphi^*\gamma^*dz\), agreement for measured foliations is a consequence of the duality relation. The pullback of cohomology classes agrees with taking the pullback of the quadratic differential by definition. \cmt{Should show this induces mobius transform on \(\mathbb{H}\)}
+
+        \section{Teichmuller Metric and Dilations}
+        \cmt{add some exposition here}
+        \begin{defn}
+            Given \(q \in \mathcal{Q}^1\) lying above \((S,\varphi) \in \mathbf{T_1}\) we say that local coordinates \((x,y)\) are natural coordinates when the horizontal and vertical foliations are given by \(\abs{dy}\) and \(\abs{dx}\) respectively.
+        \end{defn}
+        Existence of natural coordinates on the torus is obvious, since given the lattice presentation of a torus, and \(q = \phi(dz)^2\) we simply need to multiply the lattice coordinates by \(\phi^{-\frac12}\) since our differential has no zeroes we can take such a well defined branch of the square root function. This allows us to define Teichm\"uller mappings, which are mappings that shear a surface along a pair of foliations.
+        \begin{defn}
+            A map \(h: S \to S'\) of Riemann surfaces is called Teichm\"uller when there are quadratic differentials \(q, q'\) on \(S,S'\) respectively such that for some \(K \in \mathbb{R}_{>0}\) there are natural coordinates \((x,y)\) near any point \(p\) and \((x',y')\) near \(p'\) such that
+            \begin{align*}
+                h(x + iy) = \sqrt{K}x' + \frac{i}{\sqrt{K}}y'
+            \end{align*}
+            Such a map is said to have dilation \(K\).
+        \end{defn}
+        By Teichm\"uller's theorem \cmt{ref FM} every homotopy class of maps has a unique Teichm\"uller mapping, given two \((S,\varphi),(S',\varphi') \in \mathbf{T_1}\) the homotopy class is always taken to be the change of markings \(\varphi'\varphi^{-1}\). This allows us to define a distance function on Teichm\"uller space, in terms of the dilation of a Teichm\"uller mapping between the marked surfaces.
+        \begin{defn}
+            The Teichm\"uller distance between two surfaces is defined as \[d_{\operatorname{Teich}}(S,S') = \frac12 \log K\]
+            Where \(K\) is the dilation of a Teichm\"uller map in the homotopy class of the change of markings.
+        \end{defn}
+        The Teichm\"uller distance gives a complete metric on \(\mathbf{T_1}\) and the geodesics are in bijection with \(\mathcal{Q}^1\), this is defined as taking \(q \in \mathcal{Q}^1\) with natural coordinates \((x,y)\), then the Teichmuller geodesic \(c(t)\) is given by taking the unit quadratic differential with natural coordinates \((t^{-1}x,ty)\). \cmt{ref FM}. Our goal is to understand the distribution of mapping class group orbits under the horocycle flow, which is related to the amount of shear a mapping class group element applies. Thus we will measure the size of a mapping class group element by the amount of shearing it applies to a surface
+        \begin{defn}
+            For \(\gamma \in \Gamma\) we define \(K_{\gamma}\) to be the dilation of the Teichm\"uller map \(h: S \to \gamma(S)\) for \((S,\varphi) \in \mathbf{T_1}\). This is well defined since \(\Gamma\) acts on \((\mathbf{T_1},d_{\operatorname{Teich}})\) by isometry which is immediate since the Teichm\"uller map is now between coordinate charts composed with the same biholomorphism.
+        \end{defn}
+
+        Finally we define a section from \(\mathscr{MF}\) to \(\mathcal{Q}^1\), using our fixed covering of \(\mathbb{T}^2\) as a basepoint, then for \(\mathcal{F} \in \mathscr{MF}\) we will find that there is a unique \(\mathcal{F}'\) with \([\mathcal{F}'] = [\mathcal{F}] \in \mathbb{P}\mathscr{MF}\) so that \(\mathcal{F}'\) is the horizontal foliation for some \(q \in \mathcal{Q}^1\) lying above \(dz\). Thus we can recover a point in \(\mathcal{Q}^1\) by travelling along the Teichm\"uller line associated to \(q\) until we get a quadratic differential with horizontal foliation \(\mathcal{F}\). As discussed previously each quadratic differential is uniquely associated to one of the form \(\frac{e^{i\theta}}{\Im\tau}(dx + \tau dy)^2\), thus fixing \(\tau = i\) gives
+        \begin{align*}
+            \Im(\sqrt{q}) &= \sin(\theta/2)dx + \cos(\theta/2)dy\\
+            \Re(\sqrt{q}) &= \cos(\theta/2)dx - \sin(\theta/2)dy
+        \end{align*}
+        Thus for the measured foliation associated to \(X = (a,b)\), we consider \(q \in \mathcal{Q}^1\) with \(\mathcal{F}\) with horizontal foliation \(\norm{X}^{-1}(bdx + ady)\) and vertical foliation \(\norm{X}^{-1}(adx - bdy)\), then shearing gives us a quadratic differential \(q\) with horizontal and vertical foliations given respectively by \(bdx + ady\) and \(\norm{X}^{-2}(adx - bdy)\). So that the resulting \(q \in \mathcal{Q}^1\) satisfies
+        \begin{align*}
+            \sqrt{q} = (a\norm{X}^{-2} + ib)\left(dx + \frac{ai - \norm{X}^{-2}b}{bi + \norm{X}^{-2}a}dy\right)
+        \end{align*}
+        \begin{defn}
+            Written explicitly we get
+            \begin{align*}
+                &\Psi: \mathbb{RP}^1 \times \mathbb{R}_{>0} \to \mathcal{Q}^1 \\
+                &(a,b) \mapsto (a\norm{X}^{-2} + ib)^2\left(dx + \frac{ai - \norm{X}^{-2}b}{bi + \norm{X}^{-2}a}dy\right)^2
+            \end{align*}
+        \end{defn}
+        The last preliminary notion to understand is the Teichm\"uller horocycle flow, however it will be far more illustrative to understand this as the the unipotent component of the \(\slr\) action on \(\mathcal{Q}^1\). Let \(g \in \slr\), then the action of \(g\) on \(\mathcal{Q}^1\) is simply the matrix action on the natural coordinates \cmt{ref-- defined as in Forni's chapter 8 of dynamical systems handbook vol2}. Let \((x',y')\) be natural coordinates for quadratic differential \(q\), then in order to keep conventions consistent, we take the action on natural coordinates as \(g\begin{pmatrix}
+            y' \\ x'
+        \end{pmatrix}\), thus the action on cohomology classes is given by the pullback, so that the action is given explicitly as
+        \begin{align*}
+            \begin{pmatrix} \Im\sqrt{g\cdot q} \\ \Re\sqrt{g\cdot q} \end{pmatrix} = g^{\operatorname{T}}\begin{pmatrix} \Im\sqrt{q} \\ \Re\sqrt{q} \end{pmatrix}
+        \end{align*}
+        The Teichm\"uller unipotent flow is the action of the unipotent subgroup \(\set{h_s = \begin{pmatrix} 1 & s \\ 0 & 1 \end{pmatrix}\mid s \in \mathbb{R}}\)
+        
 
         \section{Statement of Theorem}
-        
+        Let \(f \in C_c(\mathbb{RP}^1 \times \mathbb{R}_{>0})\), and suppose that \([X] \in \mathbb{RP}^1\) has irrational slope, then
 
         \section{Proof of Theorem}
 
