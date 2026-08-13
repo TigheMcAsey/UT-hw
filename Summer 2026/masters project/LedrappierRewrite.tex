@@ -1,6 +1,6 @@
 \documentclass{article}
 
-\usepackage{amsmath, amssymb,mathrsfs}
+\usepackage{amsmath, amssymb,mathrsfs, amsthm}
 \usepackage{tikz-cd, stackengine}
 \usepackage{xcolor}
 \usepackage{enumitem}
@@ -8,7 +8,8 @@
 
 \newtheorem{defn}{Definition}
 \newtheorem{prop}{Proposition}
-\newcommand{\set}[1]{\{#1\}}
+\newtheorem{lemma}{Lemma}
+\newcommand{\set}[1]{\left\{#1\right\}}
 \newcommand{\gen}[1]{\langle#1\rangle}
 \newcommand{\abs}[1]{\left\vert#1\right\vert}
 \newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
@@ -26,7 +27,6 @@
 \newcommand{\vp}{\varphi}
 
 \begin{document}
-    \cmt{Dealt with the issue of how to identify eichmuller space with abelian differentials, and measured foliations with 1-forms by fixing once and for all a covering of the topological torus}
 
     \section{Introduction}
     Ledrappier's 1999 paper \emph{Distribution des orbites des réseaux sur le plan réel} \cmt{ref} proves an ergodic theorem for averages of \(\slr\) orbits of real-valued functions. The goals of this document are twofold \emph{(i)} rewrite Ledrappier's paper in the language of Teichm\"uller theory, to better motivate and understand the result, and \emph{(ii)} to explicate terse elements of Ledrappier's proof.
@@ -37,7 +37,6 @@
         \item \(\mathbf{T_1}\) will denote the Teichm\"uller space of \(\mathbb{T}^2\) 
         \item \(\Gamma\) will denote the mapping class group of \(\mathbb{T}^2\)
         \item \(\uqd\) will denote the space of unit quadratic differentials over \(\mathbf{T_1}\)
-        \item \(\mathcal{M}\) will denote the moduli space \(\mathbf{T_1}/\Gamma\)
         \item \(\mathscr{MF}\) will denote the space of measured foliations on \(\mathbb{T}^2\).
         \item Fix once and for all curves \(\alpha, \beta\) with homology classes giving a basis for \(\mathbb{T}^2\) and \(i(\alpha,\beta) = 1\). Moreover, we may fix once and for all a covering map \(\mathbb{R}^2 \to \mathbb{T}^2\), with \((\alpha,\beta)\) corresponding to the ordered lattice generators \(((1,0),(0,1))\).
     \end{itemize}
@@ -82,7 +81,7 @@
             i(\mathcal{F},n \alpha + m \beta) = \abs{\int_{n \alpha + m\beta}\omega}
         \end{align*}
         writing \(\omega\) in our basis, we associate \(\mathcal{F}\) to \(\abs{b\eta + a\xi}\) for some \(a,b \in \mathbb{R}\), similarly any nonzero cohomology class considered up to sign recovers a measured foliation \((\mathcal{F},\mu)\) since by definition the leaves of our foliation are given by \(\ker |\omega|\), with transverse measure \(\abs{\omega}\). Using our fixed covering \(\mathbb{R}^2 \to \mathbb{T}^2\), we identify \((\eta,\xi) \longleftrightarrow (dx,dy)\), so that compatible with our notion of pullback for abelian and quadratic differentials each measured foliation can be written as \(bdx + ady\) for some \(a,b \in \mathbb{R}\). We also fix an isomorphism of \(\mathscr{MF} = (H^1(\mathbb{T}^2;\mathbb{R}) \setminus \set{0}/\pm) \text{ with } (\mathbb{RP}^1 \times \mathbb{R}_{>0})\), this is done by taking \((a,b) \mapsto b\eta + a\xi\), which we identify with \(bdx + ady\), we will see later that this convention gives \(\operatorname{SL}(2,\mathbb{R})\) equivariance and thus is the correct convention to agree with Ledrappier's paper \cmt{ref
-        }. Under this identification for \(X \in \mathscr{MF}\) we find \([X] \in \mathbb{P}\mathscr{MF}\) is the projection to the \(\mathbb{RP}^1\) coordinate.
+        }. Under this identification for \(X \in \mathscr{MF}\) we find \([X] \in \mathbb{P}\mathscr{MF}\) is the projection to the \(\mathbb{RP}^1\) coordinate. \cmt{add more detail here about notation and boundary of Teichmuller space}
 
         \begin{defn}
             The mapping class group of the torus is the set of orientation preserving diffeomorphisms \(\mathbb{T}^2 \to \mathbb{T}^2\) with the relation \(\gamma \sim \gamma'\) when they are homotopic. We denote the mapping class group of the torus as \(\Gamma\).
@@ -90,11 +89,7 @@
 
         The mapping class group acts naturally on \(\mathbf{T_1}, \mathscr{MF}, \tand \mathcal{Q}^1\), these actions are respectively described as \(\gamma: (S,\varphi) \mapsto (\gamma(S),\gamma \varphi)\) and the latter as \((\mathcal{F},\mu) \mapsto (\gamma(\mathcal{F}),\gamma_*\mu)\), where for a transverse curve \(c\), \(\gamma_*\mu(c) = \mu(\gamma^{-1}(c))\) is the pushforward measure, and finally for a quadratic differential \(q = \phi(dz)^2\) over a surface \(S\in \mathbf{T_1}\) we simply pullback the differential \(((S,\varphi),q) \mapsto (\gamma\cdot (S,\varphi),\phi(\gamma^*dz)^2)\). In order to work with measured foliations and relate them to unit quadratic differentials, we would like to use the cohomological description, thus we would like to compute explicitly the \(\Gamma\) action on \(H^1(\mathbb{T}^2;\mathbb{R})\).
 
-        Since mapping classes on the torus are defined up to homotopy, a mapping class may be written as a map on \(H_1(\mathbb{T}^2;\mathbb{Z})\), since these are invertible and orientation preserving, the resulting matrix lies in \(\slz\). Mapping class groups are in general generated by Dehn twists \cmt{ref Martelli 6.5.4}. A Dehn twist about a curve \(c\) is defined as taking a tubular neighborhood \(D\) with a (orientation preserving) diffeomorphism to \(r: D \to S^1 \times [-1,1]\), and a smooth bump function \(\chi: [-1,1] \mapsto [0,1]\) which is zero near \(-1\) and one near \(1\), then defining \(\gamma: \mathbb{T}^2 \to \mathbb{T}^2\) via \(x \mapsto r^{-1}(e^{2\pi i \chi} r(x))\) on \(D\) and identity elsewhere. This has the following pictoral description
-
-        \cmt{Insert image here}
-
-        From which we may identify the Dehn twist about \(\alpha\) as the matrix \(\begin{pmatrix}
+        Since mapping classes on the torus are defined up to homotopy, a mapping class may be written as a map on \(H_1(\mathbb{T}^2;\mathbb{Z})\), since these are invertible and orientation preserving, the resulting matrix lies in \(\slz\). Mapping class groups are in general generated by Dehn twists \cmt{ref Martelli 6.5.4}. A Dehn twist about a curve \(c\) is defined as taking a tubular neighborhood \(D\) with a (orientation preserving) diffeomorphism to \(r: D \to S^1 \times [-1,1]\), and a smooth bump function \(\chi: [-1,1] \mapsto [0,1]\) which is zero near \(-1\) and one near \(1\), then defining \(\gamma: \mathbb{T}^2 \to \mathbb{T}^2\) via \(x \mapsto r^{-1}(e^{2\pi i \chi} r(x))\) on \(D\) and identity elsewhere. From which we may identify the Dehn twist about \(\alpha\) as the matrix \(\begin{pmatrix}
             1 & -1 \\ 0 & 1
         \end{pmatrix}\) and the dehn twist about \(\beta\) as \(\begin{pmatrix}
             1 & 0 \\ 1 & 1
@@ -104,7 +99,7 @@
         \begin{align*}
             \int_c \gamma^*\omega = \int_{S^1} c^*\gamma^*\omega = \int_{S^1} (\gamma c)^*\omega = \int_{\gamma_* c} \omega
         \end{align*}
-        Since we have associated both \(\mathbf{T_1}\) and \(\mathscr{MF}\) to cohomology classes, this definition suffices to describe both mapping class group actions since the \(\mathbf{T_1}\) action takes \(\varphi^*dz \mapsto \varphi^*\gamma^*dz\), agreement for measured foliations is a consequence of the duality relation. The pullback of cohomology classes agrees with taking the pullback of the quadratic differential by definition. \cmt{Should show this induces mobius transform on \(\mathbb{H}\)}
+        Since we have associated both \(\mathbf{T_1}\) and \(\mathscr{MF}\) to cohomology classes, this definition suffices to describe both mapping class group actions since the \(\mathbf{T_1}\) action takes \(\varphi^*dz \mapsto \varphi^*\gamma^*dz\), agreement for measured foliations is a consequence of the duality relation. The pullback of cohomology classes agrees with taking the pullback of the quadratic differential by definition.
 
         \section{Teichmuller Metric and Dilations}
         \cmt{add some exposition here}
@@ -117,14 +112,18 @@
             \begin{align*}
                 h(x + iy) = \sqrt{K}x' + \frac{i}{\sqrt{K}}y'
             \end{align*}
-            Such a map is said to have dilation \(K\).
+            Such a map is said to have horizontal stretch factor \(K\) and dilation \(\max\set{K,K^{-1}}\).
         \end{defn}
         By Teichm\"uller's theorem \cmt{ref FM} every homotopy class of maps has a unique Teichm\"uller mapping, given two \((S,\varphi),(S',\varphi') \in \mathbf{T_1}\) the homotopy class is always taken to be the change of markings \(\varphi'\varphi^{-1}\). This allows us to define a distance function on Teichm\"uller space, in terms of the dilation of a Teichm\"uller mapping between the marked surfaces.
         \begin{defn}
             The Teichm\"uller distance between two surfaces is defined as \[d_{\operatorname{Teich}}(S,S') = \frac12 \log K\]
             Where \(K\) is the dilation of a Teichm\"uller map in the homotopy class of the change of markings.
         \end{defn}
-        The Teichm\"uller distance gives a complete metric on \(\mathbf{T_1}\) and the geodesics are in bijection with \(\mathcal{Q}^1\), this is defined as taking \(q \in \mathcal{Q}^1\) with natural coordinates \((x,y)\), then the Teichmuller geodesic \(c(t)\) is given by taking the unit quadratic differential with natural coordinates \((t^{-1}x,ty)\). \cmt{ref FM}. Our goal is to understand the distribution of mapping class group orbits under the horocycle flow, which is related to the amount of shear a mapping class group element applies. Thus we will measure the size of a mapping class group element by the amount of shearing it applies to a surface
+        The Teichm\"uller distance gives a complete metric on \(\mathbf{T_1}\) and the geodesics are in bijection with \(\mathcal{Q}^1\), this is defined as taking \(q \in \mathcal{Q}^1\) with natural coordinates \((x,y)\), then the Teichmuller geodesic \(c(t)\) is given by taking the unit quadratic differential with natural coordinates \((t^{-1}x,ty)\). \cmt{ref FM}. 
+        
+        Earlier we discussed how the \(\mathbb{RP}^1\) coordinate of the measured foliation specifies a projective measured foliation, with data equivalent to the slope of a line on the torus. These projective measured foliations may be rigorously identified with \(\partial \mathbf{T_1}\) in a way that is compatible with the notion of Teichm\"uller geodesics. For the purposes of understanding Ledrappier's paper, we can simply think of the topology on \(\mathbf{T_1}\) as being defined by the Teichm\"uller metric. However, to understand this phenomena it is better to use a topology on the Teichm\"uller space given by embedding into the space of geodesic currents \(\mathcal{C}\) with the weak-\(*\) topology, as this is somewhat tangential I will not provide the details, and the reader is referred to \cmt{ref Martelli} for the proof in the negative Euler characteristic case. The embedding on the torus is given by taking \((S,\varphi)\) to the functional on closed geodesics \(c \mapsto \ell_S(\varphi(c))\) the length of the curve in \(S\). We similarly have that measured foliations have a natural mapping to the space of currents, by taking \(\mathcal{F}\) given by \(\abs{\omega}\) to \(c \mapsto \int_c \abs{\omega}\). Now we can further consider the projection \(\mathcal{C} \to \mathbb{P}\mathcal{C}\) which will allow us to identify
+        
+        Our goal is to understand the distribution of mapping class group orbits under the horocycle flow, which is related to the amount of shear a mapping class group element applies. Thus we will measure the size of a mapping class group element by the amount of shearing it applies to a surface.
         \begin{defn}
             For \(\gamma \in \Gamma\) we define \(K_{\gamma}\) to be the dilation of the Teichm\"uller map \(h: S \to \gamma(S)\) for \((S,\varphi) \in \mathbf{T_1}\). This is well defined since \(\Gamma\) acts on \((\mathbf{T_1},d_{\operatorname{Teich}})\) by isometry which is immediate since the Teichm\"uller map is now between coordinate charts composed with the same biholomorphism.
         \end{defn}
@@ -149,9 +148,35 @@
             y' \\ x'
         \end{pmatrix}\), thus the action on cohomology classes is given by the pullback, so that the action is given explicitly as
         \begin{align*}
-            \begin{pmatrix} \Im\sqrt{g\cdot q} \\ \Re\sqrt{g\cdot q} \end{pmatrix} = g^{\operatorname{T}}\begin{pmatrix} \Im\sqrt{q} \\ \Re\sqrt{q} \end{pmatrix}
+            \begin{pmatrix} \Im\sqrt{q\cdot g} \\ \Re\sqrt{q \cdot g} \end{pmatrix} = g^{\operatorname{T}}\begin{pmatrix} \Im\sqrt{q} \\ \Re\sqrt{q} \end{pmatrix}
         \end{align*}
-        The Teichm\"uller unipotent flow is the action of the unipotent subgroup \(\set{h_s = \begin{pmatrix} 1 & s \\ 0 & 1 \end{pmatrix}\mid s \in \mathbb{R}}\)
+        The Teichm\"uller unipotent flow is given by the action of the unipotent subgroup \(\set{h_s = \begin{pmatrix} 1 & s \\ 0 & 1 \end{pmatrix}\mid s \in \mathbb{R}}\), moreover this realizes the shearing used to define the map \(\Psi\) as the action of the diagonal subgroup. Also note that this gives a second identification of \(\Gamma\) with \(\slz\).
+
+        The definition of the \(\slr\) action on \(\mathcal{Q}^1\) induces one on \(\mathbf{T_1}\) by projection, using our identification of \(\mathbf{T_1}\) with \(\mathbb{H}\) it is immediate that if \(q\) lies over the surface \(dx + \tau dy\) that \(q \cdot g\) lies over \(dx + g\cdot \tau dy\) where \(g\) is taken to act on \(\tau\) by mobius transform. Thus the \(\slr\) action on \(\mathcal{Q}^1\) carries over to one on \(T^1 \mathbb{H}\). The final piece in being able to use the geometry of \(\mathbb{H}\) to describe the Teichm\"uller dynamics is that \((\mathbf{T_1},2d_{\operatorname{Teich}})\) is isometric to \((\mathbb{H},d_\mathbb{H})\), moreover this isometry respects the \(\slr\) action, in particular the Teichm\"uller unipotent flow is taken to the horocycle flow \cmt{ref FM}.
+
+        Now we give a complete coordinate description of \(\mathcal{Q}^1\) of the form \(\mathscr{MF}\times \mathbb{R}\), decomposing into shearing about a measured foliation and the unipotent flow. This is defined as taking \((X,s) \mapsto \Psi(X)\cdot h_s\), to see this map gives a bijection write \(X = g\begin{pmatrix} 1 \\ 0 \end{pmatrix}\), for \(g = R(\theta)D(\norm{X},\norm{X}^{-1})\) the composition of a diagonal and rotation matrix in \(\slr\). It follows that
+        \begin{align*}
+            \Psi(X)\cdot h_s = \Psi\left(g \begin{pmatrix} 1 \\ 0 \end{pmatrix}\right)\cdot h_s = (dx + idy)^2\cdot gh_s
+        \end{align*}
+        Now under the identification with \(T^1 \mathbb{H}\) this gives \(gh_s\) acting on \((i,(0,1))\), every \(\slr\) matrix has a unique decomposition of the form \(R(\theta)D(\lambda,\lambda^{-1})h_s\), and since this action is free and faithful we get a bijection. We may write the map and its inverse explicitly in coordinates, by applying the Teichm\"uller unipotent flow to the horizontal and vertical foliations of \(\Psi(X)\), which gives horizontal and vertical foliations \(bdx + ady\) and \(\norm{X}^{-2}(adx - bdy) + s(bdx + ady)\). This corresponds to the quadratic differential \(q\) with
+        \begin{align*}
+            \sqrt{q} = (bs + a\norm{X}^{-2} + ib)\left(dx + \frac{as-b\norm{X}^{-2}+ia}{bs + a\norm{X}^{-2} + ib}dy\right)
+        \end{align*}
+        Using this closed form, given a quadratic differential of the form \(q = \frac{e^{i\theta}}{\Im (\tau)}(dx + \tau dy)^2\), the preimage under our coordinate map is
+        \begin{align*}
+            \Im (\tau) &= \frac{1}{b^2 + (a\norm{X}^{-2}+bs)} \\
+            \Re (\tau) &= \Im(\tau)(abs^2-ab\norm{X}^{-4} + ab - b^2s\norm{X}^{-2} + a^2s\norm{X}^{-2}) \\
+            \theta &= 2\arg(bs + a\norm{X}^2 + ib)
+        \end{align*}
+
+        \begin{defn}
+            Let \(\gamma \in \Gamma\) and \(X \in \mathbb{RP}^1 \times \mathbb{R}_{>0}\). Then we can define \(s(\gamma,X)\) by the equation
+            \begin{align*}
+                \Psi(\gamma X) = \gamma\Psi(X)\cdot h_{s(\gamma,X)}
+            \end{align*}
+        \end{defn}
+        \cmt{Need more justification here}
+        \cmt{Show the inverse for \(\Psi(X) h_s\) and thus that parameterizing by \(\Psi\) and \(s\) describes all of \(\mathcal{Q}^1\)}
         
 
         \section{Statement of Theorem}
@@ -159,7 +184,99 @@
 
         \section{Proof of Theorem}
 
-        \cmt{Possibly include a section for topological considerations?}
+        Let \(X \in \mathbb{RP}^1 \times \mathbb{R}_{>0}\) be a vector with irrational slope and let \(f \in C_c(\mathbb{RP}^1 \times \mathbb{R}_{>0})\), then we can define a lift \(\tilde{f}\) of \(f\) to \(\mathcal{Q}^1\), by distributing \(f\) along the Teichm\"uller unipotent flow.
+        \begin{defn}
+            Let \(\epsilon > 0\), then let \(\chi_\epsilon\) be a continuous function on \(\mathbb{R}\) supported on \((-\epsilon,\epsilon)\) with \(\int_\mathbb{R} \chi_\epsilon = 1\). Then for \(q \in \mathcal{Q}^1\), bijectivity of the coordinate construction gives a unique \(s\), such that \(q \cdot h_s\) lies in \(\operatorname{Im}(\Psi)\) use this to define
+            \begin{align*}
+                \tilde{f}(q) = f(\Psi^{-1}(q\cdot h_s))\chi_\epsilon(s)
+            \end{align*}
+        \end{defn}
+        We may further define \(\pi\) to be the quotient map \(\mathcal{Q}^1 \to \mathcal{Q}^1/\Gamma\) and
+        \begin{align*}
+            &\overline{f}: \mathcal{Q}^1/\Gamma \to \mathbb{R} \\
+            &S\cdot\Gamma \mapsto \sum_{\Gamma} \tilde{f}(\pi(S))
+        \end{align*}
+        By construction, integrating \(\bar{f}\) along the unipotent flow gives the sum over \(\set{\gamma \in \Gamma \mid \gamma X \in \operatorname{supp}(f)}\) with \(s(\gamma,X)\) lying within the integral bounds up to some small error, by relating this to the average of \(f(\gamma X)\) with \(K_\gamma\) small, we get a new formula for the sum from the equidistribution of the unipotent flow. We can use the hyperbolic geometry to relate these two quantities as follows
+        \begin{lemma}
+            \begin{align*}
+                s(\gamma,X)^2 = \frac{K_\gamma + K_{\gamma}^{-1}}{\norm{X}^2\norm{\gamma X}^2} - \frac{1}{\norm{X}^4} - \frac{1}{\norm{\gamma X}^4}
+            \end{align*}
+            \begin{proof}
+                \cmt{Copy paste proof here}
+            \end{proof}
+        \end{lemma}
+
+        Now since \(f\) has compact support, the \(\frac{1}{\norm{\gamma X}^4}\) term is bounded for \(\gamma X \in \operatorname{supp}(f)\) and also note that \(K_\gamma \geq 1\), so that the \(\frac{K_\gamma^{-1}}{\norm{X}^2\norm{\gamma X}^2}\) is also uniformly bounded for all \(\gamma\), this furnishes positive constants \(C \tand D\) such that
+        \begin{align*}
+            \frac{K_\gamma}{\norm{X}^2\norm{\gamma X}^2} - C \leq s(\gamma,X)^2 \leq \frac{K_\gamma}{\norm{X}^2\norm{\gamma X}^2} + D
+        \end{align*}
+        whence we find that
+        \begin{align*}
+            &\abs{s(\gamma,X)} \leq \frac{T}{\norm{X}\norm{\gamma X}} - \sqrt{C} \\
+            \implies & \sqrt{K_\gamma} \leq \norm{X}\norm{\gamma X}\left(\sqrt{\frac{K_\gamma}{\norm{X}^2\norm{\gamma X}^2} - C} + \sqrt{C}\right) \leq T
+        \end{align*}
+        and if \(\sqrt{K_\gamma} \leq T\), then
+        \begin{align*}
+            \abs{s(\gamma,X)} \leq \sqrt{\frac{T^2}{\norm{X}^2\norm{\gamma X}^2} + D} \leq \frac{T}{\norm{X}\norm{\gamma X}} + \sqrt{D}
+        \end{align*}
+        The first thing to notice from these equations is that \(\overline{f}\) is well defined, to see this we use that for \(g \in \slz\) the matrix representation of \(\gamma\)
+        \begin{align*}
+            K_\gamma + \frac{1}{K_\gamma} = 2\cosh2d_{\operatorname{Teich}}(S,S\cdot \gamma) = 2\cosh d_\mathbb{H}(i,\gamma \cdot i) = \norm{g}_{F}^2
+        \end{align*}
+        So that for any \(N\) there are finitely many \(\gamma\) with \(\abs{s(\gamma,X)} \leq N\), this further implies \(\bar{f}\) is continuous since it is given locally by a sum of continuous functions. \cmt{A more geometric way to see than relating to the matrix norm is that the mapping class group acts properly discontinuously}. Secondly defining \(L = \inf_{Y \in \operatorname{supp}(f)}\norm{Y}\) and \(M = \sup_{Y \in \operatorname{supp}(f)}\norm{Y}\) we get the following explicit relation for positive valued \(f\),
+        \begin{align*}
+            &\int_{-\frac{T}{\norm{X}M} + \sqrt{D} + \epsilon}^{\frac{T}{\norm{X}M} - \sqrt{D} - \epsilon}\overline{f}(\pi \Psi(X)\cdot h_s)ds \leq \sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}} f(\gamma X) \leq \int^{\frac{T}{\norm{X}L} + \sqrt{C} + \epsilon}_{-\frac{T}{\norm{X}L} - \sqrt{C} - \epsilon}\overline{f}(\pi \Psi(X)\cdot h_s)ds \\
+            &\lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds \leq \lim_{T \to \infty} \frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}} f(\gamma X)  \leq \lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}L}}^{\frac{T}{\norm{X}L}}\overline{f}(\pi \Psi(X)\cdot h_s)ds
+        \end{align*}
+        Similar equalities holds for negative valued \(f\). We may assume that \(f\) is strictly positive or negative, considering \(f^+,f^-\) defined as the restrictions \(f\vert_{\set{f > 0}}, f\vert_{\set{f < 0}}\) respectively. To complete the proof I will evaluate \(\lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds\), since the same argument applies to the other limit squeezing the sum and gives the same result.
+
+        \cmt{Need to check for aperiodicity} By Dani's theorem we have for \(\mu\) the unit Haar measure on \(\slr/\slz\)
+        \begin{align*}
+            \lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds &= \lim_{T \to \infty} \frac{1}{T\norm{X}M} \int_{-T}^{T}\overline{f}(\pi \Psi(X)\cdot h_s)ds\\ &= \frac{2}{\norm{X}M}\int \overline{f}(\pi \Psi(X) \cdot g)d\mu
+        \end{align*}
+        \begin{lemma}
+            \begin{align*}
+                \int \overline{f}(\pi \Psi(X) \cdot g)d\mu = \frac{6}{\pi^2}\int \tilde{f}\left(\Psi\begin{pmatrix}
+                    b \\ a
+                \end{pmatrix}\right)\cdot h_s\abs{db\,da\,ds}
+            \end{align*}
+        \end{lemma}
+        \begin{proof}
+            We can parameterize \(\slr\) by \(\set{\begin{pmatrix} e & f \\ g & h \end{pmatrix} \mid  eh -fg = 1}\), then the integral over \(\slr\) is the integral over the chart \(e \neq 0\). In this chart we have \(d\mu = \frac{6}{\pi^2}\frac{\abs{de\,df\,dg}}{\abs{e}}\), in our earlier parameterization in terms of \(a,b,s\) we have \(a = e, b = g, f = as - b(a^2 + b^2)^{-1}\), this gives us Jacobian determinant \(a\). Now letting \(D\) be a fundamental domain for \(\slr/\Gamma\) we get from definition of \(\tilde{f}\)
+            \begin{align*}
+                \int_{\slr/\Gamma} \overline{f}(\pi \Psi(X) \cdot g)d\mu &= \int_{D} \sum_{g' \in \Gamma}\tilde{f}(\Psi(X) \cdot g'g)d\mu  \\
+                &= \int \tilde{f}\left(\Psi(X) \cdot \begin{pmatrix} e & f \\ g & h \end{pmatrix}\right)\frac{6}{\pi^2}\frac{de\,df\,dg}{\abs{e}} \\
+                &= \frac{6}{\pi^2}\int \tilde{f}\left(\Psi(X) \cdot \begin{pmatrix} a & as - b\norm{X}^{-2} \\ b & bs + a\norm{X}^{-2} \end{pmatrix}\right)da\,db\,ds \\
+                &= \frac{6}{\pi^2}\int \tilde{f}\left(\Psi \begin{pmatrix} a \\ b\end{pmatrix}\cdot h_s\right)da\,db\,ds \\
+                &= \frac{6}{\pi^2}\int f(a,b)\chi_\epsilon(-s)da\,db\,ds \\
+                &= \frac{6}{\pi^2}\int f(a,b)da\,db \\
+                &=\frac{6}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}}f(re^{i\theta})rdrd\theta
+            \end{align*}
+            \cmt{fix integration domain a bit more}
+        \end{proof}
+        Combining results gives us
+        \begin{align*}
+            \lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds = \frac{12}{\pi^2\norm{X}M}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}}f(re^{i\theta})rdrd\theta
+        \end{align*}
+        eliminate the \(1/M\) factor, we note that \(f\) is supported on the annulus \(\set{re^{i\theta} \mid L \leq r \leq M}\), we can take for any natural \(N\), a continuous partition of unity of the annulus \(\chi^1,\hdots,\chi^N\) with \(\chi^j\) supported on \(\set{re^{i\theta} \mid L_j = L + \frac{M-L}{N}(j-2) < r < L + \frac{M-L}{N}(j+1) = M_j}\), writing \(f^j = \chi^j f\) we recover that
+        \begin{align*}
+            \sum_1^N\lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M_j}}^{\frac{T}{\norm{X}M_j}}\overline{f^j}(\pi \Psi(X)\cdot h_s)ds \leq \lim_{T \to \infty} \frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}}\sum_j f^j(\gamma X) = \lim_{T \to \infty} \frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}} f(\gamma X)
+        \end{align*}
+        Applying Dani's theorem and lemma 2 to the term on the left hand side we get
+        \begin{align*}
+            \sum_1^N\lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M_j}}^{\frac{T}{\norm{X}M_j}}\overline{f^j}(\pi \Psi(X)\cdot h_s)ds = \sum_1^N\frac{12}{\pi^2\norm{X}M_j}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}}f^j(re^{i\theta})rdrd\theta
+        \end{align*}
+        Then since this hold for all \(N\), we may write the following and take \(N \to \infty\)
+        \begin{align*}
+            &\abs{\frac{12}{\pi^2\norm{X}}\int_{\mathbb{R}P^1\times{\mathbb{R}_{>0}}}fdrd\theta - \sum_1^N\frac{12}{\pi^2\norm{X}M_j}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}}f^jrdrd\theta}\\
+            = &\frac{12}{\pi^2\norm{X}}\abs{\int_{\mathbb{R}P^1\times{\mathbb{R}_{>0}}}\sum_1^N f^j - \frac{1}{M_j}f^jrdrd\theta}\\
+            \leq &\frac{12\norm{f}_\infty}{\pi^2\norm{X}}\sum_1^N\int_0^{\pi}\int_{L_j}^{M_j}1 - \frac{L_j}{M_j}drd\theta \leq \frac{12\norm{f}_\infty}{\pi\norm{X}L}\sum_1^N(M_j - L_j)^2 \\
+            \leq &\frac{12\norm{f}_\infty}{\pi\norm{X}L}\frac{(M-L)^2}{N}
+        \end{align*}
+        The exact same proof applies to the upper bound, so that we get the desired result
+        \begin{align*}
+            \frac{12}{\pi^2\norm{X}}\int_{\mathbb{R}P^1\times{\mathbb{R}_{>0}}}fdrd\theta = \lim_{T\to\infty}\frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}}f(\gamma X)
+        \end{align*}
 
         \section{References}
 
