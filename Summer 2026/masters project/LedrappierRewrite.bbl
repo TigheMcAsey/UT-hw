@@ -1,0 +1,192 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{ynt/global//global/global/global}
+    \entry{Dani}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=0b2cc82e6a177b18faefd88581b8597d}{%
+           family={Dani},
+           familyi={D\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \strng{namehash}{0b2cc82e6a177b18faefd88581b8597d}
+      \strng{fullhash}{0b2cc82e6a177b18faefd88581b8597d}
+      \strng{fullhashraw}{0b2cc82e6a177b18faefd88581b8597d}
+      \strng{bibnamehash}{0b2cc82e6a177b18faefd88581b8597d}
+      \strng{authorbibnamehash}{0b2cc82e6a177b18faefd88581b8597d}
+      \strng{authornamehash}{0b2cc82e6a177b18faefd88581b8597d}
+      \strng{authorfullhash}{0b2cc82e6a177b18faefd88581b8597d}
+      \strng{authorfullhashraw}{0b2cc82e6a177b18faefd88581b8597d}
+      \field{labelalpha}{Dan82}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{1469-4417;0143-3857;}
+      \field{journaltitle}{Ergodic theory and dynamical systems}
+      \field{title}{On uniformly distributed orbits of certain horocycle flows}
+      \field{year}{1982}
+    \endentry
+    \entry{Ledrappier_1999}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=925950ca4c5d39a0685253ed8f638432}{%
+           family={Ledrappier},
+           familyi={L\bibinitperiod},
+           given={François},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{925950ca4c5d39a0685253ed8f638432}
+      \strng{fullhash}{925950ca4c5d39a0685253ed8f638432}
+      \strng{fullhashraw}{925950ca4c5d39a0685253ed8f638432}
+      \strng{bibnamehash}{925950ca4c5d39a0685253ed8f638432}
+      \strng{authorbibnamehash}{925950ca4c5d39a0685253ed8f638432}
+      \strng{authornamehash}{925950ca4c5d39a0685253ed8f638432}
+      \strng{authorfullhash}{925950ca4c5d39a0685253ed8f638432}
+      \strng{authorfullhashraw}{925950ca4c5d39a0685253ed8f638432}
+      \field{labelalpha}{Led99}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Comptes Rendus de l’Académie des Sciences - Series I - Mathematics}
+      \field{month}{7}
+      \field{number}{1}
+      \field{title}{Distribution des Orbites des Réseaux Sur Le Plan Réel}
+      \field{volume}{329}
+      \field{year}{1999}
+      \field{pages}{61\bibrangedash 64}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1016/s0764-4442(99)80462-5
+      \endverb
+    \endentry
+    \entry{Forni_2006}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=100e9fb7856c6783f0678e78cf18380b}{%
+           family={Forni},
+           familyi={F\bibinitperiod},
+           given={Giovanni},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{100e9fb7856c6783f0678e78cf18380b}
+      \strng{fullhash}{100e9fb7856c6783f0678e78cf18380b}
+      \strng{fullhashraw}{100e9fb7856c6783f0678e78cf18380b}
+      \strng{bibnamehash}{100e9fb7856c6783f0678e78cf18380b}
+      \strng{authorbibnamehash}{100e9fb7856c6783f0678e78cf18380b}
+      \strng{authornamehash}{100e9fb7856c6783f0678e78cf18380b}
+      \strng{authorfullhash}{100e9fb7856c6783f0678e78cf18380b}
+      \strng{authorfullhashraw}{100e9fb7856c6783f0678e78cf18380b}
+      \field{labelalpha}{For06}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Handbook of Dynamical Systems}
+      \field{title}{On the Lyapunov exponents of the Kontsevich–Zorich cocycle}
+      \field{year}{2006}
+      \field{pages}{549\bibrangedash 580}
+      \range{pages}{32}
+      \verb{doi}
+      \verb 10.1016/s1874-575x(06)80033-0
+      \endverb
+    \endentry
+    \entry{Martelli_2025}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=95448c9f278151fd6a4ba6dc526e9862}{%
+           family={Martelli},
+           familyi={M\bibinitperiod},
+           given={Bruno},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{95448c9f278151fd6a4ba6dc526e9862}
+      \strng{fullhash}{95448c9f278151fd6a4ba6dc526e9862}
+      \strng{fullhashraw}{95448c9f278151fd6a4ba6dc526e9862}
+      \strng{bibnamehash}{95448c9f278151fd6a4ba6dc526e9862}
+      \strng{authorbibnamehash}{95448c9f278151fd6a4ba6dc526e9862}
+      \strng{authornamehash}{95448c9f278151fd6a4ba6dc526e9862}
+      \strng{authorfullhash}{95448c9f278151fd6a4ba6dc526e9862}
+      \strng{authorfullhashraw}{95448c9f278151fd6a4ba6dc526e9862}
+      \field{labelalpha}{Mar25}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{An introduction to geometric topology}
+      \field{year}{2025}
+    \endentry
+    \entry{FarbMarg}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=5b0089d70abcfe34be37d817a1622b42}{%
+           family={Farb},
+           familyi={F\bibinitperiod},
+           given={Benson},
+           giveni={B\bibinitperiod}}}%
+        {{hash=53e4c55b9dbbda75397b53fe89cf3971}{%
+           family={Margalit},
+           familyi={M\bibinitperiod},
+           given={Dan},
+           giveni={D\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=53e4c55b9dbbda75397b53fe89cf3971}{%
+           family={Margalit},
+           familyi={M\bibinitperiod},
+           given={Dan},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \list{location}{1}{%
+        {Princeton, NJ}%
+      }
+      \list{publisher}{1}{%
+        {Princeton University Press}%
+      }
+      \strng{namehash}{fa223b7b743f1696aef9386d4064faa0}
+      \strng{fullhash}{fa223b7b743f1696aef9386d4064faa0}
+      \strng{fullhashraw}{fa223b7b743f1696aef9386d4064faa0}
+      \strng{bibnamehash}{fa223b7b743f1696aef9386d4064faa0}
+      \strng{authorbibnamehash}{fa223b7b743f1696aef9386d4064faa0}
+      \strng{authornamehash}{fa223b7b743f1696aef9386d4064faa0}
+      \strng{authorfullhash}{fa223b7b743f1696aef9386d4064faa0}
+      \strng{authorfullhashraw}{fa223b7b743f1696aef9386d4064faa0}
+      \strng{editorbibnamehash}{53e4c55b9dbbda75397b53fe89cf3971}
+      \strng{editornamehash}{53e4c55b9dbbda75397b53fe89cf3971}
+      \strng{editorfullhash}{53e4c55b9dbbda75397b53fe89cf3971}
+      \strng{editorfullhashraw}{53e4c55b9dbbda75397b53fe89cf3971}
+      \field{labelalpha}{FM15}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The study of the mapping class group Mod(S) is a classical topic that is experiencing a renaissance. It lies at the juncture of geometry, topology, and group theory. This book explains as many important theorems, examples, and techniques as possible, quickly and directly, while at the same time giving full details and keeping the text nearly self-contained. The book is suitable for graduate students. A Primer on Mapping Class Groupsbegins by explaining the main group-theoretical properties of Mod(S), from finite generation by Dehn twists and low-dimensional homology to the Dehn-Nielsen-Baer theorem. Along the way, central objects and tools are introduced, such as the Birman exact sequence, the complex of curves, the braid group, the symplectic representation, and the Torelli group. The book then introduces Teichmüller space and its geometry, and uses the action of Mod(S) on it to prove the Nielsen-Thurston classification of surface homeomorphisms. Topics include the topology of the moduli space of Riemann surfaces, the connection with surface bundles, pseudo-Anosov theory, and Thurston's approach to the classification.;The study of the mapping class group Mod(S) is a classical topic that is experiencing a renaissance. It lies at the juncture of geometry, topology, and group theory. This book explains as many important theorems, examples, and techniques as possible, quickly and directly, while at the same time giving full details and keeping the text nearly self-contained. The book is suitable for graduate students. A Primer on Mapping Class Groups begins by explaining the main group-theoretical properties of Mod(S), from finite generation by Dehn twists and low-dimensional homology to the Dehn-Nielsen-Baer theorem. Along the way, central objects and tools are introduced, such as the Birman exact sequence, the complex of curves, the braid group, the symplectic representation, and the Torelli group. The book then introduces Teichmüller space and its geometry, and uses the action of Mod(S) on it to prove the Nielsen-Thurston classification of surface homeomorphisms. Topics include the topology of the moduli space of Riemann surfaces, the connection with surface bundles, pseudo-Anosov theory, and Thurston's approach to the classification.;The study of the mapping class group Mod(S) is a classical topic that is experiencing a renaissance. It lies at the juncture of geometry, topology, and group theory. This book explains as many important theorems, examples, and techniques as possible, quickly and directly, while at the same time giving full details and keeping the text nearly self-contained. The book is suitable for graduate students.;"The study of the mapping class group Mod(S) is a classical topic that is experiencing a renaissance. It lies at the juncture of geometry, topology, and group theory. This book explains as many important theorems, examples, and techniques as possible, quickly and directly, while at the same time giving full details and keeping the text nearly self-contained. The book is suitable for graduate students.The book begins by explaining the main group-theoretical properties of Mod(S), from finite generation by Dehn twists and low-dimensional homology to the Dehn-Nielsen-Baer theorem. Along the way, central objects and tools are introduced, such as the Birman exact sequence, the complex of curves, the braid group, the symplectic representation, and the Torelli group. The book then introduces Teichm©ơller space and its geometry, and uses the action of Mod(S) on it to prove the Nielsen-Thurston classification of surface homeomorphisms. Topics include the topology of the moduli space of Riemann surfaces, the connection with surface bundles, pseudo-Anosov theory, and Thurston's approach to the classification"--Provided by publisher.;The study of the mapping class group Mod(S) is a classical topic that is experiencing a renaissance. It lies at the juncture of geometry, topology, and group theory. This book explains as many important theorems, examples, and techniques as possible, quickly and directly, while at the same time keeping the text nearly self-contained.;No detailed description available for "A Primer on Mapping Class Groups (PMS-49)".;}
+      \field{edition}{1}
+      \field{title}{A primer on mapping class groups}
+      \field{volume}{49;49.;}
+      \field{year}{2012;2011;2015;}
+      \keyw{Algebraic; Automorphism; Big O notation; Bijection; Braid group; Class groups (Mathematics); Closed geodesic; Cohomology; Compact space; Compactification (mathematics); Conjugacy class; Continuous function; Coordinate system; Corollary; Coset; Covering space; Curve; Dehn twist; Diagram (category theory); Diffeomorphism; Dimension (vector space); Disjoint union; Disk (mathematics); Division by zero; Eigenvalues and eigenvectors; Elementary matrix; Equivalence class; Euler characteristic; Exact sequence; Existential quantification; Finite group; Finitely presented; Foliation; Free group; Fundamental domain; Fundamental group; Geometric group theory; Geometry; Homeomorphism; Homology (mathematics); Homomorphism; Homotopy; Hyperbolic geometry; Infimum and supremum; Intersection (set theory); Intersection number (graph theory); Jordan curve theorem; Linear map; Mapping class group; Mappings (Mathematics); Mathematical induction; MATHEMATICS; MATHEMATICS / Advanced bisacsh; MATHEMATICS / Geometry / Algebraic bisacsh; MATHEMATICS / Geometry / General; MATHEMATICS / Topology bisacsh; Metric space; Moduli space; Orbifold; Pair of pants (mathematics); PBMW; PBPD; Permutation; Pointwise; Quadratic differential; Quasi-isometry; Rectangle; Riemann surface; Riemannian manifold; Simply connected space; Special case; Subgroup; Subset; Summation; Theorem; Topology; Train track (mathematics); Transverse measure; Upper and lower bounds; Upper half-plane; Vector space}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
