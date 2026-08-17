@@ -4,6 +4,7 @@
 \usepackage{tikz-cd, stackengine}
 \usepackage{xcolor}
 \usepackage{enumitem}
+\usepackage{graphicx}
 % Commands:
 
 \newtheorem{defn}{Definition}
@@ -88,7 +89,7 @@ sorting=ynt
         \begin{align*}
             i(\mathcal{F},n \alpha + m \beta) = \abs{\int_{n \alpha + m\beta}\omega}
         \end{align*}
-        writing \(\omega\) in our basis, we associate \(\mathcal{F}\) to \(\abs{b\eta + a\xi}\) for some \(a,b \in \mathbb{R}\), similarly any nonzero cohomology class considered up to sign recovers a measured foliation \((\mathcal{F},\mu)\) since by definition the leaves of our foliation are given by \(\ker |\omega|\), with transverse measure \(\abs{\omega}\). Using our fixed covering \(\mathbb{R}^2 \to \mathbb{T}^2\), we identify \((\eta,\xi) \longleftrightarrow (dx,dy)\), so that compatible with our notion of pullback for abelian and quadratic differentials each measured foliation can be written as \(bdx + ady\) for some \(a,b \in \mathbb{R}\). We also fix an isomorphism of \(\mathscr{MF} = (H^1(\mathbb{T}^2;\mathbb{R}) \setminus \set{0}/\pm) \text{ with } (\mathbb{RP}^1 \times \mathbb{R}_{>0})\), this is done by taking \((a,b) \mapsto b\eta + a\xi\), which we identify with \(bdx + ady\), we will see later that this convention gives \(\operatorname{SL}(2,\mathbb{R})\) equivariance and thus is the correct convention to agree with Ledrappier's paper. Under this identification for \(X \in \mathscr{MF}\) we find \([X] \in \mathbb{P}\mathscr{MF}\) is the projection to the \(\mathbb{RP}^1\) coordinate, and we can write the projection to the radial coordinate either as \(\norm{X}\) or \(r\) depending on which is more convenient. We will later see \([X]\) defines a point in the boundary of Teichm\"uller space consistent with \cmt{Should probably be a/b -- check} \([b/a] \in \mathbb{RP}^1\).
+        writing \(\omega\) in our basis, we associate \(\mathcal{F}\) to \(\abs{b\eta + a\xi}\) for some \(a,b \in \mathbb{R}\), similarly any nonzero cohomology class considered up to sign recovers a measured foliation \((\mathcal{F},\mu)\) since by definition the leaves of our foliation are given by \(\ker |\omega|\), with transverse measure \(\abs{\omega}\). Using our fixed covering \(\mathbb{R}^2 \to \mathbb{T}^2\), we identify \((\eta,\xi) \longleftrightarrow (dx,dy)\), so that compatible with our notion of pullback for abelian and quadratic differentials each measured foliation can be written as \(bdx + ady\) for some \(a,b \in \mathbb{R}\). We also fix an isomorphism of \(\mathscr{MF} = (H^1(\mathbb{T}^2;\mathbb{R}) \setminus \set{0}/\pm) \text{ with } (\mathbb{RP}^1 \times \mathbb{R}_{>0})\), this is done by taking \((a,b) \mapsto b\eta + a\xi\), which we identify with \(bdx + ady\), we will see later that this convention gives \(\operatorname{SL}(2,\mathbb{R})\) equivariance and thus is the correct convention to agree with Ledrappier's paper. Under this identification for \(X \in \mathscr{MF}\) we find \([X] \in \mathbb{P}\mathscr{MF}\) is the projection to the \(\mathbb{RP}^1\) coordinate, and we can write the projection to the radial coordinate either as \(\norm{X}\) or \(r\) depending on which is more convenient. We will later see \([X]\) defines a point in the boundary of Teichm\"uller space consistent with \([a/b] \in \mathbb{RP}^1\).
 
         \begin{defn}
             The mapping class group of the torus is the set of orientation preserving diffeomorphisms \(\mathbb{T}^2 \to \mathbb{T}^2\) with the relation \(\gamma \sim \gamma'\) when they are homotopic. We denote the mapping class group of the torus as \(\Gamma\).
@@ -176,7 +177,7 @@ sorting=ynt
         \end{align*}
         The Teichm\"uller unipotent flow is given by the action of the unipotent subgroup \(\set{h_s = \begin{pmatrix} 1 & s \\ 0 & 1 \end{pmatrix}\mid s \in \mathbb{R}}\), moreover this realizes the shearing used to define the map \(\Psi\) as the action of the diagonal subgroup.
 
-        The definition of the right \(\slr\) action on \(\mathcal{Q}^1\) induces one on \(\mathbf{T_1}\) by projection, using our identification of \(\mathbf{T_1}\) with \(\mathbb{H}\) it is immediate that if \(q\) lies over the surface \(dx + \tau dy\) that \(q \cdot g\) lies over \(dx + g\cdot \tau dy\) where \(g\) is taken to act on \(\tau\) by mobius transform. Thus the \(\slr\) action on \(\mathcal{Q}^1\) carries over to one on \(T^1 \mathbb{H}\). The final piece in being able to use the geometry of \(\mathbb{H}\) to describe the Teichm\"uller dynamics is that \((\mathbf{T_1},2d_{\operatorname{Teich}})\) is isometric to \((\mathbb{H},d_\mathbb{H})\), moreover this isometry respects the \(\slr\) action, in particular the Teichm\"uller unipotent flow is taken to the horocycle flow \cite{FarbMarg}.
+        The definition of the right \(\slr\) action on \(\mathcal{Q}^1\) induces one on \(\mathbf{T_1}\) by projection, using our identification of \(\mathbf{T_1}\) with \(\mathbb{H}\) it is immediate that if \(q\) lies over the surface \(dx + \tau dy\) that \(q \cdot g\) lies over \(dx + g\cdot \tau dy\) where \(g\) is taken to act on \(\tau\) by M\"obius transform. Thus the \(\slr\) action on \(\mathcal{Q}^1\) carries over to one on \(T^1 \mathbb{H}\). The final piece in being able to use the geometry of \(\mathbb{H}\) to describe the Teichm\"uller dynamics is that \((\mathbf{T_1},2d_{\operatorname{Teich}})\) is isometric to \((\mathbb{H},d_\mathbb{H})\), moreover this isometry respects the \(\slr\) action, in particular the Teichm\"uller unipotent flow is taken to the horocycle flow \cite{FarbMarg}.
 
         Now we give a complete coordinate description of \(\mathcal{Q}^1\) of the form \(\mathscr{MF}\times \mathbb{R}\), decomposing into shearing about a measured foliation and the unipotent flow. This is defined as taking \((X,s) \mapsto \Psi(X)\cdot h_s\) where \(\Psi(X)\cdot h_s\) is the quadratic differential given horizontal and vertical foliations \(\begin{pmatrix} 1 & 0 \\ s & 1 \end{pmatrix}\begin{pmatrix} \Im\sqrt{q} \\ \Re\sqrt{q} \end{pmatrix}\). To see this map gives a bijection write \(X = g\begin{pmatrix} 1 \\ 0 \end{pmatrix}\), for \(g = R(\theta)D(\norm{X},\norm{X}^{-1})\) the composition of a diagonal and rotation matrix in \(\slr\). It follows that
         \begin{align*}
@@ -192,7 +193,7 @@ sorting=ynt
             \Re (\tau) &= \Im(\tau)(abs^2-ab\norm{X}^{-4} + ab - b^2s\norm{X}^{-2} + a^2s\norm{X}^{-2}) \\
             \theta &= 2\arg(bs + a\norm{X}^2 + ib)
         \end{align*}
-        Now we have left and right actions of \(\slr\) on \(\mathcal{Q}^1\). We may see from our earlier definition that the left action is consistent with the action on \(T^1 \mathbb{H}\), which lies above the mobius transform, we also note here that the left and right action agree at \(\Psi(1,0)\). The left and right action moreover commute, since our \(\Re(\tau)\) and \(\Im(\tau)\) are cohomology classes, and our right action gives a linear combination of them, taking the pullback before or after taking the linear combination does not affect the result.
+        Now we have left and right actions of \(\slr\) on \(\mathcal{Q}^1\). We may see from our earlier definition that the left action is consistent with the action on \(T^1 \mathbb{H}\), which lies above the M\"obius transform, we also note here that the left and right action agree at \(\Psi(1,0)\). The left and right action moreover commute, since our \(\Re(\tau)\) and \(\Im(\tau)\) are cohomology classes, and our right action gives a linear combination of them, taking the pullback before or after taking the linear combination does not affect the result.
 
         \begin{defn}
             Let \(g \in \slz\) and \(X \in \mathbb{RP}^1 \times \mathbb{R}_{>0}\). Then we can define \(s(g,X)\) by the equation
@@ -238,7 +239,31 @@ sorting=ynt
                 s(g,X)^2 = \frac{K_g + K_{g}^{-1}}{\norm{X}^2\norm{g X}^2} - \frac{1}{\norm{X}^4} - \frac{1}{\norm{g X}^4}
             \end{align*}
             \begin{proof}
-                \cmt{Copy paste proof here}
+                We derive the following entirely in terms of the hyperboic geometry, firstly we are only concerned with the Teichm\"uller coordinate, so in this proof a quadratic differential will instead specify its projection to \(\mathbf{T_1}\), moreover we use the identification with hyperbolic space, recall that under this identification we are sending \(\Psi(1,0)\) to \(i\), then all other mappings can be derived from \(g\cdot \Psi(1,0)\) being identified to \(g\cdot i\) where the action on \(\mathbb{H}\) is M\"obius transform. We abuse notation further, by writing a quadratic differential to mean its associated point in \(\mathbb{H}\). Now let \(g_X \in R(\theta)D(t,t^{-1})\) be the matrix satisfying \(g_X \begin{pmatrix} 1 \\ 0 \end{pmatrix} = X\), and let \(H = gg_X\cdot \set{y = 1}\), which by the equivariance lemma is the horocycle containing both \(\Psi(gX)\) and \(g\cdot \Psi(X)\). We get the points on the following picture, which we apply \(g_X^{-1}g^{-1}\) to in order to send \(H\) to \(\set{y = 1}\) by isometry.
+
+                
+                \begin{figure}[h]
+                    \begin{center}
+                        \includegraphics[width = \linewidth]{image/Diagram1.png}
+                    \end{center}
+                \end{figure}
+
+
+                We can compute \(\operatorname{dist_1}\) and \(\operatorname{dist_2}\) using the definition \(d_{\operatorname{Teich}}\)
+                \begin{align*}
+                    \operatorname{dist_1} = d_{\mathbb{H}}(g\cdot i, g\cdot \Psi(X)) = d_{\mathbb{H}}(i,\Psi(X)) = 2d_{\operatorname{Teich}}(\Psi(1,0),\Psi(X)) = \pm \log\norm{X}^2
+                \end{align*}
+                and similarly, \(\operatorname{dist_2} = \pm \log \norm{\gamma X}^2\).
+                Now we can use the diagram and the upper half plane distance formula \(\cosh d_\mathbb{H}(z,w) = 1 + \frac{\abs{z - w}^2}{2\Im(z)\Im(w)}\) applied to \(z = (x_0,p_0)\) and \(w = (x_1,p_1)\), from the diagram we deduce the following
+                \begin{align*}
+                    s(g,X)^2 = \operatorname{dist_3} = (x_1 - x_0)^2 = 2p_0p_1\cosh d_\mathbb{H}(i,g\cdot i) - p_0^2 - p_1^2
+                \end{align*}
+                Moreover, we know that \(d_{\mathbb{H}}((x_0,1),(x_0,p_0)) = \operatorname{dist_1}\), with the distance being recorded by the vertical geodesic. This gives us
+                \begin{align*}
+                    \operatorname{dist_1} &= \int_1^{p_0}\frac{dy}{y} = \abs{\log(p_0)} \\
+                    p_0 &= e^{\pm \operatorname{dist_1}} = e^{\pm \log \norm{X}^2} = \norm{X}^{\pm 2}
+                \end{align*}
+                With the \(\pm\) depending on wether or not \(p_0\) lies above or below \(\set{y = 1}\). Now since \((x_0,p_0) = g_X^{-1}\cdot i\) and \(X = g_X \begin{pmatrix} 1 \\ 0 \end{pmatrix}\) we see that \(p_0\) is sent in the opposite direction of the stretching on \(X\), which is sent up along the vertical trajectory. Thus \(p_0 = \norm{X}^{-2}\) and by a similar computation \(p_1 = \norm{\gamma X}^{-2}\). Substituting in these values and using that \(\cosh(d_\mathbb{H}(i,g\cdot i)) = \frac{K_g + K_g^{-1}}{2}\) we get the desired result.
             \end{proof}
         \end{lemma}
 
@@ -266,7 +291,7 @@ sorting=ynt
         \end{align*}
         Similar equalities holds for negative valued \(f\). We may assume that \(f\) is strictly positive or negative, considering \(f^+,f^-\) defined as \(\max\set{f,0}, \min\set{f,0}\) respectively. To complete the proof I will evaluate \(\lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds\), since the same argument applies to the other limit squeezing the sum and gives the same result.
 
-        Now we can see that the horocycle flow for \(\Psi(X)\) is aperiodic and hence equidistributes by Dani's theorem if and only if \(X\) has irrational slope \cmt{proof here}. By Dani's theorem \cite{Dani} we have for \(\mu\) the unit Haar measure on \(\slz\setminus\slr\)
+        Now we can see that the horocycle flow for \(\Psi(X)\) is aperiodic and hence equidistributes by Dani's theorem if and only if \(X\) has irrational slope, to see this suppose for \(g \in \slz\) and \(s\in \mathbb{R} \setminus \set{0}\) we have \(\Psi(X)\cdot h_s = g\cdot \Psi(X)\), then letting \(g_X \in R(\theta)D(t,t^{-1})\) satisfy \(g_X \begin{pmatrix} 1 \\ 0 \end{pmatrix} = X\) we find that \(gg_X\cdot \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix}= g_Xh_s \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix}\), and since the \(\operatorname{PSL}(2,\mathbb{R})\) action is free this implies that \(g_Xh_sg_X^{-1} = \pm g\), then since \(g_X = \begin{pmatrix} a & -b\norm{X}^{-2} \\ b & a\norm{X}^{-2} \end{pmatrix}\), we can compute \(g_Xh_sg_X^{-1} = \begin{pmatrix} 1 - abs & a^2s \\ - b^2s & 1 + abs \end{pmatrix}\), this cannot possibly be in \(\slz\), since if it were we would require \(abs \in \mathbb{\mathbb{Z}}\) and \(b^2s \in \mathbb{Z}\) implying that \(abs/b^2s = a/b \in \mathbb{Q}\). Thus by Dani's theorem \cite{Dani} we have for \(\mu\) the unit Haar measure on \(\slz\setminus\slr\)
         \begin{align*}
             \lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds &= \lim_{T \to \infty} \frac{1}{T\norm{X}M} \int_{-T}^{T}\overline{f}(\pi \Psi(X)\cdot h_s)ds\\ &= \frac{2}{\norm{X}M}\int \overline{f}(\pi \Psi(X) \cdot g)d\mu
         \end{align*}
@@ -276,7 +301,7 @@ sorting=ynt
             \end{align*}
         \end{lemma}
         \begin{proof}
-            First note that we can write \(X = \Psi(1,0)\cdot g_X\), for some \(g_X \in R(\theta)D(t,t^{-1})\). We can parameterize \(\slr\) by \(\set{\begin{pmatrix} e & f \\ g & h \end{pmatrix} \mid  eh -fg = 1}\), then the integral over \(\slr\) is the integral over the chart \(e \neq 0\). In this chart we have \(d\mu = \frac{6}{\pi^2}\frac{\abs{de\,df\,dg}}{\abs{e}}\), in our earlier parameterization in terms of \(a,b,s\) we have \(a = e, b = g, f = as - b(a^2 + b^2)^{-1}\), this gives us Jacobian determinant \(a\). Now letting \(D\) be a fundamental domain for \(\slr/\Gamma\) we get from definition of \(\tilde{f}\)
+            First note that we can write \(X = \Psi(1,0)\cdot g_X\), for some \(g_X \in R(\theta)D(t,t^{-1})\). We can parameterize \(\slr\) by \(\set{\begin{pmatrix} u & w \\ v & h \end{pmatrix} \mid  uh - vw = 1}\), then the integral over \(\slr\) is the integral over the chart \(u \neq 0\). In this chart we have \(d\mu = \frac{6}{\pi^2}\frac{\abs{du\,dv\,dw}}{\abs{u}}\), in our earlier parameterization in terms of \(u,v,s\) we have \(w = us - v(u^2 + v^2)^{-1}\), this gives us Jacobian determinant \(u\). Now letting \(D\) be a fundamental domain for \(\slr/\Gamma\) we get from definition of \(\tilde{f}\)
             \begin{align*}
                 \int_{\slz\setminus\slr} \overline{f}(\pi \Psi(X) \cdot g)d\mu
                 &= \int_{D} \sum_{g' \in \Gamma}\tilde{f}(g' \cdot \Psi(X) \cdot g)d\mu  \\
