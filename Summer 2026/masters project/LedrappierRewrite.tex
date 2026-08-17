@@ -148,8 +148,9 @@ sorting=ynt
         
         Our goal is to understand the distribution of mapping class group orbits under the horocycle flow, which is related to the amount of shear a mapping class group element applies. Thus we will measure the size of a mapping class group element by the amount of shearing it applies to a surface.
         \begin{defn}
-            For \(\gamma \in \Gamma\) we define \(K_{\gamma}\) to be the dilation of the Teichm\"uller map \(h: S \to \gamma(S)\) for \((S,\varphi) \in \mathbf{T_1}\) being the fixed basepoint identified with \(dx + idy\).
+            For \(\gamma \in \Gamma\) we define \(K_{\gamma}\) to be the dilation of the Teichm\"uller map \(h: S \to S\) in the homotopy class of the change of marking between \((S,\varphi)\) and \(\gamma\cdot(S,\varphi)\) i.e. the homotopy class of \(\varphi \gamma^{-1} \varphi^{-1}\)
         \end{defn}
+        For \(g \in \slz\) we define \(K_g\) as \(K_\gamma\) for \(\gamma\) associated to \(g\).
 
         Finally we define a section from \(\mathscr{MF}\) to \(\mathcal{Q}^1\), using our fixed covering of \(\mathbb{T}^2\) as a basepoint, then for \(\mathcal{F} \in \mathscr{MF}\) we will find that there is a unique \(\mathcal{F}'\) with \([\mathcal{F}'] = [\mathcal{F}] \in \mathbb{P}\mathscr{MF}\) so that \(\mathcal{F}'\) is the horizontal foliation for some \(q \in \mathcal{Q}^1\) lying above \(dz\). Thus we can recover a point in \(\mathcal{Q}^1\) by travelling along the Teichm\"uller line associated to \(q\) until we get a quadratic differential with horizontal foliation \(\mathcal{F}\). As discussed previously each quadratic differential is uniquely associated to one of the form \(\frac{e^{i\theta}}{\Im\tau}(dx + \tau dy)^2\), thus fixing \(\tau = i\) gives
         \begin{align*}
@@ -228,42 +229,42 @@ sorting=ynt
         \end{defn}
         We may further define \(\pi\) to be the quotient map \(\mathcal{Q}^1 \to \mathcal{Q}^1/\Gamma\) and
         \begin{align*}
-            &\overline{f}: \mathcal{Q}^1/\Gamma \to \mathbb{R} \\
-            &q\cdot\Gamma \mapsto \sum_{\Gamma} \tilde{f}(\pi(q)\cdot\gamma)
+            &\overline{f}: \slz \setminus \mathcal{Q}^1 \to \mathbb{R} \\
+            &\slz \cdot q \mapsto \sum_{g \in \slz} \tilde{f}(\pi(g \cdot q))
         \end{align*}
-        By construction, integrating \(\bar{f}\) along the unipotent flow gives the sum over \(\set{\gamma \in \Gamma \mid \gamma X \in \operatorname{supp}(f)}\) with \(s(\gamma,X)\) lying within the integral bounds up to some small error, by relating this to the average of \(f(\gamma X)\) with \(K_\gamma\) small, we get a new formula for the sum from the equidistribution of the unipotent flow. We can use the hyperbolic geometry to relate these two quantities as follows
+        By construction, integrating \(\bar{f}\) along the unipotent flow gives the sum over \(\set{g \in \slz \mid g \cdot X \in \operatorname{supp}(f)}\) with \(s(g,X)\) lying within the integral bounds up to some small error, by relating this to the average of \(f(g X)\) with \(K_g\) small, we get a new formula for the sum from the equidistribution of the unipotent flow. We can use the hyperbolic geometry to relate these two quantities as follows
         \begin{lemma}
             \begin{align*}
-                s(\gamma,X)^2 = \frac{K_\gamma + K_{\gamma}^{-1}}{\norm{X}^2\norm{\gamma X}^2} - \frac{1}{\norm{X}^4} - \frac{1}{\norm{\gamma X}^4}
+                s(g,X)^2 = \frac{K_g + K_{g}^{-1}}{\norm{X}^2\norm{g X}^2} - \frac{1}{\norm{X}^4} - \frac{1}{\norm{g X}^4}
             \end{align*}
             \begin{proof}
                 \cmt{Copy paste proof here}
             \end{proof}
         \end{lemma}
 
-        Now since \(f\) has compact support, the \(\frac{1}{\norm{\gamma X}^4}\) term is bounded for \(\gamma X \in \operatorname{supp}(f)\) and also note that \(K_\gamma \geq 1\), so that the \(\frac{K_\gamma^{-1}}{\norm{X}^2\norm{\gamma X}^2}\) is also uniformly bounded for all \(\gamma\), this furnishes positive constants \(C \tand D\) such that
+        Now since \(f\) has compact support, the \(\frac{1}{\norm{g X}^4}\) term is bounded for \(g X \in \operatorname{supp}(f)\) and also note that \(K_g \geq 1\), so that the \(\frac{K_g^{-1}}{\norm{X}^2\norm{g X}^2}\) is also uniformly bounded for all \(g\), this furnishes positive constants \(C \tand D\) such that
         \begin{align*}
-            \frac{K_\gamma}{\norm{X}^2\norm{\gamma X}^2} - C \leq s(\gamma,X)^2 \leq \frac{K_\gamma}{\norm{X}^2\norm{\gamma X}^2} + D
+            \frac{K_g}{\norm{X}^2\norm{g X}^2} - C \leq s(g,X)^2 \leq \frac{K_g}{\norm{X}^2\norm{g X}^2} + D
         \end{align*}
         whence we find that
         \begin{align*}
-            &\abs{s(\gamma,X)} \leq \frac{T}{\norm{X}\norm{\gamma X}} - \sqrt{C} \\
-            \implies & \sqrt{K_\gamma} \leq \norm{X}\norm{\gamma X}\left(\sqrt{\frac{K_\gamma}{\norm{X}^2\norm{\gamma X}^2} - C} + \sqrt{C}\right) \leq T
+            &\abs{s(g,X)} \leq \frac{T}{\norm{X}\norm{g X}} - \sqrt{C} \\
+            \implies & \sqrt{K_g} \leq \norm{X}\norm{g X}\left(\sqrt{\frac{K_g}{\norm{X}^2\norm{g X}^2} - C} + \sqrt{C}\right) \leq T
         \end{align*}
-        and if \(\sqrt{K_\gamma} \leq T\), then
+        and if \(\sqrt{K_g} \leq T\), then
         \begin{align*}
-            \abs{s(\gamma,X)} \leq \sqrt{\frac{T^2}{\norm{X}^2\norm{\gamma X}^2} + D} \leq \frac{T}{\norm{X}\norm{\gamma X}} + \sqrt{D}
+            \abs{s(g,X)} \leq \sqrt{\frac{T^2}{\norm{X}^2\norm{g X}^2} + D} \leq \frac{T}{\norm{X}\norm{g X}} + \sqrt{D}
         \end{align*}
-        The first thing to notice from these equations is that \(\overline{f}\) is well defined, this follows immediately from the fact that \(\Gamma\) as a mapping class group acts properly discontinuously \cite{FarbMarg}, which having infinitely many \(\gamma \in \Gamma\) with \(K_\gamma \leq N\) for some \(N\) would directly contradict. There is also a way to see this simply using the norm on \(\slz\). For \(g \in \slz\) the matrix representation of \(\gamma\)
+        The first thing to notice from these equations is that \(\overline{f}\) is well defined, this follows immediately from the fact that \(\Gamma\) as a mapping class group acts properly discontinuously \cite{FarbMarg}, which having infinitely many \(\gamma \in \Gamma\) with \(K_\gamma \leq N\) for some \(N\) would directly contradict. There is also a way to see this simply using the norm on \(\slz\).
         \begin{align*}
-            K_\gamma + \frac{1}{K_\gamma} = 2\cosh2d_{\operatorname{Teich}}(S,S\cdot \gamma) = 2\cosh d_\mathbb{H}(i,\gamma \cdot i) = \norm{g}_{F}^2
+            K_g + \frac{1}{K_g} = 2\cosh2d_{\operatorname{Teich}}(S,g \cdot S) = 2\cosh d_\mathbb{H}(i,g \cdot i) = \norm{g}_{F}^2
         \end{align*}
         So that for any \(N\) there are finitely many \(\gamma\) with \(\abs{s(\gamma,X)} \leq N\). Either approach implies \(\bar{f}\) is continuous since it is given locally by a sum of continuous functions. The second application of these inequalities is defining \(L = \inf_{Y \in \operatorname{supp}(f)}\norm{Y}\) and \(M = \sup_{Y \in \operatorname{supp}(f)}\norm{Y}\) we get the following explicit relation for positive valued \(f\),
         \begin{align*}
             &\int_{-\frac{T}{\norm{X}M} + \sqrt{D} + \epsilon}^{\frac{T}{\norm{X}M} - \sqrt{D} - \epsilon}\overline{f}(\pi \Psi(X)\cdot h_s)ds \leq \sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}} f(\gamma X) \leq \int^{\frac{T}{\norm{X}L} + \sqrt{C} + \epsilon}_{-\frac{T}{\norm{X}L} - \sqrt{C} - \epsilon}\overline{f}(\pi \Psi(X)\cdot h_s)ds \\
             &\lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds \leq \lim_{T \to \infty} \frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}} f(\gamma X)  \leq \lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}L}}^{\frac{T}{\norm{X}L}}\overline{f}(\pi \Psi(X)\cdot h_s)ds
         \end{align*}
-        Similar equalities holds for negative valued \(f\). We may assume that \(f\) is strictly positive or negative, considering \(f^+,f^-\) defined as the restrictions \(f\vert_{\set{f > 0}}, f\vert_{\set{f < 0}}\) respectively. To complete the proof I will evaluate \(\lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds\), since the same argument applies to the other limit squeezing the sum and gives the same result.
+        Similar equalities holds for negative valued \(f\). We may assume that \(f\) is strictly positive or negative, considering \(f^+,f^-\) defined as \(\max\set{f,0}, \min\set{f,0}\) respectively. To complete the proof I will evaluate \(\lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds\), since the same argument applies to the other limit squeezing the sum and gives the same result.
 
         Now we can see that the horocycle flow for \(\Psi(X)\) is aperiodic and hence equidistributes by Dani's theorem if and only if \(X\) has irrational slope \cmt{proof here}. By Dani's theorem \cite{Dani} we have for \(\mu\) the unit Haar measure on \(\slz\setminus\slr\)
         \begin{align*}
@@ -271,19 +272,18 @@ sorting=ynt
         \end{align*}
         \begin{lemma}
             \begin{align*}
-                \int \overline{f}(\pi \Psi(X) \cdot g)d\mu = \frac{6}{\pi^2}\int \tilde{f}\left(\Psi\begin{pmatrix}
-                    b \\ a
-                \end{pmatrix}\right)\cdot h_s\abs{db\,da\,ds}
+                \int \overline{f}(\pi \Psi(X) \cdot g)d\mu = \frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}} f(re^{i\theta})rdrd\theta
             \end{align*}
         \end{lemma}
-        \cmt{Change statement of lemma}
         \begin{proof}
-            First note that we can write \(X = \Psi(1,0)\cdot g_X\), for some \(g_X \in \slz\). We can parameterize \(\slr\) by \(\set{\begin{pmatrix} e & f \\ g & h \end{pmatrix} \mid  eh -fg = 1}\), then the integral over \(\slr\) is the integral over the chart \(e \neq 0\). In this chart we have \(d\mu = \frac{6}{\pi^2}\frac{\abs{de\,df\,dg}}{\abs{e}}\), in our earlier parameterization in terms of \(a,b,s\) we have \(a = e, b = g, f = as - b(a^2 + b^2)^{-1}\), this gives us Jacobian determinant \(a\). Now letting \(D\) be a fundamental domain for \(\slr/\Gamma\) we get from definition of \(\tilde{f}\)
+            First note that we can write \(X = \Psi(1,0)\cdot g_X\), for some \(g_X \in R(\theta)D(t,t^{-1})\). We can parameterize \(\slr\) by \(\set{\begin{pmatrix} e & f \\ g & h \end{pmatrix} \mid  eh -fg = 1}\), then the integral over \(\slr\) is the integral over the chart \(e \neq 0\). In this chart we have \(d\mu = \frac{6}{\pi^2}\frac{\abs{de\,df\,dg}}{\abs{e}}\), in our earlier parameterization in terms of \(a,b,s\) we have \(a = e, b = g, f = as - b(a^2 + b^2)^{-1}\), this gives us Jacobian determinant \(a\). Now letting \(D\) be a fundamental domain for \(\slr/\Gamma\) we get from definition of \(\tilde{f}\)
             \begin{align*}
                 \int_{\slz\setminus\slr} \overline{f}(\pi \Psi(X) \cdot g)d\mu
                 &= \int_{D} \sum_{g' \in \Gamma}\tilde{f}(g' \cdot \Psi(X) \cdot g)d\mu  \\
-                &= \int_{\slr \cap \set{e \neq 0}} \tilde{f}\left(\Psi(X) \cdot \begin{pmatrix} e & f \\ g & h \end{pmatrix}\right)\frac{6}{\pi^2}\frac{de\,df\,dg}{\abs{e}} \\
-                &= \frac{6}{\pi^2}\int_{\slr \cap \set{a \neq 0}} \tilde{f}\left(\Psi(X) \cdot \begin{pmatrix} a & as - b\norm{X}^{-2} \\ b & bs + a\norm{X}^{-2} \end{pmatrix}\right)da\,db\,ds \\
+                &= \int_D \sum_{g' \in \Gamma}\tilde{f}\left(g' \cdot \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot g_Xg \right)d\mu \\
+                &= \int_D \sum_{g' \in \Gamma}\tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot g'g_Xg \right)d\mu \\
+                &= \int_{\slr \cap \set{u \neq 0}} \tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} u & w \\ v & h \end{pmatrix}\right)\frac{6}{\pi^2}\frac{du\,dv\,dw}{\abs{u}} \\
+                &= \frac{6}{\pi^2}\int_{\slr \cap \set{u \neq 0}} \tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} u & us - v(u^2 + v^2)^{-2} \\ v & vs + u(u^2 + v^2)^{-2} \end{pmatrix}\right)du\,dv\,ds \\
                 &= \frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}\times \mathbb{R}} \tilde{f}\left(\Psi \begin{pmatrix} (\theta,r)\end{pmatrix}\cdot h_s\right)rdr\,d\theta\,ds \\
                 &= \frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}\times \mathbb{R}} \chi_\epsilon(-s)f(re^{i\theta})rdrd\theta ds \\
                 &= \frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}} f(re^{i\theta})rdrd\theta \\
