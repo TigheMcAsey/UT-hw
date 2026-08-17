@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  16 AUG 2026 19:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  16 AUG 2026 20:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -715,56 +715,61 @@ Overfull \hbox (16.72058pt too wide) in paragraph at lines 139--141
 [6]
 
 [7]
+Overfull \hbox (1.46991pt too wide) in paragraph at lines 200--202
+\OT1/cmr/m/it/10 gives a unique de-com-po-si-tion of any $[]\OT1/cmr/m/n/10 (2\OML/cmm/m/it/10 ; \U/msb/m/n/10 R\OT1/cmr/m/n/10 )$ \OT1/cmr/m/it/10 ma-trix in the form $\OML/cmm/m/it/10 R\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^R\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 D\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t; t[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 h[]$\OT1/cmr/m/it/10 ,
+ []
+
+
 
 [8]
 
 [9]
-Overfull \hbox (67.25253pt too wide) detected at line 258
+Overfull \hbox (67.25253pt too wide) detected at line 265
 []
- []
-
-
-Overfull \hbox (7.06325pt too wide) in paragraph at lines 258--260
-\OT1/cmr/m/n/10 pos-i-tive or neg-a-tive, con-sid-er-ing $\OML/cmm/m/it/10 f[]; f[]$ \OT1/cmr/m/n/10 de-fined as the re-stric-tions $\OML/cmm/m/it/10 f\OMS/cmsy/m/n/10 j[]\OML/cmm/m/it/10 ; f\OMS/cmsy/m/n/10 j[]$
  []
 
 
 
 [10]
-Overfull \hbox (55.74223pt too wide) detected at line 283
-[]
+Overfull \hbox (7.06325pt too wide) in paragraph at lines 265--267
+\OT1/cmr/m/n/10 pos-i-tive or neg-a-tive, con-sid-er-ing $\OML/cmm/m/it/10 f[]; f[]$ \OT1/cmr/m/n/10 de-fined as the re-stric-tions $\OML/cmm/m/it/10 f\OMS/cmsy/m/n/10 j[]\OML/cmm/m/it/10 ; f\OMS/cmsy/m/n/10 j[]$
  []
 
 
-Overfull \hbox (38.06099pt too wide) in paragraph at lines 288--290
-\OT1/cmr/m/n/10 eliminate the $1\OML/cmm/m/it/10 =M$ \OT1/cmr/m/n/10 fac-tor, we note that $\OML/cmm/m/it/10 f$ \OT1/cmr/m/n/10 is sup-ported on the an-nu-lus $[]$,
- []
-
-
-Overfull \hbox (62.1776pt too wide) in paragraph at lines 288--290
-\OML/cmm/m/it/10 ^^_[]; [] ; ^^_[]$ \OT1/cmr/m/n/10 with $\OML/cmm/m/it/10 ^^_[]$ \OT1/cmr/m/n/10 sup-ported on $[]$,
- []
-
-
-Overfull \hbox (63.47986pt too wide) detected at line 292
+Overfull \hbox (55.74223pt too wide) detected at line 290
 []
  []
 
 
 
 [11]
-Overfull \hbox (2.72076pt too wide) detected at line 296
+Overfull \hbox (38.06099pt too wide) in paragraph at lines 295--297
+\OT1/cmr/m/n/10 eliminate the $1\OML/cmm/m/it/10 =M$ \OT1/cmr/m/n/10 fac-tor, we note that $\OML/cmm/m/it/10 f$ \OT1/cmr/m/n/10 is sup-ported on the an-nu-lus $[]$,
+ []
+
+
+Overfull \hbox (62.1776pt too wide) in paragraph at lines 295--297
+\OML/cmm/m/it/10 ^^_[]; [] ; ^^_[]$ \OT1/cmr/m/n/10 with $\OML/cmm/m/it/10 ^^_[]$ \OT1/cmr/m/n/10 sup-ported on $[]$,
+ []
+
+
+Overfull \hbox (63.47986pt too wide) detected at line 299
 []
  []
 
 
-Overfull \hbox (2.60457pt too wide) in paragraph at lines 312--312
-[]\OT1/cmr/m/n/10 Giovanni Forni. ``On the Lya-punov ex-po-nents of the Kont-se-vich{Zorich
+Overfull \hbox (2.72076pt too wide) detected at line 303
+[]
  []
 
 
 
 [12]
+Overfull \hbox (2.60457pt too wide) in paragraph at lines 319--319
+[]\OT1/cmr/m/n/10 Giovanni Forni. ``On the Lya-punov ex-po-nents of the Kont-se-vich{Zorich
+ []
+
+
 
 [13] (./LedrappierRewrite.aux)
  ***********
@@ -784,7 +789,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  116i,15n,121p,4420b,1274s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on LedrappierRewrite.pdf (13 pages, 325297 bytes).
+Output written on LedrappierRewrite.pdf (13 pages, 326491 bytes).
 PDF statistics:
  177 PDF objects out of 1000 (max. 8388607)
  110 compressed objects within 2 object streams

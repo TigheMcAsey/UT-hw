@@ -191,14 +191,21 @@ sorting=ynt
             \Re (\tau) &= \Im(\tau)(abs^2-ab\norm{X}^{-4} + ab - b^2s\norm{X}^{-2} + a^2s\norm{X}^{-2}) \\
             \theta &= 2\arg(bs + a\norm{X}^2 + ib)
         \end{align*}
-        Now we have left and right actions of \(\slr\) on \(\mathcal{Q}^1\). We may see from our earlier definition that the left action is consistent with \(T^1 \mathbb{H}\)
+        Now we have left and right actions of \(\slr\) on \(\mathcal{Q}^1\). We may see from our earlier definition that the left action is consistent with the action on \(T^1 \mathbb{H}\), which lies above the mobius transform, we also note here that the left and right action agree at \(\Psi(1,0)\). The left and right action moreover commute, since our \(\Re(\tau)\) and \(\Im(\tau)\) are cohomology classes, and our right action gives a linear combination of them, taking the pullback before or after taking the linear combination does not affect the result.
 
         \begin{defn}
-            Let \(\gamma \in \Gamma\) and \(X \in \mathbb{RP}^1 \times \mathbb{R}_{>0}\). Then we can define \(s(\gamma,X)\) by the equation
+            Let \(g \in \slz\) and \(X \in \mathbb{RP}^1 \times \mathbb{R}_{>0}\). Then we can define \(s(g,X)\) by the equation
             \begin{align*}
-                \Psi(\gamma X) = \Psi(X)\cdot \gamma h_{s(\gamma,X)}
+                \Psi(g X) = g \cdot \Psi(X)\cdot h_{s(g,X)}
             \end{align*}
-            Note here that if we take \(\gamma\) as associated with the matrix \(g \in \slz\), then the right action is the left multiplication by \(g^T\). To see such an \(s(\gamma,X)\) exists, by definition of \(\Psi\) we see that if \(g \in \slz\) is associated to \(\gamma\) and has \(KAN\) decomposition \(g = R(\theta)D(\lambda,\lambda^{-1})\begin{pmatrix} 1 & s \\ 0 & 1 \end{pmatrix}\), then \(\Psi(gX) = \Psi(X)\cdot (R(\theta)D(\lambda,\lambda^{-1}))\).
+            To prove such an \(s\) exists, we use the \(KAN\) decomposition on \(\slr\), which gives a unique decomposition of any \(\slr\) matrix in the form \(R(\theta)D(t,t^{-1})h_s\), notice by our definition of the right action if \(g' \in R(\theta)D(t,t^{-1})\), then 
+            \[\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix}\cdot g' = \Psi\left(g'h_s \begin{pmatrix} 1 \\ 0 \end{pmatrix}\right)\]. Now define \(g_X \in R(\theta)D(t,t^{-1})\) as the matrix satisfying \(g_X \begin{pmatrix} 1 \\ 0 \end{pmatrix} = X\). Then we get for \(KAN\) decomposition \(gg_X = rdh_t\)
+            \begin{align*}
+                \Psi(gX) &= \Psi\left(gg_X \begin{pmatrix} 1 \\ 0 \end{pmatrix}\right) = \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} rd = \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} gg_X h_{-t} = gg_X \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} h_{-t} \\
+                &= g\Psi(X)h_{-t}
+            \end{align*}
+            and thus \(-t = s(g,X)\).
+
         \end{defn}
 
         \section{Projective Measured Foliations as \(\partial \mathbf{T_1}\)}
