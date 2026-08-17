@@ -230,7 +230,7 @@ sorting=ynt
         We may further define \(\pi\) to be the quotient map \(\mathcal{Q}^1 \to \Gamma \setminus \mathcal{Q}^1\) and
         \begin{align*}
             &\overline{f}: \slz \setminus \mathcal{Q}^1 \to \mathbb{R} \\
-            &\slz \cdot q \mapsto \sum_{g \in \slz} \tilde{f}(\pi(g \cdot q))
+            &\pi(q) \mapsto \sum_{g \in \slz} \tilde{f}(g \cdot q)
         \end{align*}
         By construction, integrating \(\bar{f}\) along the unipotent flow gives the sum over \(\set{g \in \slz \mid g \cdot X \in \operatorname{supp}(f)}\) with \(s(g,X)\) lying within the integral bounds up to some small error, by relating this to the average of \(f(g X)\) with \(K_g\) small, we get a new formula for the sum from the equidistribution of the unipotent flow. We can use the hyperbolic geometry to relate these two quantities as follows
         \begin{lemma}
@@ -299,16 +299,15 @@ sorting=ynt
         \end{align*}
         \begin{lemma}
             \begin{align*}
-                \int \overline{f}(\pi \Psi(X) \cdot g)d\mu = \frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}} f(re^{i\theta})rdrd\theta
+                \int_{\slz \setminus \slr} \overline{f}\left(\pi g \cdot \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix}\right)d\mu = \frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}} f(re^{i\theta})rdrd\theta
             \end{align*}
         \end{lemma}
         \begin{proof}
-            First note that we can write \(X = g_X \begin{pmatrix} 1 \\ 0 \end{pmatrix}\), for some \(g_X \in R(\theta)D(t,t^{-1})\). We can parameterize \(\slr\) by \(\set{\begin{pmatrix} u & w \\ v & h \end{pmatrix} \mid  uh - vw = 1}\), then the integral over \(\slr\) is the integral over the chart \(u \neq 0\). In this chart we have \(d\mu = \frac{6}{\pi^2}\frac{\abs{du\,dv\,dw}}{\abs{u}}\), in our earlier parameterization in terms of \(u,v,s\) we have \(w = us - v(u^2 + v^2)^{-1}\), this gives us Jacobian determinant \(u\). Now letting \(D\) be a fundamental domain for \(\slz \setminus \slr\) we get from definition of \(\tilde{f}\)
+            We can parameterize \(\slr\) by \(\set{\begin{pmatrix} u & w \\ v & h \end{pmatrix} \mid  uh - vw = 1}\), then the integral over \(\slr\) is the integral over the chart \(u \neq 0\). In this chart we have \(d\mu = \frac{6}{\pi^2}\frac{\abs{du\,dv\,dw}}{\abs{u}}\), in our earlier parameterization in terms of \(u,v,s\) we have \(w = us - v(u^2 + v^2)^{-1}\), this gives us Jacobian determinant \(u\). Now letting \(D\) be a fundamental domain for \(\slz \setminus \slr\) we get from definition of \(\tilde{f}\)
             \begin{align*}
-                \int_{\slz\setminus\slr} \overline{f}(\pi \Psi(X) \cdot g)d\mu
-                &= \int_{D} \sum_{g' \in \Gamma}\tilde{f}(g' \cdot \Psi(X) \cdot g)d\mu  \\
-                &= \int_D \sum_{g' \in \Gamma}\tilde{f}\left(g' \cdot \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot g_Xg \right)d\mu \\
-                &= \int_D \sum_{g' \in \Gamma}\tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot g'g_Xg \right)d\mu \\
+                \int_{\slz \setminus \slr} \overline{f}\left(\pi g \cdot \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix}\right)d\mu
+                &= \int_{D} \sum_{g' \in \Gamma}\tilde{f}\left(g'g \cdot \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix}\right)d\mu  \\
+                &= \int_D \sum_{g' \in \Gamma}\tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot g'g \right)d\mu \\
                 &= \int_{\slr \cap \set{u \neq 0}} \tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} u & w \\ v & h \end{pmatrix}\right)\frac{6}{\pi^2}\frac{du\,dv\,dw}{\abs{u}} \\
                 &= \frac{6}{\pi^2}\int_{\slr \cap \set{u \neq 0}} \tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} u & us - v(u^2 + v^2)^{-1} \\ v & vs + u(u^2 + v^2)^{-1} \end{pmatrix}\right)du\,dv\,ds \\
                 &= \frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}\times \mathbb{R}} \tilde{f}\left(\Psi \begin{pmatrix} (\theta,r)\end{pmatrix}\cdot h_s\right)rdr\,d\theta\,ds \\
