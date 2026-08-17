@@ -101,13 +101,13 @@ sorting=ynt
             1 & -1 \\ 0 & 1
         \end{pmatrix}\) and the dehn twist about \(\beta\) as \(\begin{pmatrix}
             1 & 0 \\ 1 & 1
-        \end{pmatrix}\), since these two matrices generate \(\slz\) we find that \(\Gamma \cong \slz\).
+        \end{pmatrix}\), since these two matrices generate \(\slz\) we find that \(\Gamma \cong \slz\). This is a clean way to formally do the identification, but the identification with \(\slz\) giving the action on \(\mathcal{Q}^1\) is given in definition 6.
 
-        Now, given a matrix \(g \in \slz\), which is associated to \(\gamma \in \Gamma\), then \(\gamma\) acts on \(H^1(\mathbb{T}^2;\mathbb{R})\) via left multiplication by \(g^{\operatorname{T}}\), which is seen from the following duality relation, which is well defined since integration is defined up to homology classes by Cauchy's theorem.
+        Now, given a matrix \(g \in \slz\), associated to \(\gamma_*\), we find that \(g\) acts on \(H^1(\mathbb{T}^2;\mathbb{R})\) via left multiplication by \(g^{\operatorname{T}}\), which is seen from the following duality relation, which is well defined since integration is defined up to homology classes by Cauchy's theorem.
         \begin{align*}
             \int_c \gamma^*\omega = \int_{S^1} c^*\gamma^*\omega = \int_{S^1} (\gamma c)^*\omega = \int_{\gamma_* c} \omega
         \end{align*}
-        Since we have associated both \(\mathbf{T_1}\) and \(\mathscr{MF}\) to cohomology classes, this definition suffices to describe both mapping class group actions since the \(\mathbf{T_1}\) action takes \(\varphi^*dz \mapsto \varphi^*\gamma^*dz\). Using this computation and the earlier definitions for \(\slz\) actions we establish the following convention
+        Since we have associated both \(\mathbf{T_1}\) and \(\mathscr{MF}\) to cohomology classes, this definition suffices to describe both mapping class group actions since the \(\mathbf{T_1}\) action takes \(\varphi^*dz \mapsto \varphi^*\gamma^*dz\). Using this computation and the earlier definitions for \(\slz\) actions we establish the following convention for the left action of \(\slz\) and \(\slr\) on \(\mathcal{Q}^1\).
 
         \begin{defn}\label{leftmultdefn}
             Let \(\begin{pmatrix} r & s \\ t & u \end{pmatrix} = g \in \slz\), then there is some \(\gamma \in \Gamma\) such that \(\gamma_*\) acts on \(H_1(\mathbb{T}^2)\) by the matrix \(\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} g \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}\) with respect to the basis \(\alpha,\beta\), then we define the left \(\slz\) action \(g \cdot q\) by \(\gamma \cdot q\), this gives a well defined action since we are simply applying an automorphism to the identification coming from homology. Computing explicitly, take \(((S,\varphi),q)\) and assume that \(\varphi^* \sqrt{q} = \frac{e^{\frac{i\theta}{2}}}{\sqrt{\Im(\tau)}}(dx + \tau dy)\), so that 
@@ -132,7 +132,7 @@ sorting=ynt
         \begin{defn}
             Given \(q \in \mathcal{Q}^1\) lying above \((S,\varphi) \in \mathbf{T_1}\) we say that local coordinates \((x,y)\) are natural coordinates when the horizontal and vertical foliations are given by \(\abs{dy}\) and \(\abs{dx}\) respectively.
         \end{defn}
-        Existence of natural coordinates on the torus is obvious, since given the lattice presentation of a torus, and \(q = \phi(dz)^2\) we simply need to multiply the lattice coordinates by \(\phi^{-\frac12}\) since our differential has no zeroes we can take such a well defined branch of the square root function. This allows us to define Teichm\"uller mappings, which are mappings that shear a surface along a pair of foliations.
+        Existence of natural coordinates on the torus is obvious, since given the lattice presentation of a torus, and \(q = \phi(dz)^2\) we simply need to multiply the lattice coordinates by \(\phi^{\frac12}\) since our differential has no zeroes we can take such a well defined branch of the square root function. This allows us to define Teichm\"uller mappings, which are mappings that stretch a surface along a pair of foliations.
         \begin{defn}
             A map \(h: S \to S'\) of Riemann surfaces is called Teichm\"uller when there are quadratic differentials \(q, q'\) on \(S,S'\) respectively such that for some \(K \in \mathbb{R}_{>0}\) there are natural coordinates \((x,y)\) near any point \(p\) and \((x',y')\) near \(p'\) such that
             \begin{align*}
@@ -149,9 +149,8 @@ sorting=ynt
         
         Our goal is to understand the distribution of mapping class group orbits under the horocycle flow, which is related to the amount of shear a mapping class group element applies. Thus we will measure the size of a mapping class group element by the amount of shearing it applies to a surface.
         \begin{defn}
-            For \(\gamma \in \Gamma\) we define \(K_{\gamma}\) to be the dilation of the Teichm\"uller map \(h: S \to S\) in the homotopy class of the change of marking between \((S,\varphi)\) and \(\gamma\cdot(S,\varphi)\) i.e. the homotopy class of \(\varphi \gamma^{-1} \varphi^{-1}\)
+            Let \((S, \varphi)\) be the point in \(\mathbf{T_1}\) with coordinate pulling back to \(dx + idy\), then for \(\gamma \in \Gamma\) we define \(K_{\gamma}\) to be the dilation of the Teichm\"uller map \(h: S \to S\) in the homotopy class of the change of marking between \((S,\varphi)\), and \(\gamma\cdot(S,\varphi)\) i.e. the homotopy class of \(\varphi \gamma^{-1} \varphi^{-1}\). For \(g \in \slz\) we define \(K_g\) as \(K_\gamma\) for \(\gamma\) associated to \(g\).
         \end{defn}
-        For \(g \in \slz\) we define \(K_g\) as \(K_\gamma\) for \(\gamma\) associated to \(g\).
 
         Finally we define a section from \(\mathscr{MF}\) to \(\mathcal{Q}^1\), using our fixed covering of \(\mathbb{T}^2\) as a basepoint, then for \(\mathcal{F} \in \mathscr{MF}\) we will find that there is a unique \(\mathcal{F}'\) with \([\mathcal{F}'] = [\mathcal{F}] \in \mathbb{P}\mathscr{MF}\) so that \(\mathcal{F}'\) is the horizontal foliation for some \(q \in \mathcal{Q}^1\) lying above \(dz\). Thus we can recover a point in \(\mathcal{Q}^1\) by travelling along the Teichm\"uller line associated to \(q\) until we get a quadratic differential with horizontal foliation \(\mathcal{F}\). As discussed previously each quadratic differential is uniquely associated to one of the form \(\frac{e^{i\theta}}{\Im\tau}(dx + \tau dy)^2\), thus fixing \(\tau = i\) gives
         \begin{align*}
@@ -177,23 +176,23 @@ sorting=ynt
         \end{align*}
         The Teichm\"uller unipotent flow is given by the action of the unipotent subgroup \(\set{h_s = \begin{pmatrix} 1 & s \\ 0 & 1 \end{pmatrix}\mid s \in \mathbb{R}}\), moreover this realizes the shearing used to define the map \(\Psi\) as the action of the diagonal subgroup.
 
-        The definition of the right \(\slr\) action on \(\mathcal{Q}^1\) induces one on \(\mathbf{T_1}\) by projection, using our identification of \(\mathbf{T_1}\) with \(\mathbb{H}\) it is immediate that if \(q\) lies over the surface \(dx + \tau dy\) that \(q \cdot g\) lies over \(dx + g\cdot \tau dy\) where \(g\) is taken to act on \(\tau\) by M\"obius transform. Thus the \(\slr\) action on \(\mathcal{Q}^1\) carries over to one on \(T^1 \mathbb{H}\). The final piece in being able to use the geometry of \(\mathbb{H}\) to describe the Teichm\"uller dynamics is that \((\mathbf{T_1},2d_{\operatorname{Teich}})\) is isometric to \((\mathbb{H},d_\mathbb{H})\), moreover this isometry respects the \(\slr\) action, in particular the Teichm\"uller unipotent flow is taken to the horocycle flow \cite{FarbMarg}.
+        The final piece in being able to use the geometry of \(\mathbb{H}\) to describe the Teichm\"uller dynamics is that \((\mathbf{T_1},2d_{\operatorname{Teich}})\) is isometric to \((\mathbb{H},d_\mathbb{H})\), moreover this isometry respects the \(\slr\) action, in particular the Teichm\"uller unipotent flow is taken to the horocycle flow \cite{FarbMarg}.
 
         Now we give a complete coordinate description of \(\mathcal{Q}^1\) of the form \(\mathscr{MF}\times \mathbb{R}\), decomposing into shearing about a measured foliation and the unipotent flow. This is defined as taking \((X,s) \mapsto \Psi(X)\cdot h_s\) where \(\Psi(X)\cdot h_s\) is the quadratic differential given horizontal and vertical foliations \(\begin{pmatrix} 1 & 0 \\ s & 1 \end{pmatrix}\begin{pmatrix} \Im\sqrt{q} \\ \Re\sqrt{q} \end{pmatrix}\). To see this map gives a bijection write \(X = g\begin{pmatrix} 1 \\ 0 \end{pmatrix}\), for \(g = R(\theta)D(\norm{X},\norm{X}^{-1})\) the composition of a diagonal and rotation matrix in \(\slr\). It follows that
         \begin{align*}
             \Psi(X)\cdot h_s = \Psi\left(g \begin{pmatrix} 1 \\ 0 \end{pmatrix}\right)\cdot h_s = (dx + idy)^2\cdot gh_s
         \end{align*}
-        Now under the identification with \(T^1 \mathbb{H}\) this gives \(gh_s\) acting on \((i,(0,1))\), every \(\slr\) matrix has a unique decomposition of the form \(R(\theta)D(\lambda,\lambda^{-1})h_s\), our section \(\Psi\) is only defined up to sign so gives a bijection to \(\text{P}\slr = \slr/\pm1\) and since the \(\text{P}\slr\) action is free and faithful we get a bijection. We may write the map and its inverse explicitly in coordinates, by applying the Teichm\"uller unipotent flow to the horizontal and vertical foliations of \(\Psi(X)\), which gives horizontal and vertical foliations \(bdx + ady\) and \(\norm{X}^{-2}(adx - bdy) + s(bdx + ady)\). This corresponds to the quadratic differential \(q\) with
+        Now under the identification with \(T^1 \mathbb{H}\) this gives \(gh_s\) acting by mobius transform on \((i,(0,1))\), every \(\slr\) matrix has a unique decomposition of the form \(R(\theta)D(\lambda,\lambda^{-1})h_s\), our section \(\Psi\) is only defined up to sign so gives a bijection to \(\text{P}\slr = \slr/\pm1\) and since the \(\text{P}\slr\) action is free and faithful we get a bijection. We may write the map and its inverse explicitly in coordinates, by applying the Teichm\"uller unipotent flow to the horizontal and vertical foliations of \(\Psi(X)\), which gives horizontal and vertical foliations \(bdx + ady\) and \(\norm{X}^{-2}(adx - bdy) + s(bdx + ady)\). This corresponds to the quadratic differential \(q\) with
         \begin{align*}
             \sqrt{q} = (bs + a\norm{X}^{-2} + ib)\left(dx + \frac{as-b\norm{X}^{-2}+ia}{bs + a\norm{X}^{-2} + ib}dy\right)
         \end{align*}
         Using this closed form, given a quadratic differential of the form \(q = \frac{e^{i\theta}}{\Im (\tau)}(dx + \tau dy)^2\), the preimage under our coordinate map is
         \begin{align*}
-            \Im (\tau) &= \frac{1}{b^2 + (a\norm{X}^{-2}+bs)} \\
+            \Im (\tau) &= \frac{1}{b^2 + (a\norm{X}^{-2}+bs)^2} \\
             \Re (\tau) &= \Im(\tau)(abs^2-ab\norm{X}^{-4} + ab - b^2s\norm{X}^{-2} + a^2s\norm{X}^{-2}) \\
-            \theta &= 2\arg(bs + a\norm{X}^2 + ib)
+            \theta &= 2\arg(bs + a\norm{X}^{-2} + ib)
         \end{align*}
-        Now we have left and right actions of \(\slr\) on \(\mathcal{Q}^1\). We may see from our earlier definition that the left action is consistent with the action on \(T^1 \mathbb{H}\), which lies above the M\"obius transform, we also note here that the left and right action agree at \(\Psi(1,0)\). The left and right action moreover commute, since our \(\Re(\tau)\) and \(\Im(\tau)\) are cohomology classes, and our right action gives a linear combination of them, taking the pullback before or after taking the linear combination does not affect the result.
+        Now we have left and right actions of \(\slr\) on \(\mathcal{Q}^1\). We may see from our earlier definition that the left action is consistent with the action on \(T^1 \mathbb{H}\), which lies above the M\"obius transform, we also note here that the left and right action agree at \(\Psi(1,0)\). The left and right action moreover commute, since our \(\Re(\sqrt{q})\) and \(\Im(\sqrt{q})\) are cohomology classes, and our right action gives a linear combination of them, taking the pullback before or after taking the linear combination does not affect the result.
 
         \begin{defn}
             Let \(g \in \slz\) and \(X \in \mathbb{RP}^1 \times \mathbb{R}_{>0}\). Then we can define \(s(g,X)\) by the equation
@@ -228,7 +227,7 @@ sorting=ynt
                 \tilde{f}(q) = f(\Psi^{-1}(q\cdot h_s))\chi_\epsilon(s)
             \end{align*}
         \end{defn}
-        We may further define \(\pi\) to be the quotient map \(\mathcal{Q}^1 \to \mathcal{Q}^1/\Gamma\) and
+        We may further define \(\pi\) to be the quotient map \(\mathcal{Q}^1 \to \Gamma \setminus \mathcal{Q}^1\) and
         \begin{align*}
             &\overline{f}: \slz \setminus \mathcal{Q}^1 \to \mathbb{R} \\
             &\slz \cdot q \mapsto \sum_{g \in \slz} \tilde{f}(\pi(g \cdot q))
@@ -293,7 +292,10 @@ sorting=ynt
 
         Now we can see that the horocycle flow for \(\Psi(X)\) is aperiodic and hence equidistributes by Dani's theorem if and only if \(X\) has irrational slope, to see this suppose for \(g \in \slz\) and \(s\in \mathbb{R} \setminus \set{0}\) we have \(\Psi(X)\cdot h_s = g\cdot \Psi(X)\), then letting \(g_X \in R(\theta)D(t,t^{-1})\) satisfy \(g_X \begin{pmatrix} 1 \\ 0 \end{pmatrix} = X\) we find that \(gg_X\cdot \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix}= g_Xh_s \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix}\), and since the \(\operatorname{PSL}(2,\mathbb{R})\) action is free this implies that \(g_Xh_sg_X^{-1} = \pm g\), then since \(g_X = \begin{pmatrix} a & -b\norm{X}^{-2} \\ b & a\norm{X}^{-2} \end{pmatrix}\), we can compute \(g_Xh_sg_X^{-1} = \begin{pmatrix} 1 - abs & a^2s \\ - b^2s & 1 + abs \end{pmatrix}\), this cannot possibly be in \(\slz\), since if it were we would require \(abs \in \mathbb{\mathbb{Z}}\) and \(b^2s \in \mathbb{Z}\) implying that \(abs/b^2s = a/b \in \mathbb{Q}\). Thus by Dani's theorem \cite{Dani} we have for \(\mu\) the unit Haar measure on \(\slz\setminus\slr\)
         \begin{align*}
-            \lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds &= \lim_{T \to \infty} \frac{1}{T\norm{X}M} \int_{-T}^{T}\overline{f}(\pi \Psi(X)\cdot h_s)ds\\ &= \frac{2}{\norm{X}M}\int \overline{f}(\pi \Psi(X) \cdot g)d\mu
+            \lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds 
+            &= \lim_{T \to \infty} \frac{1}{T\norm{X}M} \int_{-T}^{T}\overline{f}(\pi \Psi(X)\cdot h_s)ds\\
+            &= \lim_{T \to \infty} \frac{1}{T\norm{X}M} \int_{-T}^{T}\overline{f}\left(\pi g_X h_s \cdot\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix}\right)ds\\
+            &= \frac{2}{\norm{X}M}\int_{\slz \setminus \slr} \overline{f}\left(\pi g \cdot \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix}\right)d\mu
         \end{align*}
         \begin{lemma}
             \begin{align*}
@@ -301,14 +303,14 @@ sorting=ynt
             \end{align*}
         \end{lemma}
         \begin{proof}
-            First note that we can write \(X = \Psi(1,0)\cdot g_X\), for some \(g_X \in R(\theta)D(t,t^{-1})\). We can parameterize \(\slr\) by \(\set{\begin{pmatrix} u & w \\ v & h \end{pmatrix} \mid  uh - vw = 1}\), then the integral over \(\slr\) is the integral over the chart \(u \neq 0\). In this chart we have \(d\mu = \frac{6}{\pi^2}\frac{\abs{du\,dv\,dw}}{\abs{u}}\), in our earlier parameterization in terms of \(u,v,s\) we have \(w = us - v(u^2 + v^2)^{-1}\), this gives us Jacobian determinant \(u\). Now letting \(D\) be a fundamental domain for \(\slr/\Gamma\) we get from definition of \(\tilde{f}\)
+            First note that we can write \(X = g_X \begin{pmatrix} 1 \\ 0 \end{pmatrix}\), for some \(g_X \in R(\theta)D(t,t^{-1})\). We can parameterize \(\slr\) by \(\set{\begin{pmatrix} u & w \\ v & h \end{pmatrix} \mid  uh - vw = 1}\), then the integral over \(\slr\) is the integral over the chart \(u \neq 0\). In this chart we have \(d\mu = \frac{6}{\pi^2}\frac{\abs{du\,dv\,dw}}{\abs{u}}\), in our earlier parameterization in terms of \(u,v,s\) we have \(w = us - v(u^2 + v^2)^{-1}\), this gives us Jacobian determinant \(u\). Now letting \(D\) be a fundamental domain for \(\slz \setminus \slr\) we get from definition of \(\tilde{f}\)
             \begin{align*}
                 \int_{\slz\setminus\slr} \overline{f}(\pi \Psi(X) \cdot g)d\mu
                 &= \int_{D} \sum_{g' \in \Gamma}\tilde{f}(g' \cdot \Psi(X) \cdot g)d\mu  \\
                 &= \int_D \sum_{g' \in \Gamma}\tilde{f}\left(g' \cdot \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot g_Xg \right)d\mu \\
                 &= \int_D \sum_{g' \in \Gamma}\tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot g'g_Xg \right)d\mu \\
                 &= \int_{\slr \cap \set{u \neq 0}} \tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} u & w \\ v & h \end{pmatrix}\right)\frac{6}{\pi^2}\frac{du\,dv\,dw}{\abs{u}} \\
-                &= \frac{6}{\pi^2}\int_{\slr \cap \set{u \neq 0}} \tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} u & us - v(u^2 + v^2)^{-2} \\ v & vs + u(u^2 + v^2)^{-2} \end{pmatrix}\right)du\,dv\,ds \\
+                &= \frac{6}{\pi^2}\int_{\slr \cap \set{u \neq 0}} \tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} u & us - v(u^2 + v^2)^{-1} \\ v & vs + u(u^2 + v^2)^{-1} \end{pmatrix}\right)du\,dv\,ds \\
                 &= \frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}\times \mathbb{R}} \tilde{f}\left(\Psi \begin{pmatrix} (\theta,r)\end{pmatrix}\cdot h_s\right)rdr\,d\theta\,ds \\
                 &= \frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}\times \mathbb{R}} \chi_\epsilon(-s)f(re^{i\theta})rdrd\theta ds \\
                 &= \frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}} f(re^{i\theta})rdrd\theta \\

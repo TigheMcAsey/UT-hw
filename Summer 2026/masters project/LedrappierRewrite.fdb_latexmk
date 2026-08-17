@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber LedrappierRewrite"] 1786745836.12167 "LedrappierRewrite.bcf" "LedrappierRewrite.bbl" "LedrappierRewrite" 1786936067.5939 0
-  "LedrappierRewrite.bcf" 1786936067.51324 109040 f6af98e47694e9d235d91f686aea3a4f "pdflatex"
+["biber LedrappierRewrite"] 1786745836.12167 "LedrappierRewrite.bcf" "LedrappierRewrite.bbl" "LedrappierRewrite" 1786938131.36254 0
+  "LedrappierRewrite.bcf" 1786938131.28444 109040 f6af98e47694e9d235d91f686aea3a4f "pdflatex"
   "refs.bib" 1786738677.86662 6926 bd8668a85dcc5ff38fce1e656f92124b ""
   (generated)
   "LedrappierRewrite.bbl"
   "LedrappierRewrite.blg"
   (rewritten before read)
-["pdflatex"] 1786936066.67935 "/Users/tighe/School_Work/UT-hw/Summer 2026/masters project/LedrappierRewrite.tex" "LedrappierRewrite.pdf" "LedrappierRewrite" 1786936067.59412 0
-  "/Users/tighe/School_Work/UT-hw/Summer 2026/masters project/LedrappierRewrite.tex" 1786936066.47962 47143 83fa256281f2f84a23b76d237621eeb4 ""
+["pdflatex"] 1786938130.36574 "/Users/tighe/School_Work/UT-hw/Summer 2026/masters project/LedrappierRewrite.tex" "LedrappierRewrite.pdf" "LedrappierRewrite" 1786938131.36276 0
+  "/Users/tighe/School_Work/UT-hw/Summer 2026/masters project/LedrappierRewrite.tex" 1786938130.1713 47323 ad08c188fd91058cd1934cecb1e32577 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -193,10 +193,10 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1757546981 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "LedrappierRewrite.aux" 1786936067.51226 1975 440c68fc9582bec418edff308f7d9444 "pdflatex"
+  "LedrappierRewrite.aux" 1786938131.28349 1975 f905c1a6211e0ceab0e494a4a9119d5e "pdflatex"
   "LedrappierRewrite.bbl" 1786745837.43727 13080 4bc21a88a6014464c321bf908ccca967 "biber LedrappierRewrite"
-  "LedrappierRewrite.run.xml" 1786936067.51372 2396 5f5a6c407a8c3f6895c31c90c8215c62 "pdflatex"
-  "LedrappierRewrite.tex" 1786936066.47962 47143 83fa256281f2f84a23b76d237621eeb4 ""
+  "LedrappierRewrite.run.xml" 1786938131.2849 2396 5f5a6c407a8c3f6895c31c90c8215c62 "pdflatex"
+  "LedrappierRewrite.tex" 1786938130.1713 47323 ad08c188fd91058cd1934cecb1e32577 ""
   "image/Diagram1.png" 1786935630.78645 146773 f0600a688796d53dac52d3bf27679436 ""
   (generated)
   "LedrappierRewrite.aux"
