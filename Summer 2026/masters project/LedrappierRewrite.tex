@@ -38,7 +38,7 @@ sorting=ynt
 \begin{document}
 
     \section{Introduction}
-    Ledrappier's 1999 paper \emph{Distribution des orbites des réseaux sur le plan réel} \cite{Ledrappier_1999} proves an ergodic theorem for averages of compactly suported real functions on \(\slz\) orbits. The goals of this document are twofold \emph{(i)} rewrite Ledrappier's paper in the language of Teichm\"uller theory, to better motivate and understand the result, and \emph{(ii)} to explicate terse elements of Ledrappier's proof.
+    Ledrappier's 1999 paper \emph{Distribution des orbites des réseaux sur le plan réel} \cite{Ledrappier_1999} proves an equidistribution theorem for averages of compactly suported real functions on \(\slz\) orbits. The goals of this document are twofold \emph{(i)} rewrite Ledrappier's paper in the language of Teichm\"uller theory, to better motivate and understand the result, and \emph{(ii)} to explicate terse elements of Ledrappier's proof.
 
     The following notation will be used throughout
     \begin{itemize}
@@ -47,8 +47,23 @@ sorting=ynt
         \item \(\Gamma\) will denote the mapping class group of \(\mathbb{T}^2\)
         \item \(\uqd\) will denote the space of unit quadratic differentials over \(\mathbf{T_1}\)
         \item \(\mathscr{MF}\) will denote the space of measured foliations on \(\mathbb{T}^2\).
+        \item \(\mu_{\operatorname{Th}}\) will denote the Thurston measure on measured laminations, which may be considered as a measure on measured foliations under the equivalence of measured laminations and foliations.
+        \item \(\mathcal{Q}^1\mathcal{M} = \Gamma \setminus \mathcal{Q}^1\) will refer to the moduli space of unit quadratic differentials.
+        \item \(\mu_{\operatorname{MV}}\) will denote the Masur-Veech measure on \(\mathcal{Q}^1\), we may also consider this as a measure on the quotient by considering a fundamental domain.
         \item Fix once and for all curves \(\alpha, \beta\) with homology classes giving a basis for \(H^1(\mathbb{T}^2;\mathbb{Z})\) and \(i(\alpha,\beta) = 1\). Moreover, we may fix once and for all a covering map \(\mathbb{R}^2 \to \mathbb{T}^2\), with \((\alpha,\beta)\) corresponding to the ordered lattice generators \(((1,0),(0,1))\).
     \end{itemize}
+
+    The equidistribution theorem of Ledrappier states that if \(X \in \mathbb{R}^2\) is a vector having irrational slope, then for \(f \in C_c(\mathbb{R}^2)\)
+    \begin{align*}
+        \frac{4}{\norm{X}\operatorname{Vol}(\slz\setminus\slr)}\int_{\mathbb{R}^2} \frac{f(Y)}{\norm{Y}}dY = \lim_{T \to \infty} \frac{1}{T}\sum_{\substack{g \in \slz \\ \norm{g}_F \leq T}}f(gX)
+    \end{align*}
+
+    The paper applies two reductions, first showing that it is sufficient to prove the result for \(f \in C_c(\mathbb{R}^2 \setminus \set{0})\) by bounding \[\#\set{g \in \slz \\ \norm{g}_F \leq T \tand \norm{gX} < \epsilon}\] Then noticing that the result is trivial for odd functions, thus reducing to proving it for even functions. We can instead view an even function \(f\) with these properties as \(f \in C_c(\mathbb{RP}^1 \times \mathbb{R}_{>0})\), which we will see can be interpreted as the parameterization for the set of measured foliations on the torus with respective components by a projective foliation and corresponding horizontal stretch. By recontextualizing the use of hyperbolic geometry in Ledrappier's proof as Teichm\"uller geometry, the elements of the proof become much more natural. In the Teichm\"uller geometry setting \(\slz\) becomes identified with \(\Gamma\), and we reinterpret its norm as 
+    \(X \in \mathscr{MF}\) be a foliation with non-periodic leaves, then for \(f \in C_c(\mathscr{MF})\)
+
+    \begin{align*}
+        \frac{8}{\norm{X}\mu_{\operatorname{MV}}(\mathcal{Q}^1 \mathcal{M})}\int_{\mathscr{MF}}\frac{f(Y)}{\norm{Y}}d\mu_{\operatorname{Th}}(Y) = \lim_{T\to\infty}\frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}}f(\gamma X)
+    \end{align*}
 
     \section{Teichm\"uller Theory for the Torus}
     \begin{defn}
@@ -101,7 +116,7 @@ sorting=ynt
             1 & -1 \\ 0 & 1
         \end{pmatrix}\) and the dehn twist about \(\beta\) as \(\begin{pmatrix}
             1 & 0 \\ 1 & 1
-        \end{pmatrix}\), since these two matrices generate \(\slz\) we find that \(\Gamma \cong \slz\). This is a clean way to formally do the identification, but the identification with \(\slz\) giving the action on \(\mathcal{Q}^1\) is given in definition 6.
+        \end{pmatrix}\), since these two matrices generate \(\slz\) we find that \(\Gamma \cong \slz\). This is a clean way to formally do the identification, but the identification with \(\slz\) giving the action on \(\mathcal{Q}^1\) is given in definition \ref{leftmultdefn}.
 
         Now, given a matrix \(g \in \slz\), associated to \(\gamma_*\), we find that \(g\) acts on \(H^1(\mathbb{T}^2;\mathbb{R})\) via left multiplication by \(g^{\operatorname{T}}\), which is seen from the following duality relation, which is well defined since integration is defined up to homology classes by Cauchy's theorem.
         \begin{align*}
@@ -208,6 +223,8 @@ sorting=ynt
             and thus \(-t = s(g,X)\).
 
         \end{defn}
+
+        \section{Measured Laminations}
 
         \section{Projective Measured Foliations as \(\partial \mathbf{T_1}\)}
         Earlier we discussed how the \(\mathbb{RP}^1\) coordinate of the measured foliation specifies a projective measured foliation, with data equivalent to the slope of a line on the torus. We can give a more precise identification with \(\partial \mathbf{T_1}\) in a way that is compatible with the notion of Teichm\"uller geodesics. For the purposes of understanding Ledrappier's paper, we can simply think of the topology on \(\mathbf{T_1}\) as being defined by the Teichm\"uller metric. However, to understand this phenomena we use that the topology on the Teichm\"uller space given equivelantly by embedding into the space of geodesic currents \(\mathcal{C}\) with the weak-\(*\) topology, as this is somewhat tangential I will not provide the details, and the reader is referred to \cite{Martelli_2025} for the proof in the negative Euler characteristic case. The embedding on the torus is given by taking \((S,\varphi)\) to the functional on closed geodesics \(c \mapsto \ell_S(\varphi(c))\) (here we are taking a geodesic representative of \(\varphi(c)\) which is unique up to translation) the length of the curve in \(S\). We similarly have that measured foliations have a natural mapping to the space of currents, by taking \(\mathcal{F}\) given by \(\abs{\omega}\) to \(c \mapsto \int_c \abs{\omega}\). Now we can further consider the projection \(\mathcal{C} \to \mathbb{P}\mathcal{C}\) which will allow us to identify \(\partial \mathbf{T_1} \subset \mathcal{C}\) with \(\mathbb{P}\mathscr{MF}\). To do so consider a sequence \(S_n \in \mathbf{T_1}\) which leaves every compact set, using the isometry with \(\mathbb{H}\) each \(S_n\) corresponds to some \(\tau_n \in \mathbb{H}\), and we see that under the embedding to currents \(S_n\) maps to the current \(e \alpha + f \beta \mapsto \left(\Im(\tau)\right)^{-\frac12}\abs{e + f \tau}\). One way for \(\tau_n\) to leave every compact set is to have after passing to a subsequence \(\abs{\tau_n} \to \infty\), in which case we get a sequence of representatives for \(\set{S_n} \to \mathbb{P}\mathcal{C}\) given by \(e \alpha + f \beta \mapsto \frac{\sqrt{\Im(\tau_n)}}{\abs{\tau_n}}\left\vert\frac{e + f \tau_n}{\sqrt{\Im(\tau)}}\right\vert\), which clearly converges to \(e \alpha + f \beta \mapsto \abs{f}\), the projective measured foliation given by \([\abs{dy}]\). Now if \(\abs{\tau_n} \not \to \infty\) for every subsequence, then we must have \(\Im(\tau_n) \to 0\), moreover after passing to a subsequence \(\Re(\tau_n) \to R\) for some \(R \in \mathbb{R}\) by Bolzano Weierstrass in which case we get representatives for \(\set{S_n} \to \mathbb{P}\mathcal{C}\) given by \(e \alpha + f \beta \mapsto \sqrt{\Im(\tau)}\left\vert\frac{e + f \tau_n}{\sqrt{\Im(\tau_n)}}\right\vert\), which converges to \(e \alpha + f \beta \mapsto \abs{e + fR}\), which corresponds to the projective measured foliation given by \([\abs{dx + Rdy}]\). We can see this is compatible with Teichm\"uller geodesics since if we take a Teichm\"uller geodesic with horizontal foliation given by \(\abs{\omega}\) and vertical foliaton \(\abs{\nu}\), the corresponding length function becomes \(c \mapsto \sqrt{\left(\int_\gamma \abs{\omega}\right)^2 + \left(\int_\gamma \abs{\nu}\right)^2}\), along the Teichm\"uller geodesic we take \((t^{-1} \abs{\nu},t\abs{\omega})\) as \(t \to \infty\), thus the projective class converges to \([\abs{\omega}]\).
