@@ -58,12 +58,15 @@ sorting=ynt
         \frac{4}{\norm{X}\operatorname{Vol}(\slz\setminus\slr)}\int_{\mathbb{R}^2} \frac{f(Y)}{\norm{Y}}dY = \lim_{T \to \infty} \frac{1}{T}\sum_{\substack{g \in \slz \\ \norm{g}_F \leq T}}f(gX)
     \end{align*}
 
-    The paper applies two reductions, first showing that it is sufficient to prove the result for \(f \in C_c(\mathbb{R}^2 \setminus \set{0})\) by bounding \[\#\set{g \in \slz \\ \norm{g}_F \leq T \tand \norm{gX} < \epsilon}\] Then noticing that the result is trivial for odd functions, thus reducing to proving it for even functions. We can instead view an even function \(f\) with these properties as \(f \in C_c(\mathbb{RP}^1 \times \mathbb{R}_{>0})\), which we will see can be interpreted as the parameterization for the set of measured foliations on the torus with respective components by a projective foliation and corresponding horizontal stretch. By recontextualizing the use of hyperbolic geometry in Ledrappier's proof as Teichm\"uller geometry, the elements of the proof become much more natural. In the Teichm\"uller geometry setting \(\slz\) becomes identified with \(\Gamma\), and we reinterpret its norm as 
-    \(X \in \mathscr{MF}\) be a foliation with non-periodic leaves, then for \(f \in C_c(\mathscr{MF})\)
+    The paper applies two reductions, first showing that it is sufficient to prove the result for \(f \in C_c(\mathbb{R}^2 \setminus \set{0})\) by bounding \[\#\set{g \in \slz \\ \norm{g}_F \leq T \tand \norm{gX} < \epsilon}\] Then noticing that the result is trivial for odd functions, thus reducing to proving it for even functions. We can instead view an even function \(f\) with these properties as \(f \in C_c(\mathbb{RP}^1 \times \mathbb{R}_{>0})\), which we will see can be interpreted as the parameterization for the set of measured foliations on the torus with respective components by a projective foliation and corresponding horizontal stretch. By recontextualizing the use of hyperbolic geometry in Ledrappier's proof as Teichm\"uller geometry, the elements of the proof become much more natural. In the Teichm\"uller geometry setting \(\slz\) becomes identified with \(\Gamma\), and instead of a matrix norm we use \(\sqrt{K_\gamma}\), a quantity directly related to the displacement \(\gamma\) induces on Teichm\"uller space. This leads to the following statement of Theorem 1 in \cite{Ledrappier_1999}, entirely in terms of Teichm\"uller theory:
+
+    Let \(X \in \mathscr{MF}\) be a foliation with non-periodic leaves, then for \(f \in C_c(\mathscr{MF})\)
 
     \begin{align*}
         \frac{8}{\norm{X}\mu_{\operatorname{MV}}(\mathcal{Q}^1 \mathcal{M})}\int_{\mathscr{MF}}\frac{f(Y)}{\norm{Y}}d\mu_{\operatorname{Th}}(Y) = \lim_{T\to\infty}\frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}}f(\gamma X)
     \end{align*}
+
+    A small remark is the additional factor of 2 is to be expected from \(\int_{\mathbb{R}^2} f = 2\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}} f\).
 
     \section{Teichm\"uller Theory for the Torus}
     \begin{defn}
