@@ -64,7 +64,7 @@ sorting=ynt
     Let \(X \in \mathscr{MF}\) be a foliation with non-periodic leaves, then for \(f \in C_c(\mathscr{MF})\)
 
     \begin{align*}
-        \frac{8}{\norm{X}\mu_{\operatorname{MV}}(\mathcal{Q}^1 \mathcal{M})}\int_{\mathscr{MF}}\frac{f(Y)}{\norm{Y}}d\mu_{\operatorname{Th}}(Y) = \lim_{T\to\infty}\frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}}f(\gamma X)
+        \frac{8}{\norm{X}\mu_{\operatorname{MV}}(\mathcal{Q}^1 \mathcal{M})}\int_{\mathscr{MF}}\frac{f(Y)}{\norm{Y}}d\mu_{\operatorname{Th}}(Y) = \lim_{T\to\infty}\frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}}f(\gamma \cdot X)
     \end{align*}
 
     A small remark is the additional factor of 2 is to be expected from \(\int_{\mathbb{R}^2} f = 2\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}} f\).
@@ -189,7 +189,11 @@ sorting=ynt
             \sqrt{q} = (a\norm{X}^{-2} + ib)\left(dx + \frac{ai - \norm{X}^{-2}b}{bi + \norm{X}^{-2}a}dy\right)
         \end{align*}
         \begin{defn}
-            Written explicitly we get
+            The above paragraph defines a map
+            \begin{align*}
+                \Psi: \mathscr{MF} \to \mathcal{Q}^1
+            \end{align*}
+            By using our identification of \(\mathscr{MF}\) with \(\mathbb{RP}^1 \times \mathbb{R}_{>0}\) we can also identify the map with its representation in this coordinate description.
             \begin{align*}
                 &\Psi: \mathbb{RP}^1 \times \mathbb{R}_{>0} \to \mathcal{Q}^1 \\
                 &(a,b) \mapsto (a\norm{X}^{-2} + ib)^2\left(dx + \frac{ai - \norm{X}^{-2}b}{bi + \norm{X}^{-2}a}dy\right)^2
@@ -246,9 +250,16 @@ sorting=ynt
         Earlier we discussed how the \(\mathbb{RP}^1\) coordinate of the measured foliation specifies a projective measured foliation, with data equivalent to the slope of a line on the torus. We can give a more precise identification with \(\partial \mathbf{T_1}\) in a way that is compatible with the notion of Teichm\"uller geodesics. For the purposes of understanding Ledrappier's paper, we can simply think of the topology on \(\mathbf{T_1}\) as being defined by the Teichm\"uller metric. However, to understand this phenomena we use that the topology on the Teichm\"uller space given equivelantly by embedding into the space of geodesic currents \(\mathcal{C}\) with the weak-\(*\) topology, as this is somewhat tangential I will not provide the details, and the reader is referred to \cite{Martelli_2025} for the proof in the negative Euler characteristic case. The embedding on the torus is given by taking \((S,\varphi)\) to the functional on closed geodesics \(c \mapsto \ell_S(\varphi(c))\) (here we are taking a geodesic representative of \(\varphi(c)\) which is unique up to translation) the length of the curve in \(S\). We similarly have that measured foliations have a natural mapping to the space of currents, by taking \(\mathcal{F}\) given by \(\abs{\omega}\) to \(c \mapsto \int_c \abs{\omega}\). Now we can further consider the projection \(\mathcal{C} \to \mathbb{P}\mathcal{C}\) which will allow us to identify \(\partial \mathbf{T_1} \subset \mathcal{C}\) with \(\mathbb{P}\mathscr{MF}\). To do so consider a sequence \(S_n \in \mathbf{T_1}\) which leaves every compact set, using the isometry with \(\mathbb{H}\) each \(S_n\) corresponds to some \(\tau_n \in \mathbb{H}\), and we see that under the embedding to currents \(S_n\) maps to the current \(e \alpha + f \beta \mapsto \left(\Im(\tau)\right)^{-\frac12}\abs{e + f \tau}\). One way for \(\tau_n\) to leave every compact set is to have after passing to a subsequence \(\abs{\tau_n} \to \infty\), in which case we get a sequence of representatives for \(\set{S_n} \to \mathbb{P}\mathcal{C}\) given by \(e \alpha + f \beta \mapsto \frac{\sqrt{\Im(\tau_n)}}{\abs{\tau_n}}\left\vert\frac{e + f \tau_n}{\sqrt{\Im(\tau)}}\right\vert\), which clearly converges to \(e \alpha + f \beta \mapsto \abs{f}\), the projective measured foliation given by \([\abs{dy}]\). Now if \(\abs{\tau_n} \not \to \infty\) for every subsequence, then we must have \(\Im(\tau_n) \to 0\), moreover after passing to a subsequence \(\Re(\tau_n) \to R\) for some \(R \in \mathbb{R}\) by Bolzano Weierstrass in which case we get representatives for \(\set{S_n} \to \mathbb{P}\mathcal{C}\) given by \(e \alpha + f \beta \mapsto \sqrt{\Im(\tau)}\left\vert\frac{e + f \tau_n}{\sqrt{\Im(\tau_n)}}\right\vert\), which converges to \(e \alpha + f \beta \mapsto \abs{e + fR}\), which corresponds to the projective measured foliation given by \([\abs{dx + Rdy}]\). We can see this is compatible with Teichm\"uller geodesics since if we take a Teichm\"uller geodesic with horizontal foliation given by \(\abs{\omega}\) and vertical foliaton \(\abs{\nu}\), the corresponding length function becomes \(c \mapsto \sqrt{\left(\int_\gamma \abs{\omega}\right)^2 + \left(\int_\gamma \abs{\nu}\right)^2}\), along the Teichm\"uller geodesic we take \((t^{-1} \abs{\nu},t\abs{\omega})\) as \(t \to \infty\), thus the projective class converges to \([\abs{\omega}]\).
 
         \section{Statement of Theorem}
+        Now that we have defined the relevant objects and constructins, we may restate the theorem from the introduction.
+        Let \(f \in C_c(\mathscr{MF})\), and let \(X \in \mathscr{MF}\) be a foliation with non-periodic leaves, then
+        \begin{align*}
+            \frac{8}{\norm{X}\mu_{\operatorname{MV}}(\mathcal{Q}^1 \mathcal{M})}\int_{\mathscr{MF}}\frac{f(Y)}{\norm{Y}}d\mu_{\operatorname{Th}}(Y) = \lim_{T\to\infty}\frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}}f(\gamma \cdot X)
+        \end{align*}
+        In order to prove this we will use our coordinate descriptions, this also works out well since Dani's theorem is about \(\slr\) actions. Under the identification of \(\mathscr{MF}\) with \(\mathbb{RP}^1 \times \mathbb{R}_{>0}\), the thurston measure comes from the lebesgue measure on colorings, thus \(\mu_{\operatorname{Th}}\) should be replaced by the lebesgue measure and \(\mathscr{MF}\) with \(\mathbb{RP}^1 \times \mathbb{R}_{>0}\), through abuse of notation the norms remain as they are. The Masur-Veech measure of \(\mathcal{Q}^1\mathcal{M}\) is \(\frac{\pi^2}{3}\) and finally, we replace each \(\gamma \in \Gamma\) with its associated \(g \in \slz\), which replaces the action on measured foliations with simple matrix multiplication and preserves \(K_g = K_\gamma\). Thus reducing to proving the statement
+
         Let \(f \in C_c(\mathbb{RP}^1 \times \mathbb{R}_{>0})\), and suppose that \([X] \in \mathbb{RP}^1\) has irrational slope, then
         \begin{align*}
-            \frac{24}{\pi^2\norm{X}}\int_{\mathbb{R}P^1\times{\mathbb{R}_{>0}}}fdrd\theta = \lim_{T\to\infty}\frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}}f(\gamma X)
+            \frac{24}{\pi^2\norm{X}}\int_{\mathbb{R}P^1\times{\mathbb{R}_{>0}}}\frac{f}{\norm{(u,v)}}du\,dv = \lim_{T\to\infty}\frac{1}{T}\sum_{\substack{g \in \slz \\ \sqrt{K_g} \leq T}}f(g X)
         \end{align*}
 
         \section{Proof of Theorem}
@@ -318,13 +329,13 @@ sorting=ynt
         \end{align*}
         So that for any \(N\) there are finitely many \(\gamma\) with \(\abs{s(\gamma,X)} \leq N\). Either approach implies \(\bar{f}\) is continuous since it is given locally by a sum of continuous functions. The second application of the inequalities following from Lemma 1 is defining \(L = \inf_{Y \in \operatorname{supp}(f)}\norm{Y}\) and \(M = \sup_{Y \in \operatorname{supp}(f)}\norm{Y}\) we get the following explicit squeezing relation for positive valued \(f\),
         \begin{align*}
-            &\int_{-\frac{T}{\norm{X}M} + \sqrt{D} + \epsilon}^{\frac{T}{\norm{X}M} - \sqrt{D} - \epsilon}\overline{f}(\pi \Psi(X)\cdot h_s)ds \leq \sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}} f(\gamma X) \\
-            &\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}} f(\gamma X) \leq \int^{\frac{T}{\norm{X}L} + \sqrt{C} + \epsilon}_{-\frac{T}{\norm{X}L} - \sqrt{C} - \epsilon}\overline{f}(\pi \Psi(X)\cdot h_s)ds \\
+            &\int_{-\frac{T}{\norm{X}M} + \sqrt{D} + \epsilon}^{\frac{T}{\norm{X}M} - \sqrt{D} - \epsilon}\overline{f}(\pi \Psi(X)\cdot h_s)ds \leq \sum_{\substack{g \in \slz \\ \sqrt{K_g} \leq T}} f(g X) \\
+            &\sum_{\substack{g \in \slz \\ \sqrt{K_g} \leq T}} f(g X) \leq \int^{\frac{T}{\norm{X}L} + \sqrt{C} + \epsilon}_{-\frac{T}{\norm{X}L} - \sqrt{C} - \epsilon}\overline{f}(\pi \Psi(X)\cdot h_s)ds \\
         \end{align*}
         Dividing by \(T\) and taking the limit as \(T \to \infty\) yields our term of interest.
         \begin{align*}
-            &\lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds \leq \lim_{T \to \infty} \frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}} f(\gamma X)\\
-            &\lim_{T \to \infty} \frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}} f(\gamma X)  \leq \lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}L}}^{\frac{T}{\norm{X}L}}\overline{f}(\pi \Psi(X)\cdot h_s)ds
+            &\lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds \leq \lim_{T \to \infty} \frac{1}{T}\sum_{\substack{g \in \slz \\ \sqrt{K_g} \leq T}} f(g X)\\
+            &\lim_{T \to \infty} \frac{1}{T}\sum_{\substack{g \in \slz \\ \sqrt{K_g} \leq T}} f(g X)  \leq \lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}L}}^{\frac{T}{\norm{X}L}}\overline{f}(\pi \Psi(X)\cdot h_s)ds
         \end{align*}
         Similar equalities holds for negative valued \(f\). We may assume that \(f\) is strictly positive or negative, considering \(f^+,f^-\) defined as \(\max\set{f,0}, \min\set{f,0}\) respectively. To complete the proof I will evaluate \(\lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds\), since the same argument applies to the other limit squeezing the sum and gives the same result.
 
@@ -337,7 +348,7 @@ sorting=ynt
         \end{align*}
         \begin{lemma}
             \begin{align*}
-                \int_{\slz \setminus \slr} \overline{f}\left(\pi g \cdot \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix}\right)d\mu = \frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}} f(re^{i\theta})rdrd\theta
+                \int_{\slz \setminus \slr} \overline{f}\left(\pi g \cdot \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix}\right)d\mu = \frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}} f(u,v)du\,dv
             \end{align*}
         \end{lemma}
         \begin{proof}
@@ -348,20 +359,20 @@ sorting=ynt
                 = &\int_D \sum_{g' \in \Gamma}\tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot g'g \right)d\mu \\
                 = &\int_{\slr \cap \set{u \neq 0}} \tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} u & w \\ v & h \end{pmatrix}\right)\frac{6}{\pi^2}\frac{du\,dv\,dw}{\abs{u}} \\
                 = &\frac{6}{\pi^2}\int_{\slr \cap \set{u \neq 0}} \tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} u & us - v(u^2 + v^2)^{-1} \\ v & vs + u(u^2 + v^2)^{-1} \end{pmatrix}\right)du\,dv\,ds \\
-                = &\frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}\times \mathbb{R}} \tilde{f}\left(\Psi \begin{pmatrix} (\theta,r)\end{pmatrix}\cdot h_s\right)rdr\,d\theta\,ds \\
-                = &\frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}\times \mathbb{R}} \chi_\epsilon(-s)f(re^{i\theta})rdrd\theta ds \\
-                = &\frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}} f(re^{i\theta})rdrd\theta \\
+                = &\frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}\times \mathbb{R}} \tilde{f}\left(\Psi \begin{pmatrix} (u,v)\end{pmatrix}\cdot h_s\right)du\,dv\,ds \\
+                = &\frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}\times \mathbb{R}} \chi_\epsilon(-s)f(u,v)du\,dv\,ds \\
+                = &\frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}} f(u,v)du\,dv \\
             \end{align*}
         \end{proof}
         Combining results gives us
         \begin{align*}
-            \lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds = \frac{24}{\pi^2\norm{X}M}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}}f(re^{i\theta})rdrd\theta
+            \lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds = \frac{24}{\pi^2\norm{X}M}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}}f(u,v)du\,dv
         \end{align*}
         eliminate the \(1/M\) factor, we note that \(f\) is supported on the annulus \[\set{re^{i\theta} \mid L \leq r \leq M}\] We can take for any natural \(N\), a continuous partition of unity of the annulus \(\chi^1,\hdots,\chi^N\) with \(\chi^j\) supported on \[\set{re^{i\theta} \mid L_j = L + \frac{M-L}{N}(j-2) < r < L + \frac{M-L}{N}(j+1) = M_j}\]
         Then writing \(f^j = \chi^j f\) we recover that
         \begin{align*}
-            \sum_1^N\lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M_j}}^{\frac{T}{\norm{X}M_j}}\overline{f^j}(\pi \Psi(X)\cdot h_s)ds &\leq \lim_{T \to \infty} \frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}}\sum_j f^j(\gamma X) \\
-            &= \lim_{T \to \infty} \frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}} f(\gamma X)
+            \sum_1^N\lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M_j}}^{\frac{T}{\norm{X}M_j}}\overline{f^j}(\pi \Psi(X)\cdot h_s)ds &\leq \lim_{T \to \infty} \frac{1}{T}\sum_{\substack{g \in \slz \\ \sqrt{K_g} \leq T}}\sum_j f^j(g X) \\
+            &= \lim_{T \to \infty} \frac{1}{T}\sum_{\substack{g \in \slz \\ \sqrt{K_g} \leq T}} f(g X)
         \end{align*}
         Applying Dani's theorem and lemma 2 to the term on the left hand side we get
         \begin{align*}
@@ -376,7 +387,7 @@ sorting=ynt
         \end{align*}
         The exact same proof applies to the upper bound, so that we get the desired result
         \begin{align*}
-            \frac{24}{\pi^2\norm{X}}\int_{\mathbb{R}P^1\times{\mathbb{R}_{>0}}}fdrd\theta = \lim_{T\to\infty}\frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}}f(\gamma X)
+            \frac{24}{\pi^2\norm{X}}\int_{\mathbb{R}P^1\times{\mathbb{R}_{>0}}}\frac{f}{\norm{(u,v)}}du\,dv = \lim_{T\to\infty}\frac{1}{T}\sum_{\substack{g \in \slz \\ \sqrt{K_g} \leq T}}f(g X)
         \end{align*}
 
         \section{References}
