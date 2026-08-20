@@ -4,7 +4,8 @@
 \usepackage{tikz-cd, stackengine}
 \usepackage{xcolor}
 \usepackage{enumitem}
-\usepackage{graphicx}
+\usepackage{graphicx, float}
+\usepackage[left=4cm, right=4cm]{geometry}
 % Commands:
 
 \newtheorem{defn}{Definition}
@@ -90,10 +91,12 @@ sorting=ynt
         \begin{align*}
             1 = \int_S \abs{q} = \abs{\phi}\int_S \abs{dz}^2 = \abs{\phi}\operatorname{Area}(S) = \abs{\phi}\Im(\tau)
         \end{align*}
-        Identifying \((S,\varphi)\) with its torus representative as above, and using our fixed covering for \(\mathbb{T}^2\), we can associate each quadratic differential \(q\) to \(\varphi^*(q) = \frac{e^{i\theta}}{\Im(\tau)}(dx + \tau dy)^2\), note that this gives a natural identification of \(\mathcal{Q}^1 \longleftrightarrow T^1 \mathbb{H}\) since each quadratic differential is uniquely determined by \((\theta,\tau)\). Since quadratic differentials on the torus are nonvanishing, we may take a locally well defined square root function, which allows us to associate 1-forms to \(q\) by considering \(\Re(\sqrt{q}),\Im(\sqrt{q})\), where \(\sqrt{q} = \sqrt{\phi}dz\). These naturally give rise to a foliation of the torus by considering their level sets, as well as a isotopy invariant measure for transverse curves by integrating their variation.
+        Identifying \((S,\varphi)\) with its torus representative as above, and using our fixed covering for \(\mathbb{T}^2\), we can associate each quadratic differential \(q\) to \(\varphi^*(q) = \frac{e^{i\theta}}{\Im(\tau)}(dx + \tau dy)^2\), note that this gives a natural identification of \(\mathcal{Q}^1 \longleftrightarrow T^1 \mathbb{H}\) since each quadratic differential is uniquely determined by \((\theta,\tau)\). Since quadratic differentials on the torus are nonvanishing, we may take a locally well defined square root function, which allows us to associate 1-forms to \(q\) by considering \(\Re(\sqrt{q}),\Im(\sqrt{q})\), where \(\sqrt{q} = \sqrt{\phi}dz\), we can take a well defined global branch of the square root function since \(\phi\) is constant and thus nonvanishing. These naturally give rise to a foliation of the torus by considering their level sets, as well as a isotopy invariant measure for transverse curves by integrating their variation.
 
         \begin{defn}
             A measured foliation of the torus is a foliation \(\mathcal{F}\) of \(\mathbb{T}^2\) into curves, equipped with a transverse measure \(\mu\) on curves transverse to \(\mathcal{F}\) satisfying \(\mu\) is a locally finite borel measure on transverse curves and if \(I\) is an isotopy of curves such that \(I([a,b],t)\) is transverse to \(\mathcal{F}\) for all \(t\), then \(\mu(I([a,b],-))\) is constant. We identify two measured foliations if they are related by a homotopy of the torus.
+
+            We can further define a norm on a measured foliation \(\norm{(\mathcal{F},\mu)} = \sqrt{\mu(\alpha)^2 + \mu(\beta)^2}\). The motivation for this will become clear once measured foliations are identified with \(\mathbb{RP}^1 \times \mathbb{R}_{>0}\)
         \end{defn}
         \begin{defn}
             We can define the space of projectivized measured foliations \(\mathbb{P}\mathscr{MF}\) as \(\mathscr{MF}/\mathbb{R}_{>0}\) where \(\mathbb{R}_{>0}\) acts via \(\lambda\cdot(\mathcal{F},\mu) = (\mathcal{F},\lambda\mu)\)
@@ -107,7 +110,7 @@ sorting=ynt
         \begin{align*}
             i(\mathcal{F},n \alpha + m \beta) = \abs{\int_{n \alpha + m\beta}\omega}
         \end{align*}
-        writing \(\omega\) in our basis, we associate \(\mathcal{F}\) to \(\abs{b\eta + a\xi}\) for some \(a,b \in \mathbb{R}\), similarly any nonzero cohomology class considered up to sign recovers a measured foliation \((\mathcal{F},\mu)\) since by definition the leaves of our foliation are given by \(\ker |\omega|\), with transverse measure \(\abs{\omega}\). Using our fixed covering \(\mathbb{R}^2 \to \mathbb{T}^2\), we identify \((\eta,\xi) \longleftrightarrow (dx,dy)\), so that compatible with our notion of pullback for abelian and quadratic differentials each measured foliation can be written as \(bdx + ady\) for some \(a,b \in \mathbb{R}\). We also fix an isomorphism of \(\mathscr{MF} = (H^1(\mathbb{T}^2;\mathbb{R}) \setminus \set{0}/\pm) \text{ with } (\mathbb{RP}^1 \times \mathbb{R}_{>0})\), this is done by taking \((a,b) \mapsto b\eta + a\xi\), which we identify with \(bdx + ady\), we will see later that this convention gives \(\operatorname{SL}(2,\mathbb{R})\) equivariance and thus is the correct convention to agree with Ledrappier's paper. Under this identification for \(X \in \mathscr{MF}\) we find \([X] \in \mathbb{P}\mathscr{MF}\) is the projection to the \(\mathbb{RP}^1\) coordinate, and we can write the projection to the radial coordinate either as \(\norm{X}\) or \(r\) depending on which is more convenient. We will later see \([X]\) defines a point in the boundary of Teichm\"uller space consistent with \([a/b] \in \mathbb{RP}^1\).
+        writing \(\omega\) in our basis, we associate \(\mathcal{F}\) to \(\abs{b\eta + a\xi}\) for some \(a,b \in \mathbb{R}\), similarly any nonzero cohomology class considered up to sign recovers a measured foliation \((\mathcal{F},\mu)\) since by definition the leaves of our foliation are given by \(\ker |\omega|\), with transverse measure \(\abs{\omega}\). Using our fixed covering \(\mathbb{R}^2 \to \mathbb{T}^2\), we identify \((\eta,\xi) \longleftrightarrow (dx,dy)\), so that compatible with our notion of pullback for abelian and quadratic differentials each measured foliation can be written as \(bdx + ady\) for some \(a,b \in \mathbb{R}\). We also fix an isomorphism of \(\mathscr{MF} = (H^1(\mathbb{T}^2;\mathbb{R}) \setminus \set{0}/\pm) \text{ with } (\mathbb{RP}^1 \times \mathbb{R}_{>0})\), this is done by taking \((a,b) \mapsto b\eta + a\xi\), which we identify with \(bdx + ady\), we will see later that this convention gives \(\operatorname{SL}(2,\mathbb{R})\) equivariance and thus is the correct convention to agree with Ledrappier's paper. Under this identification for \(X \in \mathscr{MF}\) we find \([X] \in \mathbb{P}\mathscr{MF}\) is the projection to the \(\mathbb{RP}^1\) coordinate, and we can write the projection to the radial coordinate either as \(\norm{X}\) or \(r\) depending on which is more convenient, notice that \(\norm{X}\) is consistent whether we are speaking strictly of \(X\) as a measured foliation or its identification with \(\mathbb{RP}^1 \times \mathbb{R}_{>0}\). We will later see \([X]\) defines a point in the boundary of Teichm\"uller space consistent with \([a/b] \in \mathbb{RP}^1\).
 
         \begin{defn}
             The mapping class group of the torus is the set of orientation preserving diffeomorphisms \(\mathbb{T}^2 \to \mathbb{T}^2\) with the relation \(\gamma \sim \gamma'\) when they are homotopic. We denote the mapping class group of the torus as \(\Gamma\).
@@ -145,6 +148,12 @@ sorting=ynt
             \end{align*}
             We may extend this definition of the left action to all matrices in \(\slr\) by using the same entry-wise definition.
         \end{defn}
+
+        This convention for identifying \(\slz\) with \(\Gamma\) is also consistent with the identification of \(\mathscr{MF}\) with \(\mathbb{RP}^1 \times \mathbb{R}_{>0}\), to see this if we take a measured foliation with corresponding \(1\)-form \(\abs{b\eta + a\zeta}\) then \[\mu(\gamma^{-1}c) = \abs{\int_c (\gamma^{-1})^*(b\eta + a\zeta)}\]
+        Consistency of these definitions then simply follows from the following matrix multiplication for any \(\slr\) matrix \(g\):
+        \begin{align*}
+            \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} g^{-\operatorname{T}} \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} b \\ a \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} g \begin{pmatrix} a \\ b \end{pmatrix}
+        \end{align*}
 
         \section{Teichmuller Metric and Dilations}
         \begin{defn}
@@ -227,7 +236,11 @@ sorting=ynt
 
         \end{defn}
 
-        \section{Measured Laminations}
+        \section{Measured Laminations and The Punctured Torus}
+        This section is written in such a way to mirror closely the standard definitions on surfaces of negative Euler characteristic, see \cite{Martelli_2025}. However, due to geometric differences (e.g. existence of dense simple geodesics, non-uniqueness of homotopy class representatives for simple closed curves, etc.) I have made small modifications to the definitions so that they will be compatible with the torus.
+        \begin{defn}
+            A measured lamination on the torus is closed subset of \(\mathbb{T}^2\) that can be written as a disjoint union of complete geodesics, equipped with a measure on 
+        \end{defn}
 
         \section{Projective Measured Foliations as \(\partial \mathbf{T_1}\)}
         Earlier we discussed how the \(\mathbb{RP}^1\) coordinate of the measured foliation specifies a projective measured foliation, with data equivalent to the slope of a line on the torus. We can give a more precise identification with \(\partial \mathbf{T_1}\) in a way that is compatible with the notion of Teichm\"uller geodesics. For the purposes of understanding Ledrappier's paper, we can simply think of the topology on \(\mathbf{T_1}\) as being defined by the Teichm\"uller metric. However, to understand this phenomena we use that the topology on the Teichm\"uller space given equivelantly by embedding into the space of geodesic currents \(\mathcal{C}\) with the weak-\(*\) topology, as this is somewhat tangential I will not provide the details, and the reader is referred to \cite{Martelli_2025} for the proof in the negative Euler characteristic case. The embedding on the torus is given by taking \((S,\varphi)\) to the functional on closed geodesics \(c \mapsto \ell_S(\varphi(c))\) (here we are taking a geodesic representative of \(\varphi(c)\) which is unique up to translation) the length of the curve in \(S\). We similarly have that measured foliations have a natural mapping to the space of currents, by taking \(\mathcal{F}\) given by \(\abs{\omega}\) to \(c \mapsto \int_c \abs{\omega}\). Now we can further consider the projection \(\mathcal{C} \to \mathbb{P}\mathcal{C}\) which will allow us to identify \(\partial \mathbf{T_1} \subset \mathcal{C}\) with \(\mathbb{P}\mathscr{MF}\). To do so consider a sequence \(S_n \in \mathbf{T_1}\) which leaves every compact set, using the isometry with \(\mathbb{H}\) each \(S_n\) corresponds to some \(\tau_n \in \mathbb{H}\), and we see that under the embedding to currents \(S_n\) maps to the current \(e \alpha + f \beta \mapsto \left(\Im(\tau)\right)^{-\frac12}\abs{e + f \tau}\). One way for \(\tau_n\) to leave every compact set is to have after passing to a subsequence \(\abs{\tau_n} \to \infty\), in which case we get a sequence of representatives for \(\set{S_n} \to \mathbb{P}\mathcal{C}\) given by \(e \alpha + f \beta \mapsto \frac{\sqrt{\Im(\tau_n)}}{\abs{\tau_n}}\left\vert\frac{e + f \tau_n}{\sqrt{\Im(\tau)}}\right\vert\), which clearly converges to \(e \alpha + f \beta \mapsto \abs{f}\), the projective measured foliation given by \([\abs{dy}]\). Now if \(\abs{\tau_n} \not \to \infty\) for every subsequence, then we must have \(\Im(\tau_n) \to 0\), moreover after passing to a subsequence \(\Re(\tau_n) \to R\) for some \(R \in \mathbb{R}\) by Bolzano Weierstrass in which case we get representatives for \(\set{S_n} \to \mathbb{P}\mathcal{C}\) given by \(e \alpha + f \beta \mapsto \sqrt{\Im(\tau)}\left\vert\frac{e + f \tau_n}{\sqrt{\Im(\tau_n)}}\right\vert\), which converges to \(e \alpha + f \beta \mapsto \abs{e + fR}\), which corresponds to the projective measured foliation given by \([\abs{dx + Rdy}]\). We can see this is compatible with Teichm\"uller geodesics since if we take a Teichm\"uller geodesic with horizontal foliation given by \(\abs{\omega}\) and vertical foliaton \(\abs{\nu}\), the corresponding length function becomes \(c \mapsto \sqrt{\left(\int_\gamma \abs{\omega}\right)^2 + \left(\int_\gamma \abs{\nu}\right)^2}\), along the Teichm\"uller geodesic we take \((t^{-1} \abs{\nu},t\abs{\omega})\) as \(t \to \infty\), thus the projective class converges to \([\abs{\omega}]\).
@@ -240,33 +253,15 @@ sorting=ynt
 
         \section{Proof of Theorem}
 
-        Let \(X \in \mathbb{RP}^1 \times \mathbb{R}_{>0}\) be a vector with irrational slope and let \(f \in C_c(\mathbb{RP}^1 \times \mathbb{R}_{>0})\), then we can define a lift \(\tilde{f}\) of \(f\) to \(\mathcal{Q}^1\), by distributing \(f\) along the Teichm\"uller unipotent flow.
-        \begin{defn}
-            Let \(\epsilon > 0\), then let \(\chi_\epsilon\) be a continuous function on \(\mathbb{R}\) supported on \((-\epsilon,\epsilon)\) with \(\int_\mathbb{R} \chi_\epsilon = 1\). Then for \(q \in \mathcal{Q}^1\), bijectivity of the coordinate construction gives a unique \(s\), such that \(q \cdot h_s\) lies in \(\operatorname{Im}(\Psi)\) use this to define
-            \begin{align*}
-                \tilde{f}(q) = f(\Psi^{-1}(q\cdot h_s))\chi_\epsilon(s)
-            \end{align*}
-        \end{defn}
-        We may further define \(\pi\) to be the quotient map \(\mathcal{Q}^1 \to \Gamma \setminus \mathcal{Q}^1\) and
-        \begin{align*}
-            &\overline{f}: \slz \setminus \mathcal{Q}^1 \to \mathbb{R} \\
-            &\pi(q) \mapsto \sum_{g \in \slz} \tilde{f}(g \cdot q)
-        \end{align*}
-        By construction, integrating \(\bar{f}\) along the unipotent flow gives the sum over \(\set{g \in \slz \mid g \cdot X \in \operatorname{supp}(f)}\) with \(s(g,X)\) lying within the integral bounds up to some small error, by relating this to the average of \(f(g X)\) with \(K_g\) small, we get a new formula for the sum from the equidistribution of the unipotent flow. We can use the hyperbolic geometry to relate these two quantities as follows
+        Let \(X \in \mathbb{RP}^1 \times \mathbb{R}_{>0}\) be a vector with irrational slope and let \(f \in C_c(\mathbb{RP}^1 \times \mathbb{R}_{>0})\).
+
+        The flow parameter separating \(g\cdot\Psi(X)\) and \(\Psi(gX)\) along a horocycle can be expressed in terms of the Teichmuller displacement of \(g\) to the basepoint \((dx + idy)\) and the horizontal stretches \(\norm{X}\) and \(\norm{gX}\), by using the consistency of \(\Psi\) and the \(\slz\) action with mobius transform when identifying \(\mathbf{T_1}\) with \(\mathbb{H}\) under isometry.
         \begin{lemma}
             \begin{align*}
                 s(g,X)^2 = \frac{K_g + K_{g}^{-1}}{\norm{X}^2\norm{g X}^2} - \frac{1}{\norm{X}^4} - \frac{1}{\norm{g X}^4}
             \end{align*}
             \begin{proof}
                 We derive the following entirely in terms of the hyperboic geometry, firstly we are only concerned with the Teichm\"uller coordinate, so in this proof a quadratic differential will instead specify its projection to \(\mathbf{T_1}\), moreover we use the identification with hyperbolic space, recall that under this identification we are sending \(\Psi(1,0)\) to \(i\), then all other mappings can be derived from \(g\cdot \Psi(1,0)\) being identified to \(g\cdot i\) where the action on \(\mathbb{H}\) is M\"obius transform. We abuse notation further, by writing a quadratic differential to mean its associated point in \(\mathbb{H}\). Now let \(g_X \in R(\theta)D(t,t^{-1})\) be the matrix satisfying \(g_X \begin{pmatrix} 1 \\ 0 \end{pmatrix} = X\), and let \(H = gg_X\cdot \set{y = 1}\), which by the equivariance lemma is the horocycle containing both \(\Psi(gX)\) and \(g\cdot \Psi(X)\). We get the points on the following picture, which we apply \(g_X^{-1}g^{-1}\) to in order to send \(H\) to \(\set{y = 1}\) by isometry.
-
-                
-                \begin{figure}[h]
-                    \begin{center}
-                        \includegraphics[width = \linewidth]{image/Diagram1.png}
-                    \end{center}
-                \end{figure}
-
 
                 We can compute \(\operatorname{dist_1}\) and \(\operatorname{dist_2}\) using the definition \(d_{\operatorname{Teich}}\)
                 \begin{align*}
@@ -283,6 +278,12 @@ sorting=ynt
                     p_0 &= e^{\pm \operatorname{dist_1}} = e^{\pm \log \norm{X}^2} = \norm{X}^{\pm 2}
                 \end{align*}
                 With the \(\pm\) depending on wether or not \(p_0\) lies above or below \(\set{y = 1}\). Now since \((x_0,p_0) = g_X^{-1}\cdot i\) and \(X = g_X \begin{pmatrix} 1 \\ 0 \end{pmatrix}\) we see that \(p_0\) is sent in the opposite direction of the stretching on \(X\), which is sent up along the vertical trajectory. Thus \(p_0 = \norm{X}^{-2}\) and by a similar computation \(p_1 = \norm{\gamma X}^{-2}\). Substituting in these values and using that \(\cosh(d_\mathbb{H}(i,g\cdot i)) = \frac{K_g + K_g^{-1}}{2}\) we get the desired result.
+
+                \begin{figure}[H]
+                    \begin{center}
+                        \includegraphics[width = \linewidth]{image/Diagram1.png}
+                    \end{center}
+                \end{figure}
             \end{proof}
         \end{lemma}
 
@@ -299,14 +300,31 @@ sorting=ynt
         \begin{align*}
             \abs{s(g,X)} \leq \sqrt{\frac{T^2}{\norm{X}^2\norm{g X}^2} + D} \leq \frac{T}{\norm{X}\norm{g X}} + \sqrt{D}
         \end{align*}
-        The first thing to notice from these equations is that \(\overline{f}\) is well defined, this follows immediately from the fact that \(\Gamma\) as a mapping class group acts properly discontinuously \cite{FarbMarg}, which having infinitely many \(\gamma \in \Gamma\) with \(K_\gamma \leq N\) for some \(N\) would directly contradict. There is also a way to see this simply using the norm on \(\slz\).
+        can define a lift \(\tilde{f}\) of \(f\) to \(\mathcal{Q}^1\), by distributing \(f\) along the Teichm\"uller unipotent flow.
+        \begin{defn}
+            Let \(\epsilon > 0\), then let \(\chi_\epsilon\) be a continuous function on \(\mathbb{R}\) supported on \((-\epsilon,\epsilon)\) with \(\int_\mathbb{R} \chi_\epsilon = 1\). Then for \(q \in \mathcal{Q}^1\), bijectivity of the coordinate construction gives a unique \(s\), such that \(q \cdot h_s\) lies in \(\operatorname{Im}(\Psi)\) use this to define
+            \begin{align*}
+                \tilde{f}(q) = f(\Psi^{-1}(q\cdot h_s))\chi_\epsilon(s)
+            \end{align*}
+        \end{defn}
+        We may further define \(\pi\) to be the quotient map \(\mathcal{Q}^1 \to \Gamma \setminus \mathcal{Q}^1\) and
+        \begin{align*}
+            &\overline{f}: \slz \setminus \mathcal{Q}^1 \to \mathbb{R} \\
+            &\pi(q) \mapsto \sum_{g \in \slz} \tilde{f}(g \cdot q)
+        \end{align*}
+        By construction, integrating \(\bar{f}\) along the unipotent flow gives the sum over \(\set{g \in \slz \mid g \cdot X \in \operatorname{supp}(f)}\) with \(s(g,X)\) lying within the integral bounds up to some small error, by relating this to the average of \(f(g X)\) with \(K_g\) small, we get a new formula for the sum from the equidistribution of the unipotent flow. We can also see that \(\overline{f}\) is well defined and continuous, this follows immediately from the fact that \(\Gamma\) as a mapping class group acts properly discontinuously \cite{FarbMarg}, which having infinitely many \(\gamma \in \Gamma\) with \(K_\gamma \leq N\) for some \(N\) would directly contradict. There is also a way to see this simply using the norm on \(\slz\).
         \begin{align*}
             K_g + \frac{1}{K_g} = 2\cosh2d_{\operatorname{Teich}}(S,g \cdot S) = 2\cosh d_\mathbb{H}(i,g \cdot i) = \norm{g}_{F}^2
         \end{align*}
-        So that for any \(N\) there are finitely many \(\gamma\) with \(\abs{s(\gamma,X)} \leq N\). Either approach implies \(\bar{f}\) is continuous since it is given locally by a sum of continuous functions. The second application of these inequalities is defining \(L = \inf_{Y \in \operatorname{supp}(f)}\norm{Y}\) and \(M = \sup_{Y \in \operatorname{supp}(f)}\norm{Y}\) we get the following explicit relation for positive valued \(f\),
+        So that for any \(N\) there are finitely many \(\gamma\) with \(\abs{s(\gamma,X)} \leq N\). Either approach implies \(\bar{f}\) is continuous since it is given locally by a sum of continuous functions. The second application of the inequalities following from Lemma 1 is defining \(L = \inf_{Y \in \operatorname{supp}(f)}\norm{Y}\) and \(M = \sup_{Y \in \operatorname{supp}(f)}\norm{Y}\) we get the following explicit squeezing relation for positive valued \(f\),
         \begin{align*}
-            &\int_{-\frac{T}{\norm{X}M} + \sqrt{D} + \epsilon}^{\frac{T}{\norm{X}M} - \sqrt{D} - \epsilon}\overline{f}(\pi \Psi(X)\cdot h_s)ds \leq \sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}} f(\gamma X) \leq \int^{\frac{T}{\norm{X}L} + \sqrt{C} + \epsilon}_{-\frac{T}{\norm{X}L} - \sqrt{C} - \epsilon}\overline{f}(\pi \Psi(X)\cdot h_s)ds \\
-            &\lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds \leq \lim_{T \to \infty} \frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}} f(\gamma X)  \leq \lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}L}}^{\frac{T}{\norm{X}L}}\overline{f}(\pi \Psi(X)\cdot h_s)ds
+            &\int_{-\frac{T}{\norm{X}M} + \sqrt{D} + \epsilon}^{\frac{T}{\norm{X}M} - \sqrt{D} - \epsilon}\overline{f}(\pi \Psi(X)\cdot h_s)ds \leq \sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}} f(\gamma X) \\
+            &\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}} f(\gamma X) \leq \int^{\frac{T}{\norm{X}L} + \sqrt{C} + \epsilon}_{-\frac{T}{\norm{X}L} - \sqrt{C} - \epsilon}\overline{f}(\pi \Psi(X)\cdot h_s)ds \\
+        \end{align*}
+        Dividing by \(T\) and taking the limit as \(T \to \infty\) yields our term of interest.
+        \begin{align*}
+            &\lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds \leq \lim_{T \to \infty} \frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}} f(\gamma X)\\
+            &\lim_{T \to \infty} \frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}} f(\gamma X)  \leq \lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}L}}^{\frac{T}{\norm{X}L}}\overline{f}(\pi \Psi(X)\cdot h_s)ds
         \end{align*}
         Similar equalities holds for negative valued \(f\). We may assume that \(f\) is strictly positive or negative, considering \(f^+,f^-\) defined as \(\max\set{f,0}, \min\set{f,0}\) respectively. To complete the proof I will evaluate \(\lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds\), since the same argument applies to the other limit squeezing the sum and gives the same result.
 
@@ -325,23 +343,25 @@ sorting=ynt
         \begin{proof}
             We can parameterize \(\slr\) by \(\set{\begin{pmatrix} u & w \\ v & h \end{pmatrix} \mid  uh - vw = 1}\), then the integral over \(\slr\) is the integral over the chart \(u \neq 0\). In this chart we have \(d\mu = \frac{6}{\pi^2}\frac{\abs{du\,dv\,dw}}{\abs{u}}\), in our earlier parameterization in terms of \(u,v,s\) we have \(w = us - v(u^2 + v^2)^{-1}\), this gives us Jacobian determinant \(u\). Now letting \(D\) be a fundamental domain for \(\slz \setminus \slr\) we get from definition of \(\tilde{f}\)
             \begin{align*}
-                \int_{\slz \setminus \slr} \overline{f}\left(\pi g \cdot \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix}\right)d\mu
-                &= \int_{D} \sum_{g' \in \Gamma}\tilde{f}\left(g'g \cdot \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix}\right)d\mu  \\
-                &= \int_D \sum_{g' \in \Gamma}\tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot g'g \right)d\mu \\
-                &= \int_{\slr \cap \set{u \neq 0}} \tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} u & w \\ v & h \end{pmatrix}\right)\frac{6}{\pi^2}\frac{du\,dv\,dw}{\abs{u}} \\
-                &= \frac{6}{\pi^2}\int_{\slr \cap \set{u \neq 0}} \tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} u & us - v(u^2 + v^2)^{-1} \\ v & vs + u(u^2 + v^2)^{-1} \end{pmatrix}\right)du\,dv\,ds \\
-                &= \frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}\times \mathbb{R}} \tilde{f}\left(\Psi \begin{pmatrix} (\theta,r)\end{pmatrix}\cdot h_s\right)rdr\,d\theta\,ds \\
-                &= \frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}\times \mathbb{R}} \chi_\epsilon(-s)f(re^{i\theta})rdrd\theta ds \\
-                &= \frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}} f(re^{i\theta})rdrd\theta \\
+                &\int_{\slz \setminus \slr} \overline{f}\left(\pi g \cdot \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix}\right)d\mu \\
+                = &\int_{D} \sum_{g' \in \Gamma}\tilde{f}\left(g'g \cdot \Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix}\right)d\mu  \\
+                = &\int_D \sum_{g' \in \Gamma}\tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot g'g \right)d\mu \\
+                = &\int_{\slr \cap \set{u \neq 0}} \tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} u & w \\ v & h \end{pmatrix}\right)\frac{6}{\pi^2}\frac{du\,dv\,dw}{\abs{u}} \\
+                = &\frac{6}{\pi^2}\int_{\slr \cap \set{u \neq 0}} \tilde{f}\left(\Psi \begin{pmatrix} 1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} u & us - v(u^2 + v^2)^{-1} \\ v & vs + u(u^2 + v^2)^{-1} \end{pmatrix}\right)du\,dv\,ds \\
+                = &\frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}\times \mathbb{R}} \tilde{f}\left(\Psi \begin{pmatrix} (\theta,r)\end{pmatrix}\cdot h_s\right)rdr\,d\theta\,ds \\
+                = &\frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}\times \mathbb{R}} \chi_\epsilon(-s)f(re^{i\theta})rdrd\theta ds \\
+                = &\frac{12}{\pi^2}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}} f(re^{i\theta})rdrd\theta \\
             \end{align*}
         \end{proof}
         Combining results gives us
         \begin{align*}
             \lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M}}^{\frac{T}{\norm{X}M}}\overline{f}(\pi \Psi(X)\cdot h_s)ds = \frac{24}{\pi^2\norm{X}M}\int_{\mathbb{RP}^1 \times \mathbb{R}_{>0}}f(re^{i\theta})rdrd\theta
         \end{align*}
-        eliminate the \(1/M\) factor, we note that \(f\) is supported on the annulus \(\set{re^{i\theta} \mid L \leq r \leq M}\), we can take for any natural \(N\), a continuous partition of unity of the annulus \(\chi^1,\hdots,\chi^N\) with \(\chi^j\) supported on \(\set{re^{i\theta} \mid L_j = L + \frac{M-L}{N}(j-2) < r < L + \frac{M-L}{N}(j+1) = M_j}\), writing \(f^j = \chi^j f\) we recover that
+        eliminate the \(1/M\) factor, we note that \(f\) is supported on the annulus \[\set{re^{i\theta} \mid L \leq r \leq M}\] We can take for any natural \(N\), a continuous partition of unity of the annulus \(\chi^1,\hdots,\chi^N\) with \(\chi^j\) supported on \[\set{re^{i\theta} \mid L_j = L + \frac{M-L}{N}(j-2) < r < L + \frac{M-L}{N}(j+1) = M_j}\]
+        Then writing \(f^j = \chi^j f\) we recover that
         \begin{align*}
-            \sum_1^N\lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M_j}}^{\frac{T}{\norm{X}M_j}}\overline{f^j}(\pi \Psi(X)\cdot h_s)ds \leq \lim_{T \to \infty} \frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}}\sum_j f^j(\gamma X) = \lim_{T \to \infty} \frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}} f(\gamma X)
+            \sum_1^N\lim_{T \to \infty} \frac{1}{T} \int_{-\frac{T}{\norm{X}M_j}}^{\frac{T}{\norm{X}M_j}}\overline{f^j}(\pi \Psi(X)\cdot h_s)ds &\leq \lim_{T \to \infty} \frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}}\sum_j f^j(\gamma X) \\
+            &= \lim_{T \to \infty} \frac{1}{T}\sum_{\substack{\gamma \in \Gamma \\ \sqrt{K_\gamma} \leq T}} f(\gamma X)
         \end{align*}
         Applying Dani's theorem and lemma 2 to the term on the left hand side we get
         \begin{align*}
